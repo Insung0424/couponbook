@@ -1,4 +1,4 @@
-#깃 크라켄 설치 페이지
+# 깃 크라켄 설치 페이지
 https://www.gitkraken.com/
 
 
