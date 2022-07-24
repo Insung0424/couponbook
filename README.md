@@ -47,3 +47,5 @@ https://velog.io/@danna-lee/%EA%B0%9C%EB%B0%9C-%ED%98%91%EC%97%85%EC%97%90%EC%84
 1 특정 규약에 종속되지 않는다
 
 2 특정 환경에 종속되지 않는다
+
+민곤test
