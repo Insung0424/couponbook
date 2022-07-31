@@ -1,11 +1,3 @@
-#  Java Configuration  
-+ XML 설정을 Java Configuration 변경하기  
-
-# 부트스트랩 연습
-+ [부트스트랩]
-	- 부트스트랩으로 테이블 만들기
-
-
 # 깃 크라켄 설치 페이지
 https://www.gitkraken.com/
 
