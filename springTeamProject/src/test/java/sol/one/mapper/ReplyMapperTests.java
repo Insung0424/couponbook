@@ -27,7 +27,7 @@ public class ReplyMapperTests {
     	replyVO vo = new replyVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(1);
-    	vo.setComment_content("mapper test");
+    	vo.setCom_content("mapper test");
     	log.info(vo);
     	mapper.insert_co(vo);
     }
@@ -43,7 +43,7 @@ public class ReplyMapperTests {
     	replyVO vo = new replyVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(1);
-    	vo.setComment_content("mapper test");
+    	vo.setCom_content("mapper test");
     	mapper.delete(vo);
     	log.info(mapper.read(vo.getUser_id()));
     }
@@ -53,7 +53,7 @@ public class ReplyMapperTests {
     	replyVO vo = new replyVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(1);
-    	vo.setComment_content("댓글2");
+    	vo.setCom_content("댓글2");
     	String change_comment = "댓글2 변경";
     	mapper.update(change_comment,vo);
     	log.info(mapper.read(vo.getUser_id()));
