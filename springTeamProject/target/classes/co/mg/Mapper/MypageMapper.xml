@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.sol.Mapper.MypageMapper">
+	<!-- 마이페이지 내 정보 조회 -->
+	<select resultType="co.mg.dto.UserDTO" id="list_user_mypage">
+		select * 
+		from 
+			pj_user
+		where 
+			user_id=#{user_id}
+	</select>
+
+
+	<!-- 마이페이지 내 정보 수정 -->
+	<update id="update_info_mypage">
+		update pj_user
+		set
+			email = #{email},
+			nickname=#{nickname},
+			password=#{password},
+			user_name=#{user_name},
+			phone=#{phone},
+			addr=#{phone}
+		where
+			user_id = #{user_id}
+	</update>
+	<!-- 마이페이지 내 관심상품 조회 -->
+	<select resultType="co.mg.dto.LikeDTO" id="list_like_mypage">
+		select * 
+		from 
+			pj_Like
+		where 
+			user_id=#{user_id}
+		order by 
+			like_created desc
+	</select>
+		<!--마이페이지 내 거래내역 로그  -->
+	<select resultType="co.mg.dto.TradeDTO" id="list_trade_mypage">
+		select * from pj_Trade
+		where 
+			buyer_user_id=#{buyer_user_id}
+		or
+			seller_user_id=#{seller_user_id}
+		order by 
+			trade_created desc
+	</select>
+	<select resultType="co.mg.dto.BoardDTO" id="list_board_mypage">
+		select * 
+		from 
+			pj_Board
+		where 
+			user_id=#{user_id}
+		order by 
+			board_created desc
+	</select>
+	<select resultType="co.mg.dto.CommentDTO" id="list_comment_mypage">
+		select * 
+		from 
+			pj_Comment
+		where 
+			user_id=#{user_id}
+		order by
+			com_created desc
+	</select>
+	<select resultType="co.mg.dto.ReportDTO" id="list_report_mypage">
+		select * 
+		from 
+			pj_Report
+		where
+		    user_id=#{user_id}
+		order by
+			re_time desc
+	</select>
+	<select id="check_password_mypage" resultType="int">
+		select
+			count(*)
+		from 
+			pj_user
+		where
+			user_id=#{user_id} and password=#{password}
+		
+	</select>
+	
+
+
+</mapper>

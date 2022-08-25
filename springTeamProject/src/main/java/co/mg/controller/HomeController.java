@@ -1,4 +1,4 @@
-package sol.one.spring;
+package co.mg.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
