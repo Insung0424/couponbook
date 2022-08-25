@@ -12,7 +12,7 @@ import sol.one.mapper.ReplyMapper;
 @RequiredArgsConstructor
 public class ReplyServiceImple implements ReplyService{
 
-	private ReplyMapper mapper;
+	private final ReplyMapper mapper;
 	
 	@Override
 	public int register(replyVO vo) {

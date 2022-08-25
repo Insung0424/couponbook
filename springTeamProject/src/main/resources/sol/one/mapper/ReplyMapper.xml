@@ -5,11 +5,11 @@
 
 	<insert id="insert_co">
 		insert into pj_comment(product_id,user_id,comment_content,comment_write_time)
-		values (#{product_id},#{user_id},#{comment_content},sysdate)
+		values (#{product_id},#{user_id},#{comment_content},current_date)
 	</insert>
 	
 	<select id="read" resultType="sol.one.VO.replyVO">
-		select * from pj_comment where user_id = #{user_id}
+		select * from pj_comment where user_id = #{user_id} order by comment_write_time desc
 	</select>
 	
 	<delete id="delete">
