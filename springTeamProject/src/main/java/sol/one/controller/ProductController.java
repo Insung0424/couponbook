@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import sol.one.VO.replyVO;
 
 @Controller
-@RequestMapping("/member")
-public class MainController {
+@RequestMapping("/product")
+public class ProductController {
 
-	
-	
 	@GetMapping("/main")
 	public void main(Model model) {
 		replyVO vo = new replyVO();
