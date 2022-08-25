@@ -40,4 +40,8 @@ public class HomeController {
 	@GetMapping("/main")
 	public void main() {}
 	
+	//로그인, 회원가입 확인용 메인으로 이동, 테스트용으로 삭제예정임
+	@GetMapping("/loginMain")
+	public void loginMain() {}
+	
 }
