@@ -7,6 +7,6 @@
 <body>
 <h1>
 
-<a href="mypage/myinfo">마이페이지</a>
+<a href="/mypage/myInfo">마이페이지</a>
 </body>
 </html>

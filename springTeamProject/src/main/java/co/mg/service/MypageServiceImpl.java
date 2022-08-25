@@ -4,11 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import co.mg.Mapper.MypageMapper;
@@ -22,16 +26,19 @@ import co.mg.dto.UserDTO;
 
 import lombok.RequiredArgsConstructor;
 
-@Service
+@Repository
 @RequiredArgsConstructor
 public class MypageServiceImpl implements MypageService {
 
 	private static final Logger log = LoggerFactory.getLogger(MypageController.class);
 	
-	@Inject
-	SqlSession session;
 	
 	private final MypageMapper mapper;
+	
+	
+	@Resource(name = "sqlSession")
+	SqlSession sqlSession;
+	
 
 	@Override
 	public void update_info_mypage(UserDTO user) throws Exception {
@@ -79,7 +86,7 @@ public class MypageServiceImpl implements MypageService {
 	@Override
 	public int check_password_mypage(UserDTO user) throws Exception {
 		log.info("check_password_mypage");
-		int result=session.selectOne("check_password", user);
+		int result=sqlSession.selectOne("check_password", user);
 		
 		return result;
 		

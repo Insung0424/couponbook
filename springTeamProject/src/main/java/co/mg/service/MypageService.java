@@ -2,6 +2,8 @@ package co.mg.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import co.mg.dto.BoardDTO;
 import co.mg.dto.CommentDTO;
 import co.mg.dto.LikeDTO;
@@ -9,7 +11,7 @@ import co.mg.dto.ReportDTO;
 import co.mg.dto.TradeDTO;
 import co.mg.dto.UserDTO;
 
-
+@Service
 public interface MypageService {
 	
 	//마이페이지 내 정보 조회하기

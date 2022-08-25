@@ -29,8 +29,13 @@ public class MypageController {
 
 	
 	private final MypageService service;
+	
+	@GetMapping("/myInfo")
+	public String goMyInfo() {
+		return "mypage/myInfo";
+	}
 
-	@PostMapping("mypage/myInfo")
+	@PostMapping("/myInfo")
 	public String myInfo(@RequestParam(value="user_id") int user_id, Model model) throws Exception {
 		log.info(user_id + " Info");
 		model.addAttribute("info", service.list_user_mypage(user_id));
