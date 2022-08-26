@@ -16,14 +16,15 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import sol.one.VO.MemberVO;
+import sol.one.VO.KakaoDTO;
 import sol.one.repository.KakaoMemRepository;
 
 @Service
-public class KakaoService {
+public class KakaoService{
+	/* public class KakaoService implements KakaoInterface { */
 	
-	@Autowired
-	private KakaoMemRepository mr; 
+	@Autowired 
+	private KakaoMemRepository mr;	 
 	
     public String getAccessToken (String authorize_code) {
         String access_Token = "";
@@ -44,7 +45,7 @@ public class KakaoService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=e90605fb64b5ed5eeffcf586eb651d12");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://localhost:8080/login");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -84,9 +85,8 @@ public class KakaoService {
     }
     
     
-    
-    public MemberVO getUserInfo (String access_Token) {
-
+    public KakaoDTO getUserInfo (String access_Token) {
+    	System.out.println("---- KS:getUerInfo -----");
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
         HashMap<String, Object> userInfo = new HashMap<>();
         String reqURL = "https://kapi.kakao.com/v2/user/me";
@@ -130,7 +130,7 @@ public class KakaoService {
         }
         
         // 코드 추가
-        MemberVO result = mr.findkakao(userInfo);
+        KakaoDTO result = mr.findkakao(userInfo);
         
         //저장된 정보가 있는지 확인하는 코드
         if(result == null) {
@@ -143,7 +143,13 @@ public class KakaoService {
         	return result;
         }
 
-    } 
+    }
+
+
+	public KakaoDTO kakaoNumber(KakaoDTO userInfo) {
+		// 카카오 번호 찾기
+		return mr.kakaoNumber(userInfo);
+	} 
     
 
 }

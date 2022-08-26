@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import sol.one.VO.MemberVO;
+import sol.one.VO.KakaoDTO;
 
 @Repository
 public class KakaoMemRepository {
@@ -21,12 +21,15 @@ public class KakaoMemRepository {
 	}
 	
 	// 정보 확인
-	// KakaoDTO -> MemberVO로 변경함
-	public MemberVO findkakao(HashMap<String, Object> userInfo) {
-		System.out.println("RN:"+userInfo.get("nickname"));
-		System.out.println("RE:"+userInfo.get("email"));
+	public KakaoDTO findkakao(HashMap<String, Object> userInfo) {
+		System.out.println("RNickname:"+userInfo.get("nickname"));
+		System.out.println("REmail:"+userInfo.get("email"));
 		
 		return sql.selectOne("Memeber.findKakao", userInfo);
+	}
+	
+	public KakaoDTO kakaoNumber(KakaoDTO userInfo) {
+		return sql.selectOne("Member.kakaoNumber",userInfo);
 	}
 
 }

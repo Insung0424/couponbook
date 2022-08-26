@@ -10,13 +10,6 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
-	<!-- <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName"
-			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@DBSOLDESKTEAM1_high?TNS_ADMIN=/ora/Wallet_DBSOLDESKTEAM1" />
-		<property name="username" value="admin" />
-		<property name="password" value="soldesk01TEAM)!" />
-	</bean> -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="connectionTimeout" value="3000"/>
 		<property name="maximumPoolSize" value="300" /> 
@@ -33,10 +26,15 @@
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- 현재 프로젝트 패키지 경로 맞는지 확인 -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+		id="sqlSessionFactory">
 		<property name="dataSource" ref="dataSource" />
+		<!-- 에러시 추가 
+		<property name="mapperLocations" value="classpath:/sol/one/mapper/*.xml" />
+		-->
 	</bean>
+	
 	
 	<!-- 에러시  추가	-->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

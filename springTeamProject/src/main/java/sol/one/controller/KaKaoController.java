@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
-import sol.one.VO.MemberVO;
+import sol.one.VO.KakaoDTO;
 import sol.one.service.KakaoService;
 
 @Controller
+@RequestMapping(value="/member/*")
 @AllArgsConstructor
 public class KaKaoController {
     @Autowired
@@ -22,17 +23,17 @@ public class KaKaoController {
     @Autowired
     private HttpSession session;
 	
-    @RequestMapping(value="/kakaologin", method=RequestMethod.GET)
+	@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model model) throws Exception{
         System.out.println("#########" + code);
         String access_Token = kakaoService.getAccessToken(code);
-        MemberVO userInfo = kakaoService.getUserInfo(access_Token);
-//        MemberVO number = kakaoService.kakaoNumber(userInfo);
-        session.invalidate();
-        session.setAttribute("kakaoN", userInfo.getNickname());
-        session.setAttribute("kakaoE", userInfo.getEmail());
-//        session.setAttribute("kakaoNumber", number.getK_number());
+        KakaoDTO userInfo = kakaoService.getUserInfo(access_Token);
+        KakaoDTO number = kakaoService.kakaoNumber(userInfo);
         
-        return "redirect:/loginMain";
+        session.invalidate();
+        session.setAttribute("kakaoN", userInfo.getK_name());
+        session.setAttribute("kakaoE", userInfo.getK_email());
+        session.setAttribute("kakaoNumber", number.getK_number());
+        return "/myPage";
     }
 }
