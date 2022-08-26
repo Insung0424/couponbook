@@ -25,7 +25,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="sol.one.spring" />
 	<context:component-scan base-package="sol.one.controller" />
 	<beans:bean class="sol.one.intercepter.LoginIntercepter" id="LoginIntercepter"/>
 	
