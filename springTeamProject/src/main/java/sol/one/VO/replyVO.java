@@ -16,4 +16,6 @@ public class replyVO {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Seoul")
 	private Date comment_write_time;
 	
+	private int comment_no;
+	
 }

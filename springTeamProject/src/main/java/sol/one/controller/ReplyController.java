@@ -7,9 +7,11 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,5 +45,17 @@ public class ReplyController {
 		Map<String,Object> map = new HashMap<>();
 		map.put("list", list);
 		return map;
+	}
+	
+	@DeleteMapping("/delete/{user_id}")
+	public String del(@PathVariable int user_id) {
+		service.remove(user_id);
+		return "success";
+	}
+	
+	@PutMapping("/update")
+	public String put(@RequestBody replyVO vo) {
+		service.modify(vo);
+		return "update";
 	}
 }

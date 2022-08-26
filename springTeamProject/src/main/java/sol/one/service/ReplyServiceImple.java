@@ -25,13 +25,18 @@ public class ReplyServiceImple implements ReplyService{
 	}
 
 	@Override
-	public int modify(String change_comment, replyVO vo) {
-		return mapper.update(change_comment, vo);
+	public int modify(replyVO vo) {
+		return mapper.update(vo);
 	}
 
 	@Override
-	public int remove(replyVO vo) {
-		return mapper.delete(vo);
+	public int remove(int comment_no) {
+		return mapper.delete(comment_no);
 	}
 
+	@Override
+	public int removeAll(int product_id) {
+		return mapper.deleteAll(product_id);
+	}
+	
 }

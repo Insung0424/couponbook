@@ -4,8 +4,8 @@
 <mapper namespace="sol.one.mapper.ReplyMapper">
 
 	<insert id="insert_co">
-		insert into pj_comment(product_id,user_id,comment_content,comment_write_time)
-		values (#{product_id},#{user_id},#{comment_content},current_date)
+		insert into pj_comment(product_id,user_id,comment_content,comment_write_time,comment_no)
+		values (#{product_id},#{user_id},#{comment_content},current_date,seq_com_no.nextval)
 	</insert>
 	
 	<select id="read" resultType="sol.one.VO.replyVO">
@@ -13,12 +13,16 @@
 	</select>
 	
 	<delete id="delete">
-		delete from pj_comment where product_id = #{product_id} and user_id = #{user_id} and comment_content = #{comment_content}
+		delete from pj_comment where comment_no = #{comment_no}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from pj_comment where product_id = #{product_id}
 	</delete>
 	
 	<update id="update" parameterType="map">
 		update pj_comment
-		set comment_content = #{change_comment}
-		where product_id = #{vo.product_id} and user_id = #{vo.user_id} and comment_content = #{vo.comment_content}
+		set comment_content = #{comment_content}
+		where comment_no = #{comment_no}
 	</update>
 </mapper>

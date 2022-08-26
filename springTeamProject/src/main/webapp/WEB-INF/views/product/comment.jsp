@@ -6,16 +6,30 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style>
+#modal{ 
+  position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
+}
+
+#modal_content{
+  width:400px; height:200px;
+  background:#fff; border-radius:10px;
+  position:relative; top:50%; left:50%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px;
+}
+</style>
 </head>
 <body>
-${serverTime}
 	<h3>댓글</h3>
 	<hr>
 	<div id="comment_add">
 		<table class="comment_table">
 			<tr>
 				<td class="title">작성자</td>
-				<td class="input"><input type="text" id="writer"/></td>
+				<td class="input"><input type="text" id="writer" readonly value="${vo.user_id }"/></td>
 			</tr>
 			<tr>
 				<td class="title">댓글내용</td>
@@ -23,43 +37,32 @@ ${serverTime}
 			</tr>
 			<tr>
 				<td colspan="2" class="btn">
-				<button type="button" id="add_btn">댓글등록</button></td>
+				<button type="button" id="add_btn">댓글등록</button>
+				<input type="button" id="more_comment" value="댓글 보기"></td>
 			</tr>
 		</table>
 		<div id="add_message">&nbsp;</div>
 	</div>
 	
-	<div id="comment_list"></div>
+	<span id="comment_list"></span>
 	
-	<div id="comment_modify">
-		<table class="comment_table">
-			<tr>
-				<td class="title">작성자</td>
-				<td class="input"><input type="text" id="modify_writer"/></td>
-			</tr>
-			<tr>
-				<td class="title">댓글내용</td>
-				<td class="input"><textarea rows="3" cols="50" id="modify_com_content"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="btn">
-				<button type="button" id="modify_btn">댓글수정</button>&nbsp;
-				<button type="button" id="modify_cancel_btn">취소</button>&nbsp;				
-				</td>
-			</tr>
-		</table>
-		<div id="modify_message">&nbsp;</div>
-	</div>
-	
-	<div id="comment_remove">
-		<div id="remove_message">
-			<b>댓글을 삭제하시겠습니까</b>
-			<button type="button" id="remove_btn">댓글삭제</button>
-			<button type="button" id="remove_cancel_btn">취소</button>
+	<div id='modal'>
+		<div id='modal_content'>
+			<table class="modal_comment_table">
+				<tr>
+					<td class="modal_title">댓글수정</td>
+				</tr>
+				<tr>
+					<td class="modal_input"><textarea rows="3" cols="40" id="modal_com_content"></textarea></td>
+				</tr>
+				<tr>
+					<td class="modal_btn">
+					<button type="button" id="modal_modify_btn">댓글수정</button>
+					<button type="button" id="modal_modify_cancel_btn">수정취소</button></td>
+				</tr>
+			</table>
 		</div>
-		<div id="remove_message">&nbsp;</div>
 	</div>
-	
 	
 <script type="text/javascript">
 $("#add_btn").click(function(){
@@ -108,7 +111,6 @@ $("#add_btn").click(function(){
 		});
 });
 
-getList();	
 
 function getList() {
 	const user_id_1 = ${vo.user_id};
@@ -124,16 +126,18 @@ function getList() {
 			
 				for(i = 0;i < list.length;i++){
 					console.log(list[i]);
-					var content = list[i].comment_content;
-					var user_id_2 = list[i].user_id;
+					let content = list[i].comment_content;
+					let user_id_2 = list[i].user_id;
 					let time = list[i].comment_write_time;
+					let comment_no = list[i].comment_no;
 					
-					comment_html += "<div><span id='com_writer'><strong>" + user_id_2 + "</strong></span><br/>";
-					comment_html += "<span id='com-content'>" + content + "</span><br>";
-					comment_html += "<span id='write_time'>" + time + "</span><br>";
+					comment_html += "<div><span id='com_writer' value="+user_id_2+"><strong>" + user_id_2 + "</strong></span><br/>";
+					comment_html += "<span id='span_content'>" + content + "</span><br>";
+					comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 					if(user_id_1 == user_id_2){
-						 comment_html += "<span id='update' style='cursor:pointer;' data-id ="+content+">[수정]</span>";
-						 comment_html += "<span id='delete' style='cursor:pointer;' data-id ="+content+">[삭제]</span><br></div><hr>";
+						 comment_html += "<button id='update' data-id =" + comment_no + ">수정</button>";
+						 comment_html += "&nbsp;";
+						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
 					}
 					else{
 						comment_html += "</div><hr>";
@@ -144,6 +148,66 @@ function getList() {
 			$("#comment_list").html(comment_html);
 		})};
 		
+$("#more_comment").click(function(){
+	getList();
+});
+
+$(document).on("click", "#delete", function(){
+	const comment_no = $(this).data("id");
+	console.log(comment_no);
+	alert('댓글을 삭제하시겠습니까?');
+	console.log('댓글삭제');
+           $.ajax({
+               type:'delete',
+               url:'<c:url value="/replies/delete/"/>'+comment_no,
+               data:JSON.stringify({"comment_no":comment_no}),
+               contentType: 'application/json',
+               success:function(data){
+                  console.log('통신성공'+data);
+                  alert('댓글이 삭제되었습니다');
+                  getList();
+               },
+               error:function(){
+                  alert('통신실패');
+               }
+            });
+     
+});
+
+$(document).on("click", "#update", function(){
+	const comment_no = $(this).data("id");
+	$("#modal").fadeIn();
+	$("#modal_modify_cancel_btn").click(function(){
+		$("#modal").fadeOut();
+	});
+	$("#modal_modify_btn").click(function(){
+		const modal_com_content = $("#modal_com_content").val();
+		console.log(comment_no);
+		console.log(modal_com_content);
+		console.log('댓글수정');
+	           $.ajax({
+	               type:'put',
+	               url:'<c:url value="/replies/update"/>',
+	               data:JSON.stringify(
+	                  {
+	                	 "comment_content" : modal_com_content,
+	                     "comment_no":comment_no
+	                  }      
+	               ),
+	               contentType: 'application/json',
+	               success:function(data){
+	                  console.log('통신성공'+data);
+	                  alert('댓글이 수정되었습니다');
+	                  getList();
+	               },
+	               error:function(){
+	                  alert('통신실패');
+	               }
+	            });	
+		
+	});
+	
+});
 
 </script>
 </body>
