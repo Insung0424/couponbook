@@ -10,10 +10,20 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<!-- <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName"
 			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@DBSOLDESKTEAM1_high?TNS_ADMIN=/ora/Wallet_DBSOLDESKTEAM1" />
+		<property name="username" value="admin" />
+		<property name="password" value="soldesk01TEAM)!" />
+	</bean> -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="connectionTimeout" value="3000"/>
+		<property name="maximumPoolSize" value="300" /> 
+		<property name="minimumIdle" value="20" />
+		<property name="driverClassName"
+		   value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@DBSOLDESKTEAM1_low?TNS_ADMIN=/ora/Wallet_DBSOLDESKTEAM1" />
 		<property name="username" value="admin" />
 		<property name="password" value="soldesk01TEAM)!" />
 	</bean>
@@ -27,7 +37,13 @@
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	<!-- 에러시  추가	-->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 
 	<mybatis-spring:scan base-package="sol.one.mapper"/>
 	<context:component-scan base-package="sol.one.service"/>
+	<context:component-scan base-package="sol.one.repository" />
 </beans>

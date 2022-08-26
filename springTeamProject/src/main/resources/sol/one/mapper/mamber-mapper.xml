@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="Member"> 
+
+	<select id="findKakao" parameterType="java.util.HashMap" resultType="sol.one.VO.MemberVO">
+		select * from pj_user where nickname=#{nickname} and email=#{email}
+	</select>
+
+	<insert id="kakaoInsert" parameterType="java.util.HashMap">
+		<selectKey keyProperty="user_id" order="BEFORE" resultType="long">
+			select seq_user_id.nextval from dual
+		</selectKey>
+		insert into kakao_table(user_id, email, nickname)
+			values(#{user_id}, #{email}, #{nickname})
+	</insert>
+	
+</mapper>
