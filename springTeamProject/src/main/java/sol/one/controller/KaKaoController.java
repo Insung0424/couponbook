@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
 import sol.one.VO.KakaoDTO;
-import sol.one.service.KakaoService;
+import sol.one.service.KakaoMemService;
 
 @Controller
 @RequestMapping(value="/member/*")
 @AllArgsConstructor
 public class KaKaoController {
     @Autowired
-    private KakaoService kakaoService;
+    private KakaoMemService kakaoService;
     
     @Autowired
     private HttpSession session;
