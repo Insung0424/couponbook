@@ -45,8 +45,7 @@
 	</select>
 	
 	<insert id="kakaoInsert" parameterType="java.util.HashMap">
-		insert into kakao_table(k_name, k_email)
-			values(#{nickname}, #{email})
+		insert into kakao_table(k_number, k_name, k_email) values(#{uid}, #{nickname}, #{email})
 	</insert>
 	
 	<select id="kakaoNumber" parameterType="sol.one.VO.KakaoDTO" resultType="sol.one.VO.KakaoDTO">
