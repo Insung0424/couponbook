@@ -28,12 +28,14 @@ public class KaKaoController {
         System.out.println("#########" + code);
         String access_Token = kakaoService.getAccessToken(code);
         KakaoDTO userInfo = kakaoService.getUserInfo(access_Token);
+        
         KakaoDTO number = kakaoService.kakaoNumber(userInfo);
         
         session.invalidate();
         session.setAttribute("kakaoN", userInfo.getK_name());
         session.setAttribute("kakaoE", userInfo.getK_email());
         session.setAttribute("kakaoNumber", number.getK_number());
-        return "/myPage";
+//        return "/myPage";
+		return "redirect:/loginMain";
     }
 }

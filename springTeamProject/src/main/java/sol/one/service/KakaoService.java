@@ -24,7 +24,7 @@ public class KakaoService{
 	/* public class KakaoService implements KakaoInterface { */
 	
 	@Autowired 
-	private KakaoMemRepository mr;	 
+	private KakaoMemRepository mr;
 	
     public String getAccessToken (String authorize_code) {
         String access_Token = "";
@@ -135,10 +135,11 @@ public class KakaoService{
         //저장된 정보가 있는지 확인하는 코드
         if(result == null) {
         	mr.kakaoinsert(userInfo);
-        	
+        	System.out.println("KS 138: 없는 사용자 ");
         	//정보 저장 후 컨트롤러에 정보를 전달
         	return mr.findkakao(userInfo);
         } else {
+        	System.out.println("KS 142: 있는 사용자 ?? ");
         	//저장된 정보가 있으면 result를 전송한다
         	return result;
         }
@@ -148,6 +149,7 @@ public class KakaoService{
 
 	public KakaoDTO kakaoNumber(KakaoDTO userInfo) {
 		// 카카오 번호 찾기
+		System.out.println("KS 152: " + mr.kakaoNumber(userInfo));
 		return mr.kakaoNumber(userInfo);
 	} 
     
