@@ -16,12 +16,12 @@ public class KakaoMemRepository {
 	private SqlSessionTemplate sql;
 	
 	// 회원 정보 저장
-	public void kakaoinsert(HashMap<String, Object> userInfo) {
+	public void kakaoInsert(HashMap<String, Object> userInfo) {
 		sql.insert("Member.kakaoinsert", userInfo);
 	}
 	
 	// 정보 확인
-	public KakaoDTO findkakao(HashMap<String, Object> userInfo) {
+	public KakaoDTO findKakao(HashMap<String, Object> userInfo) {
 		System.out.println("RNickname:"+userInfo.get("nickname"));
 		System.out.println("REmail:"+userInfo.get("email"));
 		

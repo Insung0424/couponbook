@@ -24,6 +24,7 @@
 		<hr class="my-4">
 		
 		<c:set var="userID" value="${mem.user_id}" />
+		<%-- 카카오로그인 확인용 <c:set var="userID" value="${kakaoE}" /> --%>
 		<c:choose>
 			<c:when test="${empty userID}">
 				<p>로그인 전</p>
@@ -38,27 +39,6 @@
 					  alt="카카오 로그인 버튼"
 					/>
 				</a>
-				<%-- 카카오로그인  
-				<p id="token-result"></p>
-				js: 버튼에 href="javascript:loginWithKakao()" 추가
-				<script type="text/javascript">
-					//js 키 : 8fda0bdd386436f995da2c1fca117179
-					//Rest API 키 : e90605fb64b5ed5eeffcf586eb651d12
-					Kakao.init('8fda0bdd386436f995da2c1fca117179');
-					// SDK 초기화 여부를 판단합니다.
-			        console.log(Kakao.isInitialized());
-			     // 카카오 로그인 버튼을 생성합니다.
-			        Kakao.Auth.createLoginButton({
-			            container: '#custom-login-btn',
-			            success: function (authObj) {
-			                alert("성공!"+JSON.stringify(authObj));
-			            },
-			            fail: function (err) {
-			                alert(JSON.stringify(err));
-			            }
-			        });
-				</script>
-				--%>
 			</c:when>
 			
 			<c:when test="${!empty userID}">

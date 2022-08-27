@@ -30,9 +30,6 @@
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
 		id="sqlSessionFactory">
 		<property name="dataSource" ref="dataSource" />
-		<!-- 에러시 추가 
-		<property name="mapperLocations" value="classpath*:/sol/one/mapper/*.xml" />
-		-->
 	</bean>
 	
 	

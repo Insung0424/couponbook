@@ -32,18 +32,9 @@ public interface MemMapper {
 	
 	
 	//카카오 추가 KakaoMapper 삭제하고 여기다 추가함
-	// 회원 정보 저장
 	public void kakaoInsert(HashMap<String, Object> userInfo);
-	// 정보 확인
 	public KakaoDTO findKakao(HashMap<String, Object> userInfo);
-
 	public KakaoDTO kakaoNumber(KakaoDTO userInfo);
-	//카카오 추가 KakaoMapper 삭제하고 여기다 추가함 끝
-
-
-	
-	
-	
 	
 	
 }

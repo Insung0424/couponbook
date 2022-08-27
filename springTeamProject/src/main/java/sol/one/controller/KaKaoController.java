@@ -25,11 +25,12 @@ public class KaKaoController {
 	
 	@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, Model model) throws Exception{
-        System.out.println("#########" + code);
+        System.out.println("######### " + code);
         String access_Token = kakaoService.getAccessToken(code);
         KakaoDTO userInfo = kakaoService.getUserInfo(access_Token);
         
         KakaoDTO number = kakaoService.kakaoNumber(userInfo);
+        System.out.println("######### number : " + number);
         
         session.invalidate();
         session.setAttribute("kakaoN", userInfo.getK_name());

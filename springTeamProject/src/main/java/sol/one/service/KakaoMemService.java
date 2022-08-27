@@ -137,11 +137,11 @@ public class KakaoMemService {
         //저장된 정보가 있는지 확인하는 코드
         if(result == null) {
         	kmapper.kakaoInsert(userInfo);
-        	System.out.println("KS 138: 없는 사용자 ");
+        	System.out.println("KS 140: DB에 없는 사용자 ");
         	//정보 저장 후 컨트롤러에 정보를 전달
         	return kmapper.findKakao(userInfo);
         } else {
-        	System.out.println("KS 142: 있는 사용자 ?? ");
+        	System.out.println("KS 144: 있는 사용자  ");
         	//저장된 정보가 있으면 result를 전송한다
         	return result;
         }
@@ -151,7 +151,7 @@ public class KakaoMemService {
 
 	public KakaoDTO kakaoNumber(KakaoDTO userInfo) {
 		// 카카오 번호 찾기
-		System.out.println("KS 152: " + kmapper.kakaoNumber(userInfo));
+		System.out.println("KS 154: " + kmapper.kakaoNumber(userInfo));
 		return kmapper.kakaoNumber(userInfo);
 	} 
     
