@@ -23,8 +23,7 @@
 		<p>정식 메인 화면에 버튼 부분 만 수정 하면 됨</p>
 		<hr class="my-4">
 		
-		<c:set var="userID" value="${mem.user_id}" />
-		<%-- 카카오로그인 확인용 <c:set var="userID" value="${kakaoE}" /> --%>
+		<c:set var="userID" value="${mem.email}" />
 		<c:choose>
 			<c:when test="${empty userID}">
 				<p>로그인 전</p>

@@ -17,7 +17,7 @@ import com.google.gson.JsonParser;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import sol.one.VO.KakaoDTO;
+import sol.one.VO.MemberVO;
 import sol.one.mapper.MemMapper;
 
 @Service
@@ -86,7 +86,7 @@ public class KakaoMemService {
     }
     
     
-    public KakaoDTO getUserInfo (String access_Token) {
+    public MemberVO getUserInfo (String access_Token) {
     	System.out.println("---- KS:getUerInfo -----");
         //    요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
         HashMap<String, Object> userInfo = new HashMap<>();
@@ -134,16 +134,16 @@ public class KakaoMemService {
         }
         
         // 코드 추가
-        KakaoDTO result = kmapper.findKakao(userInfo);
+        MemberVO result = kmapper.findKakao(userInfo);
         
         //저장된 정보가 있는지 확인하는 코드
         if(result == null) {
         	kmapper.kakaoInsert(userInfo);
-        	System.out.println("KS 140: DB에 없는 사용자 ");
+        	System.out.println("KS 142: DB에 없는 사용자 ");
         	//정보 저장 후 컨트롤러에 정보를 전달
         	return kmapper.findKakao(userInfo);
         } else {
-        	System.out.println("KS 144: 있는 사용자  ");
+        	System.out.println("KS 146: 있는 사용자  ");
         	//저장된 정보가 있으면 result를 전송한다
         	return result;
         }
@@ -151,9 +151,9 @@ public class KakaoMemService {
     }
 
 
-	public KakaoDTO kakaoNumber(KakaoDTO userInfo) {
+	public MemberVO kakaoNumber(MemberVO userInfo) {
 		// 카카오 번호 찾기
-		System.out.println("KS 154: " + kmapper.kakaoNumber(userInfo));
+		System.out.println("KS 156: " + kmapper.kakaoNumber(userInfo)); 
 		return kmapper.kakaoNumber(userInfo);
 	} 
     

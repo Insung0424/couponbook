@@ -40,5 +40,5 @@
 
 	<mybatis-spring:scan base-package="sol.one.mapper"/>
 	<context:component-scan base-package="sol.one.service"/>
-	<context:component-scan base-package="sol.one.repository" />
+	<!-- <context:component-scan base-package="sol.one.repository" /> -->
 </beans>
