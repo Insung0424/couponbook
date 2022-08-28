@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -76,30 +77,30 @@ public class MemController {
 		}
 		
 		//가입된 메일인지 확인 후 중복이면 가입 안됨
-		int chkMail = service.mailChk(member.getEmail());
-		if(chkMail != 0) {
-			System.out.println("MC81: 가입된 메일입니다");
-			return "/member/join";
-		} else {
-			
-			service.registerMem(member); 
-			return "redirect:/member/login";
-		}
 		
-		
+		  int chkMail = service.mailChk(member.getEmail()); 
+		  if(chkMail != 0) {
+			  System.out.println("MC81: 가입된 메일입니다"); 
+			  return "/member/join"; 
+		  } else {
+			  service.registerMem(member); 
+			  return "redirect:/member/login"; 
+		  }
+		 
 		
 	}
 	
 	
 	
 	//메일 중복 확인
-	@GetMapping("/mailChk")
-	public void mailChk(@RequestParam("email") String email) {
-		service.mailChk(email);
-		log.info(email);
-		log.info("chkMail: " + service.mailChk(email));
-		
-//		return "/member/mailChk";
+	@PostMapping("/mailChk")
+	@ResponseBody
+	public int mailChk(@RequestParam("email") String email) {
+		System.out.println("넘어온 메일 값: "+email);
+
+		int result = service.mailChk(email);
+		System.out.println("반환받은 체크 값: "+result);
+		return result; 
 	}
 
 }

@@ -162,10 +162,11 @@
       </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+      <!-- 3.4.6 에서  3.5.2 로  업그레이드 함 -->
       <dependency>
          <groupId>org.mybatis</groupId>
          <artifactId>mybatis</artifactId>
-         <version>3.4.6</version>
+         <version>3.5.2</version>
       </dependency>
 
       <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->

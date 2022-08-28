@@ -24,6 +24,5 @@ public interface MemService  {
 	 */
 	int mailChk(String email);
 	
-	
 
 }

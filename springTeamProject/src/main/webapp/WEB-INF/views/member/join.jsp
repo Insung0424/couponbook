@@ -15,6 +15,17 @@
 	
     <!-- Custom styles for this template -->
     <link href="/../resources/form-validation.css" rel="stylesheet">
+    <style type="text/css">
+    	.email_ok{
+			color:#008000;
+			display: none;
+		}
+		
+		.email_already{
+			color:#6A82FB; 
+			display: none;
+		}
+    </style>
 </head>
 
 <body class="bg-light">
@@ -42,13 +53,48 @@
               <div class="invalid-feedback">
 				로그인에 사용할 이메일을 입력하세요.
               </div>
+	            <!-- id ajax 중복체크 -->
+				<span class="email_ok">사용 가능한 메일입니다.</span>
+				<span class="email_already">이미 사용 중인 메일입니다</span>
             </div>
             
             <!-- disabled -->
             <div class="col-3 pt-3 mb-3">
-              <input type="button" class="btn btn-outline-warning mt-3" 
-              	onclick="mailChk()" value="이메일 중복확인"  >
+              <input type="button" class="btn btn-outline-warning mt-3" onclick="mailChk()" value="메일중복확인"  >
             </div>
+            
+            <script type="text/javascript">
+            	function mailChk() {
+					var email = $('#email').val();
+            		$.ajax({
+            			url:"./mailChk",
+            			type:"post",
+            			dataType:"json",
+            			data : {email : email},
+            		      success : function(data){
+            		        if(data == 0){
+            		        	$('.email_ok').css("display","inline-block"); 
+                                $('.email_already').css("display", "none");
+            		            alert("사용가능한 메일입니다.");
+            		        }else {
+            		        	$('.email_already').css("display","inline-block");
+                                $('.email_ok').css("display", "none");
+            		          alert("중복된 메일입니다.");
+            		          $('email').val('');
+            		        }
+            		      },
+           	            error:function(){
+           	                alert("에러입니다");
+           	            }
+            		});
+	            	/* var mailAddr = document.getElementById("email").value;
+            		alert("입력받은 메일 주소" + mailAddr); */
+				};
+            </script>
+            
+            
+            
+            
           
             <div class="col-12 mb-3">
               <label for="nickname" class="form-label">닉네임</label>
