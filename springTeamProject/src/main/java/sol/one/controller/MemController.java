@@ -75,8 +75,19 @@ public class MemController {
 			return "/join";
 		}
 		
-		service.registerMem(member); 
-		return "redirect:/member/login";
+		//가입된 메일인지 확인 후 중복이면 가입 안됨
+		int chkMail = service.mailChk(member.getEmail());
+		if(chkMail != 0) {
+			System.out.println("MC81: 가입된 메일입니다");
+			return "/member/join";
+		} else {
+			
+			service.registerMem(member); 
+			return "redirect:/member/login";
+		}
+		
+		
+		
 	}
 	
 	

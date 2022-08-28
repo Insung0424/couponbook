@@ -44,9 +44,10 @@
               </div>
             </div>
             
+            <!-- disabled -->
             <div class="col-3 pt-3 mb-3">
               <input type="button" class="btn btn-outline-warning mt-3" 
-              	onclick="mailChk()" value="이메일 중복확인" disabled >
+              	onclick="mailChk()" value="이메일 중복확인"  >
             </div>
           
             <div class="col-12 mb-3">
