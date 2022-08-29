@@ -24,6 +24,12 @@
 	<context:component-scan base-package="sol.one.spring" />
 	<context:component-scan base-package="sol.one.controller" />
 	
-	
+	<!-- 인터셉터 설정  /adminMain -->
+    <interceptors>
+       <interceptor>
+           <mapping path="/adminMain"/>
+           <beans:bean id="commonInterceptor" class="sol.one.intercepter.AdminChkIntercepter"/>
+       </interceptor>
+    </interceptors>
 	
 </beans:beans>

@@ -1,9 +1,3 @@
-//메일 중복 확인
-function mailChk(){
-	alert("메일을 확인해야 하는데..");
-	window.location.href="mailChk";
-}
-
 //비밀번호 확인
 function pwChk(){
 	var pw1 = document.getElementById('password').value;

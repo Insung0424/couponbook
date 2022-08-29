@@ -34,10 +34,12 @@ public class MemServiceImpl implements MemService {
 	@Override
 	public int mailChk(String email) {
 		// 메일주소 count 수 반환받기
-		int mailCNT;
-		mailCNT = mapper.mailChk(email);
+		System.out.println("MS 37: "+ email);
+
+		int cnt = mapper.mailChk(email);
+		System.out.println("MS 40: "+ cnt);
 		
-		return mailCNT;
+		return cnt;
 	}
 
 

@@ -1,5 +1,8 @@
 package sol.one.mapper;
 
+import java.util.HashMap;
+
+import sol.one.VO.KakaoDTO;
 import sol.one.VO.MemberVO;
 
 public interface MemMapper {
@@ -25,4 +28,13 @@ public interface MemMapper {
 	 * @return int
 	 */
 	public int mailChk(String email);
+	
+	
+	
+	//카카오 추가 KakaoMapper 삭제하고 여기다 추가함
+	public void kakaoInsert(HashMap<String, Object> userInfo);
+	public MemberVO findKakao(HashMap<String, Object> userInfo);
+	public MemberVO kakaoNumber(MemberVO userInfo);
+	
+	
 }

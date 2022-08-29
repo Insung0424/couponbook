@@ -32,8 +32,28 @@
 	</insert>	
 
 	<!-- 입력받은 메일주소가 있는지 확인한다.  -->
-	<select id="mailChk" resultType="int">
-		select count(*) from pj_user 
+	<select id="mailChk" parameterType="String" resultType="int">
+		SELECT COUNT(email) FROM pj_user 
 		where email = #{email}
 	</select>
+	
+	
+	
+	<!-- 카카오 로그인  member-mapper.xml 에서 추가함 -->
+	<select id="findKakao" parameterType="java.util.HashMap" resultType="sol.one.VO.MemberVO">
+		select * from pj_user where nickname=#{nickname} and email=#{email}
+	</select>
+	
+	<insert id="kakaoInsert" parameterType="java.util.HashMap">
+		insert into pj_user(user_id, nickname, email) values(#{uid}, #{nickname}, #{email})
+	</insert>
+	
+	<select id="kakaoNumber" parameterType="sol.one.VO.MemberVO" resultType="sol.one.VO.MemberVO">
+		select * from pj_user where nickname=#{nickname} and email=#{email}
+	</select>
+	<!-- 카카오 로그인  member-mapper.xml 에서 추가함  끝-->
+	
+	
+	
+	
 </mapper>

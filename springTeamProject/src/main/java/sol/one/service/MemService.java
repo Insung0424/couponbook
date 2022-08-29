@@ -2,7 +2,7 @@ package sol.one.service;
 
 import sol.one.VO.MemberVO;
 
-public interface MemService {
+public interface MemService  {
 	
 	//회원가입
 	MemberVO registerMem(MemberVO member);
@@ -23,7 +23,6 @@ public interface MemService {
 	 * @return
 	 */
 	int mailChk(String email);
-	
 	
 
 }
