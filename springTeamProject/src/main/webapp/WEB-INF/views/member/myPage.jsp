@@ -13,19 +13,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	
-		<script  type="text/javascript">alert("확인용");</script>
 </head>
 <body class="text-center mt-5">
 	<main class="w-50 m-auto ">
-	   <%
-			if( (String)session.getAttribute("chkMsg") != null){
-		%>
-			<script>
-				alert('${chkMsg}');
-			</script>
-		<%
-			}
-		%>
 		<h1>${mem.user_name } 마이페이지</h1>
 			
 			${userID}

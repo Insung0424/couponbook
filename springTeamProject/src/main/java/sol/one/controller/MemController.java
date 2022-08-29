@@ -32,7 +32,7 @@ public class MemController {
 	
 	//회원가입 처리
 	@PostMapping("/joinProc")
-	public String joinProc(@Valid MemberVO member, BindingResult r) {
+	public String joinProc(@Valid MemberVO member, BindingResult r, HttpSession session) {
 		log.info("1. joinProc member ========== " + member);
 		if(r.hasErrors()) {
 			return "/join";
@@ -41,8 +41,9 @@ public class MemController {
 		//가입된 메일인지 확인 후 중복이면 가입 안됨
 		  int chkMail = service.mailChk(member.getEmail()); 
 		  if(chkMail != 0) {
-			  System.out.println("MC81: 가입된 메일입니다"); 
-			  return "/member/join"; 
+			/* System.out.println("MC81: 가입된 메일입니다"); return "/member/join"; */ 
+				session.setAttribute("msg", "이미 가입된 메일입니다");
+				return "/errorPage";
 		  } else {
 			  service.registerMem(member); 
 			  return "redirect:/member/login"; 
@@ -74,10 +75,11 @@ public class MemController {
 		log.info("loginProc loginMem = " + loginMem);
 		
 		if(loginMem == null) {
-			log.info("로그인 실패");
-			return "/member/login";
+			//로그인 실패 시 경고메시지와 페이지 이동
+			session.setAttribute("msg", "아이디와 비밀번호를 확인하세요");
+			return "/errorPage";
 		} else if(loginMem.getUser_grade() != 1) {
-			//로그인 한 사용자의 등급이 1(일반회원)이 아닌 경우 = 관리자 아이디로 로그인 했을 경우
+			//로그인 성공 한 사용자의 등급이 1(일반회원)이 아닌 경우 = 관리자 아이디로 로그인 했을 경우
 			session.setAttribute("admin", loginMem);
 			return "redirect:/adminMain";
 		}
@@ -95,7 +97,7 @@ public class MemController {
 		log.info("myPage s1 = " + session.getAttribute("mem"));
 		
 //		인터셉터 설정
-		model.addAttribute( session.getAttribute("mem") );
+//		model.addAttribute( session.getAttribute("mem") );
 		
 		return "/member/myPage";
 	}

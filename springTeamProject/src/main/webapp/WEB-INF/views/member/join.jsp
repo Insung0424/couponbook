@@ -16,15 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="/../resources/form-validation.css" rel="stylesheet">
     <style type="text/css">
-    	.email_ok{
-			color:#008000;
-			display: none;
-		}
-		
-		.email_already{
-			color:#6A82FB; 
-			display: none;
-		}
+    	.email_ok{ color:#008000; display: none; }
+		.email_already{ color:#6A82FB; display: none; }
     </style>
 </head>
 
@@ -87,14 +80,8 @@
            	                alert("에러입니다");
            	            }
             		});
-	            	/* var mailAddr = document.getElementById("email").value;
-            		alert("입력받은 메일 주소" + mailAddr); */
 				};
             </script>
-            
-            
-            
-            
           
             <div class="col-12 mb-3">
               <label for="nickname" class="form-label">닉네임</label>
@@ -106,7 +93,6 @@
               </div>
             </div>
           
-            <!-- 비밀번호 같은지 확인하고 싶은데.. -->
             <div class="col-sm  mb-3">
               <label for="password" class="form-label">비밀번호</label>
               <input type="password" class="form-control" name="password" id="password" placeholder="" value="" required>
