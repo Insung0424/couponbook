@@ -26,16 +26,36 @@ public class ReplyMapperTests {
     public void testreply() {
     	replyVO vo = new replyVO();
     	vo.setProduct_id(1);
-    	vo.setUser_id(1);
-    	vo.setComment_content("text3");
+    	vo.setUser_id(2);
+    	vo.setComment_content("text4");
     	log.info(vo);
     	mapper.insert_co(vo);
     }
     
     @Test
+    public void testreply_tab() {
+    	replyVO vo = new replyVO();
+    	vo.setProduct_id(1);
+    	vo.setUser_id(2);
+    	vo.setComment_content("comment_no_level add");
+    	vo.setGroup_no(118);
+    	log.info(vo);
+    	mapper.tabGroupNoUp(1, 2, 1);
+    	mapper.insert_co_tab(vo);
+    }
+    
+    @Test
     public void testRead() {
-    	int user_id = 1;
-    	log.info(mapper.read(user_id));
+    	int product_id = 1;
+    	log.info(mapper.readAll(product_id));
+    }
+    
+    @Test
+    public void testRead2() {
+    	int product_id=1;
+    	int user_id_1=1;
+    	int user_id_2=2;
+    	log.info(mapper.read(product_id, user_id_1, user_id_2));
     }
     
     @Test
@@ -43,8 +63,8 @@ public class ReplyMapperTests {
     	int comment_no = 1;
     	mapper.delete(comment_no);
     	replyVO vo = new replyVO();
-    	vo.setUser_id(1);
-    	log.info(mapper.read(vo.getUser_id()));
+    	vo.setProduct_id(1);
+    	log.info(mapper.readAll(vo.getProduct_id()));
     }
     
     @Test
@@ -52,8 +72,8 @@ public class ReplyMapperTests {
     	int product_id = 1;
     	mapper.deleteAll(product_id);
     	replyVO vo = new replyVO();
-    	vo.setUser_id(1);
-    	log.info(mapper.read(vo.getUser_id()));
+    	vo.setProduct_id(1);
+    	log.info(mapper.readAll(vo.getProduct_id()));
     }
     
     @Test
@@ -63,6 +83,7 @@ public class ReplyMapperTests {
     	vo.setComment_no(2);
     	vo.setComment_content("변경댓글");
     	mapper.update(vo);
-    	log.info(mapper.read(vo.getUser_id()));
+    	vo.setProduct_id(1);
+    	log.info(mapper.readAll(vo.getProduct_id()));
     }
 }

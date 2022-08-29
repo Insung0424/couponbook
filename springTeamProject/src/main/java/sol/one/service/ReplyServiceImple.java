@@ -18,12 +18,22 @@ public class ReplyServiceImple implements ReplyService{
 	public int register(replyVO vo) {
 		return mapper.insert_co(vo);
 	}
-
+	
 	@Override
-	public List<replyVO> getMyComment(int user_id) {
-		return mapper.read(user_id);
+	public int register_tab(replyVO vo) {
+		return mapper.insert_co_tab(vo);
 	}
 
+	@Override
+	public List<replyVO> getComment(int product_id,int user_id_1,int user_id_2) {
+		return mapper.read(product_id,user_id_1,user_id_2);
+	}
+
+	@Override
+	public List<replyVO> getAllComment(int product_id) {
+		return mapper.readAll(product_id);
+	}
+	
 	@Override
 	public int modify(replyVO vo) {
 		return mapper.update(vo);
@@ -38,5 +48,11 @@ public class ReplyServiceImple implements ReplyService{
 	public int removeAll(int product_id) {
 		return mapper.deleteAll(product_id);
 	}
+
+	@Override
+	public int upNumber(int product_id, int user_id,int comment_no_level) {
+		return mapper.tabGroupNoUp(product_id, user_id, comment_no_level);
+	}
+
 	
 }

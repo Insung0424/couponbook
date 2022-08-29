@@ -26,7 +26,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="sol.one.controller" />
-	<beans:bean class="sol.one.intercepter.LoginIntercepter" id="LoginIntercepter"/>
+	<!-- <beans:bean class="sol.one.intercepter.LoginIntercepter" id="LoginIntercepter"/>
 	
 	<interceptors>
 		<interceptor>
@@ -34,5 +34,5 @@
 	        <mvc:exclude-mapping path="/resources/**"/>
 			<beans:ref bean="LoginIntercepter"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 </beans:beans>

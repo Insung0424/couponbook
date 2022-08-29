@@ -20,6 +20,16 @@
   box-sizing:border-box; padding:74px 0;
   line-height:23px;
 }
+
+#modal_content2{
+  width:600px; height:400px;
+  background:#fff; border-radius:10px;
+  position:relative; top:30%; left:30%;
+  margin-top:-100px; margin-left:-200px;
+  text-align:center;
+  box-sizing:border-box; padding:74px 0;
+  line-height:23px;
+}
 </style>
 </head>
 <body>
@@ -50,19 +60,20 @@
 		<div id='modal_content'>
 			<table class="modal_comment_table">
 				<tr>
-					<td class="modal_title">댓글수정</td>
+					<td class="modal_title">댓글</td>
 				</tr>
 				<tr>
 					<td class="modal_input"><textarea rows="3" cols="40" id="modal_com_content"></textarea></td>
 				</tr>
 				<tr>
 					<td class="modal_btn">
-					<button type="button" id="modal_modify_btn">댓글수정</button>
+					<button type="button" id="modal_modify_btn">입력</button>
 					<button type="button" id="modal_modify_cancel_btn">수정취소</button></td>
 				</tr>
 			</table>
 		</div>
 	</div>
+	
 	
 <script type="text/javascript">
 $("#add_btn").click(function(){
@@ -70,17 +81,18 @@ $("#add_btn").click(function(){
 	const user_id = ${vo.user_id};
 	const comment_content = $("#com_content").val();
 	
-	console.log(product_id);
-	console.log(user_id);
-	console.log(com_content);
-	
 	if(user_id == ''){
 			alert('로그인 후 이용해주세요');
 			return;
-		}else if(com_content == '') {
-			alert('내용을 입력하세요');
-		};
-		
+	}else if(com_content == '') {
+		alert('내용을 입력하세요');
+	};
+	
+	if(comment_content == ''){
+		alert('내용을 입력하세요');
+		return;
+	}
+	
 		$.ajax({
 			type:'post',
 			url:'<c:url value="/replies/new"/>',
@@ -95,13 +107,17 @@ $("#add_btn").click(function(){
 			success:function(data){
 				console.log('통신성공' + data);
 				if(data == "InsertSuccess") {
-					alert('댓글 등록이 완료되었습니다.');
 					console.log('댓글 등록 완료');
-					$('#user_id').val(user_id);
+					$('#user_id').val(${vo.user_id});
   					$('#com_content').val('');
-  					getList();
+  					let user_id = ${vo.user_id};
+  	              	if(user_id  == 2){
+  	              		getList();
+  	              	}
+  	             	 else{
+  	              		getAllList();
+  	              	}
 				} else {
-					alert('로그인 이후 이용해주시기 바랍니다.');
 					console.log('댓글 등록 실패');
 				}
 			},
@@ -112,9 +128,11 @@ $("#add_btn").click(function(){
 });
 
 
-function getList() {
-	const user_id_1 = ${vo.user_id};
-	$.getJSON("<c:url value='/replies/get/'/>"+user_id_1,
+function getAllList() {
+	const product_id= ${vo.product_id};
+	const user_id_1= ${vo.user_id};
+	console.log(product_id);
+	$.getJSON("<c:url value='/replies/get/'/>"+product_id,
 		function(data) {
 			var list = data.list;
 			
@@ -140,7 +158,8 @@ function getList() {
 						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
 					}
 					else{
-						comment_html += "</div><hr>";
+						comment_html += "";
+						comment_html += "<button id='answer' data-id ="+ comment_no+">답글</button><br></div><hr>";
 					}
 				}
 			}
@@ -148,8 +167,69 @@ function getList() {
 			$("#comment_list").html(comment_html);
 		})};
 		
+		
+function getList() {
+	const product_id= ${vo.product_id};
+	const user_id_1= ${vo.user_id};
+	const user_id_2 = 1;
+	console.log(user_id_1);
+	$.ajax({
+		type : "get",
+		url:"/replies/get/comment",
+        data:{
+        	"product_id":product_id,
+        	"user_id_1": user_id_1,
+        	"user_id_2": user_id_2
+        },
+        contentType: 'application/json',
+        success:function(data){
+           console.log('통신성공');
+           var list = data.list;
+			
+			var comment_html = "<div>";
+			if(list.length < 1){
+				comment_html += "등록된 댓글이 없습니다";
+				
+			}else{
+			
+				for(i = 0;i < list.length;i++){
+					console.log(list[i]);
+					let content = list[i].comment_content;
+					let user_id_2 = list[i].user_id;
+					let time = list[i].comment_write_time;
+					let comment_no = list[i].comment_no;
+					
+					comment_html += "<div><span id='com_writer' value="+user_id_2+"><strong>" + user_id_2 + "</strong></span><br/>";
+					comment_html += "<span id='span_content'>" + content + "</span><br>";
+					comment_html += "<span id='span_write_time'>" + time + "</span><br>";
+					if(user_id_1 == user_id_2){
+						 comment_html += "<button id='update' data-id =" + comment_no + ">수정</button>";
+						 comment_html += "&nbsp;";
+						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
+					}
+					else{
+						comment_html += "<button id='answer' data-id ="+ comment_no+">답글</button><br></div><hr>";
+					}
+				}
+			}
+			
+			$("#comment_list").html(comment_html);
+           
+        },
+        error:function(){
+           alert('통신실패');
+        }
+	})};
+		
 $("#more_comment").click(function(){
-	getList();
+	let user_id = ${vo.user_id};
+	if(user_id  == 2){
+		getList();
+	}
+	else{
+		getAllList();
+	}
+	
 });
 
 $(document).on("click", "#delete", function(){
@@ -164,8 +244,13 @@ $(document).on("click", "#delete", function(){
                contentType: 'application/json',
                success:function(data){
                   console.log('통신성공'+data);
-                  alert('댓글이 삭제되었습니다');
-                  getList();
+                  let user_id = ${vo.user_id};
+	              if(user_id  == 2){
+	              	getList();
+	              }
+	              else{
+	              	getAllList();
+	              }
                },
                error:function(){
                   alert('통신실패');
@@ -196,9 +281,71 @@ $(document).on("click", "#update", function(){
 	               ),
 	               contentType: 'application/json',
 	               success:function(data){
-	                  console.log('통신성공'+data);
-	                  alert('댓글이 수정되었습니다');
-	                  getList();
+	            		console.log('통신성공'+data);
+	  					$('#modal_com_content').val('');
+	 	                $("#modal").fadeOut();
+	 	                let user_id = ${vo.user_id};
+	 		            if(user_id  == 2){
+	 		              getList();
+	 		            }
+	 		            else{
+	 		              getAllList();
+	 		            }
+	            	   
+	               },
+	               error:function(){
+	                  alert('통신실패');
+	               }
+	            });	
+		
+	});
+	
+});
+
+$(document).on("click", "#answer", function(){
+	$('#modal_com_content').val('');
+	const comment_no = $(this).data("id");
+	$("#modal").fadeIn();
+	$("#modal_modify_cancel_btn").click(function(){
+		$("#modal").fadeOut();
+	});
+	$("#modal_modify_btn").click(function(){
+		const modal_com_content = $("#modal_com_content").val();
+		const group_no = $(this).data("id");
+		const product_id = ${vo.product_id};
+		const user_id = ${vo.user_id};
+		
+		console.log(comment_no);
+		console.log(modal_com_content);
+		console.log('댓글수정');
+	           $.ajax({
+	               type:'post',
+	               url:'<c:url value="/replies/tabComment"/>',
+	               data:JSON.stringify(
+	                  {
+	                	 "product_id" : product_id,
+	                	 "user_id" : user_id,
+	                	 "comment_content" : modal_com_content,
+	                     "group_no":comment_no
+	                  }      
+	               ),
+	               contentType: 'application/json',
+	               success:function(data){
+	            	   if(data == "insert"){
+	            		console.log('통신성공'+data);
+	            		$('#modal_com_content').val('');
+	 	                $("#modal").fadeOut();
+	 	                let user_id = ${vo.user_id};
+	 		            if(user_id  == 2){
+	 		              getList();
+	 		            }
+	 		            else{
+	 		              getAllList();
+	 		            }
+	            	   }else{
+	            		   console.log("실패");
+	            	   }
+	            	   
 	               },
 	               error:function(){
 	                  alert('통신실패');

@@ -18,4 +18,8 @@ public class replyVO {
 	
 	private int comment_no;
 	
+	private int comment_no_level;
+	
+	private int group_no;
+	
 }

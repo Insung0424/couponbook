@@ -36,12 +36,29 @@ public class ReplyController {
 		return "InsertSuccess";
 	}
 	
-	@GetMapping("/get/{user_id}")
-	public Map<String,Object> getMyComment(@PathVariable int user_id,Model model){
+	@PostMapping("/tabComment")
+	public String insert(@RequestBody replyVO vo) {
+		service.register_tab(vo);
+		return "insert";
+	}
+	
+	@GetMapping("/get/{product_id}")
+	public Map<String,Object> getAllComment(@PathVariable int product_id,Model model){
 		System.out.println("good?");
-		List<replyVO> list = service.getMyComment(user_id);
+		List<replyVO> list = service.getAllComment(product_id);
 		ModelAndView view = new ModelAndView();
 		view.setViewName("/product/main");
+		Map<String,Object> map = new HashMap<>();
+		map.put("list", list);
+		return map;
+	}
+	
+	@GetMapping("/get/comment")
+	public Map<String,Object> getComment(int product_id,int user_id_1,int user_id_2,Model model){
+		System.out.println("good?");
+		List<replyVO> list = service.getComment(product_id, user_id_1, user_id_2);
+		ModelAndView view = new ModelAndView();
+		view.setViewName("redirect:/product/main");
 		Map<String,Object> map = new HashMap<>();
 		map.put("list", list);
 		return map;
