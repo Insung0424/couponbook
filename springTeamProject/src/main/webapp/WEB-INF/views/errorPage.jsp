@@ -8,7 +8,8 @@
 if(session != null){
 	%>
 	<script type="text/javascript">
-	alert("잘못된 접근입니다" );
+	var msg = '${msg }';
+	alert(msg);
 	window.history.back();
 	</script>
 	<%
