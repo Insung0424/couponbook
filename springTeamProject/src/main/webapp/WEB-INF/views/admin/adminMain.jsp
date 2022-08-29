@@ -7,29 +7,28 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>마이페이지 임시 화면</title>
+	<title>관리자 메인화면</title>
 	<!-- Bootstrap CDN -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	
-		<script  type="text/javascript">alert("확인용");</script>
+	<script  type="text/javascript">alert("관리자 로그인");</script>
 </head>
 <body class="text-center mt-5">
 	<main class="w-50 m-auto ">
 	   <%
-			if( (String)session.getAttribute("chkMsg") != null){
+			if( (String)session.getAttribute("msg") != null){
 		%>
 			<script>
-				alert('${chkMsg}');
+				alert('${msg}');
 			</script>
 		<%
 			}
 		%>
-		<h1>${mem.user_name } 마이페이지</h1>
+		<h1>${admin.user_name } 관리자</h1>
 			
-			${userID}
-			<p>${mem.user_id } // ${mem.nickname } // ${mem.email }</p>
+			<p>${admin.user_id } // ${admin.nickname } // ${admin.email }</p>
 			<hr class="my-4">
 			
 			<a href="/" class="w-75 btn btn-lg btn-outline-warning">임시메인</a><br><br>
