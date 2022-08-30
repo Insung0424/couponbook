@@ -23,11 +23,17 @@
 	- /member/kakaoLogin  
 
 ## 관리자 메인
+ - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/admin1.PNG?raw=true" width="65%"	/>
+   
+     
 	- AdminController
 	- AdminChkIntercepter
 		- HandlerInterceptor를 상속받아 관리자가 아닌 이용자의 접근을 차단한다
 	- /adminMain : 임시 디자인의 관리자 메인 페이지
 	- 로그인 시 회원 등급으로 구분하여 접근가능  
+	- 메뉴1: 1주일간의 거래내역 목록 출력, 상단에 요일별 거래건수를 그래프로 구현
+	- 메뉴 2: 거래내역 전체 출력(페이징, 검색 기능 구현 예정)
+	- 메뉴 3: 회원 목록 출력(검색, 수정 기능) 
 	
 ## 에러페이지
  - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_adminIntercepter.gif?raw=true" width="60%"	/>  

@@ -19,5 +19,6 @@ public interface ChartMapper {
 	 * @param tvo
 	 * @return 
 	 */
-	public List<T_tradeVO> tradeWeekCnt(T_tradeVO tvo);
+	public int[] tradeWeekCnt(T_tradeVO tvo);
+//	public List<T_tradeVO> tradeWeekCnt(T_tradeVO tvo);
 }

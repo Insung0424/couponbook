@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sol.one.mapper.ChartMapper">
-	<select id="tradeWeekCnt" resultType="sol.one.VO.T_tradeVO">
+	<select id="tradeWeekCnt" resultType="int">
 		select count(*) from pj_trade_test 
 		where pd_status = 1  
 		and trade_time between to_char( to_date('22/08/08')-7, 'YY/MM/DD')  
@@ -11,7 +11,7 @@
 		order by trade_time 
 	</select>
 	
-	<select id="tradeWeek" resultType="sol.one.VO.T_tradeVO">
+	<select id="tradeWeek" resultType="sol.one.VO.T_tradeVO" parameterType="java.lang.String">
 		select * from pj_trade_test 
 		where pd_status = 1 
 		and trade_time between to_char( to_date('22/08/08')-7, 'YY/MM/DD')  
