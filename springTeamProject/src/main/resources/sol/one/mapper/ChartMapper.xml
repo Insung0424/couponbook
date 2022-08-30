@@ -3,7 +3,7 @@
 
 <mapper namespace="sol.one.mapper.ChartMapper">
 	<select id="tradeWeekCnt" resultType="sol.one.VO.T_tradeVO">
-		select count(*) from pj_trade 
+		select count(*) from pj_trade_test 
 		where pd_status = 1  
 		and trade_time between to_char( to_date('22/08/08')-7, 'YY/MM/DD')  
 		and to_char(to_date('22/08/08'), 'YY/MM/DD') 
@@ -12,7 +12,7 @@
 	</select>
 	
 	<select id="tradeWeek" resultType="sol.one.VO.T_tradeVO">
-		select * from pj_trade 
+		select * from pj_trade_test 
 		where pd_status = 1 
 		and trade_time between to_char( to_date('22/08/08')-7, 'YY/MM/DD')  
 		and to_char(to_date('22/08/08'), 'YY/MM/DD') 
