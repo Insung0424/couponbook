@@ -49,19 +49,19 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/adminMain">
               <span data-feather="home" class="align-text-bottom"></span>
-              Dashboard
+              	최근 1주일 거래내역
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="shopping-cart" class="align-text-bottom"></span>
+              	전체 거래내역
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users" class="align-text-bottom"></span>
               	회원 목록
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
-              	메뉴 .
             </a>
           </li>
           <li class="nav-item">

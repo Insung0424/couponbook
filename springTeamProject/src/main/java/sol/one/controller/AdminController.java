@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,8 +37,9 @@ public class AdminController {
 	}
 	//차트: 1주일 거래 건수 가져오기
 	@RequestMapping("/tradeWeekCnt")
-	public @ResponseBody List<T_tradeVO> tradeWeekCnt(Model model, T_tradeVO tvo) {
-		List<T_tradeVO> tradeCnt = chartService.tradeWeekCnt(tvo);
+	public @ResponseBody int[] tradeWeekCnt(Model model, T_tradeVO tvo) {
+//		public @ResponseBody List<T_tradeVO> tradeWeekCnt(Model model, T_tradeVO tvo) {
+		int[] tradeCnt = chartService.tradeWeekCnt(tvo);
 		
 		System.out.println("AC41: "+chartService.tradeWeekCnt(tvo));
 		System.out.println("AC42 tradeCnt: "+tradeCnt);

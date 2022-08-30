@@ -10,7 +10,7 @@
 <!-- 관리자 메인 : 메뉴1: Dashboard 부분  -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard  <span class="fs-5"> 거래내역 차트</span></h1>
+        <h1 class="h2">Dashboard  <span class="fs-5"> 일자별 거래건수 차트</span></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <!-- <div class="btn-group me-2">
             <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
@@ -34,11 +34,11 @@
       </div>
 
 <!-- 차트 : 데이터 dashboard.js -->
-		<input type="hidden" id="cntDate" value="22/08/08">
+		<input type="hidden" id="chkDay" value="22/08/08">
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
 
-      <h2>Section title</h2>
+      <h2>일주일 거래 목록</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>

@@ -25,10 +25,11 @@ public class ChartServiceImpl implements ChartService {
 	}
 
 	@Override
-	public List<T_tradeVO> tradeWeekCnt(T_tradeVO tvo) {
+	public int[] tradeWeekCnt(T_tradeVO tvo) {
+//		public List<T_tradeVO> tradeWeekCnt(T_tradeVO tvo) {
 		// 1주일 요일별 거래 건수
 		log.info("ChartServiceImpl CNT ------------ ");
-		List<T_tradeVO> tradeCNT = mapper.tradeWeekCnt(tvo); 
+		int[] tradeCNT = mapper.tradeWeekCnt(tvo); 
 		return tradeCNT;
 	}
 
