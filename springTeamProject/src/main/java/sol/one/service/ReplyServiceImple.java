@@ -50,9 +50,18 @@ public class ReplyServiceImple implements ReplyService{
 	}
 
 	@Override
-	public int upNumber(int product_id, int user_id,int comment_no_level) {
-		return mapper.tabGroupNoUp(product_id, user_id, comment_no_level);
+	public int upNumber(replyVO vo) {
+		return mapper.tabGroupNoUp(vo);
 	}
 
-	
+	@Override
+	public int countComment(int comment_no_level) {
+		return mapper.countMyComment(comment_no_level);
+	}
+
+	@Override
+	public String getLevel(int product_id,int user_id) {
+		return mapper.getCommentNoLevel(product_id,user_id);
+	}
+
 }

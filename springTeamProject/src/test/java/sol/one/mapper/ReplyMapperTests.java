@@ -23,11 +23,17 @@ public class ReplyMapperTests {
     }
     
     @Test
+    public void getLevel() {
+    	String comment_no_level = mapper.getCommentNoLevel(1,2);
+    	log.info(comment_no_level);
+    }
+    
+    @Test
     public void testreply() {
     	replyVO vo = new replyVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(2);
-    	vo.setComment_content("text4");
+    	vo.setComment_content("작성자 2의 text4");
     	log.info(vo);
     	mapper.insert_co(vo);
     }
@@ -37,10 +43,11 @@ public class ReplyMapperTests {
     	replyVO vo = new replyVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(2);
-    	vo.setComment_content("comment_no_level add");
-    	vo.setGroup_no(118);
+    	vo.setComment_content("text1 - 작성자2의 답글");
+    	vo.setComment_no_level(156);
+    	vo.setComment_no(156);
     	log.info(vo);
-    	mapper.tabGroupNoUp(1, 2, 1);
+    	mapper.tabGroupNoUp(vo);
     	mapper.insert_co_tab(vo);
     }
     
@@ -48,14 +55,6 @@ public class ReplyMapperTests {
     public void testRead() {
     	int product_id = 1;
     	log.info(mapper.readAll(product_id));
-    }
-    
-    @Test
-    public void testRead2() {
-    	int product_id=1;
-    	int user_id_1=1;
-    	int user_id_2=2;
-    	log.info(mapper.read(product_id, user_id_1, user_id_2));
     }
     
     @Test

@@ -5,29 +5,36 @@
 
 	<insert id="insert_co">
 		insert into pj_comment(product_id,user_id,comment_content,comment_write_time,comment_no,comment_no_level,group_no)
-		values (#{product_id},#{user_id},#{comment_content},current_date,seq_com_no.nextval,null,seq_com_no.currval)
+		values (#{product_id},#{user_id},#{comment_content},current_date,seq_com_no.nextval,seq_com_no.currval,1)
 	</insert>
 	
 	<insert id="insert_co_tab">
 		insert into pj_comment(product_id,user_id,comment_content,comment_write_time,comment_no,comment_no_level,group_no)
-		values (#{product_id},#{user_id},#{comment_content},current_date,seq_com_no.nextval,1,#{group_no})
+		values (#{product_id},#{user_id},#{comment_content},current_date,seq_com_no.nextval,#{comment_no_level},2)
 	</insert>
+	
+	<select id="countMyComment" resultType="int">
+		select count(comment_no_level) from pj_comment where comment_no_level = #{comment_no_level} 
+	</select>
+	
+	<select id="getCommentNoLevel" resultType="String">
+		select distinct(comment_no_level) from pj_comment where product_id = #{product_id} and user_id = #{user_id}
+	</select>
 	
 	<update id="tabGroupNoUp">
 		update pj_comment set group_no = group_no + 1 
-		where product_id = #{product_id} and user_id = #{user_id} and comment_no_level = #{comment_no_level}
+		where not(comment_no = #{comment_no}) and product_id = #{product_id} and user_id = #{user_id} and comment_no_level = #{comment_no_level}
 	</update>
 	
 	<select id="read" resultType="sol.one.VO.replyVO">
-		select * from pj_comment 
-		order by if(isnull(comment_no_level),comment_no,group_no)
+		select * from pj_comment
 		where product_id = #{product_id} and user_id = #{user_id_1} or user_id = #{user_id_2}
+		order by comment_no_level,group_no,comment_no
 	</select>
 	
 	<select id="readAll" resultType="sol.one.VO.replyVO">
-		select * from 
-		(select * from pj_comment order by comment_write_time desc)
-		where product_id = #{product_id} order by group_no desc
+		select * from pj_comment
+		order by comment_no_level,group_no,comment_no
 	</select>
 	
 	<delete id="delete">

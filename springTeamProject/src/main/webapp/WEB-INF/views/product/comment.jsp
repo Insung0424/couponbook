@@ -30,6 +30,11 @@
   box-sizing:border-box; padding:74px 0;
   line-height:23px;
 }
+
+#span{
+	display: inline-block;
+	margin-left: 30px;
+}
 </style>
 </head>
 <body>
@@ -74,7 +79,6 @@
 		</div>
 	</div>
 	
-	
 <script type="text/javascript">
 $("#add_btn").click(function(){
 	const product_id = ${vo.product_id};
@@ -111,11 +115,11 @@ $("#add_btn").click(function(){
 					$('#user_id').val(${vo.user_id});
   					$('#com_content').val('');
   					let user_id = ${vo.user_id};
-  	              	if(user_id  == 2){
-  	              		getList();
+  	              	if(user_id  == 1){
+  	              		getAllList();
   	              	}
   	             	 else{
-  	              		getAllList();
+  	              		getList();
   	              	}
 				} else {
 					console.log('댓글 등록 실패');
@@ -145,21 +149,26 @@ function getAllList() {
 				for(i = 0;i < list.length;i++){
 					console.log(list[i]);
 					let content = list[i].comment_content;
-					let user_id_2 = list[i].user_id;
+					let user_id_check = list[i].user_id;
 					let time = list[i].comment_write_time;
 					let comment_no = list[i].comment_no;
+					let comment_no_level = list[i].comment_no_level;
+					let group_no = list[i].group_no;
 					
-					comment_html += "<div><span id='com_writer' value="+user_id_2+"><strong>" + user_id_2 + "</strong></span><br/>";
+					if(group_no >= 2){
+						comment_html += "<span style='display:inline-block; margin-left:20px;'>&nbsp;</span></div><div style='display:inline-block;>";
+					}
+					
+					comment_html += "<span id='com_writer' value="+user_id_check+"><strong>" + user_id_check + "</strong></span><br/>";
 					comment_html += "<span id='span_content'>" + content + "</span><br>";
 					comment_html += "<span id='span_write_time'>" + time + "</span><br>";
-					if(user_id_1 == user_id_2){
+					if(user_id_1 == user_id_check){
 						 comment_html += "<button id='update' data-id =" + comment_no + ">수정</button>";
 						 comment_html += "&nbsp;";
 						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
 					}
 					else{
-						comment_html += "";
-						comment_html += "<button id='answer' data-id ="+ comment_no+">답글</button><br></div><hr>";
+						comment_html += "<button id='answer' data-id ="+ comment_no_level +">답글</button><br></div><hr>";
 					}
 				}
 			}
@@ -171,45 +180,53 @@ function getAllList() {
 function getList() {
 	const product_id= ${vo.product_id};
 	const user_id_1= ${vo.user_id};
-	const user_id_2 = 1;
-	console.log(user_id_1);
+	const user_id_2 = 1; //상품페이지에 등록된 유저 아이디
 	$.ajax({
 		type : "get",
 		url:"/replies/get/comment",
         data:{
         	"product_id":product_id,
         	"user_id_1": user_id_1,
-        	"user_id_2": user_id_2
+        	"user_id_2": user_id_2,
         },
         contentType: 'application/json',
         success:function(data){
-           console.log('통신성공');
-           var list = data.list;
-			
-			var comment_html = "<div>";
+            console.log('통신성공');
+            var comment_html = "<div>";
+            var list = data.list;
+            var count = data.count;  
 			if(list.length < 1){
-				comment_html += "등록된 댓글이 없습니다";
-				
+				comment_html += "등록된 댓글이 없습니다</div>";
+			}else if(count == 0){
+				comment_html += "댓글을 등록해주세요</div>";
+        	}else if(count == 1){
+				comment_html += "아직 거래가 시작되지 않았습니다</div>";
 			}else{
 			
 				for(i = 0;i < list.length;i++){
-					console.log(list[i]);
 					let content = list[i].comment_content;
-					let user_id_2 = list[i].user_id;
+					let user_id_check = list[i].user_id;
 					let time = list[i].comment_write_time;
 					let comment_no = list[i].comment_no;
+					let comment_no_level = list[i].comment_no_level;
+					let group_no = list[i].group_no;
 					
-					comment_html += "<div><span id='com_writer' value="+user_id_2+"><strong>" + user_id_2 + "</strong></span><br/>";
+					if(group_no >= 2){
+						comment_html += "<span style='display:inline-block; margin-left:20px;'>&nbsp;</span></div><div style='display:inline-block;>";
+					}
+					
+					comment_html += "<span id='com_writer' value="+user_id_check+"><strong>" + user_id_check + "</strong></span><br/>";
 					comment_html += "<span id='span_content'>" + content + "</span><br>";
 					comment_html += "<span id='span_write_time'>" + time + "</span><br>";
-					if(user_id_1 == user_id_2){
+					if(user_id_1 == user_id_check){
 						 comment_html += "<button id='update' data-id =" + comment_no + ">수정</button>";
 						 comment_html += "&nbsp;";
 						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
 					}
 					else{
-						comment_html += "<button id='answer' data-id ="+ comment_no+">답글</button><br></div><hr>";
+						comment_html += "<button id='answer' data-id ="+ comment_no_level +">답글</button><br></div><hr>";
 					}
+					
 				}
 			}
 			
@@ -223,11 +240,11 @@ function getList() {
 		
 $("#more_comment").click(function(){
 	let user_id = ${vo.user_id};
-	if(user_id  == 2){
-		getList();
-	}
-	else{
+	if(user_id  == 1){//판매자일 경우
 		getAllList();
+	}
+	else{//구매자일경우
+		getList(); 
 	}
 	
 });
@@ -245,11 +262,11 @@ $(document).on("click", "#delete", function(){
                success:function(data){
                   console.log('통신성공'+data);
                   let user_id = ${vo.user_id};
-	              if(user_id  == 2){
-	              	getList();
+	              if(user_id  == 1){
+	            	  getAllList();
 	              }
 	              else{
-	              	getAllList();
+	              	  getList();
 	              }
                },
                error:function(){
@@ -285,11 +302,11 @@ $(document).on("click", "#update", function(){
 	  					$('#modal_com_content').val('');
 	 	                $("#modal").fadeOut();
 	 	                let user_id = ${vo.user_id};
-	 		            if(user_id  == 2){
-	 		              getList();
+	 		            if(user_id  == 1){
+	 		            	getAllList();
 	 		            }
 	 		            else{
-	 		              getAllList();
+	 		              	getList();
 	 		            }
 	            	   
 	               },
@@ -304,20 +321,17 @@ $(document).on("click", "#update", function(){
 
 $(document).on("click", "#answer", function(){
 	$('#modal_com_content').val('');
-	const comment_no = $(this).data("id");
+	const comment_no_level = $(this).data("id");
 	$("#modal").fadeIn();
 	$("#modal_modify_cancel_btn").click(function(){
 		$("#modal").fadeOut();
 	});
 	$("#modal_modify_btn").click(function(){
 		const modal_com_content = $("#modal_com_content").val();
-		const group_no = $(this).data("id");
 		const product_id = ${vo.product_id};
 		const user_id = ${vo.user_id};
 		
-		console.log(comment_no);
-		console.log(modal_com_content);
-		console.log('댓글수정');
+		console.log('답글');
 	           $.ajax({
 	               type:'post',
 	               url:'<c:url value="/replies/tabComment"/>',
@@ -326,7 +340,8 @@ $(document).on("click", "#answer", function(){
 	                	 "product_id" : product_id,
 	                	 "user_id" : user_id,
 	                	 "comment_content" : modal_com_content,
-	                     "group_no":comment_no
+	                     "comment_no_level": comment_no_level,
+	                     "comment_no" : comment_no_level
 	                  }      
 	               ),
 	               contentType: 'application/json',
@@ -336,11 +351,11 @@ $(document).on("click", "#answer", function(){
 	            		$('#modal_com_content').val('');
 	 	                $("#modal").fadeOut();
 	 	                let user_id = ${vo.user_id};
-	 		            if(user_id  == 2){
-	 		              getList();
+	 		            if(user_id  == 1){
+	 		            	getAllList();
 	 		            }
 	 		            else{
-	 		              getAllList();
+	 		              	getList();
 	 		            }
 	            	   }else{
 	            		   console.log("실패");

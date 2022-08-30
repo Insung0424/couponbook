@@ -38,6 +38,7 @@ public class ReplyController {
 	
 	@PostMapping("/tabComment")
 	public String insert(@RequestBody replyVO vo) {
+		service.upNumber(vo);
 		service.register_tab(vo);
 		return "insert";
 	}
@@ -56,12 +57,31 @@ public class ReplyController {
 	@GetMapping("/get/comment")
 	public Map<String,Object> getComment(int product_id,int user_id_1,int user_id_2,Model model){
 		System.out.println("good?");
-		List<replyVO> list = service.getComment(product_id, user_id_1, user_id_2);
-		ModelAndView view = new ModelAndView();
-		view.setViewName("redirect:/product/main");
 		Map<String,Object> map = new HashMap<>();
-		map.put("list", list);
-		return map;
+		
+		String comment_no_level = service.getLevel(product_id,user_id_1);
+		if(comment_no_level != null) {
+			int count = service.countComment(Integer.valueOf(comment_no_level));
+			
+			ModelAndView view = new ModelAndView();
+			view.setViewName("redirect:/product/main");
+			
+			if(count<2) {
+				map.put("count", count);
+			}
+			
+			List<replyVO> list = service.getComment(product_id,user_id_1,user_id_2);
+			map.put("list", list);
+			return map;
+		}
+		else {
+			ModelAndView view = new ModelAndView();
+			view.setViewName("redirect:/product/main");
+			List<replyVO> list = service.getComment(product_id,user_id_1,user_id_2);
+			map.put("list", list);
+			map.put("count", 0);
+			return map;
+		}
 	}
 	
 	@DeleteMapping("/delete/{user_id}")
