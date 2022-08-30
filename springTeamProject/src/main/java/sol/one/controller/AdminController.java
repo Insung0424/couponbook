@@ -1,15 +1,21 @@
 package sol.one.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import sol.one.VO.MemberVO;
+import sol.one.VO.T_tradeVO;
+import sol.one.service.ChartService;
 import sol.one.service.MemService;
 
 @Controller
@@ -18,12 +24,36 @@ import sol.one.service.MemService;
 public class AdminController {
 	
 	private MemService service;
+	private ChartService chartService;
+	
+	
+	//차트: 1주일 거래목록 가져오기
+	@RequestMapping("/tradeWeek")
+	public @ResponseBody List<T_tradeVO> tradeWeek(Model model, T_tradeVO tvo) {
+		List<T_tradeVO> trade = chartService.tradeWeek(tvo);
+		model.addAttribute("trade",trade);
+		return trade;
+	}
+	//차트: 1주일 거래 건수 가져오기
+	@RequestMapping("/tradeWeekCnt")
+	public @ResponseBody List<T_tradeVO> tradeWeekCnt(Model model, T_tradeVO tvo) {
+		List<T_tradeVO> tradeCnt = chartService.tradeWeekCnt(tvo);
+		
+		System.out.println("AC41: "+chartService.tradeWeekCnt(tvo));
+		System.out.println("AC42 tradeCnt: "+tradeCnt);
+		
+		model.addAttribute("tradeCnt",tradeCnt);
+		return tradeCnt;
+	}
+	
 	
 	//관리자 로그인 시 관리자메인 페이지로 이동
 	@GetMapping("/adminMain")
-	public String adminMain(@ModelAttribute MemberVO member, HttpSession session, Model model) {
-		log.info("adminPage s = " + session);
-		log.info("adminPage s1 = " + session.getAttribute("admin"));
+	public String adminMain(HttpSession session, 
+			T_tradeVO tvo, Model model) {
+		log.info("adminPage s1 = " + session);
+		
+		model.addAttribute("tradeList", chartService.tradeWeek(tvo) );
 		
 		return "/admin/adminMain";
 	}
