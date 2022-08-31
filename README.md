@@ -1,55 +1,57 @@
-# 깃 크라켄 설치 페이지
-https://www.gitkraken.com/
+# 0825 BM (bmLogin)
+로그인, 회원가입 버튼을 임시로 사용하기 위해서 "loginMain" 페이지를 이용했습니다  
+차후엔 실제 메인 페이지의 버튼에 연결하고 삭제 예정입니다  
+프로젝트에 기존 폴더는 삭제하고 제 작업 부분만 올립니다  
+## 로그인  
+ - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_login.gif?raw=true" width="60%"	/>      
 
+	 - /member/login  
+	 - 로그인 성공시 loginMain 페이지로 이동됨  	
+ 
+## 회원가입  
+ - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_join1.gif?raw=true" width="60%"	/>  
 
-# 깃 크라켄 설명 블로그
-https://velog.io/@danna-lee/%EA%B0%9C%EB%B0%9C-%ED%98%91%EC%97%85%EC%97%90%EC%84%9C-%EA%B9%83-%EA%B9%83%ED%81%AC%EB%9D%BC%EC%BC%84-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+	- /member/join  
+	- 회원가입 성공시 login 페이지로 이동됨  
+	- ajax를 이용해서 이메일 중복 체크 시 데이터 검증
+	- 카카오 우편번호 api로 주소 검색 후 입력 처리  
 
+## 카카오 로그인
+ - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_kakaoLogin.gif?raw=true" width="60%"	/>  
 
-## git pull practice
-이부분의 글을 수정하고 pull 과 push로 확인해본다
-아무내용이나 작성
+	- KaKaoController  
+	- /member/kakaoLogin  
 
-객체지향 설계 5원칙
+## 관리자 메인
+ - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/admin1.PNG?raw=true" width="65%"	/>
+   
+     
+	- AdminController
+	- AdminChkIntercepter
+		- HandlerInterceptor를 상속받아 관리자가 아닌 이용자의 접근을 차단한다
+	- /adminMain : 임시 디자인의 관리자 메인 페이지
+	- 로그인 시 회원 등급으로 구분하여 접근가능  
+	- 메뉴1: 1주일간의 거래내역 목록 출력, 상단에 요일별 거래건수를 그래프로 구현
+	- 메뉴 2: 거래내역 전체 출력(페이징, 검색 기능 구현 예정)
+	- 메뉴 3: 회원 목록 출력(검색, 수정 기능) 
+	
+## 에러페이지
+ - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_adminIntercepter.gif?raw=true" width="60%"	/>  
 
-응집도와 결합도 - 결합도는 낮추고 응집도는 높여야한다
-
-결합도: 클래스간 상호의존정도
-       결합도가 낮으면 재사용및유지보수가 유리하다
-
-응집도: 클래스내부에 존재하는 구성요소들의 관련성
-       응집도가 높으면 독립성이 높아져 재사용및유지보수가 유리하다
-
-1. 단일책임원칙 - 각각의 객체가 따로 상속받는다
-
-2. 개방폐쇄원칙 - 자신의 확장은 열려있고 주변의 변화에 대해서는 닫혀 있어야 한다
-
-       상위클래스 또는 인터페이스를 중간에 둠으로써, 자신은 변화에 대해서는 폐쇄적이지만
-
-       인터페이스는 외부의 변화에 대해서 확장을 개방해 줄 수 있다 ex) JDBC
-
-       이 원칙을 지키기 위해서 주로 객체지향의 추상화와 다형성을 활용한다!!!
-
-3. 리스코프 치환 원칙
-
-       서브 타입은 언제나 자신의 기반 타입(부모)으로 교체할 수 있어야한다
-
-4. 인터페이스 분리 원칙 - (단일책임원칙과 둘 중 하나를 선택해야함)
-
-       클라이언트는 자신이 사용하지 않는 메서드에 의존 관계를 맺으면 안된다
-
-5. 의존 역전 원칙
-
-       자신보다 변하기 쉬운것에 의존하지 말아야한다
-
-### POJO JAVA : 순수한 자바 오브젝트
-
-1 특정 규약에 종속되지 않는다
-
-2 특정 환경에 종속되지 않는다
-
-민곤test  
-
-현민test  
-
-보미 fork test  
+	- /errorPage
+	- 컨트롤러에서 에러 메시지를 받아와서 경고창에 띄움
+	- 페이지는 history.back()으로 뒤로가기 처리
+	- 인터셉터를 이용하여 관리자 페이지에 비정상적인 접근을 차단함  
+  
+##  
+## 설정
+	- root-context.xml 
+		- sqlSession 빈 등록 설정
+	- pom.xml: 디펜던시 추가함
+		- javax.validation : 유효성 검사위함(불필요시 삭제)
+		- com.google.code.gson : 카카오 로그인을 위한 설정  
+	- pom.xml: 버전 수정
+		- mybatis : 3.4.6 에서  3.5.2 로  업그레이드 함   
+	- interceptors 설정 추가
+		- servlet-context.xml에 추가
+		- 관리자(메인)페이지에 일반회원, 비로그인 회원 접근 금지 설정 추가  
