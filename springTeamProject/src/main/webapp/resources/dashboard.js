@@ -10,7 +10,6 @@ function getGraph(){
 //		data:{cntDate:cntDate},
 //		dataType:"json",
 		success:function(data){
-				console.log("확인용!!!"+data);
 			//그래프에 나타낼 데이터 담기
 			for (let i=0; i<data.length; i++){
 				console.log(data[i]);
@@ -61,8 +60,5 @@ function getGraph(){
 		}
 		
 	})// ajax
-	
-	
-	
 	
 }//getGraph

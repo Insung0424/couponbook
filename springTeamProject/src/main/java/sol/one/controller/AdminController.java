@@ -48,6 +48,13 @@ public class AdminController {
 		return tradeCnt;
 	}
 	
+
+	//거래목록 전체 가져오기
+	@GetMapping("/trdAllList")
+	public String tradeAllList() {
+		return "/admin/trdAllList";
+	}
+	
 	
 	//관리자 로그인 시 관리자메인 페이지로 이동
 	@GetMapping("/adminMain")
