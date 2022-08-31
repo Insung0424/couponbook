@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/trdAllList">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
               	전체 거래내역
             </a>
