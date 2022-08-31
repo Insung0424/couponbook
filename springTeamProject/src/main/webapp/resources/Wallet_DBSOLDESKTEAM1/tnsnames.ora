@@ -1,0 +1,12 @@
+dbsoldeskteam1_high = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=gf03ff73c50dd22_dbsoldeskteam1_high.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-chuncheon-1.oraclecloud.com, OU=Oracle ADB CHUNCHEON, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
+
+dbsoldeskteam1_low = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=gf03ff73c50dd22_dbsoldeskteam1_low.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-chuncheon-1.oraclecloud.com, OU=Oracle ADB CHUNCHEON, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
+
+dbsoldeskteam1_medium = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=gf03ff73c50dd22_dbsoldeskteam1_medium.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-chuncheon-1.oraclecloud.com, OU=Oracle ADB CHUNCHEON, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
+
+dbsoldeskteam1_tp = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=gf03ff73c50dd22_dbsoldeskteam1_tp.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-chuncheon-1.oraclecloud.com, OU=Oracle ADB CHUNCHEON, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
+
+dbsoldeskteam1_tpurgent = (description= (retry_count=20)(retry_delay=3)(address=(protocol=tcps)(port=1522)(host=adb.ap-chuncheon-1.oraclecloud.com))(connect_data=(service_name=gf03ff73c50dd22_dbsoldeskteam1_tpurgent.adb.oraclecloud.com))(security=(ssl_server_cert_dn="CN=adb.ap-chuncheon-1.oraclecloud.com, OU=Oracle ADB CHUNCHEON, O=Oracle Corporation, L=Redwood City, ST=California, C=US")))
+
+
+

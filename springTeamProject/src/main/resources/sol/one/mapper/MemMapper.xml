@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sol.one.mapper.MemMapper">
+	<select id="getMemById" resultType="sol.one.VO.MemberVO">
+		<!-- select * from ex1_User where user_id = #{user_id} and password = #{password} --> 
+		select * from pj_user 
+		where 
+		email = #{email} and 
+		password = #{password} 
+	</select>
+	
+	<!-- 확인용 쿼리문 -->
+	<select id="idChkPw" resultType="String">
+		select user_id from pj_user where user_id = #{user_id} and password = #{password}
+	</select>
+	
+	<insert id="addMem">
+		insert into pj_user (user_id, email, nickname, password, user_name, phone, addr, addr2, zip_no)
+		values (#{user_id}, #{email}, #{nickname}, 
+		#{password}, #{user_name}, #{phone}, #{addr}, #{addr2}, #{zip_no})
+	</insert>
+	
+	<insert id="joinMem">
+		<selectKey keyProperty="user_id" order="BEFORE" resultType="long">
+			select seq_user_id.nextval from dual
+		</selectKey>
+		
+		insert into pj_user (user_id, email, nickname, password, user_name, phone, addr, addr2, zip_no) 
+		values (#{user_id}, #{email}, #{nickname}, 
+		#{password}, #{user_name}, #{phone}, #{addr}, #{addr2}, #{zip_no})
+	</insert>	
+
+	<!-- 입력받은 메일주소가 있는지 확인한다.  -->
+	<select id="mailChk" parameterType="String" resultType="int">
+		SELECT COUNT(email) FROM pj_user 
+		where email = #{email}
+	</select>
+	
+	
+	
+	<!-- 카카오 로그인  member-mapper.xml 에서 추가함 -->
+	<select id="findKakao" parameterType="java.util.HashMap" resultType="sol.one.VO.MemberVO">
+		select * from pj_user where nickname=#{nickname} and email=#{email}
+	</select>
+	
+	<insert id="kakaoInsert" parameterType="java.util.HashMap">
+		insert into pj_user(user_id, nickname, email) values(#{uid}, #{nickname}, #{email})
+	</insert>
+	
+	<select id="kakaoNumber" parameterType="sol.one.VO.MemberVO" resultType="sol.one.VO.MemberVO">
+		select * from pj_user where nickname=#{nickname} and email=#{email}
+	</select>
+	<!-- 카카오 로그인  member-mapper.xml 에서 추가함  끝-->
+	
+	
+	
+	
+</mapper>
