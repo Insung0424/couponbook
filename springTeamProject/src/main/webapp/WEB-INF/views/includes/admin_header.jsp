@@ -16,7 +16,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" 
     integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
 	
-	
     <!-- Custom styles for this template -->
     <link href="/../resources/dashboard.css" rel="stylesheet">
     <script type="text/javascript">
@@ -53,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/trdAllList">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
               	전체 거래내역
             </a>
@@ -85,16 +84,16 @@
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-          <span>Saved reports</span>
+          <span>Site Menu</span>
           <a class="link-secondary" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle" class="align-text-bottom"></span>
           </a>
         </h6>
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/">
               <span data-feather="file-text" class="align-text-bottom"></span>
-              Current month
+              	Main
             </a>
           </li>
           <li class="nav-item">
