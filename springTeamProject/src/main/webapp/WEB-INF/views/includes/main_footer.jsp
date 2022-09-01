@@ -35,11 +35,10 @@
 
 </head>
 
-<footer class="sticky-footer bg-white" style="">
+<footer class="sticky-footer bg-white" style="height: 100px;">
 		<div class="row">
-			<div class="col-12 col-md">
-				<img class="mb-2" src="/docs/5.1/assets/brand/bootstrap-logo.svg"
-					alt="" width="24" height="19"> <small
+			<div class="col-12 col-md" style="text-align: center;">
+				<small
 					class="d-block mb-3 text-muted">&copy; 2022-08-22~ <br>2022-09-13
 				</small>
 			</div>

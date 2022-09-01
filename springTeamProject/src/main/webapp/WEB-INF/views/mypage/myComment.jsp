@@ -119,8 +119,7 @@
 	<!--------------------------------------------------------------------------------------------------------------------------  -->
 	<%@include file="/WEB-INF/views/includes/main_footer.jsp"%>
 
-	</div>
-	</div>
+
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
 	</a>
