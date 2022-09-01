@@ -18,5 +18,13 @@
 		and to_char(to_date('22/08/08'), 'YY/MM/DD') 
 		order by trade_time 
 	</select>
+	
+	<select id="tradeAllList" resultType="sol.one.VO.T_tradeVO">
+		<![CDATA[
+		select ROWNUM, product_id, sell_user_id, buyer_user_id, pd_status, trade_time
+		from pj_trade_test
+		order by trade_time
+		]]>
+	</select>
 
 </mapper>

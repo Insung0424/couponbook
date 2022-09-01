@@ -3,6 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <%@include file="/WEB-INF/views/includes/admin_header.jsp"%>
@@ -24,13 +25,13 @@
           </thead>
           <tbody>
           
-          <c:forEach items="${tradeList }" var="tList">
+          <c:forEach items="${tradeAll }" var="tAllList">
             <tr>
-              <td> <c:out value="${tList.product_id }" /> </td>
-              <td> <c:out value="${tList.sell_user_id }" /></td>
-              <td> <c:out value="${tList.buyer_user_id }" /></td>
-              <td> <c:out value="${tList.pd_status }" /></td>
-              <td> <c:out value="${tList.trade_time }" /></td>
+              <td> <c:out value="${tAllList.product_id }" /> </td>
+              <td> <c:out value="${tAllList.sell_user_id }" /></td>
+              <td> <c:out value="${tAllList.buyer_user_id }" /></td>
+              <td> <c:out value="${tAllList.pd_status }" /></td>
+              <td> <c:out value="${fn:substring(tAllList.trade_time,0,10) }" /></td>
             </tr>
            </c:forEach>
 

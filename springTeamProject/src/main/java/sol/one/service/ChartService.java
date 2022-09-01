@@ -11,7 +11,10 @@ public interface ChartService {
 	
 	//1주일 요일별 거래 건수
 	int[] tradeWeekCnt(T_tradeVO tvo);
-//	List<T_tradeVO> tradeWeekCnt(T_tradeVO tvo);
+	
+	//거래내역 전체목록
+	List<T_tradeVO> tradeAllList(T_tradeVO tvo);
+	
 	
 
 }

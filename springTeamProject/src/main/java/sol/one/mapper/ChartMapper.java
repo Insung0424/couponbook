@@ -9,7 +9,7 @@ public interface ChartMapper {
 	 * 1주일간의 거래내역 목록
 	 * 테스트용으로 22/08/01 - 22/08/07 거래내역 조회
 	 * @param tvo
-	 * @return
+	 * @return List<T_tradeVO>
 	 */
 	public List<T_tradeVO> tradeWeek(T_tradeVO tvo);
 
@@ -17,8 +17,14 @@ public interface ChartMapper {
 	 * 1주일간의 거래내역 목록
 	 * 테스트용으로 22/08/01 - 22/08/07 거래내역 조회
 	 * @param tvo
-	 * @return 
+	 * @return int[]
 	 */
 	public int[] tradeWeekCnt(T_tradeVO tvo);
-//	public List<T_tradeVO> tradeWeekCnt(T_tradeVO tvo);
+	
+	/**
+	 * 거래내역 전체 목록
+	 * @param tvo
+	 * @return List<T_tradeVO>
+	 */
+	public List<T_tradeVO> tradeAllList(T_tradeVO tvo);
 }
