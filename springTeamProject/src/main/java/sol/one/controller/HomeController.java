@@ -37,10 +37,10 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping("/main")
+	@GetMapping("/main3")
 	public void main() {}
 	
-	//로그인, 회원가입 확인용 메인으로 이동, 테스트용으로 삭제예정임
+	//濡쒓렇�씤, �쉶�썝媛��엯 �솗�씤�슜 硫붿씤�쑝濡� �씠�룞, �뀒�뒪�듃�슜�쑝濡� �궘�젣�삁�젙�엫
 	@GetMapping("/loginMain")
 	public void loginMain() {}
 	
