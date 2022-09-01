@@ -1,15 +1,14 @@
-# 0825 BM (bmLogin)
+# 0901 
 로그인, 회원가입 버튼을 임시로 사용하기 위해서 "loginMain" 페이지를 이용했습니다  
 차후엔 실제 메인 페이지의 버튼에 연결하고 삭제 예정입니다  
-프로젝트에 기존 폴더는 삭제하고 제 작업 부분만 올립니다  
-## 로그인  
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_login.gif?raw=true" width="60%"	/>      
+
+## 로그인      
 
 	 - /member/login  
 	 - 로그인 성공시 loginMain 페이지로 이동됨  	
  
 ## 회원가입  
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_join1.gif?raw=true" width="60%"	/>  
+
 
 	- /member/join  
 	- 회원가입 성공시 login 페이지로 이동됨  
@@ -17,14 +16,13 @@
 	- 카카오 우편번호 api로 주소 검색 후 입력 처리  
 
 ## 카카오 로그인
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_kakaoLogin.gif?raw=true" width="60%"	/>  
+
 
 	- KaKaoController  
 	- /member/kakaoLogin  
 
 ## 관리자 메인
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/admin1.PNG?raw=true" width="65%"	/>
-   
+  
      
 	- AdminController
 	- AdminChkIntercepter
@@ -36,7 +34,6 @@
 	- 메뉴 3: 회원 목록 출력(검색, 수정 기능) 
 	
 ## 에러페이지
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_adminIntercepter.gif?raw=true" width="60%"	/>  
 
 	- /errorPage
 	- 컨트롤러에서 에러 메시지를 받아와서 경고창에 띄움
