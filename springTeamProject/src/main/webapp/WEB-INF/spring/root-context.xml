@@ -11,7 +11,7 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<!-- 로컬 DB를 위한 설정  
+	<!-- 로컬 DB를 위한 설정  -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
 		<property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
 			name="driverClassName" />
@@ -21,9 +21,9 @@
 		<property value="BM" name="username" />
 		<property value="bm0301" name="password" />
 	</bean>
- 	-->
  	
-	<!-- 팀 DB 접속 -->
+ 	
+	<!-- 팀 DB 접속 
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="connectionTimeout" value="3000"/>
 		<property name="maximumPoolSize" value="300" /> 
@@ -34,7 +34,7 @@
 		<property name="username" value="admin" />
 		<property name="password" value="soldesk01TEAM)!" />
 	</bean>
-	
+	-->
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">

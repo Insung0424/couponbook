@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/trdAllList">
+            <a class="nav-link" href="/trdAllPage">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
               	전체 거래내역
             </a>
@@ -61,24 +61,6 @@
             <a class="nav-link" href="#">
               <span data-feather="users" class="align-text-bottom"></span>
               	회원 목록
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              	메뉴 -
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-				메뉴 *
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file" class="align-text-bottom"></span>
-              	메뉴 +
             </a>
           </li>
         </ul>
