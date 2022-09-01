@@ -5,37 +5,37 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import sol.one.VO.replyVO;
-import sol.one.mapper.ReplyMapper;
+import sol.one.VO.CommentVO;
+import sol.one.mapper.CommentMapper;
 
 @Service("ReplyService")
 @RequiredArgsConstructor
-public class ReplyServiceImple implements ReplyService{
+public class CommentServiceImple implements CommentService{
 
-	private final ReplyMapper mapper;
+	private final CommentMapper mapper;
 	
 	@Override
-	public int register(replyVO vo) {
+	public int register(CommentVO vo) {
 		return mapper.insert_co(vo);
 	}
 	
 	@Override
-	public int register_tab(replyVO vo) {
+	public int register_tab(CommentVO vo) {
 		return mapper.insert_co_tab(vo);
 	}
 
 	@Override
-	public List<replyVO> getComment(int product_id,int user_id_1,int user_id_2) {
+	public List<CommentVO> getComment(int product_id,int user_id_1,int user_id_2) {
 		return mapper.read(product_id,user_id_1,user_id_2);
 	}
 
 	@Override
-	public List<replyVO> getAllComment(int product_id) {
+	public List<CommentVO> getAllComment(int product_id) {
 		return mapper.readAll(product_id);
 	}
 	
 	@Override
-	public int modify(replyVO vo) {
+	public int modify(CommentVO vo) {
 		return mapper.update(vo);
 	}
 
@@ -50,7 +50,7 @@ public class ReplyServiceImple implements ReplyService{
 	}
 
 	@Override
-	public int upNumber(replyVO vo) {
+	public int upNumber(CommentVO vo) {
 		return mapper.tabGroupNoUp(vo);
 	}
 

@@ -7,15 +7,15 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.extern.log4j.Log4j;
-import sol.one.VO.replyVO;
+import sol.one.VO.CommentVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class ReplyMapperTests {
+public class CommentMapperTests {
 	
     @Autowired
-    private ReplyMapper mapper;
+    private CommentMapper mapper;
 
     @Test
     public void testMapper( ) {
@@ -30,7 +30,7 @@ public class ReplyMapperTests {
     
     @Test
     public void testreply() {
-    	replyVO vo = new replyVO();
+    	CommentVO vo = new CommentVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(2);
     	vo.setComment_content("작성자 2의 text4");
@@ -40,7 +40,7 @@ public class ReplyMapperTests {
     
     @Test
     public void testreply_tab() {
-    	replyVO vo = new replyVO();
+    	CommentVO vo = new CommentVO();
     	vo.setProduct_id(1);
     	vo.setUser_id(2);
     	vo.setComment_content("text1 - 작성자2의 답글");
@@ -61,7 +61,7 @@ public class ReplyMapperTests {
     public void testdelete() {
     	int comment_no = 1;
     	mapper.delete(comment_no);
-    	replyVO vo = new replyVO();
+    	CommentVO vo = new CommentVO();
     	vo.setProduct_id(1);
     	log.info(mapper.readAll(vo.getProduct_id()));
     }
@@ -70,14 +70,14 @@ public class ReplyMapperTests {
     public void testdelall() {
     	int product_id = 1;
     	mapper.deleteAll(product_id);
-    	replyVO vo = new replyVO();
+    	CommentVO vo = new CommentVO();
     	vo.setProduct_id(1);
     	log.info(mapper.readAll(vo.getProduct_id()));
     }
     
     @Test
     public void testUpdate() {
-    	replyVO vo = new replyVO();
+    	CommentVO vo = new CommentVO();
     	vo.setUser_id(1);
     	vo.setComment_no(2);
     	vo.setComment_content("변경댓글");

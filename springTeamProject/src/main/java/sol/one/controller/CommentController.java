@@ -17,19 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import sol.one.VO.replyVO;
-import sol.one.service.ReplyService;
+import sol.one.VO.CommentVO;
+import sol.one.service.CommentService;
 
 @RequestMapping("/replies")
 @RestController
-public class ReplyController {
+public class CommentController {
 	
 	@Autowired
 	@Qualifier(value = "ReplyService")
-	private ReplyService service;
+	private CommentService service;
 	
 	@PostMapping("/new")
-	public String insertReply(@RequestBody replyVO vo) {
+	public String insertReply(@RequestBody CommentVO vo) {
 		System.out.println("ok?");
 		service.register(vo);
 		
@@ -37,7 +37,7 @@ public class ReplyController {
 	}
 	
 	@PostMapping("/tabComment")
-	public String insert(@RequestBody replyVO vo) {
+	public String insert(@RequestBody CommentVO vo) {
 		service.upNumber(vo);
 		service.register_tab(vo);
 		return "insert";
@@ -46,7 +46,7 @@ public class ReplyController {
 	@GetMapping("/get/{product_id}")
 	public Map<String,Object> getAllComment(@PathVariable int product_id,Model model){
 		System.out.println("good?");
-		List<replyVO> list = service.getAllComment(product_id);
+		List<CommentVO> list = service.getAllComment(product_id);
 		ModelAndView view = new ModelAndView();
 		view.setViewName("/product/main");
 		Map<String,Object> map = new HashMap<>();
@@ -70,14 +70,14 @@ public class ReplyController {
 				map.put("count", count);
 			}
 			
-			List<replyVO> list = service.getComment(product_id,user_id_1,user_id_2);
+			List<CommentVO> list = service.getComment(product_id,user_id_1,user_id_2);
 			map.put("list", list);
 			return map;
 		}
 		else {
 			ModelAndView view = new ModelAndView();
 			view.setViewName("redirect:/product/main");
-			List<replyVO> list = service.getComment(product_id,user_id_1,user_id_2);
+			List<CommentVO> list = service.getComment(product_id,user_id_1,user_id_2);
 			map.put("list", list);
 			map.put("count", 0);
 			return map;
@@ -91,7 +91,7 @@ public class ReplyController {
 	}
 	
 	@PutMapping("/update")
-	public String put(@RequestBody replyVO vo) {
+	public String put(@RequestBody CommentVO vo) {
 		service.modify(vo);
 		return "update";
 	}

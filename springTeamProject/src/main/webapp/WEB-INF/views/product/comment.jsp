@@ -6,6 +6,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <style>
 #modal{ 
   position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
@@ -90,7 +91,7 @@ $("#add_btn").click(function(){
 			return;
 	}else if(com_content == '') {
 		alert('내용을 입력하세요');
-	};
+	}
 	
 	if(comment_content == ''){
 		alert('내용을 입력하세요');
@@ -111,7 +112,7 @@ $("#add_btn").click(function(){
 			success:function(data){
 				console.log('통신성공' + data);
 				if(data == "InsertSuccess") {
-					console.log('댓글 등록 완료');
+					console.log('댓글 등록 완료')
 					$('#user_id').val(${vo.user_id});
   					$('#com_content').val('');
   					let user_id = ${vo.user_id};
@@ -121,9 +122,9 @@ $("#add_btn").click(function(){
   	             	 else{
   	              		getList();
   	              	}
-				} else {
+				}else{
 					console.log('댓글 등록 실패');
-				}
+				};
 			},
 			error:function(){
 				alert('통신실패');
@@ -370,7 +371,6 @@ $(document).on("click", "#answer", function(){
 	});
 	
 });
-
 </script>
 </body>
 </html>

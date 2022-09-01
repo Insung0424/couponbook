@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import sol.one.VO.replyVO;
+import sol.one.VO.CommentVO;
 
 @Controller
 @RequestMapping("/product")
@@ -15,7 +15,7 @@ public class ProductController {
 
 	@GetMapping("/main")
 	public void main(Locale locale,Model model) {
-		replyVO vo = new replyVO();
+		CommentVO vo = new CommentVO();
 		vo.setUser_id(1);
 		vo.setProduct_id(1);
 		

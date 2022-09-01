@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
-public class replyVO {
+public class CommentVO {
 
 	private int product_id;
 	private int user_id;
