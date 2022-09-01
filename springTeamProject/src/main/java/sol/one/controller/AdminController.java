@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import sol.one.VO.Criteria;
+import sol.one.VO.PageDTO;
 import sol.one.VO.T_tradeVO;
 import sol.one.service.ChartService;
 import sol.one.service.MemService;
@@ -27,16 +29,18 @@ public class AdminController {
 
 	//거래목록 페이지로 이동
 	@GetMapping("/trdAllPage")
-	public String trdAllPage(HttpSession session, T_tradeVO tvo, Model model) {
-		model.addAttribute("tradeAll", chartService.tradeAllList(tvo));
+	public String trdAllPage(HttpSession session, Criteria cri, Model model) {
+		model.addAttribute("tradeAll", chartService.tradeAllList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		return "/admin/trdAllPage";
 	}
 	
 	//거래 목록 전체 가져오기
 	@GetMapping("/tradeAllList")
-	public List<T_tradeVO> tradeAllList(Model model, T_tradeVO tvo){
-		List<T_tradeVO> tradeAll = chartService.tradeAllList(tvo);
+	public List<T_tradeVO> tradeAllList(Model model, T_tradeVO tvo, Criteria cri){
+		List<T_tradeVO> tradeAll = chartService.tradeAllList(cri);
 		model.addAttribute("tradeAll", tradeAll);
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		return tradeAll;
 	} 
 	

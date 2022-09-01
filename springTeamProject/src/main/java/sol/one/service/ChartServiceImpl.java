@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import sol.one.VO.Criteria;
 import sol.one.VO.T_tradeVO;
 import sol.one.mapper.ChartMapper;
 
@@ -32,11 +33,17 @@ public class ChartServiceImpl implements ChartService {
 		return tradeCNT;
 	}
 
+	// 거래내역 전체 목록 가져오기
 	@Override
-	public List<T_tradeVO> tradeAllList(T_tradeVO tvo) {
-		// 거래내역 전체 목록 가져오기
-		log.info("CSI trade All list ------- ");
-		List<T_tradeVO> tradeAllList = mapper.tradeAllList(tvo);
+//	public List<T_tradeVO> tradeAllList(T_tradeVO tvo) {
+//		log.info("CSI trade All list ------- ");
+//		List<T_tradeVO> tradeAllList = mapper.tradeAllList(tvo);
+//		return tradeAllList;
+//	}
+	
+	public List<T_tradeVO> tradeAllList(Criteria cri) {
+		log.info("get trade All list with paging ------- CSI: ");
+		List<T_tradeVO> tradeAllList = mapper.getListWithPaging(cri);
 		return tradeAllList;
 	}
 

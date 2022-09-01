@@ -2,6 +2,7 @@ package sol.one.mapper;
 
 import java.util.List;
 
+import sol.one.VO.Criteria;
 import sol.one.VO.T_tradeVO;
 
 public interface ChartMapper {
@@ -27,4 +28,13 @@ public interface ChartMapper {
 	 * @return List<T_tradeVO>
 	 */
 	public List<T_tradeVO> tradeAllList(T_tradeVO tvo);
+	
+	
+	/**
+	 * 페이징을 위한 메서드
+	 * @param cri
+	 * @return List<T_tradeVO>
+	 */
+	public List<T_tradeVO> getListWithPaging(Criteria cri);
+
 }

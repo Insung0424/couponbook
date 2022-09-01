@@ -26,5 +26,19 @@
 		order by trade_time
 		]]>
 	</select>
+	
+	<select id="getListWithPaging" resultType="sol.one.VO.T_tradeVO">
+		<![CDATA[
+		select 
+			product_id, sell_user_id, buyer_user_id, pd_status, trade_time 
+		from 
+			(
+			select ROWNUM rn, product_id, sell_user_id, buyer_user_id, pd_status, trade_time 
+		 	from pj_trade_test  
+			where rownum <= #{pageNum} * #{amount}
+			)
+		where rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
 
 </mapper>

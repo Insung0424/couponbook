@@ -9,7 +9,7 @@
 <%@include file="/WEB-INF/views/includes/admin_header.jsp"%>
 
 <!-- 관리자  : 메뉴2: 거래내역 전체목록 부분  -->
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
 
       <h2>거래 목록</h2>
       <div class="table-responsive">
@@ -35,10 +35,38 @@
             </tr>
            </c:forEach>
 
-
-
           </tbody>
         </table>
+        
+        <!-- 페이징 추가 -->
+        <div  aria-label="Page navigation example" class='pull-right'>
+			<ul class="pagination justify-content-center">
+				<c:if test="${pageMaker.prev}">
+	              <li class="page-item">
+	              	<a class="page-link" href="#" aria-label="Previous">
+	              		<span aria-hidden="true">&laquo;</span>
+					</a>
+	              </li>
+	            </c:if>
+	
+	            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+	              <%-- <li class="paginate_button"><a href="#">${num}</a></li> --%>
+	              <li class="page-item"><a class="page-link" href="#">${num}</a></li>
+	            </c:forEach>
+	
+	            <c:if test="${pageMaker.next}">
+	              <li class="page-item">
+	              	<a class="page-link" href="#" aria-label="Next">
+			        	<span aria-hidden="true">&raquo;</span>
+			        </a>
+	              </li>
+	            </c:if> 
+			</ul>
+		</div>
+		<!--  end Pagination -->
+        
+        
+        
       </div>
     </main>
   </div>
