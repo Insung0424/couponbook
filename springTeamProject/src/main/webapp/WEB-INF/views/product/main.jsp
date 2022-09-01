@@ -8,8 +8,16 @@
 <title>Main</title>
 <link rel="stylesheet" href="/resources/report.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 </head>
 <body>
+
+<!-- 거래완료 -->
+<input type="button" class="modal_TradingEnd" id="modal_TradingEnd" value="거래완료하기"/>
+<div class="modal_trade">
+	<div class="modal_trade_content"></div>
+</div>
+
 
 <!-- 신고 기능 모달 창 -->
 <button class="modal_btn_report">신고</button>
@@ -50,6 +58,15 @@ $(".modal_btn_report").click(function(){
 });
 $("#report_cancel").click(function(){
 	$(".modal_report").fadeOut();
+});
+
+$(".modal_TradingEnd").click(function(){
+	$(".modal_TradingEnd").hide();
+	$(".modal_trade_content").load("trade");
+	
+	$(".cancel").click(function(){
+		$(".modal_TradingEnd").show();
+	});
 });
 </script>
 </body>
