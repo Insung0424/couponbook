@@ -53,8 +53,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="btn">
-				<button type="button" id="add_btn">댓글등록</button>
-				<input type="button" id="more_comment" value="댓글 보기"></td>
+				<button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
+				<input type="button" id="more_comment" value="댓글 보기" class="btn btn-primary"></td>
 			</tr>
 		</table>
 		<div id="add_message">&nbsp;</div>
@@ -73,8 +73,8 @@
 				</tr>
 				<tr>
 					<td class="modal_btn">
-					<button type="button" id="modal_modify_btn">입력</button>
-					<button type="button" id="modal_modify_cancel_btn">수정취소</button></td>
+					<button type="button" id="modal_modify_btn" class="btn btn-primary">입력</button>
+					<button type="button" id="modal_modify_cancel_btn" class="btn btn-primary">수정취소</button></td>
 				</tr>
 			</table>
 		</div>
@@ -164,12 +164,12 @@ function getAllList() {
 					comment_html += "<span id='span_content'>" + content + "</span><br>";
 					comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 					if(user_id_1 == user_id_check){
-						 comment_html += "<button id='update' data-id =" + comment_no + ">수정</button>";
+						 comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
 						 comment_html += "&nbsp;";
-						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
+						 comment_html += "<button id='delete' data-id ="+ comment_no +" class='btn btn-primary'>삭제</button><br></div><hr>";
 					}
 					else{
-						comment_html += "<button id='answer' data-id ="+ comment_no_level +">답글</button><br></div><hr>";
+						comment_html += "<button id='answer' data-id ="+ comment_no_level +" class='btn btn-primary'>답글</button><br></div><hr>";
 					}
 				}
 			}
@@ -220,12 +220,12 @@ function getList() {
 					comment_html += "<span id='span_content'>" + content + "</span><br>";
 					comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 					if(user_id_1 == user_id_check){
-						 comment_html += "<button id='update' data-id =" + comment_no + ">수정</button>";
+						 comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
 						 comment_html += "&nbsp;";
-						 comment_html += "<button id='delete' data-id ="+ comment_no +">삭제</button><br></div><hr>";
+						 comment_html += "<button id='delete' data-id ="+ comment_no +" class='btn btn-primary'>삭제</button><br></div><hr>";
 					}
 					else{
-						comment_html += "<button id='answer' data-id ="+ comment_no_level +">답글</button><br></div><hr>";
+						comment_html += "<button id='answer' data-id ="+ comment_no_level +" class='btn btn-primary'>답글</button><br></div><hr>";
 					}
 					
 				}

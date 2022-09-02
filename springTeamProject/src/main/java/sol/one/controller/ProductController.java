@@ -45,4 +45,7 @@ public class ProductController {
 		
 		return "redirect:/product/main";
 	}
+	
+	@GetMapping("/new")
+	public void new1() {}
 }

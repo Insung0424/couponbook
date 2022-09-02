@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.modal_report{
+#modal_report{
 display:none; 
 position:fixed; 
 z-index:1; 
@@ -12,7 +12,7 @@ background-color:rgb(0,0,0);
 background-color:rgba(0,0,0,0.4); 
 /* Black w/ opacity */}
 
-.modal_report_content{
+#modal_report_content{
 position:relative; 
 background-color:#fefefe; 
 margin:auto; padding:0; 
@@ -23,10 +23,3 @@ box-shadow:0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 -webkit-animation-duration:0.4s; 
 animation-name:animatetop; 
 animation-duration:0.4s}
-
-.modal_report_content table{
-	margin:auto;
-}
-.modal_report_content table .modal-footer{
-	text-align:right;
-}
