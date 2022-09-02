@@ -25,35 +25,15 @@ public class AdminController {
 	
 	private MemService service;
 	private ChartService chartService;
-	
 
-	//거래목록 페이지로 이동
-	@GetMapping("/admin/trdAllPage")
-	public void trdAllPage(HttpSession session, Criteria cri, Model model) {
-		System.out.println("AllList: "+ cri);
-		model.addAttribute("tradeAll", chartService.tradeAllList(cri));
-
-		int total = chartService.getTotalTrdCnt(cri);
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
-	}
-	
-	//거래 목록 전체 가져오기
-	@GetMapping("/tradeAllList")
-	public List<T_tradeVO> tradeAllList(Model model, T_tradeVO tvo, Criteria cri){
-		List<T_tradeVO> tradeAll = chartService.tradeAllList(cri);
-		model.addAttribute("tradeAll", tradeAll);
-		return tradeAll;
-	} 
-	
-	
 	//관리자 로그인 시 관리자메인 페이지로 이동
-	@GetMapping("/adminMain")
-	public String adminMain(HttpSession session, 
+	@GetMapping("/admin/adminMain")
+	public void adminMain(HttpSession session, 
 			T_tradeVO tvo, Model model) {
 		System.out.println("adminPage s1 = " + session);
 		
 		model.addAttribute("tradeList", chartService.tradeWeek(tvo) );
-		return "/admin/adminMain";
+//		return "/admin/adminMain";
 	}
 	
 	//차트: 1주일 거래목록 가져오기
@@ -74,6 +54,37 @@ public class AdminController {
 		model.addAttribute("tradeCnt",tradeCnt);
 		return tradeCnt;
 	}
+	
+	
+	//거래목록 페이지로 이동
+	@GetMapping("/admin/trdAllPage")
+	public void trdAllPage(HttpSession session, Criteria cri, Model model) {
+		System.out.println("AllList: "+ cri);
+		model.addAttribute("tradeAll", chartService.tradeAllList(cri));
+
+		int total = chartService.getTotalTrdCnt(cri);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+	}
+	
+	//거래 목록 전체 가져오기
+	@GetMapping("/tradeAllList")
+	public List<T_tradeVO> tradeAllList(Model model, T_tradeVO tvo, Criteria cri){
+		List<T_tradeVO> tradeAll = chartService.tradeAllList(cri);
+		model.addAttribute("tradeAll", tradeAll);
+		return tradeAll;
+	} 
+	
+	
+	//회원목록 페이지로 이동
+	@GetMapping("/admin/memList")
+	public void memList(Criteria cri, Model model) {
+		model.addAttribute("memAllList", chartService.getMemList(cri));
+		int total = chartService.getTotalMemCnt(cri);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+	}
+	
+	
+	
 	
 	
 	

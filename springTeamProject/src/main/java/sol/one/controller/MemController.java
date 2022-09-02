@@ -81,7 +81,7 @@ public class MemController {
 		} else if(loginMem.getUser_grade() != 1) {
 			//로그인 성공 한 사용자의 등급이 1(일반회원)이 아닌 경우 = 관리자 아이디로 로그인 했을 경우
 			session.setAttribute("admin", loginMem);
-			return "redirect:/adminMain";
+			return "redirect:/admin/adminMain";
 		}
 		else {
 			// 로그인 성공 하면 service에서 반환 받은 loginMem 을 세션에 담아서 메인 페이지로 이동한다

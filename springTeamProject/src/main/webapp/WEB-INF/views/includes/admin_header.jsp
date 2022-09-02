@@ -46,7 +46,7 @@
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/adminMain">
+            <a class="nav-link active" aria-current="page" href="/admin/adminMain">
               <span data-feather="home" class="align-text-bottom"></span>
               	최근 1주일 거래내역
             </a>
@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/admin/memList">
               <span data-feather="users" class="align-text-bottom"></span>
               	회원 목록
             </a>

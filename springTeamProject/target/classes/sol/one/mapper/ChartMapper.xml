@@ -45,5 +45,21 @@
 		select count(*) from pj_trade_test where product_id is not null
 	</select>
 
+	<select id="getMemList" resultType="sol.one.VO.MemberVO">
+		<![CDATA[
+		select 
+			user_id, email, nickname, password, user_name, phone, addr, user_grade  
+		from
+			(
+			select ROWNUM rn,  user_id, email, nickname, password, user_name, phone, addr, user_grade 
+			from pj_user
+			where rownum <= #{pageNum} * #{amount} 
+			) 
+		where rn > (#{pageNum} - 1) * #{amount} 
+		]]>
+	</select>
+	<select id="getTotalMemCnt" resultType="int">
+		select count(*) from pj_user where email is not null
+	</select>
 
 </mapper>
