@@ -36,5 +36,12 @@ public interface ChartMapper {
 	 * @return List<T_tradeVO>
 	 */
 	public List<T_tradeVO> getListWithPaging(Criteria cri);
+	
+	/**
+	 * 거래내역 전체 개수
+	 * @param cri
+	 * @return int
+	 */
+	public int getTotalTrdCnt(Criteria cri);
 
 }

@@ -18,7 +18,8 @@ public interface ChartService {
 	//거래내역 전체목록 : 페이징 처리
 	List<T_tradeVO> tradeAllList(Criteria cir);
 	
-	
+	//거래내역 전체 데이터 개수
+	int getTotalTrdCnt(Criteria cir);
 	
 	
 

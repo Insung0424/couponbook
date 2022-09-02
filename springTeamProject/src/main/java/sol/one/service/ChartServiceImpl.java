@@ -34,17 +34,24 @@ public class ChartServiceImpl implements ChartService {
 	}
 
 	// 거래내역 전체 목록 가져오기
-	@Override
-//	public List<T_tradeVO> tradeAllList(T_tradeVO tvo) {
-//		log.info("CSI trade All list ------- ");
-//		List<T_tradeVO> tradeAllList = mapper.tradeAllList(tvo);
-//		return tradeAllList;
-//	}
+	/* public List<T_tradeVO> tradeAllList(T_tradeVO tvo) {
+		log.info("CSI trade All list ------- ");
+		List<T_tradeVO> tradeAllList = mapper.tradeAllList(tvo);
+		return tradeAllList;
+	} */
 	
+	// 거래내역 전체 목록 가져오기 - 페이징
+	@Override
 	public List<T_tradeVO> tradeAllList(Criteria cri) {
 		log.info("get trade All list with paging ------- CSI: ");
 		List<T_tradeVO> tradeAllList = mapper.getListWithPaging(cri);
 		return tradeAllList;
+	}
+
+	@Override
+	public int getTotalTrdCnt(Criteria cri) {
+		// 거래내역 전체 데이터 개수 가져오기
+		return mapper.getTotalTrdCnt(cri);
 	}
 
 }

@@ -32,10 +32,9 @@ public class AdminController {
 	public void trdAllPage(HttpSession session, Criteria cri, Model model) {
 		System.out.println("AllList: "+ cri);
 		model.addAttribute("tradeAll", chartService.tradeAllList(cri));
-		
-		model.addAttribute("pageMaker", new PageDTO(cri, 123));
-		
-//		return "/admin/trdAllPage";
+
+		int total = chartService.getTotalTrdCnt(cri);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	//거래 목록 전체 가져오기
@@ -43,7 +42,6 @@ public class AdminController {
 	public List<T_tradeVO> tradeAllList(Model model, T_tradeVO tvo, Criteria cri){
 		List<T_tradeVO> tradeAll = chartService.tradeAllList(cri);
 		model.addAttribute("tradeAll", tradeAll);
-		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		return tradeAll;
 	} 
 	
@@ -55,7 +53,6 @@ public class AdminController {
 		System.out.println("adminPage s1 = " + session);
 		
 		model.addAttribute("tradeList", chartService.tradeWeek(tvo) );
-		
 		return "/admin/adminMain";
 	}
 	
