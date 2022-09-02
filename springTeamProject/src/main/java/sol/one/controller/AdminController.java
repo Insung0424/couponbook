@@ -28,11 +28,14 @@ public class AdminController {
 	
 
 	//거래목록 페이지로 이동
-	@GetMapping("/trdAllPage")
-	public String trdAllPage(HttpSession session, Criteria cri, Model model) {
+	@GetMapping("/admin/trdAllPage")
+	public void trdAllPage(HttpSession session, Criteria cri, Model model) {
+		System.out.println("AllList: "+ cri);
 		model.addAttribute("tradeAll", chartService.tradeAllList(cri));
+		
 		model.addAttribute("pageMaker", new PageDTO(cri, 123));
-		return "/admin/trdAllPage";
+		
+//		return "/admin/trdAllPage";
 	}
 	
 	//거래 목록 전체 가져오기
@@ -49,7 +52,7 @@ public class AdminController {
 	@GetMapping("/adminMain")
 	public String adminMain(HttpSession session, 
 			T_tradeVO tvo, Model model) {
-		log.info("adminPage s1 = " + session);
+		System.out.println("adminPage s1 = " + session);
 		
 		model.addAttribute("tradeList", chartService.tradeWeek(tvo) );
 		
@@ -68,8 +71,8 @@ public class AdminController {
 	public @ResponseBody int[] tradeWeekCnt(Model model, T_tradeVO tvo) {
 		int[] tradeCnt = chartService.tradeWeekCnt(tvo);
 		
-		System.out.println("AC41: "+chartService.tradeWeekCnt(tvo));
-		System.out.println("AC42 tradeCnt: "+tradeCnt);
+		System.out.println("AC74: "+chartService.tradeWeekCnt(tvo));
+		System.out.println("AC75 tradeCnt: "+tradeCnt);
 		
 		model.addAttribute("tradeCnt",tradeCnt);
 		return tradeCnt;

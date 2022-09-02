@@ -43,20 +43,21 @@
 			<ul class="pagination justify-content-center">
 				<c:if test="${pageMaker.prev}">
 	              <li class="page-item">
-	              	<a class="page-link" href="#" aria-label="Previous">
+	              	<a class="page-link" href="${pageMaker.startPage -1}" aria-label="Previous">
 	              		<span aria-hidden="true">&laquo;</span>
 					</a>
 	              </li>
 	            </c:if>
 	
 	            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-	              <%-- <li class="paginate_button"><a href="#">${num}</a></li> --%>
-	              <li class="page-item"><a class="page-link" href="#">${num}</a></li>
+	              <li class="page-item ${pageMaker.cri.pageNum == num ? "active":""} ">
+	              	<a class="page-link" href="${num}">${num}</a>
+	              </li>
 	            </c:forEach>
 	
 	            <c:if test="${pageMaker.next}">
 	              <li class="page-item">
-	              	<a class="page-link" href="#" aria-label="Next">
+	              	<a class="page-link" href="${pageMaker.endPage +1 }" aria-label="Next">
 			        	<span aria-hidden="true">&raquo;</span>
 			        </a>
 	              </li>
@@ -64,13 +65,39 @@
 			</ul>
 		</div>
 		<!--  end Pagination -->
-        
-        
-        
       </div>
+      
+		<form id='actionForm' action="/admin/trdAllPage" method='get'>
+			<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+			<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+		</form>
+      
     </main>
   </div>
 </div>
+
+
+<script type="text/javascript">
+	$(document)
+	.ready(
+	function() {
+	
+		var actionForm = $("#actionForm");
+		
+		$(".page-item a").on(
+			"click",
+			function(e) {
+				e.preventDefault();
+				console.log('click');
+			
+				actionForm.find("input[name='pageNum']")
+						.val($(this).attr("href"));
+				actionForm.submit();
+			});
+	
+	});
+</script>
+
 
 
 <%@include file="/WEB-INF/views/includes/admin_footer.jsp"%>
