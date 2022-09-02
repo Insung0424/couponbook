@@ -1,22 +1,27 @@
 package sol.one.controller;
 
-import java.util.Locale;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import lombok.AllArgsConstructor;
 import sol.one.VO.CommentVO;
 import sol.one.VO.T_tradeVO;
+import sol.one.service.TradeLogService;
 
 @Controller
 @RequestMapping("/product")
+@AllArgsConstructor
 public class ProductController {
+	
+	@Autowired
+	private TradeLogService service;
 
 	@GetMapping("/main")
-	public void main(Locale locale,Model model) {
+	public void main(Model model) {
 		CommentVO vo = new CommentVO();
 		vo.setUser_id(2);
 		vo.setProduct_id(1);
@@ -30,11 +35,14 @@ public class ProductController {
 	@GetMapping("/trade")
 	public void trade() {}
 	
-	@PostMapping("/putTrade")
-	public void putT(int pd_status) {
+	@PostMapping("/postTrade")
+	public String putT(int pd_status) {
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(1);
-		vo.setSell_user_id(3);
+		vo.setBuyer_user_id(3);
+		vo.setSell_user_id(2);
+		service.insertTradeLog(vo);
+		
+		return "redirect:/product/main";
 	}
 }

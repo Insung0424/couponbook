@@ -25,8 +25,8 @@ public class TradeMapperTests {
     @Test
     public void put() {
     	T_tradeVO vo = new T_tradeVO();
-    	vo.setBuyer_user_id(1);
-    	vo.setSell_user_id(2);
+    	vo.setBuyer_user_id(3);
+    	vo.setSell_user_id(1);
     	vo.setPd_status(1);
     	log.info(vo);
     	log.info(mapper.put(vo));

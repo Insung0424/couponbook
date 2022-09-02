@@ -4,20 +4,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
 <title>Main</title>
 <link rel="stylesheet" href="/resources/report.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Custom fonts for this template-->
+<link href="../resources/vendor/fontawesome-free/css/all.min.css"
+   rel="stylesheet" type="text/css">
+<link
+   href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+   rel="stylesheet">
+
+<!-- Custom styles for this template-->
+<link href="../resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../resources/home.css">
+<link
+   href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
+   rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet"
+   href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="../resources/css/style.css">
 
 </head>
 <body>
 
 <!-- 거래완료 -->
-<input type="button" class="modal_TradingEnd" id="modal_TradingEnd" value="거래완료하기"/>
+<input type="button" class="modal_TradingEnd" 
+style="display: block;" value="거래완료하기"/>
 <div class="modal_trade">
 	<div class="modal_trade_content"></div>
 </div>
-
 
 <!-- 신고 기능 모달 창 -->
 <button class="modal_btn_report">신고</button>
@@ -61,12 +85,14 @@ $("#report_cancel").click(function(){
 });
 
 $(".modal_TradingEnd").click(function(){
-	$(".modal_TradingEnd").hide();
+	//버튼 숨기기,보이기
+	$(".modal_TradingEnd").toggle(); 
+	// 거래 완료 유형선택자 페이지 제공	
 	$(".modal_trade_content").load("trade");
-	
-	$(".cancel").click(function(){
-		$(".modal_TradingEnd").show();
-	});
+	// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+	if($(".modal_trade_content").load("trade")){
+		$(".modal_trade_content").show("trade");
+	}
 });
 </script>
 </body>

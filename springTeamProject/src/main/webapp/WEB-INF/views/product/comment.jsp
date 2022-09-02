@@ -201,7 +201,7 @@ function getList() {
 			}else if(count == 0){
 				comment_html += "댓글을 등록해주세요</div>";
         	}else if(count == 1){
-				comment_html += "아직 거래가 시작되지 않았습니다</div>";
+				comment_html += "아직 판매자가 댓글을 확인하지않았습니다</div>";
 			}else{
 			
 				for(i = 0;i < list.length;i++){
