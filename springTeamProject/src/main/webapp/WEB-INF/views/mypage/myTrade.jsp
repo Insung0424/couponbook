@@ -31,19 +31,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${trade }" var="tr">
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
+						
 							<tr>
 								
-								<td><c:out value="${tr.product_id}" /></td>
-								<td><c:out value="${tr.buyer_user_id}"/></td>
-								<td><c:out value="${tr.seller_user_id}"/></td>
-								<td><c:out value="${tr.pd_status}"/></td>
-								<td><c:out value="${tr.trade_created}"/></td>
+								<td><c:out value="${trade.product_id}" /></td>
+								<td><c:out value="${trade.buyer_user_id}"/></td>
+								<td><c:out value="${trade.sell_user_id}"/></td>
+								<td><c:out value="${trade.pd_status}"/></td>
+								<td><c:out value="${trade.trade_time}"/></td>
 								
 								
 								
 							</tr>
-						</c:forEach>
+				
 					</tbody>
 
 				</table>

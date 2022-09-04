@@ -34,6 +34,7 @@
 						</tr>
 					</thead>
 					<tbody>
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
 						
 							<tr>
 								

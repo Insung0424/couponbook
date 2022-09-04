@@ -20,27 +20,23 @@
 					class="table table-striped table-bordered table-hover"
 					id="dataTables-example">
 					<thead>
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
 						<tr>
 							<th>유저아이디</th>
 							<th>신고종류</th>
 							<th>신고내용</th>
-						
-
+							<th>신고시간</th>
 						</tr>
 					</thead>
-					<tbody>
-						<c:forEach items="${report }" var="re">
-							<tr>
-								
-								<td><c:out value="${re.user_id}" /></td>
-								<td><c:out value="${re.re_title}"/></td>
-								<td><c:out value="${re.re_content}"/></td>
-								<td><c:out value="${re.re_time}"/></td>
-								
-								
+					<tbody>					
+							<tr>							
+								<td><c:out value="${report.user_id}" /></td>
+								<td><c:out value="${report.re_title}"/></td>
+								<td><c:out value="${report.re_content}"/></td>
+								<td><c:out value="${report.re_time}"/></td>
 								
 							</tr>
-						</c:forEach>
+						
 					</tbody>
 
 				</table>

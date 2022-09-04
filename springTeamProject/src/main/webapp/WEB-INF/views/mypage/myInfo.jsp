@@ -30,15 +30,16 @@
 						</tr>
 					</thead>
 					<tbody>
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
 						
 							<tr>
 								
-								<td><c:out value="${info.email}" /></td>
-								<td><c:out value="${info.nickname}"/></td>
-								<td><c:out value="${info.user_grade}"/></td>
-								<td><c:out value="${info.user_name}"/></td>
-								<td><c:out value="${info.phone}"/></td>
-								<td><c:out value="${info.addr}"/></td>
+								<td><c:out value="${user.email}" /></td>
+								<td><c:out value="${user.nickname}"/></td>
+								<td><c:out value="${user.user_grade}"/></td>
+								<td><c:out value="${user.user_name}"/></td>
+								<td><c:out value="${user.phone}"/></td>
+								<td><c:out value="${user.addr}"/></td>
 								
 							</tr>
 						

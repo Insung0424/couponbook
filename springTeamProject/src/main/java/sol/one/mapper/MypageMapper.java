@@ -21,7 +21,7 @@ public interface MypageMapper {
 	public void update_info_mypage(UserVO user) throws Exception;
 	
 	// ȸ�� Ż��
-	public void delete_info_mypage(UserVO user)throws Exception;
+	public void delete_info_mypage(int user_id)throws Exception;
 	
 	// ���������� �� ���ɻ�ǰ ��ȸ�ϱ�
 	public LikeVO list_like_mypage(int user_id) throws Exception;
@@ -40,5 +40,7 @@ public interface MypageMapper {
 
 	// ���������� �� ���� ���� �� ������ ���� ��й�ȣ üũ
 	public int check_password_mypage(UserVO user) throws Exception;
+
+
 	
 }

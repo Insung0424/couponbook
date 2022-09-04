@@ -87,17 +87,14 @@ public class MypageServiceImpl implements MypageService {
 
 	@Override
 	public int check_password_mypage(UserVO user) throws Exception {
-		log.info("check_password_mypage");
-		int result=mapper.check_password_mypage(user);
-		
-		return result;
+		return mapper.check_password_mypage(user);
 		
 	}
 
 	@Override
-	public void delete_info_mypage(UserVO user) throws Exception {
+	public void delete_info_mypage(int user_id) throws Exception {
 		log.info("delete_info_mypage");
-		mapper.delete_info_mypage(user);
+		mapper.delete_info_mypage(user_id);
 		
 	}
 }

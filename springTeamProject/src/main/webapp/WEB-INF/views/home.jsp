@@ -15,15 +15,79 @@
 </head>
 <a href="/board/list">게시판</a><br />
 <script type="text/javascript">
+	function myPage(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '/mypage/myInfo');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function myBoard(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '/mypage/myBoard');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function myComment(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '/mypage/myComment');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function myLike(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '/mypage/myLike');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function myReport(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '/mypage/myReport');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function myTrade(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '/mypage/myTrade');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function delete_info(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'get');
+		    f.setAttribute('action', '/mypage/delete_info_mypageView');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function myUpdate(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'get');
+		    f.setAttribute('action', '/mypage/updateView');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+	function goReport(){
+		 let f = document.createElement('form');
+		    f.setAttribute('method', 'get');
+		    f.setAttribute('action', '/mypage/goReport');
+		    document.body.appendChild(f);
+		    f.submit();
+	}
+
+
 	$(document).ready(function(){
 		$("#logoutBtn").on("click", function(){
 			location.href="mypage/logout";
 		})
-			$("#UpdateBtn").on("click", function(){
-			location.href="mypage/updateView?user_id=${user_id}";
-		})
+			
 		
 	})
+
 </script>
 <body>
 	<form name='homeForm' method="post" action="/mypage/login">
@@ -43,8 +107,8 @@
 		</c:if>
 		<c:if test="${user != null }">
 			<div>
-				<p>${user.user_id}님 환영 합니다.</p>
-				<button id="UpdateBtn" type="button">회원정보수정</button>
+				<p>${user.user_name}님 환영 합니다.</p>
+			
 				<button id="logoutBtn" type="button">로그아웃</button>
 			</div>
 		</c:if>
@@ -52,13 +116,17 @@
 			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
 		</c:if>
 	</form>
-<a href="/mypage/myInfo?user_id=${user.user_id}">myinfo</a>
-<a href="/mypage/delete_info_mypageView">delete_info</a>
-<a href="/mypage/myBoard?user_id=${user.user_id}">myboard</a>
-<a href="/mypage/myCommentView">mycomment</a>
-<a href="/mypage/myLikeView">mylike</a>
-<a href="/mypage/myReportView">myreport</a>
-<a href="/mypage/myTradeView">mytrade</a>
+<!--a href="/mypage/myInfo?user_id=${user.user_id }">myinfo</a>-->
+<a href="javascript:void(0)"onClick="javascript:myUpdate()">myupdate</a>
+<a href="javascript:void(0)"onClick="javascript:myPage()">myinfo</a>
+<a href="javascript:void(0)"onClick="javascript:delete_info()">delete_info</a>
+<a href="javascript:void(0)"onClick="javascript:myBoard()">myboard</a>
+<a href="javascript:void(0)"onClick="javascript:myComment()">mycomment</a>
+<a href="javascript:void(0)"onClick="javascript:myLike()">mylike</a>
+<a href="javascript:void(0)"onClick="javascript:myReport()">myreport</a>
+<a href="javascript:void(0)"onClick="javascript:myTrade()">mytrade</a>
+<a href="javascript:void(0)"onClick="javascript:goReport()">goReport</a>
+
 
 </body>
 </html>

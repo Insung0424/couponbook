@@ -17,14 +17,14 @@ public interface MypageService {
 	//�׽�Ʈ�� �α���
 	public UserVO login(UserVO user)throws Exception;
 	
-	//���������� �� ���� ��ȸ�ϱ�
+	//���������� �� ���� ��ȸ�ϱ� ****
 	public UserVO list_user_mypage(int user_id) throws Exception;
 	
 	//���������� �� ���� �����ϱ�
 	public void update_info_mypage(UserVO user) throws Exception;
 	
 	//ȸ�� Ż��
-	public void delete_info_mypage(UserVO user)throws Exception;
+	public void delete_info_mypage(int user_id)throws Exception;
 	
 	//���������� �� ���ɻ�ǰ ��ȸ�ϱ�
 	public LikeVO list_like_mypage(int user_id) throws Exception;

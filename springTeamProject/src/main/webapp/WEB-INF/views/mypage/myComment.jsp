@@ -30,16 +30,17 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${comment }" var="co">
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
+					
 							<tr>
 								
-								<td><c:out value="${co.product_id}" /></td>
-								<td><c:out value="${co.user_id}"/></td>
-								<td><c:out value="${co.com_content}"/></td>
-								<td><c:out value="${co.com_created}"/></td>
+								<td><c:out value="${comment.product_id}" /></td>
+								<td><c:out value="${comment.user_id}"/></td>
+								<td><c:out value="${comment.comment_content}"/></td>
+								<td><c:out value="${comment.comment_write_time}"/></td>
 						
 							</tr>
-						</c:forEach>
+					
 					</tbody>
 
 				</table>

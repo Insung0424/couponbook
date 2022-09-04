@@ -19,7 +19,9 @@
 				<table width="100%"
 					class="table table-striped table-bordered table-hover"
 					id="dataTables-example">
+					
 					<thead>
+					
 						<tr>
 							<th>유저아이디</th>
 							<th>제품번호</th>
@@ -29,7 +31,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${like }" var="like">
+					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
+						
 							<tr>
 								
 								<td><c:out value="${like.user_id}" /></td>
@@ -39,7 +42,7 @@
 								
 								
 							</tr>
-						</c:forEach>
+						
 					</tbody>
 
 				</table>

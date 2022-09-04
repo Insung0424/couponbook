@@ -24,7 +24,6 @@ public class MypageMapperImpl implements MypageMapper{
 	
 	private static final Logger log = LoggerFactory.getLogger(MypageMapperImpl.class);
 	
-	private final MypageMapper mapper;
 	
 	@Resource(name = "sqlSession")
 	SqlSession sqlSession;
@@ -32,7 +31,7 @@ public class MypageMapperImpl implements MypageMapper{
 	@Override
 	public UserVO login(UserVO user) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("MypageMapper.login",user);
 	}
 
 	@Override
@@ -48,21 +47,21 @@ public class MypageMapperImpl implements MypageMapper{
 	}
 
 	@Override
-	public void delete_info_mypage(UserVO user) throws Exception {
-		// TODO Auto-generated method stub
+	public void delete_info_mypage(int user_id) throws Exception {
+		sqlSession.update("MypageMapper.delete_info_mypage",user_id);
 		
 	}
 
 	@Override
 	public LikeVO list_like_mypage(int user_id) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("MypageMapper.list_like_mypage",user_id);
 	}
 
 	@Override
 	public TradeVO list_trade_mypage(int user_id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+		return sqlSession.selectOne("MypageMapper.list_trade_mypage",user_id);
 	}
 
 	@Override
@@ -87,6 +86,7 @@ public class MypageMapperImpl implements MypageMapper{
 	public int check_password_mypage(UserVO user) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("MypageMapper.check_password_mypage",user);
+		
 	}
 
 }

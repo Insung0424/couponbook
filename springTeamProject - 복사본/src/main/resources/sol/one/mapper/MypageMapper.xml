@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sol.one.mapper.MypageMapper">
+	
+	<!-- 테스트용 로그인 -->
+	<select id="login" resultType="sol.one.VO.UserVO">
+		select *
+		from
+			pj_user
+		where
+			user_id =#{user_id}
+		and
+			password =#{password}
+	</select>
+
+
+
+	<!-- 마이페이지 내 정보 조회 -->
+	<select resultType="sol.one.VO.UserVO" id="list_user_mypage" parameterType="int">
+		select *from pj_user where user_id=#{user_id}
+	</select>
+
+
+	<!-- 마이페이지 내 정보 수정 -->
+	<update id="update_info_mypage" >
+		update pj_user
+		set
+			email = #{email},
+			nickname=#{nickname},
+			password=#{password},
+			user_name=#{user_name},
+			phone=#{phone},
+			addr=#{phone}
+		where
+			user_id = #{user_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="delete_info_mypage">
+	DELETE FROM pj_user
+	WHERE user_id = #{user_id}
+	  AND password = #{password} 
+	</delete>
+
+	<!-- 마이페이지 내 관심상품 조회 -->
+	<select resultType="sol.one.VO.LikeVO" id="list_like_mypage">
+		select * 
+		from 
+			pj_Like
+		where 
+			user_id=#{user_id}
+		order by 
+			like_time desc
+	</select>
+		<!--마이페이지 내 거래내역 로그  -->
+	<select resultType="sol.one.VO.TradeVO" id="list_trade_mypage">
+		select * from pj_Trade
+		where 
+			buyer_user_id=#{buyer_user_id}
+		or
+			seller_user_id=#{seller_user_id}
+		order by 
+			trade_created desc
+	</select>
+	<select resultType="sol.one.VO.BoardVO" id="list_board_mypage">
+		select * 
+		from 
+			pj_Board
+		where user_id=#{user_id}
+		order by 
+			board_write_time desc
+	</select>
+	<select resultType="sol.one.VO.CommentVO" id="list_comment_mypage">
+		select * 
+		from 
+			pj_Comment
+		where 
+			user_id=#{user_id}
+		order by
+			comment_write_time desc
+	</select>
+	<select resultType="sol.one.VO.ReportVO" id="list_report_mypage">
+		select * 
+		from 
+			pj_Report
+		where
+		    user_id=#{user_id}
+		order by
+			re_time desc
+	</select>
+	<select id="check_password_mypage" resultType="int">
+		select
+			count(*)
+		from 
+			pj_user
+		where
+			user_id=#{user_id} 
+		and 
+			password=#{password}
+		
+	</select>
+	
+
+
+</mapper>

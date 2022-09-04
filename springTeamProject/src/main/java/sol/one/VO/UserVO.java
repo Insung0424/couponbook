@@ -1,5 +1,7 @@
 package sol.one.VO;
 
+
+
 import lombok.Data;
 
 @Data
@@ -9,7 +11,7 @@ public class UserVO {
 	private String email;
 	private String nickname;
 	private String password;
-	private String user_name;
+	private String user_name;	
 	private String phone;
 	private String addr;
 	private int user_grade;
