@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import sol.one.VO.CommentVO;
 import sol.one.mapper.CommentMapper;
 
-@Service("ReplyService")
+@Service
 @RequiredArgsConstructor
 public class CommentServiceImple implements CommentService{
 

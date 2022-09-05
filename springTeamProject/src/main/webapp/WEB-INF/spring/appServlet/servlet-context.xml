@@ -38,7 +38,7 @@
 	</interceptors> -->
 
 	<!-- 인터셉터 설정  /adminMain -->
-    <interceptors>
+    <!--<interceptors>
        <interceptor>
            <mapping path="/adminMain"/>
            <mapping path="member/myPage"/>

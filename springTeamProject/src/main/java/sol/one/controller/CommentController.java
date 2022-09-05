@@ -25,7 +25,6 @@ import sol.one.service.CommentService;
 public class CommentController {
 	
 	@Autowired
-	@Qualifier(value = "ReplyService")
 	private CommentService service;
 	
 	@PostMapping("/new")
