@@ -23,8 +23,8 @@
               <th scope="col">거래 일시</th>
             </tr>
           </thead>
+
           <tbody>
-          
           <c:forEach items="${tradeAll }" var="tAllList">
             <tr>
               <td> <c:out value="${tAllList.product_id }" /> </td>
@@ -34,9 +34,25 @@
               <td> <c:out value="${fn:substring(tAllList.trade_time,0,10) }" /></td>
             </tr>
            </c:forEach>
-
           </tbody>
         </table>
+        
+        <!-- 검색기능 추가  -->
+        <form id='searchTrdForm' action="/admin/trdAllPage" method='get'>
+        <div class="bd-search  d-flex justify-content-end" id="trdSearch" >
+        	<div class="input-group mb-3 w-50">
+         
+		  		<input type="text" class="datepicker_input form-control" placeholder="검색  시작일" id="sdate" name="sdate" value='<c:out value="${pageMaker.cri.sdate}"/>' required aria-label="Date input 3 (using aria-label)">
+		  		<input type="text" class="datepicker_input form-control" placeholder="검색  종료일" id="edate" name='edate' value='<c:out value="${pageMaker.cri.edate}"/>' required aria-label="Date input 3 (using aria-label)">
+         
+	        	<!-- 검색 조건 설정  pageMaker.cri.type 은 input hidden 으로 넘겨줌 : 날짜만 검색  -->
+				<input type='hidden' name='type' value='<c:out value="T"/>' />  
+				<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
+				<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
+				<button class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+			</div>
+        </div>
+        </form>
         
         <!-- 페이징 추가 -->
         <div  aria-label="Page navigation example" class='pull-right'>
@@ -78,9 +94,7 @@
 
 
 <script type="text/javascript">
-	$(document)
-	.ready(
-	function() {
+	$(document).ready( function() {
 	
 		var actionForm = $("#actionForm");
 		
@@ -94,10 +108,37 @@
 						.val($(this).attr("href"));
 				actionForm.submit();
 			});
+		
+		
+		var sdate = $("#sdate");
+		$('.datepicker_input').datepicker({
+		    format: 'yyyy-mm-dd',
+		    autoclose: true,
+		    startDate: sdate.val(),
+		    language: 'ko'
+		})
+		.on('changeDate', function (e) {
+	 
+	         console.log(e.date +" / "+ sdate.val() );
+	      });
+		
+		
+		var searchTrdForm = $("#searchTrdForm");
+		$("#searchTrdForm button").on( "click",
+			function(e) {
+				if (!searchTrdForm.find( "input[name='sdate']").val()) {
+					alert("날짜를 입력하세요");
+					return false;
+				}
+				searchTrdForm.find("input[name='pageNum']").val("1");
+				e.preventDefault();
+				searchTrdForm.submit();
+			});
+		
+		
 	
 	});
 </script>
-
 
 
 <%@include file="/WEB-INF/views/includes/admin_footer.jsp"%>

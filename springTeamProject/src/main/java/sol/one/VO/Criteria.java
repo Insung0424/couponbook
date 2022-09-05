@@ -16,6 +16,9 @@ public class Criteria {
   //검색종류, 검색어
   private String type;
   private String keyword;
+  
+  private String sdate;
+  private String edate;
 
   public Criteria() {
     this(1, 10);

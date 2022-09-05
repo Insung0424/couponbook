@@ -41,7 +41,7 @@
 	        <form id='searchMemForm' action="/admin/memList" method='get'>
         <div class="bd-search  d-flex justify-content-end" id="memSearch" >
 	        <div class="input-group mb-3 w-25">
-	        	<!-- 검색 조건 설정 ${pageMaker.cri.type 은 input hidden 으로 넘겨줌 -->
+	        	<!-- 검색 조건 설정 pageMaker.cri.type 은 input hidden 으로 넘겨줌 -->
 				<input type="text" class="form-control" name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' placeholder="검색어를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
 				<input type='hidden' name='type' value='<c:out value="TWC"/>' /> 
 				<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
@@ -115,15 +115,12 @@
 					alert("검색종류를 선택하세요");
 					return false;
 				} */
-
 				if (!searchMemForm.find( "input[name='keyword']").val()) {
 					alert("키워드를 입력하세요");
 					return false;
 				}
-
 				searchMemForm.find("input[name='pageNum']").val("1");
 				e.preventDefault();
-
 				searchMemForm.submit();
 			});
 	

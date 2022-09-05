@@ -2,7 +2,6 @@
 function getGraph(){
 	var tradeCntList = [];
 	var cntDate = $('#chkDay').val();
-	console.log(cntDate);
 	
 	$.ajax({
 		url:'/tradeWeekCnt',

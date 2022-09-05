@@ -22,6 +22,20 @@
 		</trim>
 	</sql>
 	
+	<sql id="criteria_date">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							trade_time between #{sdate} and #{edate}  
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
 	<select id="tradeWeekCnt" resultType="int">
 		select count(*) from pj_trade_test 
 		where pd_status = 1  
@@ -55,14 +69,21 @@
 			(
 			select ROWNUM rn, product_id, sell_user_id, buyer_user_id, pd_status, trade_time 
 		 	from pj_trade_test  
-			where rownum <= #{pageNum} * #{amount}
+			where 
+		]]>
+		
+		<include refid="criteria_date"></include> 
+		<![CDATA[
+			rownum <= #{pageNum} * #{amount}
 			)
 		where rn > (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>
 
 	<select id="getTotalTrdCnt" resultType="int">
-		select count(*) from pj_trade_test where product_id is not null
+		select count(*) from pj_trade_test where 
+		<include refid="criteria_date"></include>    
+		product_id is not null
 	</select>
 
 	<select id="getMemList" resultType="sol.one.VO.MemberVO">
