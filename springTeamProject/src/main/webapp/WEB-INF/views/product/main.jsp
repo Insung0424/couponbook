@@ -13,6 +13,8 @@
 
 <title>Main</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../resources/ckeditor/ckeditor.js"></script>
+
 <!-- Custom fonts for this template-->
 <link href="../resources/vendor/fontawesome-free/css/all.min.css"
    rel="stylesheet" type="text/css">
@@ -64,7 +66,10 @@ style="display: block;" value="거래완료하기"/>
 			</div>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
-			  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+			  <textarea class="form-control" id="editor4" name="editor4" rows="5"></textarea>
+				<script type="text/javascript">
+				    CKEDITOR.replace( 'editor4' );
+				</script>
 			</div>
 		</div>
 		<div class="modal-footer">

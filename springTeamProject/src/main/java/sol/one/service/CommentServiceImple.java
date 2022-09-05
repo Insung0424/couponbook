@@ -60,7 +60,7 @@ public class CommentServiceImple implements CommentService{
 	}
 
 	@Override
-	public String getLevel(int product_id,int user_id) {
+	public int[] getLevel(int product_id,int user_id) {
 		return mapper.getCommentNoLevel(product_id,user_id);
 	}
 

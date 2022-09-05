@@ -24,7 +24,7 @@ public class CommentMapperTests {
     
     @Test
     public void getLevel() {
-    	String comment_no_level = mapper.getCommentNoLevel(1,2);
+    	int[] comment_no_level = mapper.getCommentNoLevel(1,2);
     	log.info(comment_no_level);
     }
     

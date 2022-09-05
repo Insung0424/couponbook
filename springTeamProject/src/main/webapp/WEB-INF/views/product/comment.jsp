@@ -8,27 +8,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <style>
+
 #modal{ 
   position:absolute; width:100%; height:100%; background: rgba(0,0,0,0.8); top:0; left:0; display:none;
 }
 
 #modal_content{
-  width:400px; height:200px;
+  width: 50%; height:32%;
   background:#fff; border-radius:10px;
   position:relative; top:50%; left:50%;
-  margin-top:-100px; margin-left:-200px;
+  margin-top:-100px; margin-left: -25%;
   text-align:center;
-  box-sizing:border-box; padding:74px 0;
-  line-height:23px;
-}
-
-#modal_content2{
-  width:600px; height:400px;
-  background:#fff; border-radius:10px;
-  position:relative; top:30%; left:30%;
-  margin-top:-100px; margin-left:-200px;
-  text-align:center;
-  box-sizing:border-box; padding:74px 0;
+  box-sizing:border-box; padding:50px 0;
   line-height:23px;
 }
 
@@ -39,44 +30,52 @@
 </style>
 </head>
 <body>
-	<h3>댓글</h3>
-	<hr>
-	<div id="comment_add">
-		<table class="comment_table">
-			<tr>
-				<td class="title">작성자</td>
-				<td class="input"><input type="text" id="writer" readonly value="${vo.user_id }"/></td>
-			</tr>
-			<tr>
-				<td class="title">댓글내용</td>
-				<td class="input"><textarea rows="3" cols="50" id="com_content"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="btn">
-				<button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
-				<input type="button" id="more_comment" value="댓글 보기" class="btn btn-primary"></td>
-			</tr>
-		</table>
-		<div id="add_message">&nbsp;</div>
+	<div class="modal-header">
+		<div class="modal-title">
+			댓글
+		</div>
+	</div>
+	<div class="modal-body">
+		<div class="mb-3">
+			작성자
+			<input type="text" id="writer" readonly value="${vo.user_id }" class="form-control"/>
+		
+			내용
+			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="5"></textarea>
+			<script type="text/javascript">
+			    CKEDITOR.replace( 'editor1' );
+			</script>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
+		<input type="button" id="more_comment" value="댓글 보기" class="btn btn-primary">
 	</div>
 	
 	<span id="comment_list"></span>
 	
 	<div id='modal'>
 		<div id='modal_content'>
-			<table class="modal_comment_table">
-				<tr>
-					<td class="modal_title">댓글</td>
-				</tr>
-				<tr>
-					<td class="modal_input"><textarea rows="3" cols="40" id="modal_com_content"></textarea></td>
-				</tr>
-				<tr>
-					<td class="modal_btn">
-					<button type="button" id="modal_modify_btn" class="btn btn-primary">입력</button>
-					<button type="button" id="modal_modify_cancel_btn" class="btn btn-primary">수정취소</button></td>
-				</tr>
-			</table>
+			<div class="modal-header">
+				<div class="modal-title">
+					내용
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+ 					<span aria-hidden="true" style="font-size: 1em;">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="mb-3">
+				  <textarea class="form-control" id="editor2" name="editor2" class="modal_com_content" rows="5"></textarea>
+					<script type="text/javascript">
+					    CKEDITOR.replace( 'editor2' );
+					</script>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="modal_modify_btn" class="btn btn-primary">등록</button>
+				<button type="button" id="modal_modify_cancel_btn" class="btn btn-primary">취소</button></td>
+			</div>
 		</div>
 	</div>
 	
@@ -84,12 +83,12 @@
 $("#add_btn").click(function(){
 	const product_id = ${vo.product_id};
 	const user_id = ${vo.user_id};
-	const comment_content = $("#com_content").val();
+	const comment_content = $(".com_content").val();
 	
 	if(user_id == ''){
 			alert('로그인 후 이용해주세요');
 			return;
-	}else if(com_content == '') {
+	}else if(comment_content == '') {
 		alert('내용을 입력하세요');
 	}
 	
@@ -114,7 +113,7 @@ $("#add_btn").click(function(){
 				if(data == "InsertSuccess") {
 					console.log('댓글 등록 완료')
 					$('#user_id').val(${vo.user_id});
-  					$('#com_content').val('');
+  					$('.com_content').val('');
   					let user_id = ${vo.user_id};
   	              	if(user_id  == 1){
   	              		getAllList();
@@ -247,7 +246,6 @@ $("#more_comment").click(function(){
 	else{//구매자일경우
 		getList(); 
 	}
-	
 });
 
 $(document).on("click", "#delete", function(){
@@ -283,11 +281,16 @@ $(document).on("click", "#update", function(){
 	$("#modal_modify_cancel_btn").click(function(){
 		$("#modal").fadeOut();
 	});
+	$(".close").click(function(){
+		$("#modal").fadeOut();
+	});
+	
 	$("#modal_modify_btn").click(function(){
-		const modal_com_content = $("#modal_com_content").val();
-		console.log(comment_no);
-		console.log(modal_com_content);
+		const modal_com_content = $(".modal_com_content").val();
 		console.log('댓글수정');
+		if(modal_com_content == ''){
+			alert("내용을 입력해주세요");
+		}
 	           $.ajax({
 	               type:'put',
 	               url:'<c:url value="/replies/update"/>',
@@ -300,7 +303,7 @@ $(document).on("click", "#update", function(){
 	               contentType: 'application/json',
 	               success:function(data){
 	            		console.log('통신성공'+data);
-	  					$('#modal_com_content').val('');
+	  					$('.modal_com_content').val('');
 	 	                $("#modal").fadeOut();
 	 	                let user_id = ${vo.user_id};
 	 		            if(user_id  == 1){
@@ -321,16 +324,23 @@ $(document).on("click", "#update", function(){
 });
 
 $(document).on("click", "#answer", function(){
-	$('#modal_com_content').val('');
+	$('.modal_com_content').val('');
 	const comment_no_level = $(this).data("id");
 	$("#modal").fadeIn();
 	$("#modal_modify_cancel_btn").click(function(){
 		$("#modal").fadeOut();
 	});
+	$(".close").click(function(){
+		$("#modal").fadeOut();
+	});
 	$("#modal_modify_btn").click(function(){
-		const modal_com_content = $("#modal_com_content").val();
+		const modal_com_content = $(".modal_com_content").val();
 		const product_id = ${vo.product_id};
 		const user_id = ${vo.user_id};
+		
+		if(modal_com_content == ''){
+			alert("내용을 입력해주세요");
+		}
 		
 		console.log('답글');
 	           $.ajax({
@@ -349,7 +359,7 @@ $(document).on("click", "#answer", function(){
 	               success:function(data){
 	            	   if(data == "insert"){
 	            		console.log('통신성공'+data);
-	            		$('#modal_com_content').val('');
+	            		$('.modal_com_content').val('');
 	 	                $("#modal").fadeOut();
 	 	                let user_id = ${vo.user_id};
 	 		            if(user_id  == 1){

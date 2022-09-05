@@ -59,16 +59,13 @@ public class CommentController {
 		System.out.println("good?");
 		Map<String,Object> map = new HashMap<>();
 		
-		String comment_no_level = service.getLevel(product_id,user_id_1);
-		if(comment_no_level != null) {
-			int count = service.countComment(Integer.valueOf(comment_no_level));
+		int[] comment_no_level = service.getLevel(product_id,user_id_1);
+		if(comment_no_level.length > 0) {
 			
 			ModelAndView view = new ModelAndView();
 			view.setViewName("redirect:/product/main");
 			
-			if(count<2) {
-				map.put("count", count);
-			}
+			map.put("count", comment_no_level.length);
 			
 			List<CommentVO> list = service.getComment(product_id,user_id_1,user_id_2);
 			map.put("list", list);

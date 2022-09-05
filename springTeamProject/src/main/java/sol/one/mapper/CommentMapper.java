@@ -16,7 +16,7 @@ public interface CommentMapper {
 	
 	public int countMyComment(int comment_no_level);
 	
-	public String getCommentNoLevel(@Param("product_id")int product_id,@Param("user_id")int user_id);
+	public int[] getCommentNoLevel(@Param("product_id")int product_id,@Param("user_id")int user_id);
 	
 	public List<CommentVO> read(@Param("product_id")int product_id,@Param("user_id_1")int user_id_1,@Param("user_id_2")int user_id_2);
 	
