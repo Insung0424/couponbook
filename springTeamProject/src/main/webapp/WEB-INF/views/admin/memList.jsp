@@ -37,6 +37,21 @@
           </tbody>
         </table>
         
+        <!-- 검색기능 추가 -->
+	        <form id='searchMemForm' action="/admin/memList" method='get'>
+        <div class="bd-search  d-flex justify-content-end" id="memSearch" >
+	        <div class="input-group mb-3 w-25">
+	        	<!-- 검색 조건 설정 ${pageMaker.cri.type 은 input hidden 으로 넘겨줌 -->
+				<input type="text" class="form-control" name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' placeholder="검색어를 입력하세요" aria-label="Recipient's username" aria-describedby="button-addon2">
+				<input type='hidden' name='type' value='<c:out value="TWC"/>' /> 
+				<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
+				<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
+				<button class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
+			
+			</div>
+        </div>
+			</form>
+        
         <!-- 페이징 추가 -->
         <div  aria-label="Page navigation example" class='pull-right'>
 			<ul class="pagination justify-content-center">
@@ -82,9 +97,7 @@
 	function() {
 	
 		var actionForm = $("#actionForm");
-		
-		$(".page-item a").on(
-			"click",
+		$(".page-item a").on( "click",
 			function(e) {
 				e.preventDefault();
 				console.log('click');
@@ -92,6 +105,26 @@
 				actionForm.find("input[name='pageNum']")
 						.val($(this).attr("href"));
 				actionForm.submit();
+			});
+		
+		
+		var searchMemForm = $("#searchMemForm");
+		$("#searchMemForm button").on( "click",
+			function(e) {
+				/* if (!searchMemForm.find("option:selected") .val()) {
+					alert("검색종류를 선택하세요");
+					return false;
+				} */
+
+				if (!searchMemForm.find( "input[name='keyword']").val()) {
+					alert("키워드를 입력하세요");
+					return false;
+				}
+
+				searchMemForm.find("input[name='pageNum']").val("1");
+				e.preventDefault();
+
+				searchMemForm.submit();
 			});
 	
 	});

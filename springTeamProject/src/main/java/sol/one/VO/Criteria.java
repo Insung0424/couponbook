@@ -13,6 +13,7 @@ public class Criteria {
   private int pageNum;
   private int amount;
   
+  //검색종류, 검색어
   private String type;
   private String keyword;
 

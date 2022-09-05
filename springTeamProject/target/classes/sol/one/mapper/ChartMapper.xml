@@ -2,6 +2,26 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="sol.one.mapper.ChartMapper">
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							user_name like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'C'.toString()">
+							nickname like '%'||#{keyword}||'%' 
+						</when>
+						<when test="type == 'W'.toString()">
+							email like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	
 	<select id="tradeWeekCnt" resultType="int">
 		select count(*) from pj_trade_test 
 		where pd_status = 1  
@@ -53,13 +73,21 @@
 			(
 			select ROWNUM rn,  user_id, email, nickname, password, user_name, phone, addr, user_grade 
 			from pj_user
-			where rownum <= #{pageNum} * #{amount} 
-			) 
-		where rn > (#{pageNum} - 1) * #{amount} 
+			where  
 		]]>
+		
+		<include refid="criteria"></include> 
+		<![CDATA[
+		   rownum <= #{pageNum} * #{amount}
+		   )
+		where rn > (#{pageNum} -1) * #{amount}   
+		]]>
+		  
 	</select>
 	<select id="getTotalMemCnt" resultType="int">
-		select count(*) from pj_user where email is not null
+		select count(*) from pj_user where 
+		<include refid="criteria"></include>  
+		email is not null
 	</select>
 
 </mapper>
