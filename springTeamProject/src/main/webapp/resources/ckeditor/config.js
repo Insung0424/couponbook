@@ -8,7 +8,6 @@ CKEDITOR.editorConfig = function( config ) {
 	
 	// config.uiColor = '#AADC6E';
 	config.language = 'kr';
-	CKEDITOR.editorConfig = function( config ) {
 		config.toolbarGroups = [
 			{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
 			{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
@@ -27,8 +26,11 @@ CKEDITOR.editorConfig = function( config ) {
 			{ name: 'about', groups: [ 'about' ] }
 		];
 
-		config.removeButtons = 'HiddenField,ShowBlocks,About,Flash,Source,Save,Templates,NewPage,Preview,Print,SelectAll,Scayt,Replace,Find,Anchor,Indent,Outdent,TextField,Textarea,Select,Button,ImageButton,Radio,Checkbox,Form,BulletedList,NumberedList,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language';
+	config.removeButtons = 'HiddenField,ShowBlocks,About,Flash,Source,Save,Templates,NewPage,Preview,Print,SelectAll,Scayt,Replace,Find,Anchor,Indent,Outdent,TextField,Textarea,Select,Button,ImageButton,Radio,Checkbox,Form,BulletedList,NumberedList,Blockquote,CreateDiv,BidiLtr,BidiRtl,Language';
 
-		filebrowserUploadUrl:  "fileupload.do";
-	};
+	
+	config.filebrowserUploadUrl      = "fileupload.do"
+	//config.filebrowserUploadUrl      = '/upload.do?type=Files',
+	//config.filebrowserImageUploadUrl = '/upload.do?type=Images',
+	//config.filebrowserUploadMethod='form'; //파일 오류났을때 alert띄워줌
 };
