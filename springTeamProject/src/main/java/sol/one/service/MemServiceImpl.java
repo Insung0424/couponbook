@@ -27,10 +27,17 @@ public class MemServiceImpl implements MemService {
 	public MemberVO getMemById(MemberVO member) {
 		// 회원1명 정보 가져오기
 		log.info("MemServiceImpl getMemById ------------");
-		
 		return mapper.getMemById(member);
 	}
 
+	@Override
+	public MemberVO adminGetMem(String email) {
+		// 관리자페이지에서 회원 상세조회
+		return mapper.adminGetMem(email);
+	}
+	
+	
+	
 	@Override
 	public int mailChk(String email) {
 		// 메일주소 count 수 반환받기
@@ -41,6 +48,7 @@ public class MemServiceImpl implements MemService {
 		
 		return cnt;
 	}
+
 
 
 

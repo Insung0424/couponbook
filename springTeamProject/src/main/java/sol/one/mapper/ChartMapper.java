@@ -3,6 +3,7 @@ package sol.one.mapper;
 import java.util.List;
 
 import sol.one.VO.Criteria;
+import sol.one.VO.MemberVO;
 import sol.one.VO.T_tradeVO;
 
 public interface ChartMapper {
@@ -36,5 +37,20 @@ public interface ChartMapper {
 	 * @return List<T_tradeVO>
 	 */
 	public List<T_tradeVO> getListWithPaging(Criteria cri);
+	
+	/**
+	 * 거래내역 전체 개수
+	 * @param cri
+	 * @return int
+	 */
+	public int getTotalTrdCnt(Criteria cri);
 
+	/**
+	 * 회원전체목록 + 페이징
+	 * @param cri
+	 * @return List<MemberVO>
+	 */
+	public List<MemberVO> getMemList(Criteria cri);
+	
+	public int getTotalMemCnt(Criteria cri);
 }
