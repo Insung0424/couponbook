@@ -14,8 +14,7 @@
 <script type="text/javascript">
 		$(document).ready(function(){
 		
-			$("#deletee").on("click", function(){
-				
+			$("#deletee").on("click", function(){			
 				if($("#password").val()==""){
 					alert("비밀번호를 입력해주세요");
 					$("#password").focus();
@@ -40,8 +39,7 @@
 					type : "POST",
 					dataType : "json",
 					data : $("#deleteForm").serializeArray(),
-					success: function(data){
-						
+					success: function(data){					
 						if(data==0){
 							alert("비밀번호를 확인해주세요.");
 							return;
@@ -49,8 +47,7 @@
 							if(confirm("탈퇴하시겠습니까?")){
 								$("#deleteForm").submit();
 								alert("회원 탈퇴 성공하였습니다.")
-							}
-							
+							}							
 						}
 					}
 				})
@@ -60,6 +57,7 @@
 	<body>
 		 <form action="/mypage/delete_info_mypage" method="post" id="deleteForm" name="deleteForm">
                        <input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
+                       <input type="hidden" id="session_password" name="session_password" value="${user.password }">
     <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default panel-margin-10">
             <div class="panel-body panel-body-content text-center">

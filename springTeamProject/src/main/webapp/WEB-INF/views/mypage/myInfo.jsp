@@ -13,7 +13,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">마이페이지</div>
-			
+			<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<table width="100%"
@@ -26,20 +26,31 @@
 							<th>회원등급</th>
 							<th>이름</th>
 							<th>연락처</th>
+							<th>우편번호</th>
 							<th>주소</th>
+							<th>상세주소</th>
 						</tr>
 					</thead>
 					<tbody>
-					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
+					
 						
 							<tr>
 								
 								<td><c:out value="${user.email}" /></td>
 								<td><c:out value="${user.nickname}"/></td>
-								<td><c:out value="${user.user_grade}"/></td>
+								<td><c:set var="user_grade" value="${user.user_grade }"/>
+								<c:if test="${user_grade eq 1}">
+								일반회원
+								</c:if>
+								<c:if test="${user_grade eq 2}">
+								관리자
+								</c:if>
+								</td>
 								<td><c:out value="${user.user_name}"/></td>
 								<td><c:out value="${user.phone}"/></td>
+								<td><c:out value="${user.zip_no}"/></td>
 								<td><c:out value="${user.addr}"/></td>
+								<td><c:out value="${user.addr2}"/></td>
 								
 							</tr>
 						

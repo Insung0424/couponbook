@@ -5,6 +5,7 @@ package sol.one.controller;
 
 import java.net.PasswordAuthentication;
 import java.security.Principal;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -26,9 +27,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -54,28 +56,19 @@ public class MypageController {
 
 	//�׽�Ʈ�� �α���
 	@PostMapping("/login")
-	public String login(UserVO user,HttpServletRequest req,
+	public String login(UserVO user,HttpServletRequest request,
 			RedirectAttributes rttr)throws Exception{
 		log.info("post login");
-		HttpSession session=req.getSession();
+		HttpSession session=request.getSession();
 		
 		UserVO login=service.login(user);
-		BoardVO board=service.list_board_mypage(user.getUser_id());
-		CommentVO comment=service.list_comment_mypage(user.getUser_id());
-		LikeVO like=service.list_like_mypage(user.getUser_id());
-		TradeVO trade=service.list_trade_mypage(user.getUser_id());
-		ReportVO report=service.list_report_mypage(user.getUser_id());
 			
 		if (login==null) {
 			session.setAttribute("user", null);
 			rttr.addFlashAttribute("msg",false);
 		}else {
 			session.setAttribute("user", login);
-			session.setAttribute("board", board);
-			session.setAttribute("comment", comment);
-			session.setAttribute("like", like);
-			session.setAttribute("trade", trade);
-			session.setAttribute("report", report);
+
 		}
 		return "redirect:/";
 	}
@@ -109,8 +102,6 @@ public class MypageController {
 	@PostMapping("/update")
 	public String update(UserVO user,HttpSession session) throws Exception{
 		service.update_info_mypage(user);
-		
-		
 //		session.invalidate();
 		
 		return "redirect:/";
@@ -146,33 +137,23 @@ public class MypageController {
 //		return "redirect:/";
 		
 	}
-//	@GetMapping("/myReportView")
-//	public String myReportView() {
-//		return "mypage/myReport";
-//	}
-	
-	// �� �Ű���
+	//내 신고목록
 	@PostMapping("/myReport")
-	public String myReport(UserVO user,HttpSession session)throws Exception{
-		log.info(user.getUser_id()+" myReport");
-		
+	public String myReport(@RequestParam(required = false, value="session_user_id")int user_id,Model model,HttpSession session)throws Exception{
+		log.info(user_id+" myReport");
+		model.addAttribute("report",service.list_report_mypage(user_id));
 		
 //		model.addAttribute("report",service.list_report_mypage(user.getUser_id()));
 //		ReportVO myreport=service.list_report_mypage(user.getUser_id());
 //		session.setAttribute("reports", myreport);
 		return "mypage/myReport";
 	}
-//	@GetMapping("/myLikeView")
-//	public String myLikeView() {
-//		return "mypage/myLike";
-//	}
 	
-	
-	// �� ���ɻ�ǰ
+	// 내 관심목록
 	@PostMapping("/myLike")
-	public String myLike(UserVO user,Model model,HttpSession session) throws Exception {
-		log.info(user.getUser_id()+" myLike");
-//		model.addAttribute("like",service.list_like_mypage(user.getUser_id()));
+	public String myLike(@RequestParam(required = false, value="session_user_id")int user_id,Model model,HttpSession session) throws Exception {
+		log.info(user_id+" myLike");
+		model.addAttribute("like",service.list_like_mypage(user_id));
 		
 		return "mypage/myLike";
 	}
@@ -180,29 +161,28 @@ public class MypageController {
 //	public String myTradeView() {
 //		return "mypage/myTrade";
 //	}
-	// �� �ŷ����
+	//내 거래목록
 	@PostMapping("/myTrade")
-	public String myTrade(UserVO user,Model model,HttpSession session) throws Exception {
-		log.info(user.getUser_id()+" myTrade");
-//		model.addAttribute("trade",service.list_trade_mypage(user.getUser_id()));
+	public String myTrade(@RequestParam(required = false, value="session_user_id")int user_id,Model model,HttpSession session) throws Exception {
+
+		model.addAttribute("trade",service.list_trade_mypage(user_id));
 		
 		return "mypage/myTrade";
 	}
-//	// ���� �� �Խñ�(get)
-//	@GetMapping("/myBoardView")
-//	public String myBoardView() {
+
+
+//	@PostMapping("/myBoard")
+//	public String myBoardView(BoardVO boardVO, Model model) throws Exception {
+//		
+////		List<BoardVO> list=service.list_board_mypage(user_id);
+////		model.addAttribute("board",service.list_board_mypage(boardVO.getUser_id()));
 //		return "mypage/myBoard";
 //	}
-	// ���� �� �Խñ�(post)
+	// 내 게시글목록
 	@PostMapping("/myBoard")
-	public String myBoard(UserVO user,Model model,HttpSession session) throws Exception {
-		log.info(user.getUser_id()+" myBoard");
-		
-//		BoardVO board=(BoardVO) session.getAttribute("user");
-//		BoardVO myboard=service.list_board_mypage(user.getUser_id());
-//		session.setAttribute("boards", myboard);
-
-	
+	public String myBoard(@RequestParam(required = false, value="session_user_id")int user_id,Model model,
+			HttpSession session) throws Exception {
+		model.addAttribute("board",service.list_board_mypage(user_id));
 		return "mypage/myBoard";
 	}
 	
@@ -211,14 +191,14 @@ public class MypageController {
 //		return "mypage/myComment";
 //	}
 	
-	// ���� �� ���
+	//내 댓글목록
 	@PostMapping("/myComment")
-	public String myComment(UserVO user,Model model,HttpSession session)throws Exception {
-		log.info(user.getUser_id()+" myComment");
-//		model.addAttribute("comment",service.list_comment_mypage(user.getUser_id()));
+	public String myComment(@RequestParam(required = false, value="session_user_id")int user_id,Model model,HttpSession session)throws Exception {
+		log.info(user_id+" myComment");
+		model.addAttribute("comment",service.list_comment_mypage(user_id));
 		return "mypage/myComment";
 	}
-	
+	//비밀번호 체크
 	@ResponseBody
 	@PostMapping("/check_password_mypage")
 	public int check_password_mypage(UserVO user) throws Exception{
@@ -226,29 +206,36 @@ public class MypageController {
 		return result;
 	}
 	
-	@GetMapping("/goReport")
+	//신고
+	@PostMapping("/goReport")
 	public String goReport() {
 		return "mypage/goReport";
 	}
-	
+	//신고메일발송
 	@PostMapping("/sendEmail")
-	public void sendEmail(UserVO user,String title,String content,HttpServletRequest request,HttpServletResponse response) throws Exception {
+	public String sendEmail(ReportVO report,String email,String re_title,String re_content,HttpServletRequest request,
+			HttpServletResponse response,HttpSession httpsession) throws Exception {
+			
+		//smtp 설정되어있는 계정의 아이디와 비밀번호
 		String host="smtp.naver.com";
-		final String username="skandy57";
+		final String username="skandy55";
 		final String password="sprtms55'";
 		int port=465;
-		
-		String recipient = "couponbook@naver.com";
-		String subject=title;
-		String body=content;
+				
+		//관리자 메일
+		String recipient = "skandy55@naver.com";
+			
+		String subject=re_title;
+		String body=re_content;
 		
 		Properties props=System.getProperties();
 		
 		props.put("mail.smtp.host", host);
 		props.put("mail.smtp.port", port);
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.ssl.enable", "true");
+		props.put("mail.smtp.auth", true);
+		props.put("mail.smtp.ssl.enable", true);
 		props.put("mail.smtp.ssl.trust", host);
+		props.put("mail.smtp.starttls.enable", true);
 		
 		Session session=Session.getDefaultInstance(props,new javax.mail.Authenticator(){
 			String un=username;
@@ -260,12 +247,17 @@ public class MypageController {
 		session.setDebug(true);
 		
 		Message message= new MimeMessage(session);
-		message.setFrom(new InternetAddress("CouponBook@naver.com"));
+				
+		//문제코드
+		message.setFrom(new InternetAddress("skandy55@naver.com"));
+		//
+		
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-		message.setSubject(subject);
+		message.setSubject(email+"님의 신고 : "+subject);
 		message.setText(body);
 		Transport.send(message);
-		
+		service.go_report(report);
+		return "redirect:/";
 	}
 	
 }

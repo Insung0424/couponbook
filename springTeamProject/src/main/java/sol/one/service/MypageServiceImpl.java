@@ -48,6 +48,12 @@ public class MypageServiceImpl implements MypageService {
 		mapper.update_info_mypage(user);
 
 	}
+	@Override
+	public void go_report(ReportVO report) throws Exception {
+		log.info("go_report");
+		mapper.go_report(report);
+		
+	}
 
 	@Override
 	public UserVO list_user_mypage(int user_id) throws Exception {
@@ -56,31 +62,31 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public LikeVO list_like_mypage(int user_id) throws Exception {
+	public List<LikeVO> list_like_mypage(int user_id) throws Exception {
 		log.info("list_like_mypage");
 		return mapper.list_like_mypage(user_id);
 	}
 
 	@Override
-	public TradeVO list_trade_mypage(int user_id) throws Exception {
+	public List<TradeVO> list_trade_mypage(int user_id) throws Exception {
 		log.info("list_trade_mypage");
 		return mapper.list_trade_mypage(user_id);
 	}
 
 	@Override
-	public BoardVO list_board_mypage(int user_id) throws Exception {
+	public List<BoardVO> list_board_mypage(int user_id) throws Exception {
 		log.info("list_board_mypage");
 		return mapper.list_board_mypage(user_id);
 	}
 
 	@Override
-	public CommentVO list_comment_mypage(int user_id) throws Exception {
+	public List<CommentVO> list_comment_mypage(int user_id) throws Exception {
 		log.info("list_comment_mypage");
 		return mapper.list_comment_mypage(user_id);
 	}
 
 	@Override
-	public ReportVO list_report_mypage(int user_id) throws Exception {
+	public List<ReportVO> list_report_mypage(int user_id) throws Exception {
 		log.info("list_report_mypage");
 		return mapper.list_report_mypage(user_id);
 	}

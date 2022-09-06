@@ -1,50 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">내 댓글 조회</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">내 댓글</div>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<html>
+	<head>
+	 	<title>댓글</title>
+	</head>
+	<body>
+		<div id="root">
+			<header>
+				<h1> 댓글</h1>
+			</header>
+			<hr />
+			 
+			<nav>
+			 내가 작성한 댓글
+			</nav>
+			<hr />			
+			<section id="container">
 			
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<table width="100%"
-					class="table table-striped table-bordered table-hover"
-					id="dataTables-example">
-					<thead>
+				<form>
+				<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
+					<table>
 						<tr>
 							<th>제품번호</th>
 							<th>유저아이디</th>
 							<th>댓글내용</th>
-							<th>게시시간</th>
-						
-							
+							<th>게시시간</th>						
 						</tr>
-					</thead>
-					<tbody>
-					<input type="hidden" id="user_id" name="user_id" value="${user.user_id}">
-					
+						<c:forEach items="${comment}" var = "comment">					
 							<tr>
-								
 								<td><c:out value="${comment.product_id}" /></td>
 								<td><c:out value="${comment.user_id}"/></td>
 								<td><c:out value="${comment.comment_content}"/></td>
 								<td><c:out value="${comment.comment_write_time}"/></td>
-						
 							</tr>
-					
-					</tbody>
-
-				</table>
-				</div>
-				</div>
-				</div>
-				</div>
+						</c:forEach>						
+					</table>
+				</form>
+			</section>
+			<hr/>
+		</div>
+	</body>
+</html>
+				
+				

@@ -5,13 +5,9 @@
 <html>
 <head>
 	<title>Home</title>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<!-- 부가적인 테마 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- 
 </head>
 <a href="/board/list">게시판</a><br />
 <script type="text/javascript">
@@ -27,7 +23,7 @@
 		    f.setAttribute('method', 'post');
 		    f.setAttribute('action', '/mypage/myBoard');
 		    document.body.appendChild(f);
-		    f.submit();
+			f.submit();
 	}
 	function myComment(){
 		 let f = document.createElement('form');
@@ -78,19 +74,15 @@
 		    document.body.appendChild(f);
 		    f.submit();
 	}
-
-
 	$(document).ready(function(){
 		$("#logoutBtn").on("click", function(){
 			location.href="mypage/logout";
 		})
-			
-		
 	})
-
 </script>
 <body>
 	<form name='homeForm' method="post" action="/mypage/login">
+	
 		<c:if test="${user == null}">
 			<div>
 				<label for="user_id"></label>
@@ -101,32 +93,31 @@
 				<input type="password" id="password" name="password">
 			</div>
 			<div>
-				<button type="submit">로그인</button>
-				<button type="button">회원가입</button>
+				<button type="submit">로그인</button>	
 			</div>
 		</c:if>
 		<c:if test="${user != null }">
 			<div>
 				<p>${user.user_name}님 환영 합니다.</p>
-			
 				<button id="logoutBtn" type="button">로그아웃</button>
 			</div>
 		</c:if>
 		<c:if test="${msg == false}">
 			<p style="color: red;">로그인 실패! 아이디와 비밀번호 확인해주세요.</p>
-		</c:if>
+		</c:if></form>
+
+	<form method="post">
+	<!--a href="/mypage/myInfo?user_id=${user.user_id }">myinfo</a>-->
+	<input type="hidden" id="session_user_id" name="session_user_id" value="${user.user_id}">
+	<input type="submit" value="myinfo" formaction="/mypage/myInfo">
+	<input type="button" onClick="javascript:myUpdate()" value="myupdate">
+	<input type="button" onClick="javascript:delete_info()" value="delete_info">
+	<input type="submit" value="myboard" formaction="/mypage/myBoard">
+	<input type="submit" value="mycomment" formaction="/mypage/myComment">
+	<input type="submit" value="mylike" formaction="/mypage/myLike">
+	<input type="submit" value="myreport" formaction="/mypage/myReport">
+	<input type="submit" value="mytrade" formaction="/mypage/myTrade">
+	<input type="submit" value="goReport" formaction="/mypage/goReport">
 	</form>
-<!--a href="/mypage/myInfo?user_id=${user.user_id }">myinfo</a>-->
-<a href="javascript:void(0)"onClick="javascript:myUpdate()">myupdate</a>
-<a href="javascript:void(0)"onClick="javascript:myPage()">myinfo</a>
-<a href="javascript:void(0)"onClick="javascript:delete_info()">delete_info</a>
-<a href="javascript:void(0)"onClick="javascript:myBoard()">myboard</a>
-<a href="javascript:void(0)"onClick="javascript:myComment()">mycomment</a>
-<a href="javascript:void(0)"onClick="javascript:myLike()">mylike</a>
-<a href="javascript:void(0)"onClick="javascript:myReport()">myreport</a>
-<a href="javascript:void(0)"onClick="javascript:myTrade()">mytrade</a>
-<a href="javascript:void(0)"onClick="javascript:goReport()">goReport</a>
-
-
 </body>
 </html>

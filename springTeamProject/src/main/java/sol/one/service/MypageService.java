@@ -26,20 +26,22 @@ public interface MypageService {
 	//ȸ�� Ż��
 	public void delete_info_mypage(int user_id)throws Exception;
 	
+	public void go_report(ReportVO report)throws Exception;
+	
 	//���������� �� ���ɻ�ǰ ��ȸ�ϱ�
-	public LikeVO list_like_mypage(int user_id) throws Exception;
+	public List<LikeVO> list_like_mypage(int user_id) throws Exception;
 	
 	//���������� �� �ŷ����� ��ȸ�ϱ�
-	public TradeVO list_trade_mypage(int user_id) throws Exception;
+	public List<TradeVO> list_trade_mypage(int user_id) throws Exception;
 	
 
-	public BoardVO list_board_mypage(int user_id) throws Exception;
+	public List<BoardVO> list_board_mypage(int user_id) throws Exception;
 	
 	//���������� �� ��� ��ȸ�ϱ�
-	public CommentVO list_comment_mypage(int user_id)throws Exception;
+	public List<CommentVO> list_comment_mypage(int user_id)throws Exception;
 	
 	//���������� �� �Ű� ��ȸ�ϱ�
-	public ReportVO list_report_mypage(int user_id)throws Exception;
+	public List<ReportVO> list_report_mypage(int user_id)throws Exception;
 	
 	//���������� �� ���� ���� �� ������ ���� ��й�ȣ üũ
 	public int check_password_mypage(UserVO user)throws Exception;
