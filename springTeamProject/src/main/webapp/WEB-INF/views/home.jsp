@@ -8,9 +8,8 @@
 </head>
 <body>
 <h1>
-	Hello world!  
-</h1>
 
+<a href="/mypage/myInfo">마이페이지</a></h1>
 <P>  The time on the server is ${serverTime}. </P>
 
 <a href="loginMain">로그인 확인용 메인으로 이동</a>
