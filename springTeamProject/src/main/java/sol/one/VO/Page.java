@@ -13,14 +13,14 @@ public class Page {
 	private String type;
 	private String keyword;
 	
-	public Page(int p, int a) {
+	public Page(int pNum, int amount) {
 		super();
-		pNum = p;
-		amount = a;
+		this.pNum = pNum;
+		this.amount = amount;
 	}
 	
 	public Page() {
-		this(1,5);
+		this(1,10);
 	}
 	
 	public String[] getTypeArr() {

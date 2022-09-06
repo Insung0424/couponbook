@@ -19,6 +19,6 @@ public interface PageService {
 	
 	List<PageVO> getPage(Page p);
 	
-	int getTotal(Page cri);
+	int getTotal(Page p);
 
 }

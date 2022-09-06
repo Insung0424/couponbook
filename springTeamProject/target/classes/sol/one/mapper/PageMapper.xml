@@ -5,18 +5,13 @@
 
 <mapper namespace="sol.one.mapper.PageMapper">
 
-
 	<sql id="page">
-
 
 		<trim prefixOverrides="OR" suffix=") AND " prefix="(">
 
-
 			<foreach collection="typeArr" item="type">
 
-
 				<trim prefix="OR">
-
 
 					<choose>
 
@@ -42,13 +37,13 @@
 	</select>
 
 	<insert id="insert">
-		insert into pj_board(board_no, product_no, user,id, board_title, board_content, board_write_time)
-		values (seq_board_no.nextval, #{board_title}, #{board_content}, #{user_id})
+		insert into pj_board(board_no, product_no, user,id, board_title, board_content)
+		values (seq_board_no.nextval,#{product_no}, #{user_id} #{board_title}, #{board_content})
 	</insert>
 
 	<insert id="inkey">
 		<selectKey keyProperty="board_no" order="BEFORE"
-			resultType="long">
+			resultType="int">
 			select seq_bo.nextval from dual
 		</selectKey>
 		insert into pj_board(board_no, board_title, board_content, user_id) values (#{board_no},
@@ -69,7 +64,7 @@
 		update pj_board
 		set board_title=#{board_title}, board_content=#{board_content},
 		user_id=#{user_id},
-		updateDate=sysdate
+		board_write_time=sysdate
 		where board_no=#{board_no}
 	</update>
 
@@ -80,22 +75,18 @@
      *
    from 
        (
-       select /*+INDEX_DESC(pj_board pk_board) */
+       select /*+INDEX_DESC(pj_board) */
          rownum rn, board_no, product_id, user_id, board_title, board_write_time, pd_discount, pd_date
        from 
          pj_board
       where 
       ]]>
 
-
 		<trim prefixOverrides="OR" suffix=") AND " prefix="(">
-
 
 			<foreach collection="typeArr" item="type">
 
-
 				<trim prefix="OR">
-
 
 					<choose>
 
