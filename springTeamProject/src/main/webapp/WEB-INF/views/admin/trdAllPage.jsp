@@ -10,7 +10,7 @@
 
 <!-- 관리자  : 메뉴2: 거래내역 전체목록 부분  -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5">
-
+    
       <h2>거래 목록</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -100,46 +100,37 @@
 	$(document).ready( function() {
 	
 		var actionForm = $("#actionForm");
+		$(".page-item a").on( "click", function(e) {
+			e.preventDefault();
+			console.log('click');
 		
-		$(".page-item a").on(
-			"click",
-			function(e) {
-				e.preventDefault();
-				console.log('click');
-			
-				actionForm.find("input[name='pageNum']")
-						.val($(this).attr("href"));
-				actionForm.submit();
-			});
-		
+			actionForm.find("input[name='pageNum']")
+					.val($(this).attr("href"));
+			actionForm.submit();
+		});
 		
 		var sdate = $("#sdate");
 		$('.datepicker_input').datepicker({
 		    format: 'yyyy-mm-dd',
 		    autoclose: true,
-		    startDate: sdate.val(),
 		    language: 'ko'
 		})
 		.on('changeDate', function (e) {
-	 
 	         console.log(e.date +" / "+ sdate.val() );
-	      });
+	      })
 		
 		
 		var searchTrdForm = $("#searchTrdForm");
-		$("#searchTrdForm button").on( "click",
-			function(e) {
-				if (!searchTrdForm.find( "input[name='sdate']").val()) {
-					alert("날짜를 입력하세요");
-					return false;
-				}
-				searchTrdForm.find("input[name='pageNum']").val("1");
-				e.preventDefault();
-				searchTrdForm.submit();
-			});
+		$("#searchTrdForm button").on( "click", function(e) {
+			if (!searchTrdForm.find( "input[name='sdate']").val()) {
+				alert("날짜를 입력하세요");
+				return false;
+			}
+			searchTrdForm.find("input[name='pageNum']").val("1");
+			e.preventDefault();
+			searchTrdForm.submit();
+		});
 		
-		
-	
 	});
 </script>
 

@@ -1,4 +1,10 @@
 -- ----------------------------------------- 팀 프로젝트 테이블 : 거래내역
+select * from pj_trade_test 
+		where pd_status = 1 
+		and trade_time between to_char( to_date('22/08/20')-7, 'YY/MM/DD')  
+		and to_char(to_date('22/08/20'), 'YY/MM/DD') 
+		order by trade_time;
+
 
 -- 거래내역 전체 목록 가져오기
     
@@ -155,12 +161,14 @@ minvalue 1;
 -- 관리자 아이디 삽입
 insert into pj_user(user_id, email, nickname, password, user_name, phone, addr, user_grade) 
 values (seq_user_id.nextval, 'admin1@naver.com', '관리자1', '1111', '김관리', '010-1000-1000', '서울시 중구', 2);
+
+
 insert into pj_user(user_id, email, nickname, password, user_name, phone, addr, user_grade) 
 values (seq_user_id.nextval, 'admin22@naver.com', '관리자2', '1111', '최관리자', '010-2200-2200', '부산시 동래구', 2);
 
 -- 테스트 유저 삽입: user_id 시퀀스 미적용 해서 등록했음
 insert into pj_user(user_id, email, nickname, password, user_name, phone, addr) 
-values (1111, '1111@naver.com', '테스트유저1', '1111', '오테스', '010-0001-0001', '서울시 용산구');
+values (4, '1111@naver.com', '테스트유저1', '1111', '오테스', '010-0001-0001', '서울시 용산구');
 
 insert into pj_user(user_id, email, nickname, password, user_name, phone, addr) 
 values (5, 'test55@naver.com', '홍익한', '1111', '홍익한', '010-0055-0033', '부산시 중구');
@@ -207,7 +215,7 @@ select * from pj_user;
 select seq_user_id.nextval from dual;
 -- alter table pj_user add zip_no varchar(10);
 -- delete from pj_user where user_id = 129;
--- UPDATE pj_user SET email ='test2@naver.com'  where user_id=24;
+-- UPDATE pj_user SET email ='test22@naver.com'  where user_id=24;
 -- select * from pj_user where user_id = 1 and password = 1111; 
 -- select * from pj_user where email = 'test1@naver.com' and password = '1111';
 select count(*) from pj_user where email='test1@naver.com';

@@ -7,12 +7,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import sol.one.VO.Criteria;
+import sol.one.VO.MemberVO;
 import sol.one.VO.PageDTO;
 import sol.one.VO.T_tradeVO;
 import sol.one.service.ChartService;
@@ -44,7 +47,7 @@ public class AdminController {
 	}
 	//차트: 1주일 거래 건수 가져오기
 	@RequestMapping("/tradeWeekCnt")
-	public @ResponseBody int[] tradeWeekCnt(Model model, T_tradeVO tvo) {
+	public @ResponseBody int[] tradeWeekCnt(Model model, T_tradeVO tvo, Criteria cri) {
 		int[] tradeCnt = chartService.tradeWeekCnt(tvo);
 		
 		System.out.println("AC50: "+chartService.tradeWeekCnt(tvo));
@@ -80,6 +83,12 @@ public class AdminController {
 		model.addAttribute("memAllList", chartService.getMemList(cri));
 		int total = chartService.getTotalMemCnt(cri);
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
+	}
+	
+	//회원 상세 조회
+	@GetMapping("/admin/getMem")
+	public void getMem(@RequestParam("email") String email, Model model) {
+		model.addAttribute("oneMem", service.adminGetMem(email));
 	}
 	
 	

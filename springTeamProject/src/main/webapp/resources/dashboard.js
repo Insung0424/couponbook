@@ -1,13 +1,14 @@
+/*
 
 function getGraph(){
 	var tradeCntList = [];
-	var cntDate = $('#chkDay').val();
+	var trade_time = $("#trade_time").val();
 	
 	$.ajax({
 		url:'/tradeWeekCnt',
 		type:'get',
-//		data:{cntDate:cntDate},
-//		dataType:"json",
+		data:{"trade_time":trade_time},
+		dataType:"json",
 		success:function(data){
 			//그래프에 나타낼 데이터 담기
 			for (let i=0; i<data.length; i++){
@@ -55,9 +56,11 @@ function getGraph(){
 			  }); //그래프 끝
 		},
 		error:function(){
-			alert("그래프 실패 그만!!!!!!!");
+			alert("!!! 그래프 실패  !!!!");
 		}
 		
 	})// ajax
 	
 }//getGraph
+
+*/

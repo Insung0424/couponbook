@@ -69,7 +69,7 @@ public class MemController {
 	
 	//로그인 처리
 	@PostMapping("/loginProc")
-	public String loginProc(@ModelAttribute MemberVO member, HttpSession session) {
+	public String loginProc( @ModelAttribute MemberVO member, HttpSession session) {
 		
 		MemberVO loginMem = service.getMemById(member);
 		log.info("loginProc loginMem = " + loginMem);

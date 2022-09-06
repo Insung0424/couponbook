@@ -28,7 +28,12 @@
             <tr>
               <td> <c:out value="${memList.user_id }" /> </td>
               <td> <c:out value="${memList.nickname }" /></td>
-              <td> <c:out value="${memList.email }" /></td>
+              <td>
+              	<%-- <a class='move' href='<c:out value="${memList.email }"/>'> --%>
+              	<a href='/admin/getMem?email=<c:out value="${memList.email }"/>'>
+	              	<c:out value="${memList.email }" />
+              	</a> 
+              </td>
               <td> <c:out value="${memList.user_name }" /></td>
               <td> <c:out value="${memList.user_grade}" /></td>
             </tr>
@@ -113,10 +118,6 @@
 		var searchMemForm = $("#searchMemForm");
 		$("#searchMemForm button").on( "click",
 			function(e) {
-				/* if (!searchMemForm.find("option:selected") .val()) {
-					alert("검색종류를 선택하세요");
-					return false;
-				} */
 				if (!searchMemForm.find( "input[name='keyword']").val()) {
 					alert("키워드를 입력하세요");
 					return false;
@@ -125,7 +126,7 @@
 				e.preventDefault();
 				searchMemForm.submit();
 			});
-	
+		
 	});
 </script>
 
