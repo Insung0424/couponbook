@@ -13,7 +13,7 @@
 }
 
 #modal_content{
-  width: 50%; height:32%;
+  width: 50%; height:600px;
   background:#fff; border-radius:10px;
   position:relative; top:50%; left:50%;
   margin-top:-100px; margin-left: -25%;
@@ -82,8 +82,8 @@
 $("#add_btn").click(function(){
 	const product_id = ${vo.product_id};
 	const user_id = ${vo.user_id};
-	const comment_content = $(".com_content").val();
-	
+	const comment_content = CKEDITOR.instances.editor1.getData();
+
 	if(user_id == ''){
 			alert('로그인 후 이용해주세요');
 			return;
@@ -112,7 +112,7 @@ $("#add_btn").click(function(){
 				if(data == "InsertSuccess") {
 					console.log('댓글 등록 완료')
 					$('#user_id').val(${vo.user_id});
-  					$('.com_content').val('');
+					CKEDITOR.instances.editor1.setData() = '';
   					let user_id = ${vo.user_id};
   	              	if(user_id  == 1){
   	              		getAllList();
@@ -135,6 +135,7 @@ function getAllList() {
 	const product_id= ${vo.product_id};
 	const user_id_1= ${vo.user_id};
 	console.log(product_id);
+	
 	$.getJSON("<c:url value='/replies/get/'/>"+product_id,
 		function(data) {
 			var list = data.list;
@@ -285,7 +286,7 @@ $(document).on("click", "#update", function(){
 	});
 	
 	$("#modal_modify_btn").click(function(){
-		const modal_com_content = $(".modal_com_content").val();
+		const modal_com_content = CKEDITOR.instances.editor2.getData();
 		console.log('댓글수정');
 		if(modal_com_content == ''){
 			alert("내용을 입력해주세요");
@@ -323,7 +324,6 @@ $(document).on("click", "#update", function(){
 });
 
 $(document).on("click", "#answer", function(){
-	$('.modal_com_content').val('');
 	const comment_no_level = $(this).data("id");
 	$("#modal").fadeIn();
 	$("#modal_modify_cancel_btn").click(function(){
@@ -333,7 +333,7 @@ $(document).on("click", "#answer", function(){
 		$("#modal").fadeOut();
 	});
 	$("#modal_modify_btn").click(function(){
-		const modal_com_content = $(".modal_com_content").val();
+		const modal_com_content = CKEDITOR.instances.editor2.getData();
 		const product_id = ${vo.product_id};
 		const user_id = ${vo.user_id};
 		

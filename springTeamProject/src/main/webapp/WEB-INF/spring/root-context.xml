@@ -18,9 +18,9 @@
 		<property
 			value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1"
 			name="jdbcUrl" />
-		<property value="JIS" name="username" />
-		<property value="357641" name="password" />
-	</bean> -->
+		<property value="" name="username" />
+		<property value="" name="password" />
+	</bean>-->
  	
 	<!-- 팀 DB 접속 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">

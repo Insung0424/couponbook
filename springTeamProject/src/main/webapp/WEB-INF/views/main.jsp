@@ -84,7 +84,7 @@ header {
 							</button>
 						</form>
 					</div>
-					
+
 					<form class="l-flex" role="signin">
 						<a class="btn btn-primary" href="#" style="margin-right: 5px;">로그인</a>
 					</form>
@@ -192,10 +192,13 @@ header {
 			</div>
 		</div>
 	</div>
-	<div class="container text-center" style="margin-top: 30px; margin-bottom: 30px;">
+	<div class="container text-center"
+		style="margin-top: 30px; margin-bottom: 30px;">
 		<div class="row">
 			<div class="col">
-				<a class="total" href="#" style="font-weight: bold; text-decoration: none; color: black;">전체 쿠폰 보기</a>
+				<a class="total" href="#"
+					style="font-weight: bold; text-decoration: none; color: black;">전체
+					쿠폰 보기</a>
 			</div>
 		</div>
 	</div>

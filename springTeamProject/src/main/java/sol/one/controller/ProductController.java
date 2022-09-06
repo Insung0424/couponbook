@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -40,7 +39,7 @@ public class ProductController {
 	@GetMapping("/main")
 	public void main(Model model) {
 		CommentVO vo = new CommentVO();
-		vo.setUser_id(2);
+		vo.setUser_id(1);
 		vo.setProduct_id(1);
 		
 		model.addAttribute("vo",vo);
@@ -66,13 +65,14 @@ public class ProductController {
 	@GetMapping("/new")
 	public void new1() {}
 	
+	
 	@ResponseBody
 	@RequestMapping(value = "fileupload.do")
     public void communityImageUpload(HttpServletRequest req, HttpServletResponse resp, MultipartHttpServletRequest multiFile) throws Exception{
-		JsonObject jsonObject = new JsonObject();
 		PrintWriter printWriter = null;
 		OutputStream out = null;
 		MultipartFile file = multiFile.getFile("upload");
+		resp.setCharacterEncoding("utf-8");
 		
 		if(file != null) {
 			if(file.getSize() >0 && StringUtils.isNotBlank(file.getName())) {
@@ -82,7 +82,7 @@ public class ProductController {
 			            String fileName = file.getOriginalFilename();
 			            byte[] bytes = file.getBytes();
 			           
-			            String uploadPath = req.getSession().getServletContext().getRealPath("/resources/images/src"); //ÀúÀå°æ·Î
+			            String uploadPath = req.getSession().getServletContext().getRealPath("/resources/images/src"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			            System.out.println("uploadPath:"+uploadPath);
 
 			            File uploadFile = new File(uploadPath);
@@ -90,20 +90,24 @@ public class ProductController {
 			            	uploadFile.mkdir();
 			            }
 			            String fileName2 = UUID.randomUUID().toString();
-			            uploadPath = uploadPath + "\\" + fileName2 +fileName;
+			            uploadPath = uploadPath + File.separator + fileName2 +fileName;
 			            
 			            out = new FileOutputStream(new File(uploadPath));
-			            out.write(bytes);
+		            	out.write(bytes);
 			            
 			            printWriter = resp.getWriter();
-			            String fileUrl = req.getContextPath() + "/resources/images/src/" +fileName2 +fileName; //url°æ·Î
+			            String fileUrl = req.getContextPath() + "/resources/images/src/" +fileName2 +fileName; //urlï¿½ï¿½ï¿½
 			            System.out.println("fileUrl :" + fileUrl);
+			            
 			            JsonObject json = new JsonObject();
 			            json.addProperty("uploaded", 1);
 			            json.addProperty("fileName", fileName);
 			            json.addProperty("url", fileUrl);
+			            
 			            printWriter.print(json);
 			            System.out.println(json);
+			            
+			            
 			 
 			        }catch(IOException e){
 			            e.printStackTrace();
