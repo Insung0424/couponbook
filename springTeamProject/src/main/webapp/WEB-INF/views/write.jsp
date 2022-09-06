@@ -131,6 +131,56 @@
 				}
 			});
 		});
+		
+		$("input[type='file']").on("change", function(e){
+			let fileInput = $('input[name="file"]');
+			let fileList = fileInput[0].files;
+			let fileObj = fileList[0];
+			let formData = new FormData();
+			/*
+			console.log("fileList : " + fileList);
+			console.log("fileObj : " + fileObj);
+			console.log("fileName : " + fileObj.name);
+			console.log("fileSize : " + fileObj.size);
+			console.log("fileType : " + fileObj.type);
+			*/
+			if(!fileCheck(fileObj.name, fileObj.size)){
+				return false;
+			}
+			
+			alert("통과");
+			
+			formData.append("file",fileObj);
+			
+			$.ajax({
+				url: '/upload',
+		    	processData : false,
+		    	contentType : false,
+		    	data : formData,
+		    	type : 'POST',
+		    	dataType : 'json'
+			});
+			
+		});
+		
+		let regex = new RegExp("(.*?)\.(jpg|png)$");
+		let maxSize = 10485760; //10MB	
+		
+		function fileCheck(fileName, fileSize){
+
+			if(fileSize >= maxSize){
+				alert("파일 사이즈 초과");
+				return false;
+			}
+				  
+			if(!regex.test(fileName)){
+				alert("해당 종류의 파일은 업로드할 수 없습니다.");
+				return false;
+			}
+			
+			return true;		
+			
+		}
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
