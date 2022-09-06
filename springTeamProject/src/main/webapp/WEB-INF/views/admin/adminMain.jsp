@@ -11,7 +11,7 @@
 <!-- 관리자 메인 : 메뉴1: Dashboard 부분  -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard  <span class="fs-5"> 일자별 거래건수 차트</span></h1>
+        <h1 class="h2">Chart  <span class="fs-5"> 일자별 거래건수 차트 (1주 단위)</span></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           
           <div class="dropdown">
@@ -36,8 +36,8 @@
 
 
       <h2>일주일 거래 목록</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
+      <div class="table-responsive" style="height: 400px; margin-bottom: 100px;">
+		<table class="table table-striped table-sm">
           <thead>
             <tr>
               <th scope="col">상품 ID</th>

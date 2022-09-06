@@ -33,7 +33,6 @@ public class AdminController {
 		System.out.println("adminPage s1 = " + session);
 		
 		model.addAttribute("tradeList", chartService.tradeWeek(tvo) );
-//		return "/admin/adminMain";
 	}
 	
 	//차트: 1주일 거래목록 가져오기
@@ -48,8 +47,8 @@ public class AdminController {
 	public @ResponseBody int[] tradeWeekCnt(Model model, T_tradeVO tvo) {
 		int[] tradeCnt = chartService.tradeWeekCnt(tvo);
 		
-		System.out.println("AC74: "+chartService.tradeWeekCnt(tvo));
-		System.out.println("AC75 tradeCnt: "+tradeCnt);
+		System.out.println("AC50: "+chartService.tradeWeekCnt(tvo));
+		System.out.println("AC51 tradeCnt: "+tradeCnt);
 		
 		model.addAttribute("tradeCnt",tradeCnt);
 		return tradeCnt;

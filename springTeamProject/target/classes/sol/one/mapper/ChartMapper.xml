@@ -39,8 +39,8 @@
 	<select id="tradeWeekCnt" resultType="int">
 		select count(*) from pj_trade_test 
 		where pd_status = 1  
-		and trade_time between to_char( to_date('22/08/08')-7, 'YY/MM/DD')  
-		and to_char(to_date('22/08/08'), 'YY/MM/DD') 
+		and trade_time between to_char( to_date('22/08/20')-7, 'YY/MM/DD')  
+		and to_char(to_date('22/08/20'), 'YY/MM/DD') 
 		group by trade_time 
 		order by trade_time 
 	</select>
@@ -48,8 +48,8 @@
 	<select id="tradeWeek" resultType="sol.one.VO.T_tradeVO" parameterType="java.lang.String">
 		select * from pj_trade_test 
 		where pd_status = 1 
-		and trade_time between to_char( to_date('22/08/08')-7, 'YY/MM/DD')  
-		and to_char(to_date('22/08/08'), 'YY/MM/DD') 
+		and trade_time between to_char( to_date('22/08/20')-7, 'YY/MM/DD')  
+		and to_char(to_date('22/08/20'), 'YY/MM/DD') 
 		order by trade_time 
 	</select>
 	
