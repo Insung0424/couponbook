@@ -102,7 +102,7 @@
 			<input type = "text" placeholder="제목을 입력하세요" style="width: 500px; margin-bottom: 10px;">
 			<button type="submit" class="btn btn-primary" style="float: right; margin-bottom: 10px;">등록</button>
 			<button type="reset" class="btn btn-secondary" style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
-   <textarea id="summernote"></textarea>
+   <div id="summernote"></div>
   </div>
   </div>
   </div>

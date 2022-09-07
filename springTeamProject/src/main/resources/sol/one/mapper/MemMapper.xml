@@ -7,8 +7,14 @@
 		select * from pj_user 
 		where 
 		email = #{email} and 
-		password = #{password} 
+		password = #{password}
 	</select>
+	
+	<select id="adminGetMem" resultType="sol.one.VO.MemberVO">
+		select * from pj_user 
+		where email = #{email} 
+	</select>
+	
 	
 	<!-- 확인용 쿼리문 -->
 	<select id="idChkPw" resultType="String">

@@ -18,9 +18,7 @@
 </head>
 <body class="text-center mt-5">
 	<main class="form-signin w-50 m-auto ">
-		<h1>임시 메인 화면</h1>
-		<h3>로그인/가입 버튼을 위한 임시 화면</h3>
-		<p>정식 메인 화면에 버튼 부분 만 수정 하면 됨</p>
+		<h3>임시 메인 화면</h3>
 		<hr class="my-4">
 		
 		<c:set var="userID" value="${mem.email}" />

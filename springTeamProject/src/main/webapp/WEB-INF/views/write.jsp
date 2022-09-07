@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>»óÇ° µî·Ï</title>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<meta charset="UTF-8">
+<title>ï¿½ï¿½Ç° ï¿½ï¿½ï¿½</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -16,7 +20,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-<header>
+	<header>
 		<nav class="navbar navbar-expand-lg" style="background-color: #ddd">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">CouponBook</a>
@@ -32,20 +36,20 @@
 							aria-current="page" href="#">È¨</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Ä«Å×°í¸® </a>
+							data-bs-toggle="dropdown" aria-expanded="false"> Ä«ï¿½×°ï¿½ï¿½ï¿½ </a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">ÀüÃ¼</a></li>
-								<li><a class="dropdown-item" href="#">ÆíÀÇÁ¡</a></li>
-								<li><a class="dropdown-item" href="#">Ä¿ÇÇ/À½·á</a></li>
-								<li><a class="dropdown-item" href="#">¿Ü½Ä</a></li>
-								<li><a class="dropdown-item" href="#">»óÇ°±Ç</a></li>
-								<li><a class="dropdown-item" href="#">±âÅ¸</a></li>
+								<li><a class="dropdown-item" href="#">ï¿½ï¿½Ã¼</a></li>
+								<li><a class="dropdown-item" href="#">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+								<li><a class="dropdown-item" href="#">Ä¿ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½</a></li>
+								<li><a class="dropdown-item" href="#">ï¿½Ü½ï¿½</a></li>
+								<li><a class="dropdown-item" href="#">ï¿½ï¿½Ç°ï¿½ï¿½</a></li>
+								<li><a class="dropdown-item" href="#">ï¿½ï¿½Å¸</a></li>
 							</ul></li>
 					</ul>
 					<div style="margin-right: 50px;">
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
-								placeholder="°Ë»ö¾î ÀÔ·Â" aria-label="Search" style="width: 300px;">
+								placeholder="ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½" aria-label="Search" style="width: 300px;">
 							<button class="btn btn-light" type="submit">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -73,7 +77,7 @@
 											viewBox="0 0 16 16">
   <path
 												d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-</svg> ¸¶ÀÌÆäÀÌÁö</a></li>
+</svg> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
 
 								<li><a class="dropdown-item" href="main.jsp"><svg
 											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -83,13 +87,13 @@
 												d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
   <path fill-rule="evenodd"
 												d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-</svg> ·Î±×¾Æ¿ô</a></li>
+</svg> ï¿½Î±×¾Æ¿ï¿½</a></li>
 							</ul> <!-- /.dropdown-user --></li>
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
-						<a class="btn btn-primary disabled" href="#" style="margin-right: 5px;">»óÇ°
-							µî·Ï</a>
+						<a class="btn btn-primary disabled" href="#"
+							style="margin-right: 5px;">ï¿½ï¿½Ç° ï¿½ï¿½ï¿½</a>
 					</form>
 				</div>
 			</div>
@@ -99,27 +103,27 @@
 	<div class="container" style="margin-top: 30px;">
 		<div class="row">
 			<div class="col">
-			<h2 style="margin-bottom: 30px;">»óÇ° µî·Ï</h2>
+			<h2 style="margin-bottom: 30px;">ï¿½ï¿½Ç° ï¿½ï¿½ï¿½</h2>
 			<hr>
-			<p><b>Á¦¸ñ</b></p>
-			<input type = "text" name = "title" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="width: 500px; margin-bottom: 10px;">
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
+			<input type = "text" name = "title" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½" style="width: 500px; margin-bottom: 10px;">
 			
-			<p><b>Ä«Å×°í¸®</b></p>
+			<p><b>Ä«ï¿½×°ï¿½ï¿½ï¿½</b></p>
 			<select name = "select" style="margin-bottom: 10px; width: 100px;">
 				<option value="none">-------</option>
-				<option value="cs">ÆíÀÇÁ¡</option>
-				<option value="beverage">Ä¿ÇÇ/À½·á</option>
-				<option value="dining">¿Ü½Ä</option>
-				<option value="giftCard">»óÇ°±Ç</option>
-				<option value="etc">±âÅ¸</option>
+				<option value="cs">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+				<option value="beverage">Ä¿ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½</option>
+				<option value="dining">ï¿½Ü½ï¿½</option>
+				<option value="giftCard">ï¿½ï¿½Ç°ï¿½ï¿½</option>
+				<option value="etc">ï¿½ï¿½Å¸</option>
 			</select>
-			<p><b>°¡°Ý</b></p>
-			<input type = "text" id = "price" placeholder= "°¡°ÝÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin-bottom: 10px;"> ¿ø
-			<p><b>±âÇÑ</b></p>
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
+			<input type = "text" id = "price" placeholder= "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½" style="margin-bottom: 10px;"> ï¿½ï¿½
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
 			<input type="date" name="lastday" style="margin-bottom: 10px;">
-			<p><b>³»¿ë</b></p>
-			<textarea rows="10" cols="150" name = "content" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä"></textarea>
-			<p style="margin-top: 30px;"><button class="btn btn-primary" type="submit" onclick="ch()">µî·Ï</button> <button class="btn btn-secondary" type="reset">Ãë¼Ò</button></p>
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
+			<textarea rows="10" cols="150" name = "content" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½"></textarea>
+			<p style="margin-top: 30px;"><button class="btn btn-primary" type="submit" onclick="ch()">ï¿½ï¿½ï¿½</button> <button class="btn btn-secondary" type="reset">ï¿½ï¿½ï¿½</button></p>
   </div>
   </div>
   </div>
@@ -129,34 +133,34 @@
   function ch() {
 	  if(frm.title.value == "") {
 		  frm.title.focus();
-		  alert('Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.select.value == "none") {
-		  alert('Ä«Å×°í¸®¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä');
+		  alert('Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.price.value == "") {
 		  frm.price.focus();
-		  alert('°¡°ÝÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.lastday.value == "") {
 		  frm.lastday.focus();
-		  alert('ÄíÆùÀÇ À¯È¿±â°£À» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½â°£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.content.value == "") {
 		  frm.content.focus();
-		  alert('³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }

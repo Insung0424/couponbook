@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -44,4 +45,10 @@ public class HomeController {
 	@GetMapping("/loginMain")
 	public void loginMain() {}
 	
+	@GetMapping("/write")
+	public void write() {
+	}
+	
+	@GetMapping("/main2")
+	public void main2() {}
 }
