@@ -22,7 +22,8 @@ public class AdminChkIntercepter implements HandlerInterceptor {
 		log.info("[handler][" + handler.toString() + "]");
         
         HttpSession session = request.getSession();
-        if(session==null || session.getAttribute("admin")==null){
+        if(session.getAttribute("admin")==null){
+//        	if(session==null || session.getAttribute("admin")==null){
         	session.setAttribute("msg", "관리자만 접근 가능합니다.");
         	response.sendRedirect("/errorPage");
             return false;

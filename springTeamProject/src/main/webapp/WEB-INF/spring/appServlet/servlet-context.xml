@@ -40,7 +40,14 @@
 	<!-- 인터셉터 설정  /adminMain -->
     <interceptors>
        <interceptor>
+<<<<<<< HEAD
            <mapping path="/adminMain"/>
+=======
+           <mapping path="admin/adminMain"/>
+           <mapping path="admin/trdAllPage"/>
+           <mapping path="admin/memList"/>
+           
+>>>>>>> 871bf1e703a49dad5376954c719c7662725e19f9
            <mapping path="member/myPage"/>
            <beans:bean id="commonInterceptor" class="sol.one.intercepter.AdminChkIntercepter"/>
        </interceptor>

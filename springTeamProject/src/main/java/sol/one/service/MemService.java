@@ -14,6 +14,13 @@ public interface MemService  {
 	 * @return
 	 */
 	MemberVO getMemById(MemberVO member);
+	
+	/**
+	 * 관리자 페이지에서 회원 상세조회
+	 * @param email
+	 * @return MemberVO
+	 */
+	MemberVO adminGetMem(String email);
 
 	/**
 	 * 이미 가입된 메일인지 확인용

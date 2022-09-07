@@ -22,6 +22,14 @@ public interface MemMapper {
 	public MemberVO getMemById(MemberVO member);
 
 	/**
+	 * 관리자 페이지에서 사용, 회원 상세 조회
+	 * @param email
+	 * @return MemberVO
+	 */
+	public MemberVO adminGetMem(String email);
+	
+	
+	/**
 	 * 메일 주소가 있으면 count 수를 리턴한다
 	 * 편의상 String으로 반환받았는데 바꿔야하나?
 	 * @param email
