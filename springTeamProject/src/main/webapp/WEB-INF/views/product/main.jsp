@@ -96,10 +96,10 @@ $("#modal_TradingEnd").click(function(){
 	//버튼 숨기기,보이기
 	$("#modal_TradingEnd").toggle(); 
 	// 거래 완료 유형선택자 페이지 제공	
-	$("#modal_trade_content").load("trade");
+	$("#modal_trade_content").load("buyerTradeEnd");
 	// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
-	if($("#modal_trade_content").load("trade")){
-		$("#modal_trade_content").show("trade");
+	if($("#modal_trade_content").load("buyerTradeEnd")){
+		$("#modal_trade_content").show("buyerTradeEnd");
 	}
 });
 </script>

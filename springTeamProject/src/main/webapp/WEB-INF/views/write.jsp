@@ -112,7 +112,7 @@
 						style="float: right; margin-bottom: 10px;">등록</button>
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
-					<div id="summernote"></div>
+					<div id="summernote"></div> <!-- 해당 부분 ckeditor4 로 변경한 뒤 script작성 -->
 				</div>
 			</div>
 		</div>
@@ -158,7 +158,13 @@
 		    	contentType : false,
 		    	data : formData,
 		    	type : 'POST',
-		    	dataType : 'json'
+		    	dataType : 'json',
+		    	success : function(data){
+		    		console.log(data);
+		    	},
+		    	error : function(data){
+		    		alert("이미지 파일을 올려주세요");
+		    	}
 			});
 			
 		});
