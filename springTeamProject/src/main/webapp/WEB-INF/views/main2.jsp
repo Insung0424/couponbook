@@ -42,6 +42,8 @@ header {
 	rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
+
+<link href="resources/css/slide.css" rel="stylesheet">
 </head>
 <body style="background-color: #f2f2f2">
 
@@ -117,8 +119,8 @@ header {
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
-						<a class="btn btn-primary" href="write.jsp" style="margin-right: 5px;">상품
-							등록</a>
+						<a class="btn btn-primary" href="write.jsp"
+							style="margin-right: 5px;">상품 등록</a>
 					</form>
 				</div>
 			</div>
@@ -127,45 +129,39 @@ header {
 	<div class="container text-center" style="margin-top: 30px;">
 		<div class="row">
 			<div class="col">
-				<div id="carouselExampleIndicators" class="carousel slide"
-					data-bs-ride="true">
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide-to="0" class="active" aria-current="true"
-							aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleIndicators"
-							data-bs-slide-to="2" aria-label="Slide 3"></button>
+
+
+				<div class="slide slide_wrap">
+
+					<div class="slide_item">
+
+						<div class="card" style="width: 18rem; margin: 5px;">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+								<p class="card-text">Some quick example text to build on the
+									card title and make up the bulk of the card's content.</p>
+								<a href="#" class="card-link">Card link</a> <a href="#"
+									class="card-link">Another link</a>
+							</div>
+						</div>
+
+
 					</div>
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<img
-								src="https://image10.coupangcdn.com/image/ccm/banner/8a80aeb91c702f39b87d93386e0c4168.jpg"
-								class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-							<img
-								src="https://static.coupangcdn.com/fa/cmg_paperboy/image/1661232568819/C1_PC1.jpg"
-								class="d-block w-100" alt="...">
-						</div>
-						<div class="carousel-item">
-							<img
-								src="https://static.coupangcdn.com/aa/cmg_paperboy/image/1661418271864/%5B%EC%88%98%EC%A0%951%5D220826_%EC%99%80%EC%9A%B0%EC%9C%84%ED%81%AC_A_SMD-20383_PC.jpg"
-								class="d-block w-100" alt="...">
-						</div>
-					</div>
-					<button class="carousel-control-prev" type="button"
-						data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button"
-						data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
+
+					<div class="slide_item">2</div>
+					<div class="slide_item">3</div>
+					<div class="slide_item">4</div>
+					<div class="slide_item">5</div>
+					<div class="slide_prev_button slide_button">◀</div>
+					<div class="slide_next_button slide_button">▶</div>
+					<ul class="slide_pagination"></ul>
 				</div>
+
+
+
+
+
 			</div>
 		</div>
 	</div>
@@ -221,10 +217,13 @@ header {
 			</div>
 		</div>
 	</div>
-	<div class="container text-center" style="margin-top: 30px; margin-bottom: 30px;">
+	<div class="container text-center"
+		style="margin-top: 30px; margin-bottom: 30px;">
 		<div class="row">
 			<div class="col">
-				<a class="total" href="#" style="font-weight: bold; text-decoration: none; color: black;">전체 쿠폰 보기</a>
+				<a class="total" href="#"
+					style="font-weight: bold; text-decoration: none; color: black;">전체
+					쿠폰 보기</a>
 			</div>
 		</div>
 	</div>
@@ -247,6 +246,7 @@ header {
 			});
 		});
 	</script>
+	<script type="text/javascript" src="resources/css/slide.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
