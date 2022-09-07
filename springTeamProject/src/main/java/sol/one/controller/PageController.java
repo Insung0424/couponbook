@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import sol.one.VO.Page;
-import sol.one.VO.PageDTO;
+import sol.one.VO.PageDTO2;
 import sol.one.VO.PageVO;
 import sol.one.service.PageService;
 
@@ -28,7 +28,7 @@ public class PageController {
 	public void list(Model m, Page p) {
 		
 		m.addAttribute("list", service.getPage(p));
-		m.addAttribute("pp", new PageDTO(p, service.getTotal(p)));
+		m.addAttribute("pp", new PageDTO2(p, service.getTotal(p)));
 
 	}
 	@GetMapping("/submit")
