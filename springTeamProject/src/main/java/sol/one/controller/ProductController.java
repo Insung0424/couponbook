@@ -58,21 +58,22 @@ public class ProductController {
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
 		vo.setSell_user_id(2);
-		service.insertTradeLog(vo);
+		service.insertTradeLog(vo);//거래 내역 테이블에 데이터 추가
 		
 		return "redirect:/product/main";
 	}
 	
 	@PostMapping("/postTrade2")
 	public String putT2(int pd_status) {
-		//유저 아이디 받아와서 하도록 변경해야함
+		// 판매자가 거래완료를 선택했을 시 
+		// 유저 아이디 받아와서 하도록 변경해야함
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
 		vo.setSell_user_id(2);
-		service.insertTradeLog(vo);
-		// 거래 내역 테이블 추가와 상품테이블에서 거래 상태 업데이트 필요
+		service.insertTradeLog(vo);//거래 내역 테이블에 데이터 추가
 		// 상품테이블과 연결된 서비스 생성
+		// 상품테이블에서 거래 상태 업데이트 필요
 		
 		return "redirect:/product/main";
 	}
@@ -80,7 +81,7 @@ public class ProductController {
 	@GetMapping("/new")
 	public void new1() {}
 	
-	
+	// 댓글이나 게시글등에서 에디터를 사용해서 img를 첨부했을 시 작동하는 부분
 	@ResponseBody
 	@RequestMapping(value = "fileupload.do")
     public void communityImageUpload(HttpServletRequest req, HttpServletResponse resp, MultipartHttpServletRequest multiFile) throws Exception{
@@ -122,8 +123,6 @@ public class ProductController {
 			            printWriter.print(json);
 			            System.out.println(json);
 			            
-			            
-			 
 			        }catch(IOException e){
 			            e.printStackTrace();
 			        } finally {
