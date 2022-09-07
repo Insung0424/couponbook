@@ -17,6 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import sol.one.VO.MemberVO;
 import sol.one.service.MemService;
+import sol.one.service.MypageService;
 
 @Controller
 @Log4j
@@ -25,6 +26,7 @@ import sol.one.service.MemService;
 public class MemController {
 	
 	private MemService service;
+	
 	
 	//회원가입 폼으로 이동
 	@GetMapping("/join")

@@ -1,6 +1,8 @@
 
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
 <head>
@@ -83,25 +85,21 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>#</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email Address</th>
+												<th>상품번호</th>
+												<th>유저아이디</th>
+												<th>댓글내용</th>
+												<th>게시시간</th>	
 											</tr>
 										</thead>
 										<tbody id="myTable">
-											<%
-												for (int i = 0; i < 20; i++) {
-											%>
+										<c:forEach items="${comment}" var = "comment">					
 											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>markotto@email.com</td>
+										<td><c:out value="${comment.product_id}" /></td>
+										<td><c:out value="${comment.user_id}"/></td>
+										<td><c:out value="${comment.comment_content}"/></td>
+										<td><c:out value="${comment.comment_write_time}"/></td>
 											</tr>
-											<%
-												}
-											%>
+										</c:forEach>	
 										</tbody>
 									</table>
 								</div>

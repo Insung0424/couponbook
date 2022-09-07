@@ -1,6 +1,8 @@
 
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
 <head>
@@ -78,25 +80,17 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>#</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email Address</th>
+												<th>상품번호</th>
+												<th>좋아요 등록날짜</th>		
 											</tr>
 										</thead>
 										<tbody id="myTable">
-											<%
-												for (int i = 0; i < 20; i++) {
-											%>
-											<tr>
-												<th scope="row">1</th>
-												<td>Mark</td>
-												<td>Otto</td>
-												<td>markotto@email.com</td>
-											</tr>
-											<%
-												}
-											%>
+											<c:forEach items="${like}" var = "like">					
+							<tr>
+								<td><c:out value="${like.product_id}"/></td>
+								<td><c:out value="${like.like_time}"/></td>			
+							</tr>
+						</c:forEach>	
 										</tbody>
 									</table>
 								</div>

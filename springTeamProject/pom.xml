@@ -57,7 +57,21 @@
          <artifactId>aspectjrt</artifactId>
          <version>${org.aspectj-version}</version>
       </dependency>
-      
+      <dependency>
+    	<groupId>javax.annotation</groupId>
+    	<artifactId>javax.annotation-api</artifactId>
+    <version>1.3.2</version>
+	</dependency>
+	<dependency>
+<groupId>com.sun.mail</groupId>
+<artifactId>javax.mail</artifactId>
+<version>1.6.2</version>
+</dependency>
+<dependency>
+<groupId>org.springframework</groupId>
+<artifactId>spring-context-support</artifactId>
+<version>${org.springframework-version}</version>
+</dependency>
       <dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
@@ -89,6 +103,7 @@
          <version>${org.slf4j-version}</version>
          <scope>runtime</scope>
       </dependency>
+      
       <dependency>
          <groupId>log4j</groupId>
          <artifactId>log4j</artifactId>
@@ -223,7 +238,16 @@
         <artifactId>commons-lang3</artifactId>
         <version>3.4</version>
     </dependency>
-	
+			<dependency>
+       <groupId>org.codehaus.jackson</groupId>
+       <artifactId>jackson-mapper-asl</artifactId>
+       <version>1.9.13</version>
+</dependency>
+<dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>1.9.13</version>
+</dependency>
     <dependency>
 		<groupId>com.fasterxml.jackson.core</groupId>
 		<artifactId>jackson-databind</artifactId>

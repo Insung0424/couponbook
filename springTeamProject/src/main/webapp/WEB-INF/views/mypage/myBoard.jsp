@@ -1,6 +1,8 @@
 
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
 <head>
@@ -69,13 +71,30 @@
 
 									<div class="row">
 										<div class="col">
-											<%
-												for (int i = 0; i < 10; i++) {
-											%>
-
-											<%
-												}
-											%>
+							<table>
+						<tr>
+							<th>글번호</th>
+							<th>상품번호</th>
+							<th>글제목</th>
+							<th>유저아이디</th>
+							<th>글내용</th>
+							<th>게시시간</th>
+							<th>할인율</th>
+							<th>유효기간</th>						
+						</tr>
+						<c:forEach items="${board}" var = "board">					
+							<tr>
+								<td><c:out value="${board.board_no}" /></td>
+								<td><c:out value="${board.product_id}"/></td>
+								<td><c:out value="${board.board_title}"/></td>
+								<td><c:out value="${board.user_id}"/></td>
+								<td><c:out value="${board.board_content}"/></td>
+								<td><c:out value="${board.board_write_time}"/></td>
+								<td><c:out value="${board.pd_discount}"/></td>
+								<td><c:out value="${board.pd_date}"/></td>	
+							</tr>
+						</c:forEach>	
+					</table>
 										</div>
 									</div>
 
