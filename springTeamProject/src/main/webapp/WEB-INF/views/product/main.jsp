@@ -62,7 +62,7 @@ style="display: block;" value="거래완료하기"/>
 					<option value="1">허위매물</option>
 					<option value="2">삼자거래사기</option>
 					<option value="3">또 추가할 항목</option>
-				</select>
+			  </select>
 			</div>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
@@ -93,13 +93,24 @@ $("#report_cancel").click(function(){
 });
 
 $("#modal_TradingEnd").click(function(){
-	//버튼 숨기기,보이기
-	$("#modal_TradingEnd").toggle(); 
-	// 거래 완료 유형선택자 페이지 제공	
-	$("#modal_trade_content").load("trade");
-	// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
-	if($("#modal_trade_content").load("trade")){
-		$("#modal_trade_content").show("trade");
+	// 버튼 숨기기,보이기
+	// 판매자는 마이페이지에서 하도록 하기
+	// if(${게시물 판매자 아이디} != ${로그인한 아이디}){ 
+		$("#modal_TradingEnd").toggle(); 
+		// 거래 완료 유형선택자 페이지 제공	
+		$("#modal_trade_content").load("trade");
+		// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+		if($("#modal_trade_content").load("trade")){
+			$("#modal_trade_content").show("trade");
+	//}
+	// else{ 
+			$("#modal_TradingEnd").toggle(); 
+		// 거래 완료 유형선택자 페이지 제공	
+		$("#modal_trade_content").load("trade2");
+		// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+		if($("#modal_trade_content").load("trade2")){
+			$("#modal_trade_content").show("trade2");
+		//}
 	}
 });
 </script>
