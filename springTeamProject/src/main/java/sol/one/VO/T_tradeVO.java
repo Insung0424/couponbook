@@ -13,5 +13,4 @@ public class T_tradeVO {
 	  private int buyer_user_id;
 	  private int pd_status;
 	  private String trade_time;
-	  
 }

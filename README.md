@@ -1,15 +1,12 @@
-# 0825 BM (bmLogin)
+# 0905 bmAdmin
 로그인, 회원가입 버튼을 임시로 사용하기 위해서 "loginMain" 페이지를 이용했습니다  
 차후엔 실제 메인 페이지의 버튼에 연결하고 삭제 예정입니다  
 프로젝트에 기존 폴더는 삭제하고 제 작업 부분만 올립니다  
-## 로그인  
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_login.gif?raw=true" width="60%"	/>      
 
 	 - /member/login  
 	 - 로그인 성공시 loginMain 페이지로 이동됨  	
  
 ## 회원가입  
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_join1.gif?raw=true" width="60%"	/>  
 
 	- /member/join  
 	- 회원가입 성공시 login 페이지로 이동됨  
@@ -17,14 +14,11 @@
 	- 카카오 우편번호 api로 주소 검색 후 입력 처리  
 
 ## 카카오 로그인
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_kakaoLogin.gif?raw=true" width="60%"	/>  
 
 	- KaKaoController  
 	- /member/kakaoLogin  
 
 ## 관리자 메인
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/admin1.PNG?raw=true" width="65%"	/>
-   
      
 	- AdminController
 	- AdminChkIntercepter
@@ -32,11 +26,11 @@
 	- /adminMain : 임시 디자인의 관리자 메인 페이지
 	- 로그인 시 회원 등급으로 구분하여 접근가능  
 	- 메뉴1: 1주일간의 거래내역 목록 출력, 상단에 요일별 거래건수를 그래프로 구현
-	- 메뉴 2: 거래내역 전체 출력(페이징, 검색 기능 구현 예정)
-	- 메뉴 3: 회원 목록 출력(검색, 수정 기능) 
+		+ 테스트를 위해서 기간을 임의로 설정함. 쿼리부분만 손 보면 됨
+	- 메뉴 2: 거래내역 전체 출력(페이징 구현)
+	- 메뉴 3: 회원 목록 출력(페이징 구현, 검색기능 구현) 
 	
 ## 에러페이지
- - 구현 화면   <img src="https://github.com/harteh/SpringMVC/blob/main/image/pj_adminIntercepter.gif?raw=true" width="60%"	/>  
 
 	- /errorPage
 	- 컨트롤러에서 에러 메시지를 받아와서 경고창에 띄움
@@ -54,4 +48,4 @@
 		- mybatis : 3.4.6 에서  3.5.2 로  업그레이드 함   
 	- interceptors 설정 추가
 		- servlet-context.xml에 추가
-		- 관리자(메인)페이지에 일반회원, 비로그인 회원 접근 금지 설정 추가  
+		- 관리자페이지는 관리자 아이디로 로그인을 안했을 경우, 접근 차단함  

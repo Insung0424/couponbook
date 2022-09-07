@@ -1,6 +1,7 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=bm_login
 eclipse.preferences.version=1
-<<<<<<< HEAD
-encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
-=======
+encoding//src/main/java/sol/one/controller/HomeController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin/adminMain.jsp=UTF-8
->>>>>>> bm_login
+encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
