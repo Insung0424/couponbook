@@ -46,7 +46,7 @@
 	</interceptors> -->
 
 	<!-- 인터셉터 설정  /adminMain -->
-    <!--<interceptors>
+   <interceptors>
        <interceptor>
            <mapping path="admin/adminMain"/>
            <mapping path="admin/trdAllPage"/>
@@ -55,7 +55,7 @@
            <mapping path="member/myPage"/>
            <beans:bean id="commonInterceptor" class="sol.one.intercepter.AdminChkIntercepter"/>
        </interceptor>
-    </interceptors> -->
+    </interceptors> 
     
 	
 </beans:beans>
