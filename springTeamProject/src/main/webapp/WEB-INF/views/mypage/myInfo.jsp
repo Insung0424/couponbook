@@ -71,14 +71,14 @@
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">이메일</label> <input type="text"
 													class="form-control" id="floatingInput"
-													placeholder="name@example.com" disabled="disabled">
+													placeholder="${info.email }" disabled="disabled">
 											</div>
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">이름</label> <input type="text"
 													class="form-control" id="floatingInput"
-													placeholder="name@example.com" disabled="disabled">
+													placeholder="${info.user_name }" disabled="disabled">
 											</div>
 
 										</div>
@@ -87,30 +87,30 @@
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">전화번호</label> <input type="text"
 													class="form-control" id="floatingInput"
-													placeholder="name@example.com" disabled="disabled">
+													placeholder="${info.phone}" disabled="disabled">
 											</div>
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">주소</label> <input type="text"
 													class="form-control" id="floatingInput"
-													placeholder="name@example.com" disabled="disabled">
+													placeholder="${info.addr }" disabled="disabled">
 											</div>
 
 										</div>
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
-												<label for="floatingInput">?</label> <input type="text"
+												<label for="floatingInput">ID</label> <input type="text"
 													class="form-control" id="floatingInput"
-													placeholder="name@example.com" disabled="disabled">
+													placeholder="${info.user_id }" disabled="disabled">
 											</div>
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
-												<label for="floatingInput">?</label> <input type="text"
+												<label for="floatingInput">grade</label> <input type="text"
 													class="form-control" id="floatingInput"
-													placeholder="name@example.com" disabled="disabled">
+													placeholder="${info.user_grade }" disabled="disabled">
 											</div>
 
 										</div>

@@ -83,10 +83,10 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>#</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Email Address</th>
+												<th>글</th>
+												<th>아이디</th>
+												<th>글 내용</th>
+												<th>작성 시간</th>
 											</tr>
 										</thead>
 										<tbody id="myTable">
