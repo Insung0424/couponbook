@@ -52,8 +52,8 @@
 
 	<!-- Nav Item - Dashboard -->
 	<li class="nav-item active" >
-			<button type="button" class="btn btn-primary ml-2" >로그인</button>
-			<button type="button" class="btn btn-warning">카카오로그인</button>
+			<button type="button" class="btn btn-primary ml-2" >마이페이지</button>
+		
 
 
 		</li>
