@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>마이페이지</title>
+<title>관리 페이지</title>
 
 <!-- Custom fonts for this template-->
 <link href="resources/vendor/fontawesome-free/css/all.min.css"
@@ -46,7 +46,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
+		<%@include file="/WEB-INF/views/includes/admin_sidebar.jsp"%>
 
 		<!-- Sidebar end -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -55,17 +55,25 @@
 			<div id="content"
 				style="height: 100vh; min-height: 100%; position: relative; padding-bottom: 100px;">
 
-				<%@include file="/WEB-INF/views/includes/main_header.jsp"%>
+				<%@include file="/WEB-INF/views/includes/admin_header.jsp"%>
+
 				<!------------------------------------------------------------------------------------------  -->
 
 
 
 				<div class="container-fluid">
-
-					<!-- Page Heading -->
+				
+				<div>
+				
+				
+				
+				
+				
+				</div>
+				
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">거래내역</h1>
+						<h1 class="h3 mb-0 text-gray-800">최근 일주일 거래 내역</h1>
 					</div>
 					<div class="row ">
 						<div class="col-xl-12 col-lg-7" style="grid-area: main2;">
@@ -117,6 +125,7 @@
 
 	<!--------------------------------------------------------------------------------------------------------------------------  -->
 	<%@include file="/WEB-INF/views/includes/main_footer.jsp"%>
+
 
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
