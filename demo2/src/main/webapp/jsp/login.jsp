@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>东华商城-欢迎登录</title>
+<title>쿠폰북 로그인</title>
 <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
@@ -112,17 +112,17 @@
 
 						<form class="form-horizontal" id="form2" name="form2" action="${pageContext.request.contextPath}/confirmlogin" method="post">
 							<div class="form-group">
-								<label for="username" class="col-sm-2 control-label">用户名</label>
+								<label for="username" class="col-sm-2 control-label">아이디</label>
 								<div class="col-sm-10">
 									<input type="text" class="form-control" id="username"
-										name="username" placeholder="用户名">
+										name="username" placeholder="아이디">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="password" class="col-sm-2 control-label">密码</label>
+								<label for="password" class="col-sm-2 control-label">비밀번호</label>
 								<div class="col-sm-10">
 									<input type="password" class="form-control" id="password"
-										name="password" placeholder="密码">
+										name="password" placeholder="비밀번호">
 								</div>
 							</div>
 							<%--<div class="form-group">--%>
@@ -139,9 +139,9 @@
 							
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input type="button" onclick="SubmitForm();" class="btn btn-primary login-input" value="登录"
+									<input type="button" onclick="SubmitForm();" class="btn btn-primary login-input" value="등록"
 										name="submit">
-									<a href="/demo2/register" style="margin-left:10px;">没有账户？马上注册</a>
+									<a href="/demo2/register" style="margin-left:10px;">회원가입</a>
 									<div class="error">
 										${errorMsg}
 									</div>

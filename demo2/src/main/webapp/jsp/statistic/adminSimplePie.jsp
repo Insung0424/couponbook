@@ -127,16 +127,16 @@
                         type: 'pie',
                         name: '商品分类销售额占比',
                         data: [
-                            ['书籍 ￥'+ <%= session.getAttribute("bookPrice") %>,   <%= session.getAttribute("book2") %>],
-                            ['电子 ￥' + <%= session.getAttribute("digitalPrice") %>,       <%= session.getAttribute("digital2") %>],
+                            ['书籍 ₩'+ <%= session.getAttribute("bookPrice") %>,   <%= session.getAttribute("book2") %>],
+                            ['电子 ₩' + <%= session.getAttribute("digitalPrice") %>,       <%= session.getAttribute("digital2") %>],
                             {
-                                name: '生活用品 ￥'+<%= session.getAttribute("lifePrice") %>,
+                                name: '生活用品 ₩'+<%= session.getAttribute("lifePrice") %>,
                                 y: <%= session.getAttribute("life2") %>,
                                 sliced: true, // 突出显示这个点（扇区），用于强调。
                             },
-                            ['化妆品 ￥'+ <%= session.getAttribute("makeupPrice") %>,    <%= session.getAttribute("makeup2") %>],
-                            ['零食小吃 ￥' + <%= session.getAttribute("snackPrice") %>,     <%= session.getAttribute("snack2") %>],
-                            ['服装 ￥' + <%= session.getAttribute("clothPrice") %>,   <%= session.getAttribute("cloth2") %>]
+                            ['化妆品 ₩'+ <%= session.getAttribute("makeupPrice") %>,    <%= session.getAttribute("makeup2") %>],
+                            ['零食小吃 ₩' + <%= session.getAttribute("snackPrice") %>,     <%= session.getAttribute("snack2") %>],
+                            ['服装 ₩' + <%= session.getAttribute("clothPrice") %>,   <%= session.getAttribute("cloth2") %>]
                         ]
                     }]
                 });

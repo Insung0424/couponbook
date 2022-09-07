@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>东华商城类别</title>
+    <title>카테고리</title>
     <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/css/bootstrap.min.css">
@@ -45,7 +45,7 @@
         <div class="module">
             <div class="">
                 <h3>
-                    类别><span style="color: red;">${cate}</span>
+                    카테고리<span style="color: red;">${cate}</span>
                 </h3>
                 <hr>
             </div>
@@ -63,7 +63,7 @@
                                     <a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}">${goods.productname}</a>
                                 </p>
                                 <div class="text-right">
-                                    <b>￥${goods.price}</b>
+                                    <b>₩${goods.price}</b>
                                 </div>
                                 <div>
                                     <c:if test="${goods.fav}">
@@ -88,7 +88,7 @@
                 </div>
                 <div class="row page-div">
                     <div class="col-md-5 page-info">
-                        当前第${pageInfo.pageNum}页，共${pageInfo.pages}页，总共${pageInfo.size}条记录
+                        페이지${pageInfo.pageNum}번호，${pageInfo.pages}，${pageInfo.size}
                     </div>
                     <div class="col-md-6">
                         <nav aria-label="Page navigation">

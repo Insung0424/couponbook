@@ -1,0 +1,11 @@
+
+http://localhost:8080/demo2/jsp/main.jsp
+
+
+http://localhost:8080/demo2/jsp/category.jsp
+
+
+http://localhost:8080/demo2/jsp/detail.jsp
+
+
+http://localhost:8080/demo2/jsp/shopcart.jsp

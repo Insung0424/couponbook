@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>东华商城</title>
+    <title>메인</title>
     <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/css/bootstrap.min.css">
@@ -253,25 +253,25 @@
             <div class="sort">
                 <div class="sort-channel">
                     <ul class="sort-channel-list list-group">
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=电子">电子</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=电子">편의점</a>
 
                         </li>
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=生活用品">日用</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=生活用品">커피</a>
 
                         </li>
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=书籍">书籍</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=书籍">음료</a>
 
                         </li>
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=服装">服装</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=服装">외식</a>
 
                         </li>
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=化妆品">化妆品</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=化妆品">한식</a>
 
                         </li>
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=零食小吃">零食</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=零食小吃">상품권</a>
 
                         </li>
-                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=闲置百货">百货</a>
+                        <li class="list-group-item"><a href="${pageContext.request.contextPath}/category?cate=闲置百货">기타</a>
 
                         </li>
                     </ul>
@@ -433,7 +433,7 @@
                                         </div>
                                             <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}">${goods.productname}</a></h3>
-                                            <b>￥${goods.price}</b>
+                                            <b>₩${goods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${goods.fav}">
                                                 <button
@@ -482,7 +482,7 @@
                                         </div>
                                             <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${housegoods.productid}">${housegoods.productname}</a></h3>
-                                            <b>￥${housegoods.price}</b>
+                                            <b>₩${housegoods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${housegoods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${housegoods.fav}">
                                                 <button
@@ -529,7 +529,7 @@
                                         </div>
                                             <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${colgoods.productid}">${colgoods.productname}</a></h3>
-                                            <b>￥${colgoods.price}</b>
+                                            <b>₩${colgoods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${colgoods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${colgoods.fav}">
                                                 <button
@@ -575,7 +575,7 @@
                                         </div>
                                         <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${bookgoods.productid}">${bookgoods.productname}</a></h3>
-                                            <b>￥${bookgoods.price}</b>
+                                            <b>₩${bookgoods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${bookgoods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${bookgoods.fav}">
                                                 <button
@@ -621,7 +621,7 @@
                                         </div>
                                         <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}">${goods.productname}</a></h3>
-                                            <b>￥${goods.price}</b>
+                                            <b>₩${goods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${goods.fav}">
                                                 <button
@@ -670,7 +670,7 @@
                                         </div>
                                         <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}">${goods.productname}</a></h3>
-                                            <b>￥${goods.price}</b>
+                                            <b>₩${goods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${goods.fav}">
                                                 <button
@@ -718,7 +718,7 @@
                                         </div>
                                         <div class="caption">
                                             <h3><a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}">${goods.productname}</a></h3>
-                                            <b>￥${goods.price}</b>
+                                            <b>₩${goods.price}</b>
                                             &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;   &emsp;    <a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}" class="btn btn-primary" role="button">详细</a>
                                             <c:if test="${goods.fav}">
                                                 <button

@@ -21,10 +21,10 @@
         <ul class="nav nav-pills">
             <c:if test="${empty sessionScope.user}">
                 <li><a href="${pageContext.request.contextPath}/login" role="button" class="btn btn-success"><span class="glyphicon glyphicon-user">
-                    </span>买家登录</a></li>
-                <li><a href="${pageContext.request.contextPath}/sellerLogin" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-inbox">卖家登录</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/adminLogin" role="button" class="btn btn-warning"><span class="glyphicon glyphicon-asterisk">管理员登录</span></a></li>
-                <li><a href="${pageContext.request.contextPath}/register" role="button" class="btn btn-danger"><span class="glyphicon glyphicon-tags">买家注册</span></a></li>
+                    </span>구매</a></li>
+                <li><a href="${pageContext.request.contextPath}/sellerLogin" role="button" class="btn btn-primary"><span class="glyphicon glyphicon-inbox">판매</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/adminLogin" role="button" class="btn btn-warning"><span class="glyphicon glyphicon-asterisk">관리</span></a></li>
+                <li><a href="${pageContext.request.contextPath}/register" role="button" class="btn btn-danger"><span class="glyphicon glyphicon-tags">정보수정</span></a></li>
 
 
             </c:if>
@@ -38,9 +38,9 @@
         </span>
         </a>
         <ul class="dropdown-menu">
-        <li><a href="${pageContext.request.contextPath}/getUserInfo">账户管理</a></li>
+        <li><a href="${pageContext.request.contextPath}/getUserInfo">계정관리</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="${pageContext.request.contextPath}/logout" class="login-out">退出登录</a></li>
+        <li><a href="${pageContext.request.contextPath}/logout" class="login-out">로그아웃</a></li>
         </ul>
         </li>
         </c:if>
@@ -52,10 +52,10 @@
 
         <li><a role="button" class="btn btn-default" href="${pageContext.request.contextPath}/showcart"> <i
                     class="fa fa-shopping-cart" style="color: #F22E00"></i>
-                购物车
+               즐겨찾기
             </a></li>
             <li><a role="button" class="btn btn-default" href="${pageContext.request.contextPath}/info/favorite"> <i
-                    class="fa fa-star"></i> 收藏夹
+                    class="fa fa-star"></i> 인기상품
             </a></li>
         </ul>
     </div><br/><br/><br/>
@@ -75,17 +75,17 @@
                         class="icon-bar"></span> <span class="icon-bar"></span> <span
                         class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="${pageContext.request.contextPath}/main"><!-- <img alt="Brand" style="display: inline-block;" src="./image/tao.jpg" width="20" height="20"> --><span class="logo-word">商城</span></a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/main"><!-- <img alt="Brand" style="display: inline-block;" src="./image/tao.jpg" width="20" height="20"> --><span class="logo-word">쿠폰북</span></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse"
                  id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a class="a-color" href="${pageContext.request.contextPath}/main">首页</a></li>
-                    <li><a class="a-color" href="${pageContext.request.contextPath}/getUserInfo">个人信息</a></li>
-                    <li><a class="a-color" href="${pageContext.request.contextPath}/userOrder">我的订单</a></li>
-                    <li><a class="a-color" href="${pageContext.request.contextPath}/chatrobot">客服</a></li>
+                    <li><a class="a-color" href="${pageContext.request.contextPath}/main">메인</a></li>
+                    <li><a class="a-color" href="${pageContext.request.contextPath}/getUserInfo">개인정보</a></li>
+                    <li><a class="a-color" href="${pageContext.request.contextPath}/userOrder">내 거래내역</a></li>
+                    <li><a class="a-color" href="${pageContext.request.contextPath}/chatrobot">고객센터</a></li>
 
                 </ul>
 

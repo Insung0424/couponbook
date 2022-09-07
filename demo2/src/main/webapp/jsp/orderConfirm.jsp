@@ -88,14 +88,14 @@
                                                 href="${pageContext.request.contextPath}/detail?productid=${product.productid}">${product.productname}</a>
                                         </td>
                                         <td class="product-price"><span
-                                                class="amount-list amount-list-2">￥${product.price}</span></td>
+                                                class="amount-list amount-list-2">₩${product.price}</span></td>
                                         <td class="product-stock-status">
                                             <div class="latest_es_from_2">
                                                 <span>${product.num}</span>
                                             </div>
                                         </td>
                                         <td class="product-price"><span
-                                                class="amount-list amount-list-2">￥${product.newPrice}</span></td>
+                                                class="amount-list amount-list-2">₩${product.newPrice}</span></td>
                                         <%--<c:set value="${oldTotalPrice+product.price*product.num*product.activity.discount}" var="oldTotalPrice"/>--%>
                                     </tr>
                                 </c:forEach>
@@ -135,7 +135,7 @@
                                         <tr class="cart-subtotal">
                                             <th>总额</th>
                                             <td data-title="Subtotal"><span
-                                                    class="woocommerce-Price-amount amount">￥<span
+                                                    class="woocommerce-Price-amount amount">₩<span
                                                     class="woocommerce-Price-currencySymbol"
                                                     id="total-old">${oldTotalPrice}</span>
 													</span></td>
@@ -143,7 +143,7 @@
                                         <tr class="order-total">
                                             <th>实付款</th>
                                             <td data-title="Total"><strong> <span
-                                                    class="woocommerce-Price-amount amount">￥<span
+                                                    class="woocommerce-Price-amount amount">₩<span
                                                     class="woocommerce-Price-currencySymbol"
                                                     id="total-new">${totalPrice}</span>
 														</span>

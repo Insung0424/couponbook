@@ -81,12 +81,12 @@
                         <div class="layui-inline">
                             <label class="layui-label">价格</label>
                             <div class="layui-input-inline" style="width: 70px;">
-                                <input type="text" name="priceMin" placeholder="￥" autocomplete="off"
+                                <input type="text" name="priceMin" placeholder="₩" autocomplete="off"
                                        class="layui-input">
                             </div>
                             -
                             <div class="layui-input-inline" style="width: 70px;">
-                                <input type="text" name="priceMax" placeholder="￥" autocomplete="off"
+                                <input type="text" name="priceMax" placeholder="₩" autocomplete="off"
                                        class="layui-input">
                             </div>
                         </div>

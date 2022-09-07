@@ -258,7 +258,7 @@ function getItems(data, index) {
             "<img src='" + (data[i].itemImage ? data[i].itemImage : "../images/noItem.png") + "'/>" +
             "<div class='itemDetail'>"
             + "<p>" +
-            "<span class='itemPriceWrapper'>" + "<span>￥</span><span class='itemPrice'>" + data[i].itemPrice + "</span>\n" + "</span>\n"
+            "<span class='itemPriceWrapper'>" + "<span>₩</span><span class='itemPrice'>" + data[i].itemPrice + "</span>\n" + "</span>\n"
             + (data[i].supportBargin == "on" ? "<span class='layui-badge'>议价</span>\n" : "")
             + "<span class='viewNumWrapper'>\n" + "<i class='fa fa-eye'></i> <span class='viewNum'>" + data[i].viewNum + "</span>\n" + "</span>\n"
             + "</p>"

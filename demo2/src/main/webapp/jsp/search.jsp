@@ -63,7 +63,7 @@
                                     <a href="${pageContext.request.contextPath}/detail?productid=${goods.productid}">${goods.productname}</a>
                                 </p>
                                 <div class="text-right">
-                                    <b>￥${goods.price}</b>
+                                    <b>₩${goods.price}</b>
                                 </div>
                                 <div>
                                     <c:if test="${goods.fav}">

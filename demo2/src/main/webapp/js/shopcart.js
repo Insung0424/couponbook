@@ -126,7 +126,7 @@ function build_cart_table(result) {
                 .append($("<a></a>").attr("href","/demo2/detail?productid="+item.productid).append(item.goodsname));
 
             var goodsprice = $("<td></td>").addClass("product-price")
-                .append($("<span></span>").addClass("amount-list amount-list-2").append("￥"+item.price));
+                .append($("<span></span>").addClass("amount-list amount-list-2").append("₩"+item.price));
 
             var numIput = $("<input/>").addClass("num").attr("type","number").attr("value",item.num);
 
@@ -139,7 +139,7 @@ function build_cart_table(result) {
             });
 
             var totalPrice = $("<td></td>").addClass("product-price")
-                .append($("<span></span>").addClass("amount-list amount-list-2").append("￥"+item.price*item.num));
+                .append($("<span></span>").addClass("amount-list amount-list-2").append("₩"+item.price*item.num));
 
             var goodsitem = $("<tr></tr>").append(deleteCart)
                 .append(shopimage)
@@ -155,5 +155,5 @@ function build_cart_table(result) {
 
     //小计
     $("#total-num").text(totalnum);
-    $("#total-price").text("￥"+totalMoney);
+    $("#total-price").text("₩"+totalMoney);
 }

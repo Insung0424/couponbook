@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>商城-${goodsInfo['product'].productname}</title>
+    <title>쿠폰북-${goodsInfo['product'].productname}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -176,7 +176,7 @@
                         swal(result.msg);
                     },
                     error:function (){
-                        alert("评论失败");
+                        alert("작성실패");
                     }
                 });
 
@@ -217,18 +217,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabelPsw">商品评价</h4>
+                <h4 class="modal-title" id="myModalLabelPsw">판매자 내역</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" id="updatePsw-form" name="update-form" method="post">
                     <div class="form-group">
-                        <label for="star" class="col-sm-2 control-label">商品评分</label>
+                        <label for="star" class="col-sm-2 control-label">상품</label>
                         <div class="col-sm-9">
                             <div id="star" data-num="3.5"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="description" class="col-sm-2 control-label">详细描述</label>
+                        <label for="description" class="col-sm-2 control-label">상세설명</label>
                         <div class="col-sm-9">
                             <textarea class="form-control" rows="3" id="description"></textarea>
                         </div>
@@ -238,8 +238,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" id="saveEvaluate" >保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-primary" id="saveEvaluate" >즐겨찾기</button>
             </div>
         </div>
     </div>
@@ -250,7 +250,7 @@
         <jsp:include page="header.jsp"/>
         <div class="shop_menu shop_menu_2 main-detail-div">
             <ul class="cramb_area cramb_area_5 main-detail-nav">
-                <li><a href="/demo2/main">首页 /</a></li>
+                <li><a href="/demo2/main">첫 장 /</a></li>
                 <%--<li><a href="index.html">Shop /</a></li>
                 <li><a href="index.html">Headlight/</a></li>
                 <li><a href="index.html">Hats /</a></li>--%>
@@ -310,29 +310,29 @@
                     <!-- 价格 -->
                     <div class="price_box price_box_acr new_meta">
                         <%--<span class="old- price old- price-2">$250.00</span>--%>
-                        <span class="spical-price spical-price-2">￥${productInfo['product'].price}</span>
+                        <span class="spical-price spical-price-2">₩${productInfo['product'].price}</span>
                     </div>
                     <div class="new_meta">
                             <span class="sku_wrapper big-font">
-                                类别:
+                                카테고리:
                                 <span class="sku">${productInfo['cate'].catename}</span>
                                 <br><br>
                                 <span  class="sku">
-                                卖家编号:
+                                상품명:
                                     <span class="sku">${productInfo['product'].sellerid}</span>
                                 <br><br>
                                 <span  class="sku">
                             </span>
                             </span>
                                 <span  class="sku">
-                                库存:
+                                정가:
                                     <span class="sku">${productInfo['product'].num}</span>
                                 <br><br>
                                 <span  class="sku">
                             </span>
                             </span>
                                 <span  class="sku">
-                                上架时间:
+                                유효기간:
                                     <span class="sku">${productInfo['product'].uptime}</span>
                                 <br><br>
                             </span>
@@ -345,18 +345,18 @@
                         <form class="cart-btn-area new_meta" action="${pageContext.request.contextPath}/addCart" method="post">
                             <input type="hidden" value="${productInfo['product'].productid}" name="productid"/>
 
-                            <button class="add-tocart cart_zpf" type="submit">加入购物车</button>
+                            <button class="add-tocart cart_zpf" type="submit">즐겨찾기에 추가</button>
                             <input type="number" value="1" name="goodsnum" class="invisible">
                         </form>
                         <div class="add_defi new_meta">
                             <a data-original-title="Add to Wishlist" data-toggle="tooltip" class="fav-button big-font" data-id="${productInfo['product'].productid}">
                                 <c:if test="${productInfo['product'].fav}">
                                     <i class="fa fa-heart"></i>
-                                    取消收藏
+                                    취소
                                 </c:if>
                                 <c:if test="${!productInfo['product'].fav}">
                                     <i class="fa fa-heart-o"></i>
-                                    <span class="like-content">收藏</span>
+                                    <span class="like-content">수집</span>
                                 </c:if>
                             </a>
                         </div>
@@ -374,8 +374,8 @@
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
             <div class="elav_titel">
                 <div class="elv_heading">
-                    <h3>卖家：${productInfo['seller'].sellername} &nbsp; <img id="headPic" src="/upload/${productInfo['seller'].imagepath}"></h3>
-                    <h3>卖家注册时间：${productInfo['seller'].regtime}</h3>
+                    <h3>판매자：${productInfo['seller'].sellername} &nbsp; <img id="headPic" src="/upload/${productInfo['seller'].imagepath}"></h3>
+                    <h3>판매등록시간：${productInfo['seller'].regtime}</h3>
 
                 </div>
             </div>
@@ -383,29 +383,29 @@
                 <!-- 价格 -->
                 <%--<div class="price_box price_box_acr new_meta">--%>
                     <%--&lt;%&ndash;<span class="old- price old- price-2">$250.00</span>&ndash;%&gt;--%>
-                    <%--<span class="spical-price spical-price-2">￥${productInfo['product'].price}</span>--%>
+                    <%--<span class="spical-price spical-price-2">₩${productInfo['product'].price}</span>--%>
                 <%--</div>--%>
                 <div class="new_meta">
                             <span class="sku_wrapper big-font">
-                                卖家电话:
+                                사용처:
                                 <span class="sku">${productInfo['seller'].telephone}</span>
                                 <br><br>
                                 <span  class="sku">
-                                卖家邮箱:
+                                주소:
                                     <span class="sku">${productInfo['seller'].email}</span>
                                 <br><br>
                                 <span  class="sku">
                             </span>
                             </span>
                                 <span  class="sku">
-                                微信:
+                                정가:
                                     <span class="sku">${productInfo['seller'].wechat}</span>
                                 <br><br>
                                 <span  class="sku">
                             </span>
                             </span>
                                 <span  class="sku">
-                                支付宝:
+                                상세설명:
                                     <span class="sku">${productInfo['seller'].alipay}</span>
                                 <br><br>
                             </span>
@@ -415,7 +415,7 @@
                 <div >
                     <a href="${pageContext.request.contextPath}/sellerMain?sellerId=${productInfo['seller'].sellerid}">
 
-                        <button class="add-tocart cart_zpf" type="submit" >访问卖家主页</button>
+                        <button class="add-tocart cart_zpf" type="submit" >홈페이지 방문</button>
                     </a>
                 </div>
 
@@ -442,8 +442,8 @@
                     <ul class="favtabs favtabs-2 favtabs-nytr" role="tablist">
                         <%--<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Discription</a></li>--%>
                         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
-                                                                  data-toggle="tab">商品描述</a></li>
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">评价
+                                                                  data-toggle="tab">상품설명</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">평
                             (${commentList.size()})</a></li>
                     </ul>
                     <!-- Tab panes -->
@@ -452,7 +452,7 @@
                             <div class="row">
                                 <div class="col-md-12 col-xs-12">
                                     <div class="tb_desc">
-                                        <h2>商品描述</h2>
+                                        <h2>상품설명</h2>
                                         <p>${productInfo['product'].detaildescribe}</p>
                                     </div>
                                 </div>
@@ -464,7 +464,7 @@
                                     <div class="tb_desc">
                                         <div class="review_area_heading">
                                             <div id="comnt">
-                                                <h2>${commentList.size()}条评论</h2>
+                                                <h2>${commentList.size()}댓글</h2>
                                                 <ol class="commentlist">
                                                     <c:forEach items="${commentList}" var="comment">
                                                         <li id="li-comment-22" class="comment even thread-even depth-1"
@@ -498,9 +498,9 @@
                                                                         <strong>${comment.username}</strong>
                                                                         –
                                                                         <time datetime="${comment.commenttime}">
-                                                                            ${comment.commenttime.year+1900}年
-                                                                            ${comment.commenttime.month+1}月
-                                                                            ${comment.commenttime.date}日
+                                                                            ${comment.commenttime.year+1900}년
+                                                                            ${comment.commenttime.month+1}월
+                                                                            ${comment.commenttime.date}일
                                                                         </time>
                                                                         :
                                                                             <i class="fa fa-commenting"></i>
@@ -522,7 +522,7 @@
 
 
                                                 　　
-                                                <c:choose><c:when test="${hasBought}"><h4>您已购买，请评论：&nbsp;</h4><button class="btn btn-success" data-toggle="modal"  data-target="#comment" >添加评论</button></c:when><c:otherwise><h4>您尚未购买，无法评论！&nbsp;</h4></c:otherwise></c:choose>
+                                                <c:choose><c:when test="${hasBought}"><h4>구입내역，의견：&nbsp;</h4><button class="btn btn-success" data-toggle="modal"  data-target="#comment" >댓글 추가</button></c:when><c:otherwise><h4>댓글 불가&nbsp;</h4></c:otherwise></c:choose>
 
 
 

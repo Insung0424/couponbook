@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>东华商城-购物车</title>
+    <title>즐겨찾기</title>
     <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap/css/bootstrap.min.css">
@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="account_heading account_heading_ah">
-                    <h1>购物车</h1>
+                    <h1>즐겨찾기</h1>
                 </div>
             </div>
         </div>
@@ -57,12 +57,12 @@
                                         <th class="product-remove"><span class="nobr"></span></th>
                                         <th class="product-thumbnail product-thumbnail-2"></th>
                                         <th class="product-name product-name_2"><span
-                                                class="nobr">商品</span></th>
-                                        <th class="product-price"><span class="nobr"> 价格
+                                                class="nobr">상품</span></th>
+                                        <th class="product-price"><span class="nobr"> 가격
 												</span></th>
                                         <th class="product-stock-stauts"><span class="nobr">
-														数量 </span></th>
-                                        <th class="product-add-to-cart"><span class="nobr">总价</span></th>
+														유효기간 </span></th>
+                                        <th class="product-add-to-cart"><span class="nobr">정가</span></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -91,18 +91,18 @@
                         <div class="row">
                             <div class="col-md-6 col-xs-12">
                                 <div class="cart_totals ">
-                                    <h2>总价</h2>
+                                    <h2>총합</h2>
                                     <table class="shop_table shop_table_responsive">
                                         <tbody>
                                         <tr class="cart-subtotal">
-                                            <th>小计</th>
+                                            <th>소계</th>
                                             <td data-title="Subtotal"><span
                                                     class="woocommerce-Price-amount amount"> <span
                                                     class="woocommerce-Price-currencySymbol" id="total-num"></span>
 													</span></td>
                                         </tr>
                                         <tr class="order-total">
-                                            <th>总额</th>
+                                            <th>__</th>
                                             <td data-title="Total"><strong> <span
                                                     class="woocommerce-Price-amount amount"> <span
                                                     class="woocommerce-Price-currencySymbol" id="total-price"></span>
@@ -112,7 +112,7 @@
                                         </tbody>
                                     </table>
                                     <div class="wc-proceed-to-checkout">
-                                        <a class="button_act button_act-tc confirm-orders" href="${pageContext.request.contextPath}/order">确认订单</a>
+                                        <a class="button_act button_act-tc confirm-orders" href="${pageContext.request.contextPath}/order">확인</a>
                                     </div>
                                 </div>
                             </div>
