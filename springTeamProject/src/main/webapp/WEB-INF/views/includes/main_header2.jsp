@@ -49,9 +49,10 @@
 	<form
 		class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 		<div class="input-group">
-		 <input type="text"
-				class="form-control bg-light border-0 small" placeholder="검색어 입력"
-				aria-label="Search" aria-describedby="basic-addon2">
+			<a class="mr-2">CouponBook</a>
+			<input type="text" class="form-control bg-light border-0 small"
+				placeholder="검색어 입력" aria-label="Search"
+				aria-describedby="basic-addon2">
 			<div class="input-group-append">
 				<button class="btn btn-primary" type="button">
 					<i class="fas fa-search fa-sm"></i>
@@ -117,11 +118,8 @@
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">사용자 이름 </span> <svg
-					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-					fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-  <path
-						d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+				class="mr-2 d-none d-lg-inline text-gray-600 small">사용자 이름 </span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
 </svg>
 		</a> <!-- Dropdown - User Information -->
 			<div
@@ -133,9 +131,11 @@
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 관심상품
 				</a> <a class="dropdown-item" href="#"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 거래내역
-				</a> </a> <a class="dropdown-item" href="#"> <i
+				</a>
+				</a> <a class="dropdown-item" href="#"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내가 올린 쿠폰
-				</a> </a> <a class="dropdown-item" href="#"> <i
+				</a>
+				</a> <a class="dropdown-item" href="#"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내가 단 댓글
 				</a>
 				<div class="dropdown-divider"></div>

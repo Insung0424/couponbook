@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>마이페이지</title>
+<title>관리 페이지</title>
 
 <!-- Custom fonts for this template-->
 <link href="resources/vendor/fontawesome-free/css/all.min.css"
@@ -24,8 +24,15 @@
 <!-- Custom styles for this template-->
 <link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../resources/home.css">
-<style type="text/css">
-</style>
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
+	rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="resources/css/style.css">
+
 
 </head>
 
@@ -39,7 +46,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
+		<%@include file="/WEB-INF/views/includes/admin_sidebar.jsp"%>
 
 		<!-- Sidebar end -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -48,7 +55,7 @@
 			<div id="content"
 				style="height: 100vh; min-height: 100%; position: relative; padding-bottom: 100px;">
 
-				<%@include file="/WEB-INF/views/includes/main_header.jsp"%>
+				<%@include file="/WEB-INF/views/includes/admin_header.jsp"%>
 
 				<!------------------------------------------------------------------------------------------  -->
 
@@ -59,35 +66,45 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">내가 올린 쿠폰</h1>
+						<h1 class="h3 mb-0 text-gray-800">회원목록</h1>
 					</div>
 					<div class="row ">
 						<div class="col-xl-12 col-lg-7" style="grid-area: main2;">
 							<div class="card shadow mb-4">
-								<div class="container"
-									style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
-
-									<div class="row">
-										<div class="col">
-											<%
-												for (int i = 0; i < 10; i++) {
-											%>
-
-											<%
-												}
-											%>
-										</div>
-									</div>
-
-
-
-
-								</div>
 
 								<!-- Card Body -->
 
 
+								<input class="form-control" id="myInput" type="text"
+									placeholder="검색">
+								<div class="table-wrap"
+									style="width: 100%; height: 500px; overflow: auto">
 
+									<table class="table">
+										<thead class="thead-primary">
+											<tr>
+												<th>#</th>
+												<th>First Name</th>
+												<th>Last Name</th>
+												<th>Email Address</th>
+											</tr>
+										</thead>
+										<tbody id="myTable">
+											<%
+												for (int i = 0; i < 20; i++) {
+											%>
+											<tr>
+												<th scope="row">1</th>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>markotto@email.com</td>
+											</tr>
+											<%
+												}
+											%>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -114,9 +131,34 @@
 	<!-- Custom scripts for all pages-->
 	<script src="resources/js/sb-admin-2.min.js"></script>
 
-
-
-
+	<!-- 테이블 js-->
+	<script src="resources/js/popper.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
+	</script>
 </body>
 
 </html>
