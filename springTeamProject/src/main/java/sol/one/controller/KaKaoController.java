@@ -39,6 +39,6 @@ public class KaKaoController {
 		 * session.setAttribute("kakaoNumber", number.getK_number());
 		 */
         
-		return "redirect:/loginMain";
+		return "redirect:/";
     }
 }
