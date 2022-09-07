@@ -53,6 +53,7 @@ public class ProductController {
 	
 	@PostMapping("/postTrade")
 	public String putT(int pd_status) {
+		//유저 아이디 받아와서 하도록 변경해야함
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
@@ -62,15 +63,17 @@ public class ProductController {
 		return "redirect:/product/main";
 	}
 	
-	//판매자를 위한 거래내역
 	@PostMapping("/postTrade2")
 	public String putT2(int pd_status) {
+		// 판매자가 거래완료를 선택했을 시 
+		// 유저 아이디 받아와서 하도록 변경해야함
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
 		vo.setSell_user_id(2);
-		tradelogservice.insertTradeLog(vo);
-		// 상품 테이블에서 거래상태 업데이트 필요하므로 productservice 만들어야함
+		service.insertTradeLog(vo);//거래 내역 테이블에 데이터 추가
+		// 상품테이블과 연결된 서비스 생성
+		// 상품테이블에서 거래 상태 업데이트 필요
 		
 		return "redirect:/product/main";
 	}

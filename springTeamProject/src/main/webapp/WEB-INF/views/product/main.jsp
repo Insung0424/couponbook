@@ -62,7 +62,7 @@ style="display: block;" value="거래완료하기"/>
 					<option value="1">허위매물</option>
 					<option value="2">삼자거래사기</option>
 					<option value="3">또 추가할 항목</option>
-				</select>
+			  </select>
 			</div>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
@@ -83,6 +83,14 @@ style="display: block;" value="거래완료하기"/>
 
 <script>
 $(document).ready(function (){
+	/*  
+		const pd_status = ${}; 
+		if(pd_status == 2){
+			alert('해당 글은 판매자가 판매완료한 글입니다');
+		}else if(pd_status == 3){
+			alert('해당 글은 다른 사용자로부터 신고를 받고 확인중인 글입니다');
+		}
+	*/
 	$("#modal_report").hide();
 })
 $("#modal_btn_report").click(function(){

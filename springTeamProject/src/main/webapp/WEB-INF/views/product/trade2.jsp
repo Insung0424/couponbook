@@ -34,7 +34,7 @@ $("#cancel").click(function(){
 </head>
 <body>
 <form name="form" class="trade_form" method="post" 
-onsubmit="return check()" action="postTrade">
+onsubmit="return check()" action="postTrade2">
 	<select name="pd_status" id="pd_status" class="form-select form-select-sm" aria-label=".form-select-sm example">
 			<option value="">유형선택</option>
 			<option value="1">정상거래완료</option>
