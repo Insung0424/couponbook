@@ -36,57 +36,46 @@
 </head>
 
 
-<!-- Sidebar -->
-<ul
-	class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-	id="accordionSidebar">
+	<!-- Sidebar -->
+		<ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
 
-	<a
-		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="index.html">
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="index.html">
 
-		<div class="sidebar-brand-text mx-3">CouponBook</div>
-	</a>
+				<div class="sidebar-brand-text mx-3">CouponBook</div>
+			</a>
 
-	<hr class="sidebar-divider my-0">
+			<hr class="sidebar-divider my-0">
 
-	<!-- Nav Item - Dashboard -->
-	<li class="nav-item active" >
-			<button type="button" class="btn btn-primary ml-2" >로그인</button>
-			<button type="button" class="btn btn-warning">카카오로그인</button>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link "
+				href="index.html"> <span>내정보 조회</span></a></li>
 
+			<hr class="sidebar-divider">
 
-		</li>
-	<hr class="sidebar-divider">
+			<!-- Heading -->
+			<div class="sidebar-heading">마이페이지</div>
 
-	<!-- Heading -->
-	<div class="sidebar-heading">카테고리</div>
+			<li class="nav-item"><a class="nav-link"
+				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+					<span>관심상품</span>
+			</a></li>
 
-	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
-			<span>전체</span>
-	</a></li>
-
-	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
-			<span>편의점</span>
-	</a></li>
-	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
-			<span>커피/음료</span>
-	</a></li>
-	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
-			<span>외식</span>
-	</a></li>
-	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
-			<span>상품권</span>
-	</a></li>
-	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
-			<span>기타</span>
-	</a></li>
+			<li class="nav-item"><a class="nav-link"
+				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+					<span>거래내역</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+					<span>내가 올린 쿠폰</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+					<span>내가 단 댓글</span>
+			</a></li>
 
 
 
@@ -94,16 +83,13 @@
 
 
 
-	<hr class="sidebar-divider d-none d-md-block">
-	<!-- 사이드 바 숨기기 버튼 -->
-	<div class="text-center d-none d-md-inline">
-		<button class="rounded-circle border-0" id="sidebarToggle"></button>
-	</div>
-	<hr class="sidebar-divider d-none d-md-block">
+			<hr class="sidebar-divider d-none d-md-block">
+			<!-- 사이드 바 숨기기 버튼 -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
 
 
+		</ul>
+		<!-- Sidebar end -->
 
-
-
-</ul>
-<!-- Sidebar end -->

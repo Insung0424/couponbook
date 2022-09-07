@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>상품 등록</title>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+  <meta charset="UTF-8">
+  <title>상품 등록</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -20,7 +16,7 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<header>
+<header>
 		<nav class="navbar navbar-expand-lg" style="background-color: #ddd">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">CouponBook</a>
@@ -92,47 +88,82 @@
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
-						<a class="btn btn-primary disabled" href="#"
-							style="margin-right: 5px;">상품 등록</a>
+						<a class="btn btn-primary disabled" href="#" style="margin-right: 5px;">상품
+							등록</a>
 					</form>
 				</div>
 			</div>
 		</nav>
 	</header>
-	<form action="upload" method="post" enctype="multipart/form-data">
-		<div class="container" style="margin-top: 30px;">
-			<div class="row">
-				<div class="col">
-					<input type="text" placeholder="제목을 입력하세요"
-						style="width: 500px; margin-bottom: 10px;">
-					<!-- file upload -->
-					<input type="file" name="file">
-					<input type="hidden" value="${vo.product_id }">
-					<button type="submit" class="btn btn-primary"
-						style="float: right; margin-bottom: 10px;">등록</button>
-					<button type="reset" class="btn btn-secondary"
-						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
-					<div id="summernote"></div>
-				</div>
-			</div>
-		</div>
-	</form>
-	<script>
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				height : 700,
-				placeholder : '등록하고 싶은 쿠폰을 기재해 주십시오',
-				minHeight : null,
-				maxHeight : null,
-				focus : true,
-				lang : 'ko-KR',
-				onImageUpload : function(files, editor, welEditable) {
-					sendFile(files[0], editor, welEditable);
-				}
-			});
-		});
-	</script>
-	<script
+	<form action="" method="post" name = "frm">
+	<div class="container" style="margin-top: 30px;">
+		<div class="row">
+			<div class="col">
+			<h2 style="margin-bottom: 30px;">상품 등록</h2>
+			<hr>
+			<p><b>제목</b></p>
+			<input type = "text" name = "title" placeholder="제목을 입력하세요" style="width: 500px; margin-bottom: 10px;">
+			
+			<p><b>카테고리</b></p>
+			<select name = "select" style="margin-bottom: 10px; width: 100px;">
+				<option value="none">-------</option>
+				<option value="cs">편의점</option>
+				<option value="beverage">커피/음료</option>
+				<option value="dining">외식</option>
+				<option value="giftCard">상품권</option>
+				<option value="etc">기타</option>
+			</select>
+			<p><b>가격</b></p>
+			<input type = "text" id = "price" placeholder= "가격을 입력하세요" style="margin-bottom: 10px;"> 원
+			<p><b>기한</b></p>
+			<input type="date" name="lastday" style="margin-bottom: 10px;">
+			<p><b>내용</b></p>
+			<textarea rows="10" cols="150" name = "content" placeholder="내용을 입력하세요"></textarea>
+			<p style="margin-top: 30px;"><button class="btn btn-primary" type="submit" onclick="return ch()">등록</button> <button class="btn btn-secondary" type="reset">취소</button></p>
+  </div>
+  </div>
+  </div>
+  </form>
+  
+  <script type="text/javascript">
+  function ch() {
+	  if(frm.title.value == "") {
+		  frm.title.focus();
+		  alert('제목을 입력해 주십시오');
+		  
+		  return false;
+	  }
+	  
+	  if(frm.select.value == "none") {
+		  frm.select.focus();
+		  alert('카테고리를 선택해 주세요');
+		  
+		  return false;
+	  }
+	  
+	  if(frm.price.value == "") {
+		  frm.price.focus();
+		  alert('가격을 입력해 주십시오');
+		  
+		  return false;
+	  }
+	  
+	  if(frm.lastday.value == "") {
+		  frm.lastday.focus();
+		  alert('쿠폰의 유효기간을 입력해 주십시오');
+		  
+		  return false;
+	  }
+	  
+	  if(frm.content.value == "") {
+		  frm.content.focus();
+		  alert('내용을 입력해 주십시오');
+		  
+		  return false;
+	  }
+  }
+  </script>
+  <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>

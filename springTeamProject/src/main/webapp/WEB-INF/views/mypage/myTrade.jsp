@@ -1,8 +1,6 @@
 
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-	
 <html lang="en">
 
 <head>
@@ -84,22 +82,25 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>게시글 번호</th>
-												<th>구매자</th>
-												<th>판매자</th>
-												<th>날짜</th>
+												<th>#</th>
+												<th>First Name</th>
+												<th>Last Name</th>
+												<th>Email Address</th>
 											</tr>
 										</thead>
 										<tbody id="myTable">
-											 <c:forEach items="${Trade }" var="tList">
+											<%
+												for (int i = 0; i < 20; i++) {
+											%>
 											<tr>
 												<th scope="row">1</th>
-												<td>"${tList.product_id}"</td>
-												<td>"{tList.buyer_user_id}"</td>
-												<td>"{tList.seller_user_id}"</td>
-												<td>"{tList.trade_created}"</td>
+												<td>Mark</td>
+												<td>Otto</td>
+												<td>markotto@email.com</td>
 											</tr>
-										</c:forEach>
+											<%
+												}
+											%>
 										</tbody>
 									</table>
 								</div>
