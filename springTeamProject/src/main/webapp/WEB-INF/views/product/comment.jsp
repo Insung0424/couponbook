@@ -26,28 +26,73 @@
 	display: inline-block;
 	margin-left: 30px;
 }
+
+#add_btn {
+background-color: #F7D358;
+border-radius: 10px 20px;
+}
+
+#more_comment {
+background-color: #E1F5A9;
+border-radius: 10px 20px 30px;
+}
+
+
+h1 {
+  position: relative;
+  text-align: center;
+}
+h1 span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin: 0 4em;
+  padding: 0 1em;
+  background-color: #fff;
+  text-align: left;
+}
+h1::before {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  background: -webkit-linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+  background: linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+}
+
+
 </style>
 </head>
 <body>
 	<div class="modal-header">
 		<div class="modal-title">
-			댓글
+			<h1><span>거래창</span></h1>
 		</div>
 	</div>
+	<br>
 	<div class="modal-body">
-		<div class="mb-3">
+		<div class="mb-3">		
+		
+		<div style="background: #ffb6c1; border: 1px solid #ffb6c1; padding-left: 20px;"> <span style="color: white;">
 			작성자
 			<input type="text" id="writer" readonly value="${vo.user_id }" class="form-control"/>
-		
-			내용
-			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="5"></textarea>
-			<script type="text/javascript">
+		</span></div>
+									
+							
+		<div style="display:inline-block; border-radius:10px; background: #ffebf1; margin-bottom: 0px; font-size: 100%; padding: 20px;">			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="4" cols="50" placeholder="내용을 입력하세요"></textarea>
+			<script type="text/javascript" >
 			    CKEDITOR.replace( 'editor1' );
-			</script>
+			</script></div>
+		<div style="width: 0px; height: 0px; border-style: solid; border-width: 15px 15px 0 15px; border-color: #ffebf1 transparent transparent transparent; margin-left: 30px; margin-bottom: 20px;"></div>		<div></div><div></div>
 		</div>
-	</div>
+	</div>	
+
 	<div class="modal-footer">
-		<button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
+		<button type="button" id="add_btn" class="btn btn-primary">댓글 등록</button>
 		<input type="button" id="more_comment" value="댓글 보기" class="btn btn-primary">
 	</div>
 	
