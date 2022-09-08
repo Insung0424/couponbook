@@ -8,6 +8,6 @@ public interface PdtOneMapper {
 	
 	public List<ProductVO> getPdtList();
 
-	public ProductVO getOnePdt(String pdtId);
+	public ProductVO getOnePdt(int pdtId);
 
 }
