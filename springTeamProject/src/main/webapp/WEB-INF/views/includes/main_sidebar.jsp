@@ -67,20 +67,20 @@
 			
 		
 			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 					<span><input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;"></span>
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 					<span><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;"></span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 					<span><input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;"></span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 					<span><input type="submit" value="내가 단 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;"
 ></span>
 			</a></li>
