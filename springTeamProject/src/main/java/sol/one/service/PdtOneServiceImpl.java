@@ -23,4 +23,10 @@ public class PdtOneServiceImpl implements PdtOneService {
 		return  pdtMapper.getPdtList();
 	}
 
+	@Override
+	public ProductVO getOnePdt(String pdtId) {
+		// 상품(쿠폰) 1건 상세조회 - 상품 id로 조회
+		return pdtMapper.getOnePdt(pdtId);
+	}
+
 }

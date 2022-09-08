@@ -10,6 +10,14 @@
 			pj_Product_test
 	</select>
 
+	<select id="getOnePdt" resultType="sol.one.VO.ProductVO">
+		select 
+  			product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date
+		from 
+			pj_Product_test
+		where 
+			product_id = #{product_id }
+	</select>
 
 
 </mapper>

@@ -11,17 +11,17 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<!-- 로컬 DB를 위한 설정   -->
-	<!--<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
+	<!-- 로컬 DB를 위한 설정   
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
 		<property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
 			name="driverClassName" />
 		<property
 			value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1"
 			name="jdbcUrl" />
-		<property value="BM" name="username" />
-		<property value="bm0301" name="password" />
-	</bean>
- 	-->
+		<property value="" name="username" />
+		<property value="" name="password" />
+	</bean> -->
+ 	
  	<!-- 팀 DB -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="connectionTimeout" value="3000"/>
@@ -33,7 +33,6 @@
 		<property name="username" value="admin" />
 		<property name="password" value="soldesk01TEAM)!" />
 	</bean>
-
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
