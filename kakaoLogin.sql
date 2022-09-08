@@ -120,8 +120,14 @@ commit;
 
 
 -- ----------------------------------------- 팀 프로젝트 테이블 : 상품 테이블
+-- 테스트용 시퀀스
+create SEQUENCE seq_pdtId_test
+  increment by 1
+  start with 1
+  minvalue 1;
+
 -- 카테고리 references 없이 생성, 테스트 함 
-create table pj_Product(
+create table pj_Product_test(
   product_id number constraint product_id_pk primary key,
   category_id number not null,
   company_name varchar2(30) not null,
@@ -135,7 +141,17 @@ create table pj_Product(
   pd_date date
 );
 
-select * from pj_Product;
+-- select * from pj_Product;
+select * from pj_Product_test;
+INSERT INTO pj_Product_test VALUES (seq_pdtId_test.nextval, 1, '회사1', '쿠폰1', '20000', 1, 'img1', 'desc1', '111', '10', '2022-09-01');
+INSERT INTO pj_Product_test VALUES (seq_pdtId_test.nextval, 2, '회사2', '쿠폰2', '25000', 1, 'img1', 'desc1', '111', '20', '2022-09-01');
+INSERT INTO pj_Product_test VALUES (seq_pdtId_test.nextval, 3, '회사3', '쿠폰3', '10000', 1, 'img1', 'desc1', '111', '15', '2022-09-02');
+INSERT INTO pj_Product_test VALUES (seq_pdtId_test.nextval, 4, '회사4', '쿠폰4', '55000', 1, 'img1', 'desc1', '111', '50', '2022-09-03');
+INSERT INTO pj_Product_test VALUES (seq_pdtId_test.nextval, 1, '회사5', '쿠폰5', '30000', 1, 'img1', 'desc1', '111', '10', '2022-09-05');
+
+select 
+  product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date
+from pj_Product_test;
 
 
 -- ----------------------------------------- 팀 프로젝트 테이블 : 사용자
