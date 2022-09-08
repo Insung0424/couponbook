@@ -4,7 +4,7 @@
 <mapper namespace="sol.one.mapper.MypageMapper">
 	
 	<!-- 테스트용 로그인 -->
-	<select id="login" resultType="sol.one.VO.UserVO">
+	<select id="login" resultType="sol.one.VO.MemberVO">
 		select *
 		from
 			pj_user
