@@ -119,7 +119,7 @@ header {
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
-						<a class="btn btn-primary" href="write.jsp"
+						<a class="btn btn-primary" href="write"
 							style="margin-right: 5px;">상품 등록</a>
 					</form>
 				</div>

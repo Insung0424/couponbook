@@ -12,28 +12,28 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<!-- 로컬 DB를 위한 설정  
+	<!-- 로컬 DB를 위한 설정   -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
 		<property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
 			name="driverClassName" />
 		<property
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xe"
+			value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1"
 			name="jdbcUrl" />
-		<property value="" name="username" />
-		<property value="" name="password" />
-	</bean>   -->
+		<property value="JIS" name="username" />
+		<property value="357641" name="password" />
+	</bean>
  	
  	<!-- 팀 DB  -->
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<!-- <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="connectionTimeout" value="3000"/>
 		<property name="maximumPoolSize" value="300" /> 
 		<property name="minimumIdle" value="20" />
 		<property name="driverClassName"
 		   value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521/xepdb1" />
-		<property name="username" value="JIS" />
-		<property name="password" value="357641" />
-	</bean>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@DBSOLDESKTEAM1_low?TNS_ADMIN=/ora/Wallet_DBSOLDESKTEAM1" />
+		<property name="username" value="admin" />
+		<property name="password" value="soldesk01TEAM)!" />
+	</bean> -->
 
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"

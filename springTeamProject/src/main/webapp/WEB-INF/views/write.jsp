@@ -196,7 +196,6 @@
 	  }
   }
   </script>
-  <script
 	<form action="/product_add" method="post" enctype="multipart/form-data" name="form">
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
@@ -219,7 +218,6 @@
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
 
-					<!-- 해당 부분 ckeditor4 로 변경한 뒤 script작성 -->
 				</div>
 			</div>
 		</div>
@@ -392,7 +390,7 @@
 			deleteImg();
 		});
 	</script>
-	<script
+	<script>
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>

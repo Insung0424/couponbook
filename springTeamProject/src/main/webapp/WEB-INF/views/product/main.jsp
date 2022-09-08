@@ -83,16 +83,8 @@ style="display: block;" value="거래완료하기"/>
 
 <script>
 $(document).ready(function (){
-	/*  
-		const pd_status = ${}; 
-		if(pd_status == 2){
-			alert('해당 글은 판매자가 판매완료한 글입니다');
-		}else if(pd_status == 3){
-			alert('해당 글은 다른 사용자로부터 신고를 받고 확인중인 글입니다');
-		}
-	*/
 	$("#modal_report").hide();
-})
+});
 $("#modal_btn_report").click(function(){
 	$("#modal_report").fadeIn();
 });
