@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,7 +128,7 @@
 			</div>
 		</nav>
 	</header>
-	<form action="/product_add" method="post" enctype="multipart/form-data">
+	<form action="/product_add" method="post" enctype="multipart/form-data" name="form">
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col">
@@ -137,13 +139,13 @@
 					<div id="uploadData">
 						
 					</div>
-					<textarea class="form-control" id="write_editor" name="write_editor" class="pd_desc" rows="5"></textarea>
+					<textarea class="form-control" id="write_editor" name="write_editor" rows="5"></textarea>
 					<script type="text/javascript">
 					    CKEDITOR.replace( 'write_editor' );
 					</script>
 					
-					<input type="button"  id="add" class="btn btn-primary"
-						style="float: right; margin-bottom: 10px;">등록</button>
+					<input type="button" id="add" class="btn btn-primary" value="submit"
+						style="float: left; margin-bottom: 10px;">
 						
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
@@ -154,9 +156,66 @@
 		</div>
 	</form>
 	<script>
-		
-		$(".add").click(function (){
-			let pd_desc = CKEDITOR.instances.editor1.getData();
+		$("#add").click(function (){
+			let pd_desc = null;
+			if(CKEDITOR.instances.write_editor.getData() != null){
+				pd_desc = CKEDITOR.instances.write_editor.getData();
+			}
+			else{
+				pd_desc = "";
+			}
+			
+			let pd_name = form.pd_name.value;
+			if(pd_name == null){
+				pd_name = "";
+			}
+			
+			let img = form.img;
+			if(img == null){
+				img = "";
+			}else{
+				img = form.img.value;
+			}
+			
+			let simg = form.simg;
+			if(simg == null){
+				simg = "";
+			}else{
+				simg = form.simg.value;
+			}
+			
+			let pd_img = null;
+			if(img == "" && simg == ""){
+				pd_img = "";
+			}
+			else{
+				pd_img = img + ',' + simg;
+			}
+			
+			$.ajax({
+				type : "post",
+				url : '<c:url value="/product_add"/>',
+				data : JSON.stringify(
+						{
+							"pd_desc":pd_desc,
+							"pd_name":pd_name,
+							"pd_img":pd_img,
+							"location_id": 1,
+							"company_name": "com3",
+							"category_id": 2,
+							"pd_price" : "2500",
+							"pd_discount" : 11
+						}		
+					),
+				contentType: 'application/json',
+				success : function(result){
+					window.location.href = "main2"; // session 값 유지되는지 모르겠음
+				},
+				error : function(result){
+					console.log(result);
+					alert("error");
+				}
+			})
 		});
 
 		$("input[type='file']").on("change", function(e) {
@@ -174,9 +233,7 @@
 			if (!fileCheck(fileObj.name, fileObj.size)) {
 				return false;
 			}
-
-			alert("통과");
-
+			
 			formData.append("file", fileObj);
 
 			$.ajax({
@@ -233,7 +290,7 @@
 			str += "<img src='/getImg?fileNameNPath=" + encodingImg +"'>";
 			str += "<div id='imgDeleteBtn' data-file = '" + encodingImg + "'>x</div>";
 			str += "<input type='hidden' name='img' value='" + encodingImg + "'>";
-			str += "<input type='hidden' name='pd_img' value='" + encodingsImg + "'>";
+			str += "<input type='hidden' name='simg' value='" + encodingsImg + "'>";
 			str += "</div>";
 			// 에러 발생시 console 확인 -> .replace(/\\/g, '/') 로 해결가능한 문제일경우 uploaddata 에 추가
 			// 한글인코딩 문제 일경우 ->  encodeURIComponent(uploadData);

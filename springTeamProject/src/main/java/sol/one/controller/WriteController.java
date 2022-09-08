@@ -43,7 +43,7 @@ public class WriteController {
 	
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
-	public String add(@ModelAttribute ProductVO vo,Model model) {
+	public String add(@RequestBody ProductVO vo) {
 		System.out.println("check");
 		productservice.add(vo);
 		
@@ -102,7 +102,7 @@ public class WriteController {
 		File saveFile = new File(uploadPath + File.separator + uniqueName + fileExtension);
 		System.out.println(saveFile);
 		
-		ImageVO vo = new ImageVO(); 
+		ImageVO vo = new ImageVO(); // 이미지파일의 경로를 String 으로 저장하기위한 객체 db에는 존재 하지 않음
 		vo.setImg(saveFile.toString()); // 이미지 파일 경로 저장 다중 파일 및 이미지 업로드시 for문으로 변경해야함
 		
 		String sfile = null;
@@ -127,7 +127,7 @@ public class WriteController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		vo.setSimg(sfile); // 상품테이블에 썸네일파일 이미지 경로로 저장
+		vo.setSimg(sfile); 
 		
 		// for문이용시 리스트에 vo 객체 담고 반환도 <List<ImageVO>> 로 변경
 		ResponseEntity<ImageVO> data = new ResponseEntity<ImageVO>(vo, HttpStatus.OK);
