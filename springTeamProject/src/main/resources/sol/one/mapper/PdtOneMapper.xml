@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sol.one.mapper.PdtOneMapper">
+
+	<select id="getPdtList" resultType="sol.one.VO.ProductVO" >
+		select 
+  			product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date
+		from 
+			pj_Product_test
+	</select>
+
+
+
+</mapper>

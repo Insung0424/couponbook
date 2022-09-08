@@ -2,6 +2,7 @@ package sol.one.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -11,6 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import sol.one.VO.ProductVO;
+import sol.one.service.PdtOneService;
 
 
 /**
@@ -39,9 +43,9 @@ public class HomeController {
 	}
 	
 	@GetMapping("/main3")
-	public void main() {}
+	public void main3() {}
 	
-	//濡쒓렇�씤, �쉶�썝媛��엯 �솗�씤�슜 硫붿씤�쑝濡� �씠�룞, �뀒�뒪�듃�슜�쑝濡� �궘�젣�삁�젙�엫
+	//테스트용 페이지 연결
 	@GetMapping("/loginMain")
 	public void loginMain() {}
 	
