@@ -12,6 +12,13 @@ public interface PdtOneService {
 	 * @return List<ProductVO>
 	 */
 	List<ProductVO> getPdtList();
+
+	/**
+	 * 상품(쿠폰) 1건 상세조회 - 상품 id로 조회
+	 * @param pdtId
+	 * @return ProductVO
+	 */
+	ProductVO getOnePdt(String pdtId);
 	
 	
 
