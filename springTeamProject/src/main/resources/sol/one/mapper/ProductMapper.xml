@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sol.one.mapper.ProductMapper">
+
+	<insert id="insertP">
+		
+	</insert>
+	
+	<update id="modifyP">
+		
+	</update>
+	
+	<select id="selectP" resultType="sol.one.VO.ProductVO">
+		
+	</select>
+	
+	<delete id="deleteP">
+		
+	</delete>
+	
+</mapper>

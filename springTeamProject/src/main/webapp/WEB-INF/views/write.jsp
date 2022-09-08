@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>»óÇ° µî·Ï</title>
+<title>ìƒí’ˆ ë“±ë¡</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,6 +18,37 @@
 	rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
+	
+<style type="text/css">
+	#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+	#result_card {
+		position: relative;
+	}
+	.imgDeleteBtn{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+	
+</style>
 </head>
 <body>
 	<header>
@@ -33,23 +64,23 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="#">È¨</a></li>
+							aria-current="page" href="#">í™ˆ</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Ä«Å×°í¸® </a>
+							data-bs-toggle="dropdown" aria-expanded="false"> ì¹´í…Œê³ ë¦¬ </a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">ÀüÃ¼</a></li>
-								<li><a class="dropdown-item" href="#">ÆíÀÇÁ¡</a></li>
-								<li><a class="dropdown-item" href="#">Ä¿ÇÇ/À½·á</a></li>
-								<li><a class="dropdown-item" href="#">¿Ü½Ä</a></li>
-								<li><a class="dropdown-item" href="#">»óÇ°±Ç</a></li>
-								<li><a class="dropdown-item" href="#">±âÅ¸</a></li>
+								<li><a class="dropdown-item" href="#">ì „ì²´</a></li>
+								<li><a class="dropdown-item" href="#">í¸ì˜ì </a></li>
+								<li><a class="dropdown-item" href="#">ì»¤í”¼/ìŒë£Œ</a></li>
+								<li><a class="dropdown-item" href="#">ì™¸ì‹</a></li>
+								<li><a class="dropdown-item" href="#">ìƒí’ˆê¶Œ</a></li>
+								<li><a class="dropdown-item" href="#">ê¸°íƒ€</a></li>
 							</ul></li>
 					</ul>
 					<div style="margin-right: 50px;">
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
-								placeholder="°Ë»ö¾î ÀÔ·Â" aria-label="Search" style="width: 300px;">
+								placeholder="ê²€ìƒ‰ì–´ ì…ë ¥" aria-label="Search" style="width: 300px;">
 							<button class="btn btn-light" type="submit">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -77,7 +108,7 @@
 											viewBox="0 0 16 16">
   <path
 												d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-</svg> ¸¶ÀÌÆäÀÌÁö</a></li>
+</svg> ë§ˆì´í˜ì´ì§€</a></li>
 
 								<li><a class="dropdown-item" href="main.jsp"><svg
 											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -87,13 +118,13 @@
 												d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
   <path fill-rule="evenodd"
 												d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-</svg> ·Î±×¾Æ¿ô</a></li>
+</svg> ë¡œê·¸ì•„ì›ƒ</a></li>
 							</ul> <!-- /.dropdown-user --></li>
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
 						<a class="btn btn-primary disabled" href="#"
-							style="margin-right: 5px;">»óÇ° µî·Ï</a>
+							style="margin-right: 5px;">ìƒí’ˆ ë“±ë¡</a>
 					</form>
 				</div>
 			</div>
@@ -103,16 +134,20 @@
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col">
-					<input type="text" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä"
+					<input type="text" placeholder="ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”"
 						style="width: 500px; margin-bottom: 10px;">
 					<!-- file upload -->
 					<input type="file" name="file">
+					<div id="uploadData">
+						
+					</div>
 					<input type="hidden" value="${vo.product_id }">
 					<button type="submit" class="btn btn-primary"
-						style="float: right; margin-bottom: 10px;">µî·Ï</button>
+						style="float: right; margin-bottom: 10px;">ë“±ë¡</button>
 					<button type="reset" class="btn btn-secondary"
-						style="float: right; margin-bottom: 10px; margin-right: 5px;">Ãë¼Ò</button>
-					<div id="summernote"></div> <!-- ÇØ´ç ºÎºĞ ckeditor4 ·Î º¯°æÇÑ µÚ scriptÀÛ¼º -->
+						style="float: right; margin-bottom: 10px; margin-right: 5px;">ì·¨ì†Œ</button>
+					<div id="summernote"></div>
+					<!-- í•´ë‹¹ ë¶€ë¶„ ckeditor4 ë¡œ ë³€ê²½í•œ ë’¤ scriptì‘ì„± -->
 				</div>
 			</div>
 		</div>
@@ -121,7 +156,7 @@
 		$(document).ready(function() {
 			$('#summernote').summernote({
 				height : 700,
-				placeholder : 'µî·ÏÇÏ°í ½ÍÀº ÄíÆùÀ» ±âÀçÇØ ÁÖ½Ê½Ã¿À',
+				placeholder : 'ë“±ë¡í•˜ê³  ì‹¶ì€ ì¿ í°ì„ ê¸°ì¬í•´ ì£¼ì‹­ì‹œì˜¤',
 				minHeight : null,
 				maxHeight : null,
 				focus : true,
@@ -131,62 +166,111 @@
 				}
 			});
 		});
-		
-		$("input[type='file']").on("change", function(e){
+
+		$("input[type='file']").on("change", function(e) {
+			if($(".imgDeleteBtn").length > 0){
+				deleteFile();
+			}
+			
 			let fileInput = $('input[name="file"]');
 			let fileList = fileInput[0].files;
 			let fileObj = fileList[0];
 			let formData = new FormData();
-			/*
-			console.log("fileList : " + fileList);
-			console.log("fileObj : " + fileObj);
-			console.log("fileName : " + fileObj.name);
-			console.log("fileSize : " + fileObj.size);
-			console.log("fileType : " + fileObj.type);
-			*/
-			if(!fileCheck(fileObj.name, fileObj.size)){
+			
+			if (!fileCheck(fileObj.name, fileObj.size)) {
 				return false;
 			}
-			
-			alert("Åë°ú");
-			
-			formData.append("file",fileObj);
-			
+
+			alert("í†µê³¼");
+
+			formData.append("file", fileObj);
+
 			$.ajax({
-				url: '/upload',
-		    	processData : false,
-		    	contentType : false,
-		    	data : formData,
-		    	type : 'POST',
-		    	dataType : 'json',
-		    	success : function(data){
-		    		console.log(data);
-		    	},
-		    	error : function(data){
-		    		alert("ÀÌ¹ÌÁö ÆÄÀÏÀ» ¿Ã·ÁÁÖ¼¼¿ä");
-		    	}
+				url : '/upload',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : 'POST',
+				dataType : 'json',
+				success : function(data) {
+					console.log(data);
+					showImg(data);
+				},
+				error : function(data) {
+					alert("ì´ë¯¸ì§€ íŒŒì¼ì„ ì˜¬ë ¤ì£¼ì„¸ìš”");
+				}
 			});
-			
+
 		});
-		
+
 		let regex = new RegExp("(.*?)\.(jpg|png)$");
 		let maxSize = 10485760; //10MB	
-		
-		function fileCheck(fileName, fileSize){
 
-			if(fileSize >= maxSize){
-				alert("ÆÄÀÏ »çÀÌÁî ÃÊ°ú");
+		function fileCheck(fileName, fileSize) {
+
+			if (fileSize >= maxSize) {
+				alert("íŒŒì¼ ì‚¬ì´ì¦ˆ ì´ˆê³¼");
 				return false;
 			}
-				  
-			if(!regex.test(fileName)){
-				alert("ÇØ´ç Á¾·ùÀÇ ÆÄÀÏÀº ¾÷·ÎµåÇÒ ¼ö ¾ø½À´Ï´Ù.");
+
+			if (!regex.test(fileName)) {
+				alert("í•´ë‹¹ ì¢…ë¥˜ì˜ íŒŒì¼ì€ ì—…ë¡œë“œí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				return false;
 			}
-			
-			return true;		
-			
+
+			return true;
+
 		}
+		
+		function showImg(image){
+			if(!image || image.length == 0){
+				return
+			}
+			let uploadData = $("#uploadData"); // ì´ë¯¸ì§€ ë“¤ì–´ê°ˆ ìœ„ì¹˜
+			let img = image.img;
+			let simg = image.simg; // ì¸ë„¤ì¼ ì´ë¯¸ì§€ ë¶ˆëŸ¬ì˜¤ê¸°
+			let str = "";
+			console.log(img);
+			
+			let encodingImg = encodeURIComponent(img);
+			let encodingsImg = encodeURIComponent(simg);
+			
+			str += "<div id='result_card'>";
+			str += "<img src='/getImg?fileNameNPath=" + encodingImg +"'>";
+			str += "<div id='imgDeleteBtn' data-file = '" + encodingImg + "'>x</div>";
+			str += "<input type='hidden' name='img' value='" + encodingImg + "'>";
+			str += "<input type='hidden' name='simg' value='" + encodingsImg + "'>";
+			str += "</div>";
+			// ì—ëŸ¬ ë°œìƒì‹œ console í™•ì¸ -> .replace(/\\/g, '/') ë¡œ í•´ê²°ê°€ëŠ¥í•œ ë¬¸ì œì¼ê²½ìš° uploaddata ì— ì¶”ê°€
+			// í•œê¸€ì¸ì½”ë”© ë¬¸ì œ ì¼ê²½ìš° ->  encodeURIComponent(uploadData);
+			uploadData.append(str);    
+		}
+		
+		function deleteImg(){
+			let file = $("#imgDeleteBtn").data("file");
+			let deletediv = $("#result_card");
+			
+			$.ajax({
+				url: '/deleteImg',
+				data : {fileName : file},
+				dataType : 'text',
+				type : 'POST',
+				success : function(result){
+					console.log(result);
+					
+					deletediv.remove();
+					$("input[type='file']").val("");
+				},
+				error : function(result){
+					console.log(result);
+					alert("íŒŒì¼ ì‚­ì œ ì‹¤íŒ¨");
+				}
+	       });
+		}
+		
+		$("#uploadData").on("click", "#imgDeleteBtn", function(e){
+			deleteImg();
+		});
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

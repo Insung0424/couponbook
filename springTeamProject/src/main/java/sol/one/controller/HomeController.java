@@ -62,8 +62,7 @@ public class HomeController {
 	}
 
 	@GetMapping("/write")
-	public void write() {
-	}
+	public void write() {}
 
 	@GetMapping("/main2")
 	public void main2() {
