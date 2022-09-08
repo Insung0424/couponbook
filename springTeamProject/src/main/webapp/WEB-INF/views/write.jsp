@@ -1,19 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>»óÇ° µî·Ï</title>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<meta charset="UTF-8">
+<title>ìƒí’ˆ ë“±ë¡</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="../resources/ckeditor/ckeditor.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
+	
+<style type="text/css">
+	#result_card img{
+		max-width: 100%;
+	    height: auto;
+	    display: block;
+	    padding: 5px;
+	    margin-top: 10px;
+	    margin: auto;	
+	}
+	#result_card {
+		position: relative;
+	}
+	.imgDeleteBtn{
+	    position: absolute;
+	    top: 0;
+	    right: 5%;
+	    background-color: #ef7d7d;
+	    color: wheat;
+	    font-weight: 900;
+	    width: 30px;
+	    height: 30px;
+	    border-radius: 50%;
+	    line-height: 26px;
+	    text-align: center;
+	    border: none;
+	    display: block;
+	    cursor: pointer;	
+	}
+	
+</style>
 </head>
 <body>
 <header>
@@ -29,23 +62,23 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="#">È¨</a></li>
+							aria-current="page" href="#">í™ˆ</a></li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Ä«Å×°í¸® </a>
+							data-bs-toggle="dropdown" aria-expanded="false"> ì¹´í…Œê³ ë¦¬ </a>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">ÀüÃ¼</a></li>
-								<li><a class="dropdown-item" href="#">ÆíÀÇÁ¡</a></li>
-								<li><a class="dropdown-item" href="#">Ä¿ÇÇ/À½·á</a></li>
-								<li><a class="dropdown-item" href="#">¿Ü½Ä</a></li>
-								<li><a class="dropdown-item" href="#">»óÇ°±Ç</a></li>
-								<li><a class="dropdown-item" href="#">±âÅ¸</a></li>
+								<li><a class="dropdown-item" href="#">ì „ì²´</a></li>
+								<li><a class="dropdown-item" href="#">í¸ì˜ì </a></li>
+								<li><a class="dropdown-item" href="#">ì»¤í”¼/ìŒë£Œ</a></li>
+								<li><a class="dropdown-item" href="#">ì™¸ì‹</a></li>
+								<li><a class="dropdown-item" href="#">ìƒí’ˆê¶Œ</a></li>
+								<li><a class="dropdown-item" href="#">ê¸°íƒ€</a></li>
 							</ul></li>
 					</ul>
 					<div style="margin-right: 50px;">
 						<form class="d-flex" role="search">
 							<input class="form-control me-2" type="search"
-								placeholder="°Ë»ö¾î ÀÔ·Â" aria-label="Search" style="width: 300px;">
+								placeholder="ê²€ìƒ‰ì–´ ì…ë ¥" aria-label="Search" style="width: 300px;">
 							<button class="btn btn-light" type="submit">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 									fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -73,7 +106,7 @@
 											viewBox="0 0 16 16">
   <path
 												d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-</svg> ¸¶ÀÌÆäÀÌÁö</a></li>
+</svg>ë§ˆì´í˜ì´ì§€</a></li>
 
 								<li><a class="dropdown-item" href="main.jsp"><svg
 											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -83,13 +116,13 @@
 												d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
   <path fill-rule="evenodd"
 												d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-</svg> ·Î±×¾Æ¿ô</a></li>
+</svg>ë¡œê·¸ì•„ì›ƒ</a></li>
 							</ul> <!-- /.dropdown-user --></li>
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
-						<a class="btn btn-primary disabled" href="#" style="margin-right: 5px;">»óÇ°
-							µî·Ï</a>
+						<a class="btn btn-primary disabled" href="#"
+							style="margin-right: 5px;">ìƒí’ˆë“±ë¡</a>
 					</form>
 				</div>
 			</div>
@@ -99,27 +132,27 @@
 	<div class="container" style="margin-top: 30px;">
 		<div class="row">
 			<div class="col">
-			<h2 style="margin-bottom: 30px;">»óÇ° µî·Ï</h2>
+			<h2 style="margin-bottom: 30px;">ï¿½ï¿½Ç° ï¿½ï¿½ï¿½</h2>
 			<hr>
-			<p><b>Á¦¸ñ</b></p>
-			<input type = "text" name = "title" placeholder="Á¦¸ñÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="width: 500px; margin-bottom: 10px;">
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
+			<input type = "text" name = "title" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½" style="width: 500px; margin-bottom: 10px;">
 			
-			<p><b>Ä«Å×°í¸®</b></p>
+			<p><b>Ä«ï¿½×°ï¿½ï¿½ï¿½</b></p>
 			<select name = "select" style="margin-bottom: 10px; width: 100px;">
 				<option value="none">-------</option>
-				<option value="cs">ÆíÀÇÁ¡</option>
-				<option value="beverage">Ä¿ÇÇ/À½·á</option>
-				<option value="dining">¿Ü½Ä</option>
-				<option value="giftCard">»óÇ°±Ç</option>
-				<option value="etc">±âÅ¸</option>
+				<option value="cs">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+				<option value="beverage">Ä¿ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½</option>
+				<option value="dining">ï¿½Ü½ï¿½</option>
+				<option value="giftCard">ï¿½ï¿½Ç°ï¿½ï¿½</option>
+				<option value="etc">ï¿½ï¿½Å¸</option>
 			</select>
-			<p><b>°¡°İ</b></p>
-			<input type = "text" id = "price" placeholder= "°¡°İÀ» ÀÔ·ÂÇÏ¼¼¿ä" style="margin-bottom: 10px;"> ¿ø
-			<p><b>±âÇÑ</b></p>
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
+			<input type = "text" id = "price" placeholder= "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½" style="margin-bottom: 10px;"> ï¿½ï¿½
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
 			<input type="date" name="lastday" style="margin-bottom: 10px;">
-			<p><b>³»¿ë</b></p>
-			<textarea rows="10" cols="150" name = "content" placeholder="³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä"></textarea>
-			<p style="margin-top: 30px;"><button class="btn btn-primary" type="submit" onclick="return ch()">µî·Ï</button> <button class="btn btn-secondary" type="reset">Ãë¼Ò</button></p>
+			<p><b>ï¿½ï¿½ï¿½ï¿½</b></p>
+			<textarea rows="10" cols="150" name = "content" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½"></textarea>
+			<p style="margin-top: 30px;"><button class="btn btn-primary" type="submit" onclick="return ch()">ï¿½ï¿½ï¿½</button> <button class="btn btn-secondary" type="reset">ï¿½ï¿½ï¿½</button></p>
   </div>
   </div>
   </div>
@@ -129,41 +162,237 @@
   function ch() {
 	  if(frm.title.value == "") {
 		  frm.title.focus();
-		  alert('Á¦¸ñÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.select.value == "none") {
 		  frm.select.focus();
-		  alert('Ä«Å×°í¸®¸¦ ¼±ÅÃÇØ ÁÖ¼¼¿ä');
+		  alert('Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.price.value == "") {
 		  frm.price.focus();
-		  alert('°¡°İÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.lastday.value == "") {
 		  frm.lastday.focus();
-		  alert('ÄíÆùÀÇ À¯È¿±â°£À» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¿ï¿½â°£ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
 	  
 	  if(frm.content.value == "") {
 		  frm.content.focus();
-		  alert('³»¿ëÀ» ÀÔ·ÂÇØ ÁÖ½Ê½Ã¿À');
+		  alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½Ö½Ê½Ã¿ï¿½');
 		  
 		  return false;
 	  }
   }
   </script>
   <script
+	<form action="/product_add" method="post" enctype="multipart/form-data" name="form">
+		<div class="container" style="margin-top: 30px;">
+			<div class="row">
+				<div class="col">
+					<input type="text" placeholder="ì œëª©ì„ ì…ë ¥í•˜ì„¸ìš”" name="pd_name"
+						style="width: 500px; margin-bottom: 10px;">
+					<!-- file upload -->
+					<input type="file" name="file">
+					<div id="uploadData">
+						
+					</div>
+					<textarea class="form-control" id="write_editor" name="write_editor" rows="5"></textarea>
+					<script type="text/javascript">
+					    CKEDITOR.replace( 'write_editor' );
+					</script>
+					
+					<input type="button" id="add" class="btn btn-primary" value="submit"
+						style="float: left; margin-bottom: 10px;">
+						
+					<button type="reset" class="btn btn-secondary"
+						style="float: right; margin-bottom: 10px; margin-right: 5px;">ì·¨ì†Œ</button>
+
+					<!-- í•´ë‹¹ ë¶€ë¶„ ckeditor4 ë¡œ ë³€ê²½í•œ ë’¤ scriptì‘ì„± -->
+				</div>
+			</div>
+		</div>
+	</form>
+	<script>
+		$("#add").click(function (){
+			let pd_desc = null;
+			if(CKEDITOR.instances.write_editor.getData() != null){
+				pd_desc = CKEDITOR.instances.write_editor.getData();
+			}
+			else{
+				pd_desc = "";
+			}
+			
+			let pd_name = form.pd_name.value;
+			if(pd_name == null){
+				pd_name = "";
+			}
+			
+			let img = form.img;
+			if(img == null){
+				img = "";
+			}else{
+				img = form.img.value;
+			}
+			
+			let simg = form.simg;
+			if(simg == null){
+				simg = "";
+			}else{
+				simg = form.simg.value;
+			}
+			
+			let pd_img = null;
+			if(img == "" && simg == ""){
+				pd_img = "";
+			}
+			else{
+				pd_img = img + ',' + simg;
+			}
+			
+			$.ajax({
+				type : "post",
+				url : '<c:url value="/product_add"/>',
+				data : JSON.stringify(
+						{
+							"pd_desc":pd_desc,
+							"pd_name":pd_name,
+							"pd_img":pd_img,
+							"location_id": 1,
+							"company_name": "com3",
+							"category_id": 2,
+							"pd_price" : "2500",
+							"pd_discount" : 11
+						}		
+					),
+				contentType: 'application/json',
+				success : function(result){
+					window.location.href = "main2"; // session ê°’ ìœ ì§€ë˜ëŠ”ì§€ ëª¨ë¥´ê² ìŒ
+				},
+				error : function(result){
+					console.log(result);
+					alert("error");
+				}
+			})
+		});
+
+		$("input[type='file']").on("change", function(e) {
+			
+			if($("#imgDeleteBtn").length > 0){
+				alert("x ë²„íŠ¼ì„ ëˆŒëŸ¬ ê¸°ì¡´ì´ë¯¸ì§€ë¥¼ ì§€ì›Œì£¼ì„¸ìš”");
+				return;
+			}
+			
+			let fileInput = $('input[name="file"]');
+			let fileList = fileInput[0].files;
+			let fileObj = fileList[0];
+			let formData = new FormData();
+			
+			if (!fileCheck(fileObj.name, fileObj.size)) {
+				return false;
+			}
+			
+			formData.append("file", fileObj);
+
+			$.ajax({
+				url : '/upload',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : 'POST',
+				dataType : 'json',
+				success : function(data) {
+					console.log(data);
+					showImg(data);
+				},
+				error : function(data) {
+					alert("ì´ë¯¸ì§€ íŒŒì¼ì„ ì˜¬ë ¤ì£¼ì„¸ìš”");
+				}
+			});
+
+		});
+
+		let regex = new RegExp("(.*?)\.(jpg|png)$");
+		let maxSize = 10485760; //10MB	
+
+		function fileCheck(fileName, fileSize) {
+
+			if (fileSize >= maxSize) {
+				alert("íŒŒì¼ ì‚¬ì´ì¦ˆ ì´ˆê³¼");
+				return false;
+			}
+
+			if (!regex.test(fileName)) {
+				alert("í•´ë‹¹ ì¢…ë¥˜ì˜ íŒŒì¼ì€ ì—…ë¡œë“œí•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+				return false;
+			}
+
+			return true;
+
+		}
+		
+		function showImg(image){
+			if(!image || image.length == 0){
+				return
+			}
+			let uploadData = $("#uploadData"); // ì´ë¯¸ì§€ ë“¤ì–´ê°ˆ ìœ„ì¹˜
+			let img = image.img;
+			let simg = image.simg; // ì¸ë„¤ì¼ ì´ë¯¸ì§€ ë¶ˆëŸ¬ì˜¤ê¸°
+			let str = "";
+			console.log(img);
+			
+			let encodingImg = encodeURIComponent(img);
+			let encodingsImg = encodeURIComponent(simg);
+			
+			str += "<div id='result_card'>";
+			str += "<img src='/getImg?fileNameNPath=" + encodingImg +"'>";
+			str += "<div id='imgDeleteBtn' data-file = '" + encodingImg + "'>x</div>";
+			str += "<input type='hidden' name='img' value='" + encodingImg + "'>";
+			str += "<input type='hidden' name='simg' value='" + encodingsImg + "'>";
+			str += "</div>";
+			// ì—ëŸ¬ ë°œìƒì‹œ console í™•ì¸ -> .replace(/\\/g, '/') ë¡œ í•´ê²°ê°€ëŠ¥í•œ ë¬¸ì œì¼ê²½ìš° uploaddata ì— ì¶”ê°€
+			// í•œê¸€ì¸ì½”ë”© ë¬¸ì œ ì¼ê²½ìš° ->  encodeURIComponent(uploadData);
+			uploadData.append(str);    
+		}
+		
+		function deleteImg(){
+			let file = $("#imgDeleteBtn").data("file");
+			let deletediv = $("#result_card");
+			
+			$.ajax({
+				url: '/deleteImg',
+				data : {fileNameNPath : file},
+				dataType : 'text',
+				type : 'POST',
+				success : function(result){
+					console.log(result);
+					
+					deletediv.remove();
+					$("input[type='file']").val("");
+				},
+				error : function(result){
+					console.log(result);
+					alert("íŒŒì¼ ì‚­ì œ ì‹¤íŒ¨");
+				}
+	       });
+		}
+		
+		$("#uploadData").on("click", "#imgDeleteBtn", function(e){
+			deleteImg();
+		});
+	</script>
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>

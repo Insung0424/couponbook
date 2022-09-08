@@ -34,7 +34,7 @@ import sol.one.service.TradeLogService;
 public class ProductController {
 	
 	@Autowired
-	private TradeLogService service;
+	private TradeLogService tradelogservice;
 
 	@GetMapping("/main")
 	public void main(Model model) {
@@ -53,11 +53,27 @@ public class ProductController {
 	
 	@PostMapping("/postTrade")
 	public String putT(int pd_status) {
+		//�쑀�� �븘�씠�뵒 諛쏆븘���꽌 �븯�룄濡� 蹂�寃쏀빐�빞�븿
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
 		vo.setSell_user_id(2);
-		service.insertTradeLog(vo);
+		tradelogservice.insertTradeLog(vo);
+		
+		return "redirect:/product/main";
+	}
+	
+	@PostMapping("/postTrade2")
+	public String putT2(int pd_status) {
+		// �뙋留ㅼ옄媛� 嫄곕옒�셿猷뚮�� �꽑�깮�뻽�쓣 �떆 
+		// �쑀�� �븘�씠�뵒 諛쏆븘���꽌 �븯�룄濡� 蹂�寃쏀빐�빞�븿
+		T_tradeVO vo = new T_tradeVO();
+		vo.setPd_status(pd_status);
+		vo.setBuyer_user_id(3);
+		vo.setSell_user_id(2);
+		tradelogservice.insertTradeLog(vo);//嫄곕옒 �궡�뿭 �뀒�씠釉붿뿉 �뜲�씠�꽣 異붽�
+		// �긽�뭹�뀒�씠釉붽낵 �뿰寃곕맂 �꽌鍮꾩뒪 �깮�꽦
+		// �긽�뭹�뀒�씠釉붿뿉�꽌 嫄곕옒 �긽�깭 �뾽�뜲�씠�듃 �븘�슂
 		
 		return "redirect:/product/main";
 	}
@@ -66,64 +82,7 @@ public class ProductController {
 	public void new1() {}
 	
 	
-	@ResponseBody
-	@RequestMapping(value = "fileupload.do")
-    public void communityImageUpload(HttpServletRequest req, HttpServletResponse resp, MultipartHttpServletRequest multiFile) throws Exception{
-		PrintWriter printWriter = null;
-		OutputStream out = null;
-		MultipartFile file = multiFile.getFile("upload");
-		resp.setCharacterEncoding("utf-8");
-		
-		if(file != null) {
-			if(file.getSize() >0 && StringUtils.isNotBlank(file.getName())) {
-				if(file.getContentType().toLowerCase().startsWith("image/")) {
-				    try{
-				    	 
-			            String fileName = file.getOriginalFilename();
-			            byte[] bytes = file.getBytes();
-			           
-			            String uploadPath = req.getSession().getServletContext().getRealPath("/resources/images/src"); //������
-			            System.out.println("uploadPath:"+uploadPath);
-
-			            File uploadFile = new File(uploadPath);
-			            if(!uploadFile.exists()) {
-			            	uploadFile.mkdir();
-			            }
-			            String fileName2 = UUID.randomUUID().toString();
-			            uploadPath = uploadPath + File.separator + fileName2 +fileName;
-			            
-			            out = new FileOutputStream(new File(uploadPath));
-		            	out.write(bytes);
-			            
-			            printWriter = resp.getWriter();
-			            String fileUrl = req.getContextPath() + "/resources/images/src/" +fileName2 +fileName; //url���
-			            System.out.println("fileUrl :" + fileUrl);
-			            
-			            JsonObject json = new JsonObject();
-			            json.addProperty("uploaded", 1);
-			            json.addProperty("fileName", fileName);
-			            json.addProperty("url", fileUrl);
-			            
-			            printWriter.print(json);
-			            System.out.println(json);
-			            
-			            
-			 
-			        }catch(IOException e){
-			            e.printStackTrace();
-			        } finally {
-			            if (out != null) {
-		                    out.close();
-		                }
-		                if (printWriter != null) {
-		                    printWriter.close();
-		                }
-			        }
-				}
-
-			
-		}
-		
-	}
-	}
+	@GetMapping("/contentPage")
+	public void contentpage() {}
+	
 }

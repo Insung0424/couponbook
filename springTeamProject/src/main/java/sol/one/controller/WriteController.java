@@ -1,72 +1,186 @@
 package sol.one.controller;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
+import net.coobird.thumbnailator.Thumbnails;
+import sol.one.VO.ImageVO;
+import sol.one.VO.ProductVO;
+import sol.one.service.ProductServiceImpl;
 
 @Controller
 @AllArgsConstructor
 public class WriteController {
+	
+	private ProductServiceImpl productservice;
+	
+	
+	//등록버튼을 눌렀을때 
+	@PostMapping("/product_add")
+	public String add(@RequestBody ProductVO vo) {
+		System.out.println("check");
+		productservice.add(vo);
+		
+		//model.addAttribute("vo", vo); 등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시
+		//return "상세페이지";
+		return "main2";
+	}
 
+	// 파일 및 이미지 한글 깨지면 produces = MediaType.APPLICATION_JSON_UTF8_VALUE 추가
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(HttpServletRequest req, HttpServletResponse resp, @RequestParam("file") MultipartFile file) throws UnsupportedEncodingException {
+	public ResponseEntity<ImageVO> upload(HttpServletRequest req, HttpServletResponse resp,
+			@RequestParam("file") MultipartFile file) throws UnsupportedEncodingException {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		
-		String fileRealName = file.getOriginalFilename(); //파일명을 얻어낼 수 있는 메서드!
-		long size = file.getSize(); //파일 사이즈
-		
-		//System.out.println("파일명 : "  + fileRealName);
-		//System.out.println("용량크기(byte) : " + size);
-		//서버에 저장할 파일이름 fileextension으로 .jsp이런식의  확장자 명을 구함
-		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."),fileRealName.length());
-		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/src");
-		
-		/*
-		  파일 업로드시 파일명이 동일한 파일이 이미 존재할 수도 있고 사용자가 
-		  업로드 하는 파일명이 언어 이외의 언어로 되어있을 수 있습니다. 
-		  타인어를 지원하지 않는 환경에서는 정상 동작이 되지 않습니다.(리눅스가 대표적인 예시)
-		  고유한 랜던 문자를 통해 db와 서버에 저장할 파일명을 새롭게 만들어 준다.
-		 */
-		
-		UUID uuid = UUID.randomUUID();
-		//System.out.println(uuid.toString());
-		String[] uuids = uuid.toString().split("-");
-		
-		String uniqueName = uuids[0];
-		//System.out.println("생성된 고유문자열" + uniqueName);
-		//System.out.println("확장자명" + fileExtension);
-		
-		// File saveFile = new File(uploadFolder+"\\"+fileRealName); uuid 적용 전
-		
-		File saveFile = new File(uploadFolder + File.separator + uniqueName + fileExtension);  // 적용 후
-		//System.out.println(saveFile);
+
+		// 이미지 파일인지 체크
+		File checkfile = new File(file.getOriginalFilename());
+		String type = null;
 		try {
-			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
+			type = Files.probeContentType(checkfile.toPath());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		if (!type.startsWith("image")) {
+			ImageVO vo = null;
+			return new ResponseEntity<ImageVO>(vo, HttpStatus.OK);
+		}
+
+		String fileRealName = file.getOriginalFilename();
+		long size = file.getSize();
+//		System.out.println(file.getOriginalFilename());
+//		System.out.println(file.getContentType());
+//		System.out.println(file.getSize());
+		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
+		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/src");
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = new Date();
+		String str = sdf.format(date);
+		String datePath = str.replace("-", File.separator);
+		// 날마다 새로운 경로에 폴더생성 후 해당폴더에 이미지 저장
+		File uploadPath = new File(uploadFolder, datePath);
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+		// 각 이미지마다 다른 이름을 주기 위해사용한다고 함
+		UUID uuid = UUID.randomUUID();
+		// System.out.println(uuid.toString());
+		String[] uuids = uuid.toString().split("-");
+
+		String uniqueName = uuids[0];
+
+		// File saveFile = new File(uploadFolder+"\\"+fileRealName);
+		String uploadFileName = uniqueName + fileExtension; // 파일 이름
+
+		File saveFile = new File(uploadPath + File.separator + uniqueName + fileExtension);
+		System.out.println(saveFile);
+		
+		ImageVO vo = new ImageVO(); // 이미지파일의 경로를 String 으로 저장하기위한 객체 db에는 존재 하지 않음
+		vo.setImg(saveFile.toString()); // 이미지 파일 경로 저장 다중 파일 및 이미지 업로드시 for문으로 변경해야함
+		
+		String sfile = null;
+		try {
+			file.transferTo(saveFile);
+
+			// 썸네일용 파일
+			File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
+			BufferedImage bo_image = ImageIO.read(saveFile);
+			// 비율
+			double ratio = 4;
+			// 넓이 높이
+			int width = (int) (bo_image.getWidth() / ratio);
+			int height = (int) (bo_image.getHeight() / ratio);
+			Thumbnails.of(saveFile).size(width, height).toFile(thumbnailFile);
+			
+			sfile = thumbnailFile.toString();
+			
+
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "main";
-	}
-	
-	/*
-	 * 다중 파일 업로드시 구현
-	@PostMapping("upload2")
-	public void upload2() {
+		vo.setSimg(sfile); 
 		
-	}*/
+		// for문이용시 리스트에 vo 객체 담고 반환도 <List<ImageVO>> 로 변경
+		ResponseEntity<ImageVO> data = new ResponseEntity<ImageVO>(vo, HttpStatus.OK);
+
+		return data;
+	}
+
+	/*
+	 * 파일 및 이미지 다중 업로드시 구현
+	 * 
+	 * @PostMapping("upload2") public void upload2() {
+	 * 
+	 * }
+	 */
+
+	@RequestMapping(value = "/getImg", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> getImg(String fileNameNPath) {
+		// 테이블에서 열 값에 저장할때 이미지경로와 이름이 전체가 저장되므로 그 값을 받아서 파일을 생성함
+		// ex)
+		// C:\Users\agdis\Documents\workspace-sts-3.9.11.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springTeamProject\resources\images\src\2022\09\07\c5ad886f.png
+		File file = new File(fileNameNPath);
+
+		ResponseEntity<byte[]> img = null;
+		try {
+			HttpHeaders header = new HttpHeaders();
+			header.add("Content-type", Files.probeContentType(file.toPath()));
+			img = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return img;
+	}
+
+	@RequestMapping(value = "/deleteImg", method = RequestMethod.POST)
+	public ResponseEntity<String> deleteImg(String fileNameNPath) {
+
+		File file = null;
+
+		try {
+			
+			file = new File(URLDecoder.decode(fileNameNPath, "UTF-8"));
+			file.delete(); // 원본 파일 삭제
+			
+			String sFileName = file.getAbsolutePath().replace("s_", "");
+			file = new File(sFileName);
+			file.delete(); // 이미지 파일 삭제
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>("fail", HttpStatus.NOT_IMPLEMENTED);
+		}
+		
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
 }

@@ -62,7 +62,7 @@ style="display: block;" value="거래완료하기"/>
 					<option value="1">허위매물</option>
 					<option value="2">삼자거래사기</option>
 					<option value="3">또 추가할 항목</option>
-				</select>
+			  </select>
 			</div>
 			<div class="mb-3">
 			  <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
@@ -83,6 +83,14 @@ style="display: block;" value="거래완료하기"/>
 
 <script>
 $(document).ready(function (){
+	/*  
+		const pd_status = ${}; 
+		if(pd_status == 2){
+			alert('해당 글은 판매자가 판매완료한 글입니다');
+		}else if(pd_status == 3){
+			alert('해당 글은 다른 사용자로부터 신고를 받고 확인중인 글입니다');
+		}
+	*/
 	$("#modal_report").hide();
 })
 $("#modal_btn_report").click(function(){
@@ -96,10 +104,10 @@ $("#modal_TradingEnd").click(function(){
 	//버튼 숨기기,보이기
 	$("#modal_TradingEnd").toggle(); 
 	// 거래 완료 유형선택자 페이지 제공	
-	$("#modal_trade_content").load("trade");
+	$("#modal_trade_content").load("buyerTradeEnd");
 	// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
-	if($("#modal_trade_content").load("trade")){
-		$("#modal_trade_content").show("trade");
+	if($("#modal_trade_content").load("buyerTradeEnd")){
+		$("#modal_trade_content").show("buyerTradeEnd");
 	}
 });
 </script>
