@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 <style>
 
 #modal{ 
@@ -26,30 +25,110 @@
 	display: inline-block;
 	margin-left: 30px;
 }
+
+h1 {
+  position: relative;
+  text-align: center;
+}
+h1 span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin: 0 4em;
+  padding: 0 1em;
+  background-color: #fff;
+  text-align: left;
+}
+h1::before {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  background: -webkit-linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+  background: linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+}
+
+
+h2 {
+  position: relative;
+  text-align: left;
+}
+h2 span {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin: 0 4em;
+  padding: 0 1em;
+  background-color: #fff;
+  text-align: left;
+}
+h2::before {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  background: -webkit-linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+  background: linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+}
+
+#add_btn {
+background-color: #dbdbdb;
+box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
+}
+#add_btn:hover {
+transform: translate(5px, 10px);
+}
+
+
+#more_comment {
+background-color: #e8e8e8;
+box-shadow: 5px 5px 0px 0px rgba(0, 0, 0, 0.1);
+}
+#more_comment:hover {
+transform: translate(5px, 10px);
+}   
+
 </style>
 </head>
 <body>
 	<div class="modal-header">
 		<div class="modal-title">
-			댓글
+			<h1><span>거래창</span></h1>
 		</div>
 	</div>
 	<div class="modal-body">
 		<div class="mb-3">
+		<div style="background: #2f6ddc; border: 1px solid #2f6ddc; padding-left: 20px;"> <span style="color: white;">
 			작성자
 			<input type="text" id="writer" readonly value="${vo.user_id }" class="form-control"/>
-		
-			내용
-			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="5"></textarea>
-			<script type="text/javascript">
+		</span></div>
+									
+							
+		<div style="display:inline-block; border-radius:10px; background: #2f6ddc; margin-bottom: 0px; font-size: 100%; padding: 20px;">			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="4" cols="50" placeholder="내용을 입력하세요"></textarea>
+			<script type="text/javascript" >
 			    CKEDITOR.replace( 'editor1' );
-			</script>
+			</script></div>
+		<div style="width: 0px; height: 0px; border-style: solid; border-width: 15px 15px 0 15px; border-color: #2f6ddc transparent transparent transparent; margin-left: 30px; margin-bottom: 20px;"></div>		<div></div><div></div>
 		</div>
+	</div>	
+
+	<div class="modal-footer">	
+	
+	
+		<button type="button" id="add_btn" class="btn btn-primary" style="font-size: 1.3em;">댓글 등록</button>
+				
+		<input type="button" id="more_comment" value="댓글 보기" class="btn btn-primary" style="font-size: 1.3em;">
 	</div>
-	<div class="modal-footer">
-		<button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
-		<input type="button" id="more_comment" value="댓글 보기" class="btn btn-primary">
-	</div>
+	
+	
 	
 	<span id="comment_list"></span>
 	
@@ -57,7 +136,7 @@
 		<div id='modal_content'>
 			<div class="modal-header">
 				<div class="modal-title">
-					내용
+				  내용
 				</div>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
  					<span aria-hidden="true" style="font-size: 1em;">×</span>
@@ -65,10 +144,15 @@
 			</div>
 			<div class="modal-body">
 				<div class="mb-3">
+				<div  style="position: relative;  margin: 2em 0 2em 40px; background: #fdeff2; border-radius: 20px; font-size: 100%; padding: 20px;"><span  style="  position: absolute; left: -38px; width: 13px; height: 12px; bottom: 0; background: #fdeff2; border-radius: 50%; "></span>
+								
 				  <textarea class="form-control" id="editor2" name="editor2" class="modal_com_content" rows="5"></textarea>
 					<script type="text/javascript">
 					    CKEDITOR.replace( 'editor2' );
-					</script>
+					</script>			
+					
+					<span style=" position: absolute; left: -24px; width: 20px; height: 18px;  bottom: 3px; background: #fdeff2; border-radius: 50%;  margin: 0;  padding: 0;"></span></div>
+								
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -180,7 +264,7 @@ function getAllList() {
 function getList() {
 	const product_id= ${vo.product_id};
 	const user_id_1= ${vo.user_id};
-	const user_id_2 = 1; //상품페이지에 등록된 유저 아이디
+	const user_id_2 = 1; 
 	$.ajax({
 		type : "get",
 		url:"/replies/get/comment",
@@ -240,10 +324,10 @@ function getList() {
 		
 $("#more_comment").click(function(){
 	let user_id = ${vo.user_id};
-	if(user_id  == 1){//판매자일 경우
+	if(user_id  == 1){
 		getAllList();
 	}
-	else{//구매자일경우
+	else{
 		getList(); 
 	}
 });

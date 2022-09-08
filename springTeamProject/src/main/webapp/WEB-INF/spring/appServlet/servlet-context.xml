@@ -57,4 +57,9 @@
 		<beans:property name="defaultEncoding" value="utf-8" />
 	</beans:bean>
 	
+	
+	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
+	
 </beans:beans>

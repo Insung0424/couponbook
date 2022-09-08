@@ -5,7 +5,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
-<head>
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+
+
 	<meta charset="UTF-8">
 	<title>임시 메인</title>
 	<!-- Bootstrap CDN -->
@@ -43,6 +45,7 @@
 				<p>${mem.user_id } // ${mem.nickname } // ${mem.email }</p>
 				<a href="member/myPage" class="w-75 btn btn-lg btn-outline-warning">마이페이지</a><br><br>
 				<a href="member/logout" class="w-75 btn btn-lg btn-danger">로그아웃</a><br><br>
+				<a href="product/comment" class="w-75 btn btn-lg btn-danger">댓글</a><br><br>
 			</c:when>
 		</c:choose>
 		

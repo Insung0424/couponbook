@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 <meta charset="UTF-8">
 <title>상품 등록</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
