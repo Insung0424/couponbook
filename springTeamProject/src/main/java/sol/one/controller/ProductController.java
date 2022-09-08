@@ -53,7 +53,7 @@ public class ProductController {
 	
 	@PostMapping("/postTrade")
 	public String putT(int pd_status) {
-		//유저 아이디 받아와서 하도록 변경해야함
+		//�쑀�� �븘�씠�뵒 諛쏆븘���꽌 �븯�룄濡� 蹂�寃쏀빐�빞�븿
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
@@ -65,15 +65,15 @@ public class ProductController {
 	
 	@PostMapping("/postTrade2")
 	public String putT2(int pd_status) {
-		// 판매자가 거래완료를 선택했을 시 
-		// 유저 아이디 받아와서 하도록 변경해야함
+		// �뙋留ㅼ옄媛� 嫄곕옒�셿猷뚮�� �꽑�깮�뻽�쓣 �떆 
+		// �쑀�� �븘�씠�뵒 諛쏆븘���꽌 �븯�룄濡� 蹂�寃쏀빐�빞�븿
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
 		vo.setSell_user_id(2);
-		service.insertTradeLog(vo);//거래 내역 테이블에 데이터 추가
-		// 상품테이블과 연결된 서비스 생성
-		// 상품테이블에서 거래 상태 업데이트 필요
+		tradelogservice.insertTradeLog(vo);//嫄곕옒 �궡�뿭 �뀒�씠釉붿뿉 �뜲�씠�꽣 異붽�
+		// �긽�뭹�뀒�씠釉붽낵 �뿰寃곕맂 �꽌鍮꾩뒪 �깮�꽦
+		// �긽�뭹�뀒�씠釉붿뿉�꽌 嫄곕옒 �긽�깭 �뾽�뜲�씠�듃 �븘�슂
 		
 		return "redirect:/product/main";
 	}
