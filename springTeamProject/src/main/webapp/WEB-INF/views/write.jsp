@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +104,7 @@
 											viewBox="0 0 16 16">
   <path
 												d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-</svg> 마이페이지</a></li>
+</svg>마이페이지</a></li>
 
 								<li><a class="dropdown-item" href="main.jsp"><svg
 											xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -114,13 +114,13 @@
 												d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
   <path fill-rule="evenodd"
 												d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-</svg> 로그아웃</a></li>
+</svg>로그아웃</a></li>
 							</ul> <!-- /.dropdown-user --></li>
 						<!-- /.dropdown -->
 					</ul>
 					<form class="r-flex" role="regist">
 						<a class="btn btn-primary disabled" href="#"
-							style="margin-right: 5px;">상품 등록</a>
+							style="margin-right: 5px;">상품등록</a>
 					</form>
 				</div>
 			</div>
@@ -130,7 +130,7 @@
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col">
-					<input type="text" placeholder="제목을 입력하세요"
+					<input type="text" placeholder="제목을 입력하세요" name="pd_name"
 						style="width: 500px; margin-bottom: 10px;">
 					<!-- file upload -->
 					<input type="file" name="file">
@@ -142,8 +142,9 @@
 					    CKEDITOR.replace( 'write_editor' );
 					</script>
 					
-					<input type="button" class="btn btn-primary" id="add"
+					<input type="button"  id="add" class="btn btn-primary"
 						style="float: right; margin-bottom: 10px;">등록</button>
+						
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
 
@@ -153,27 +154,16 @@
 		</div>
 	</form>
 	<script>
-		$(document).ready(function() {
-			$('#summernote').summernote({
-				height : 700,
-				placeholder : '등록하고 싶은 쿠폰을 기재해 주십시오',
-				minHeight : null,
-				maxHeight : null,
-				focus : true,
-				lang : 'ko-KR',
-				onImageUpload : function(files, editor, welEditable) {
-					sendFile(files[0], editor, welEditable);
-				}
-			});
-		});
 		
 		$(".add").click(function (){
 			let pd_desc = CKEDITOR.instances.editor1.getData();
 		});
 
 		$("input[type='file']").on("change", function(e) {
-			if($(".imgDeleteBtn").length > 0){
-				deleteFile();
+			
+			if($("#imgDeleteBtn").length > 0){
+				alert("x 버튼을 눌러 기존이미지를 지워주세요");
+				return;
 			}
 			
 			let fileInput = $('input[name="file"]');
@@ -256,7 +246,7 @@
 			
 			$.ajax({
 				url: '/deleteImg',
-				data : {fileName : file},
+				data : {fileNameNPath : file},
 				dataType : 'text',
 				type : 'POST',
 				success : function(result){
