@@ -135,7 +135,7 @@ header {
 							<p class="card-id"><c:out value="${pdtList.product_id }" /></p>
 							<p class="card-title"><c:out value="${pdtList.pd_name }" /></p>
 							<div class="card-price">가격<c:out value="${pdtList.pd_price }" /></div>
-							<div class="card-variety">종류<c:out value="${pdtList.category_id }" /></div>
+							<div class="card-variety">사용처<c:out value="${pdtList.pd_desc }" /></div>
 						</div>
 					</div>
 				</a>
