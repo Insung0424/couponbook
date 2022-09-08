@@ -23,6 +23,10 @@
 			<hr class="my-4">
 			
 			<a href="/" class="w-75 btn btn-lg btn-outline-warning">임시메인</a><br><br>
+			<form method="post">
+			<input type="hidden" id="session_user_id" name="session_user_id" value="${user.user_id}">
+			<input type="submit" value="myinfo" formaction="/mypage/myInfo">
+			</form>
 			<a href="logout" class="w-75 btn btn-lg btn-danger">로그아웃</a><br><br>
 		
 	</main>

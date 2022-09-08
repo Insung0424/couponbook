@@ -1,9 +1,11 @@
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
 <head>
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -94,7 +96,7 @@
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="#">  전체
+				<a class="dropdown-item" href="/category/list_all">  전체
 				</a> <a class="dropdown-item" href="#">  편의점
 				</a> <a class="dropdown-item" href="#">  커피/음료
 				</a> <a class="dropdown-item" href="#">  외식
@@ -123,24 +125,29 @@
 		</a> <!-- Dropdown - User Information -->
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="#"> <i
-					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> 내 정보
+				aria-labelledby="userDropdown"><form method="post">	<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
+				<a class="dropdown-item"> <i
+					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="내 정보" formaction="/mypage/myInfo"style="border: none; background: transparent;">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 관심상품
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 거래내역
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내가 올린 쿠폰
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> 내가 단 댓글
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;">
 				</a>
+				</form>
 				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="#" data-toggle="modal"
-					data-target="#logoutModal"> <i
-					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-					로그아웃
-				</a>
+				<c:if test="${mem==null}"><a class="dropdown-item" href="/loginMain" 
+					data-target="#loginModal"> <i
+					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그인
+					
+				</a></c:if>
+				<c:if test="${mem!=null}"><a class="dropdown-item" href="/logout"
+					data-target="#logoutModal"><i
+					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그아웃
+				</a></c:if>
 			</div></li>
 
 

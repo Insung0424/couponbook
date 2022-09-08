@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sol.one.mapper.CategoryMapper">
+
+<select id="list_all_category" resultType="sol.one.VO.ProductVO">
+select *from pj_product;
+</select>
+<select id="list_category" resultType="sol.one.VO.ProductVO">
+select *from pj_product where category_id=#{category_id}
+</select>
+</mapper>
