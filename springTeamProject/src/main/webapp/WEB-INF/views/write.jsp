@@ -207,6 +207,7 @@
 					<div id="uploadData">
 						
 					</div>
+					<input type="hidden" value=${mem } name="mem" id="mem">
 					<textarea class="form-control" id="write_editor" name="write_editor" rows="5"></textarea>
 					<script type="text/javascript">
 					    CKEDITOR.replace( 'write_editor' );
@@ -224,6 +225,20 @@
 	</form>
 	<script>
 		$("#add").click(function (){
+			let mem = $("#mem");
+			console.log(mem);
+			let nickname = mem.nickname;
+			let email = mem.email;
+			let user_grade = mem.user_grade;
+			let user_name = mem.user_name;
+			if(mem != null){
+				console.log(nickname);
+				console.log(email);
+				console.log(user_grade);
+				console.log(user_name);
+				return;
+			}
+			
 			let pd_desc = null;
 			if(CKEDITOR.instances.write_editor.getData() != null){
 				pd_desc = CKEDITOR.instances.write_editor.getData();

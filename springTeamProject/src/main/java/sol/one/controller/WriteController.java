@@ -40,7 +40,6 @@ public class WriteController {
 	
 	private ProductServiceImpl productservice;
 	
-	
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
 	public String add(@RequestBody ProductVO vo) {
