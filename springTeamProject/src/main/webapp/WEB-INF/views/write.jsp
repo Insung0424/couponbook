@@ -8,11 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="../resources/ckeditor/ckeditor.js"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -130,7 +126,7 @@
 			</div>
 		</nav>
 	</header>
-	<form action="upload" method="post" enctype="multipart/form-data">
+	<form action="/product_add" method="post" enctype="multipart/form-data">
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col">
@@ -141,12 +137,16 @@
 					<div id="uploadData">
 						
 					</div>
-					<input type="hidden" value="${vo.product_id }">
-					<button type="submit" class="btn btn-primary"
+					<textarea class="form-control" id="write_editor" name="write_editor" class="pd_desc" rows="5"></textarea>
+					<script type="text/javascript">
+					    CKEDITOR.replace( 'write_editor' );
+					</script>
+					
+					<input type="button" class="btn btn-primary" id="add"
 						style="float: right; margin-bottom: 10px;">등록</button>
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
-					<div id="summernote"></div>
+
 					<!-- 해당 부분 ckeditor4 로 변경한 뒤 script작성 -->
 				</div>
 			</div>
@@ -165,6 +165,10 @@
 					sendFile(files[0], editor, welEditable);
 				}
 			});
+		});
+		
+		$(".add").click(function (){
+			let pd_desc = CKEDITOR.instances.editor1.getData();
 		});
 
 		$("input[type='file']").on("change", function(e) {
@@ -239,7 +243,7 @@
 			str += "<img src='/getImg?fileNameNPath=" + encodingImg +"'>";
 			str += "<div id='imgDeleteBtn' data-file = '" + encodingImg + "'>x</div>";
 			str += "<input type='hidden' name='img' value='" + encodingImg + "'>";
-			str += "<input type='hidden' name='simg' value='" + encodingsImg + "'>";
+			str += "<input type='hidden' name='pd_img' value='" + encodingsImg + "'>";
 			str += "</div>";
 			// 에러 발생시 console 확인 -> .replace(/\\/g, '/') 로 해결가능한 문제일경우 uploaddata 에 추가
 			// 한글인코딩 문제 일경우 ->  encodeURIComponent(uploadData);

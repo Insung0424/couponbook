@@ -18,7 +18,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,10 +31,26 @@ import org.springframework.web.multipart.MultipartFile;
 import lombok.AllArgsConstructor;
 import net.coobird.thumbnailator.Thumbnails;
 import sol.one.VO.ImageVO;
+import sol.one.VO.ProductVO;
+import sol.one.service.ProductServiceImpl;
 
 @Controller
 @AllArgsConstructor
 public class WriteController {
+	
+	private ProductServiceImpl productservice;
+	
+	
+	//등록버튼을 눌렀을때 
+	@PostMapping("/product_add")
+	public String add(@ModelAttribute ProductVO vo,Model model) {
+		System.out.println("check");
+		productservice.add(vo);
+		
+		//model.addAttribute("vo", vo); 등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시
+		//return "상세페이지";
+		return "main2";
+	}
 
 	// 파일 및 이미지 한글 깨지면 produces = MediaType.APPLICATION_JSON_UTF8_VALUE 추가
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
