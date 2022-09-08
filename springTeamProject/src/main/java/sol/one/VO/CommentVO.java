@@ -10,7 +10,9 @@ import lombok.Data;
 public class CommentVO {
 
 	private int product_id;
+	
 	private int user_id;
+	
 	private String comment_content;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone="Asia/Seoul")

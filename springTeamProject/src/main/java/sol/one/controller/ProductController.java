@@ -48,12 +48,14 @@ public class ProductController {
 	@GetMapping("/comment")
 	public void comment(Model model) {}
 	
-	@GetMapping("/trade")
-	public void trade() {}
+	@GetMapping("/buyerTradeEnd")
+	public void btrade() {}
+	
+	@GetMapping("/sellerTradeEnd")
+	public void strade() {}
 	
 	@PostMapping("/postTrade")
 	public String putT(int pd_status) {
-		//�쑀�� �븘�씠�뵒 諛쏆븘���꽌 �븯�룄濡� 蹂�寃쏀빐�빞�븿
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
@@ -65,15 +67,11 @@ public class ProductController {
 	
 	@PostMapping("/postTrade2")
 	public String putT2(int pd_status) {
-		// �뙋留ㅼ옄媛� 嫄곕옒�셿猷뚮�� �꽑�깮�뻽�쓣 �떆 
-		// �쑀�� �븘�씠�뵒 諛쏆븘���꽌 �븯�룄濡� 蹂�寃쏀빐�빞�븿
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
 		vo.setBuyer_user_id(3);
 		vo.setSell_user_id(2);
-		tradelogservice.insertTradeLog(vo);//嫄곕옒 �궡�뿭 �뀒�씠釉붿뿉 �뜲�씠�꽣 異붽�
-		// �긽�뭹�뀒�씠釉붽낵 �뿰寃곕맂 �꽌鍮꾩뒪 �깮�꽦
-		// �긽�뭹�뀒�씠釉붿뿉�꽌 嫄곕옒 �긽�깭 �뾽�뜲�씠�듃 �븘�슂
+		tradelogservice.insertTradeLog(vo);
 		
 		return "redirect:/product/main";
 	}
