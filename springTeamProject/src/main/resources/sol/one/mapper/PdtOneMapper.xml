@@ -3,18 +3,19 @@
 
 <mapper namespace="sol.one.mapper.PdtOneMapper">
 
+	<!-- 테스트용 테이블 : pj_Product_test / 실제 DB 테이블: pj_Product -->
 	<select id="getPdtList" resultType="sol.one.VO.ProductVO" >
 		select 
   			product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date
 		from 
-			pj_Product_test
+			pj_Product
 	</select>
 
 	<select id="getOnePdt" resultType="sol.one.VO.ProductVO">
 		select 
   			product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date
 		from 
-			pj_Product_test
+			pj_Product
 		where 
 			product_id = #{product_id }
 	</select>
