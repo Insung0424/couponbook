@@ -62,7 +62,7 @@
           </div>
 
 
-          <button class="w-25 btn btn-warning btn-lg mb-3" onclick="history.back();">뒤로가기</button>
+          <button class="btn btn-warning btn-lg mb-3" onclick="history.back();">뒤로가기</button>
         </form>
       </div>
     </div>      

@@ -16,16 +16,17 @@
 	<h3>상세페이지 확인</h3><hr>
 	
 	<!-- 받아온 쿠폰 정보를 출력 -->
-		<p>상품 ID	:	<c:out value="${onePdt.product_id }" /></p>
-		<p>카테고리	:	<c:out value="${onePdt.category_id }" /></p>
-		<p>회사이름	:	<c:out value="${onePdt.company_name }" /></p>
-		<p>쿠폰이름	:	<c:out value="${onePdt.pd_name }" /></p>
-		<p>쿠폰가격	:	<c:out value="${onePdt.pd_price }" /></p>
-		<p>거래상태	:	<c:out value="${onePdt.pd_status }" /></p>
-		<p>비고	:	<c:out value="${onePdt.pd_desc }" /></p>
-		<p>쿠폰할인율	:	<c:out value="${onePdt.pd_discount }" /></p>
-		<p>등록일	:	<c:out value="${onePdt.pd_date }" /></p>
+	<p>상품 ID	:	<c:out value="${onePdt.product_id }" /></p>
+	<p>카테고리	:	<c:out value="${onePdt.category_id }" /></p>
+	<p>회사이름	:	<c:out value="${onePdt.company_name }" /></p>
+	<p>쿠폰이름	:	<c:out value="${onePdt.pd_name }" /></p>
+	<p>쿠폰가격	:	<c:out value="${onePdt.pd_price }" /></p>
+	<p>거래상태	:	<c:out value="${onePdt.pd_status }" /></p>
+	<p>비고	:	<c:out value="${onePdt.pd_desc }" /></p>
+	<p>쿠폰할인율	:	<c:out value="${onePdt.pd_discount }" /></p>
+	<p>등록일	:	<c:out value="${onePdt.pd_date }" /></p>
 
+	<button class="btn btn-outline-secondary mb-3" onclick="history.back();">뒤로가기</button>
 
 </body>
 </html>

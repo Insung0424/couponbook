@@ -20,7 +20,7 @@
 			name="jdbcUrl" />
 		<property value="" name="username" />
 		<property value="" name="password" />
-	</bean> -->
+	</bean>  -->
  	
  	<!-- 팀 DB -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
@@ -33,6 +33,7 @@
 		<property name="username" value="admin" />
 		<property name="password" value="soldesk01TEAM)!" />
 	</bean>
+	
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		destroy-method="close">
