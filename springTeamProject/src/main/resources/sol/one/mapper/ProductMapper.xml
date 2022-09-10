@@ -7,6 +7,7 @@
 		insert into pj_product(product_id,category_id,company_name,pd_name,pd_price,pd_status,pd_img,pd_desc,location_id,pd_discount,pd_date)
 		values(seq_product_id.nextVal,#{category_id},#{company_name},#{pd_name},#{pd_price},1,#{pd_img},#{pd_desc},#{location_id},#{pd_discount},current_date)
 	</insert>
+		
 	
 	<update id="modifyP">
 		update pj_product set company_name = #{company_name} and pd_name = #{pd_name} and pd_price = #{pd_price} 
@@ -21,5 +22,10 @@
 	<delete id="deleteP">
 		delete from pj_product where product_id = #{product_id}
 	</delete>
+	
+	
+
+
+	
 	
 </mapper>
