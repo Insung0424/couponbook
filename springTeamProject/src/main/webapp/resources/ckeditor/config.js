@@ -27,6 +27,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.allowedContent = true;
 	config.font_names = CKEDITOR.config.font_names = '맑은 고딕/Malgun Gothic;굴림/Gulim;돋움/Dotum;바탕/Batang;궁서/Gungsuh;' + CKEDITOR.config.font_names;
 	
+	config.enterMode = CKEDITOR.ENTER_BR;
+	
 	config.uploadUrl = "fileupload.do";
 	config.filebrowserUploadUrl      = "fileupload.do";
 	

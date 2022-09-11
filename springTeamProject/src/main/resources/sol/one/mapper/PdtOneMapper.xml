@@ -13,7 +13,7 @@
 
 	<select id="getOnePdt" resultType="sol.one.VO.ProductVO">
 		select 
-  			product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date
+  			product_id, category_id, company_name, pd_name, pd_price, pd_status, pd_desc, pd_discount, pd_date, pd_img
 		from 
 			pj_Product
 		where 
