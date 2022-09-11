@@ -42,8 +42,18 @@ public class WriteController {
 	
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
-	public String add(@RequestBody ProductVO vo) {
+	public String add(String pd_name,String pd_img,String pd_desc,String company_name,String pd_price,
+			int category_id,int location_id,int pd_discount) {
 		System.out.println("check");
+		ProductVO vo = new ProductVO();
+		vo.setPd_desc(pd_desc);
+		vo.setPd_img(pd_img);
+		vo.setPd_name(pd_name);
+		vo.setCategory_id(category_id);
+		vo.setLocation_id(location_id);
+		vo.setPd_discount(pd_discount);
+		vo.setCompany_name(company_name);
+		vo.setPd_price(pd_price);
 		productservice.add(vo);
 		
 		//model.addAttribute("vo", vo); 등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시

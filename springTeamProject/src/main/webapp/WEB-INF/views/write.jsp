@@ -196,7 +196,7 @@
 	  }
   }
   </script>
-	<form action="/product_add" method="post" enctype="multipart/form-data" name="form">
+	<form action="/product_add" method="post" enctype="multipart/form-data" name="form" onsubmit="return su()">
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col">
@@ -213,9 +213,16 @@
 					    CKEDITOR.replace( 'write_editor' );
 					</script>
 					
-					<input type="button" id="add" class="btn btn-primary" value="submit"
-						style="float: left; margin-bottom: 10px;">
-						
+					<input type="hidden" name="pd_img" id="pd_img">
+					<input type="hidden" name="pd_desc" id="pd_desc">
+					<input type="hidden" name="pd_price" id="pd_price" value=4300>
+					<input type="hidden" name="category_id" id="category_id" value=3>
+					<input type="hidden" name="company_name" id="company_name" value="company1">
+					<input type="hidden" name="location_id" id="location_id" value=1>
+					<input type="hidden" name="pd_discount" id="pd_discount" value=22>
+					
+					<button type="submit" class="btn btn-secondary"
+						style="float: right; margin-bottom: 10px; margin-right: 5px;">등록</button>	
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
 
@@ -224,30 +231,19 @@
 		</div>
 	</form>
 	<script>
-		$("#add").click(function (){
-			let mem = $("#mem");
-			console.log(mem);
-			let nickname = mem.nickname;
-			let email = mem.email;
-			let user_grade = mem.user_grade;
-			let user_name = mem.user_name;
-			if(mem != null){
-				console.log(nickname);
-				console.log(email);
-				console.log(user_grade);
-				console.log(user_name);
-				return;
-			}
-			
+		function su(){
 			let pd_desc = null;
 			if(CKEDITOR.instances.write_editor.getData() != null){
 				pd_desc = CKEDITOR.instances.write_editor.getData();
 			}
 			else{
 				pd_desc = "";
-			}
+			}	
 			
+			$("#pd_desc").val(pd_desc);
+
 			let pd_name = form.pd_name.value;
+			console.log(pd_name);
 			if(pd_name == null){
 				pd_name = "";
 			}
@@ -272,33 +268,14 @@
 			}
 			else{
 				pd_img = img + ',' + simg;
+				console.log(pd_img);
+				$("#pd_img").val(pd_img);
+				return true;
 			}
 			
-			$.ajax({
-				type : "post",
-				url : '<c:url value="/product_add"/>',
-				data : JSON.stringify(
-						{
-							"pd_desc":pd_desc,
-							"pd_name":pd_name,
-							"pd_img":pd_img,
-							"location_id": 1,
-							"company_name": "com3",
-							"category_id": 2,
-							"pd_price" : "2500",
-							"pd_discount" : 11
-						}		
-					),
-				contentType: 'application/json',
-				success : function(result){
-					window.location.href = "main2"; // session 값 유지되는지 모르겠음
-				},
-				error : function(result){
-					console.log(result);
-					alert("error");
-				}
-			})
-		});
+			return false;
+		}
+	
 
 		$("input[type='file']").on("change", function(e) {
 			
