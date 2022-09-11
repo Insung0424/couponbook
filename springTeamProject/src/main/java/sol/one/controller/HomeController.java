@@ -83,10 +83,8 @@ public class HomeController {
 
 	@GetMapping("/main2")
 	public void main2(@SessionAttribute("mem")MemberVO mem, HttpSession session) {
-		System.out.println(mem);
 
-		System.out.println(session.getAttribute("mem"));
-		System.out.println(mem);
+		session.getAttribute("mem");
 		
 		session.setAttribute("mem", mem);
 	}

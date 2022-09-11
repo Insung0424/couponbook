@@ -1,8 +1,11 @@
 package sol.one.VO;
 
+
+
+
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -29,7 +32,6 @@ public class ProductVO {
 	
 	private int pd_discount; 
 	
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
-	private Date pd_date; 
+	private String pd_date;
 	
 }
