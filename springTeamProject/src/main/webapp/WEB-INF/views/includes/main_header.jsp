@@ -37,7 +37,22 @@
 
 </head>
 
+<script type="text/javascript">
+function service(){
+	
+		var check="${mem}";
+		if(check==""){
+			alert("로그인 후 이용하세요");
+			event.preventDefault();
+			location.href="loginMain";
+		}else{
+			return true;
+		}
+			
+		
+	}
 
+</script>
 
 <!------------------------------------------------------------------------------------  -->
 
@@ -127,15 +142,15 @@
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown"><form method="post">	<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
 				<a class="dropdown-item"> <i
-					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="내 정보" formaction="/mypage/myInfo"style="border: none; background: transparent;">
+					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="내 정보" formaction="/mypage/myInfo"style="border: none; background: transparent;" onclick="service()">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;">
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;" onclick="service()">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;">
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;" onclick="service()">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;">
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;" onclick="service()">
 				</a> <a class="dropdown-item" href="#"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;">
+					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;" onclick="service()">
 				</a>
 				</form>
 				<div class="dropdown-divider"></div>

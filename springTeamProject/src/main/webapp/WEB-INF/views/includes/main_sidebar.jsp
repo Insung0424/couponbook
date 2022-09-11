@@ -34,6 +34,22 @@
 
 
 </head>
+<script type="text/javascript">
+function service(){
+	
+		var check="${mem}";
+		if(check==""){
+			alert("로그인 후 이용하세요");
+			event.preventDefault();
+			location.href="loginMain";
+		}else{
+			return true;
+		}
+			
+		
+	}
+
+</script>
 
 
 	<!-- Sidebar -->
@@ -52,7 +68,7 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<form method="post">
+			<form method="post" id="form">
 			<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
 			<li class="nav-item active"><a class="nav-link "
 				href="index.html"> 
@@ -68,20 +84,24 @@
 		
 			<li class="nav-item"><a class="nav-link"
 				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;"></span>
+					<span><input type="submit" id="myLike" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;" onclick="service()"></span>
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link"
 				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;"></span>
+					<span><input type="submit" id="myTrade" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;" onclick="service()"></span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
 				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;"></span>
+					<span><input type="submit" id="myBoard" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;" onclick="service()"></span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
 				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" value="내가 단 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;"
+					<span><input type="submit" id="myComment" value="내가 단 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;" onclick="service()"></span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
+					<span><input type="submit" id="delete" value="회원탈퇴" formaction="/mypage/delete_info_mypageView"style="border: none; background: transparent;" onclick="service()"
 ></span>
 			</a></li>
 		</form>

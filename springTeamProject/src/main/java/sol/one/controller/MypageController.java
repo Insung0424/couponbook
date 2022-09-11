@@ -100,8 +100,8 @@ public class MypageController {
 		return "redirect:/";
 	}
 	
-	//회원 탈퇴 창(get)
-	@GetMapping("/delete_info_mypageView")
+	//회원 탈퇴 창
+	@PostMapping("/delete_info_mypageView")
 	public String delete_info_mypageView()throws Exception{
 		return "mypage/deleteView";
 	}
