@@ -128,100 +128,56 @@
 			</div>
 		</nav>
 	</header>
-	<form action="" method="post" name = "frm">
-	<div class="container" style="margin-top: 30px;">
-		<div class="row">
-			<div class="col">
-			<h2 style="margin-bottom: 30px;">��ǰ ���</h2>
-			<hr>
-			<p><b>����</b></p>
-			<input type = "text" name = "title" placeholder="������ �Է��ϼ���" style="width: 500px; margin-bottom: 10px;">
-			
-			<p><b>ī�װ���</b></p>
-			<select name = "select" style="margin-bottom: 10px; width: 100px;">
-				<option value="none">-------</option>
-				<option value="cs">������</option>
-				<option value="beverage">Ŀ��/����</option>
-				<option value="dining">�ܽ�</option>
-				<option value="giftCard">��ǰ��</option>
-				<option value="etc">��Ÿ</option>
-			</select>
-			<p><b>����</b></p>
-			<input type = "text" id = "price" placeholder= "������ �Է��ϼ���" style="margin-bottom: 10px;"> ��
-			<p><b>����</b></p>
-			<input type="date" name="lastday" style="margin-bottom: 10px;">
-			<p><b>����</b></p>
-			<textarea rows="10" cols="150" name = "content" placeholder="������ �Է��ϼ���"></textarea>
-			<p style="margin-top: 30px;"><button class="btn btn-primary" type="submit" onclick="return ch()">���</button> <button class="btn btn-secondary" type="reset">���</button></p>
-  </div>
-  </div>
-  </div>
-  </form>
-  
-  <script type="text/javascript">
-  function ch() {
-	  if(frm.title.value == "") {
-		  frm.title.focus();
-		  alert('������ �Է��� �ֽʽÿ�');
-		  
-		  return false;
-	  }
-	  
-	  if(frm.select.value == "none") {
-		  frm.select.focus();
-		  alert('ī�װ����� ������ �ּ���');
-		  
-		  return false;
-	  }
-	  
-	  if(frm.price.value == "") {
-		  frm.price.focus();
-		  alert('������ �Է��� �ֽʽÿ�');
-		  
-		  return false;
-	  }
-	  
-	  if(frm.lastday.value == "") {
-		  frm.lastday.focus();
-		  alert('������ ��ȿ�Ⱓ�� �Է��� �ֽʽÿ�');
-		  
-		  return false;
-	  }
-	  
-	  if(frm.content.value == "") {
-		  frm.content.focus();
-		  alert('������ �Է��� �ֽʽÿ�');
-		  
-		  return false;
-	  }
-  }
-  </script>
+
 	<form action="/product_add" method="post" enctype="multipart/form-data" name="form" onsubmit="return su()">
 		<div class="container" style="margin-top: 30px;">
 			<div class="row">
 				<div class="col">
+					<h2 style="margin-bottom: 30px;">상품 등록</h2>
+					<hr>
+					<p><b>글 제목</b></p>
 					<input type="text" placeholder="제목을 입력하세요" name="pd_name"
 						style="width: 500px; margin-bottom: 10px;">
 					<!-- file upload -->
+					<p><b>상품권 사진 첨부</b></p>
 					<input type="file" name="file">
 					<div id="uploadData">
 						
 					</div>
-					<input type="hidden" value=${mem } name="mem" id="mem">
+					<p><b>상품권 설명</b></p>
 					<textarea class="form-control" id="write_editor" name="write_editor" rows="5"></textarea>
 					<script type="text/javascript">
 					    CKEDITOR.replace( 'write_editor' );
 					</script>
+					<p><b>상품권 유형</b></p>
+					<select name = "category_id" style="margin-bottom: 10px; width: 100px;">
+						<option value="">-------</option>
+						<option value="1">편의점</option>
+						<option value="2">커피/음료</option>
+						<option value="3">외식</option>
+						<option value="4">상품권</option>
+						<option value="5">기타</option>
+					</select>
+					
+					<p><b>가격</b></p>
+					<input type = "text" name="pd_price" placeholder= "가격을 입력해주세요" style="margin-bottom: 10px;"> 원
+					<p><b>할인율</b></p>
+					<input type = "number" name="pd_discount" placeholder= "할인율을 입력해주세요" style="margin-bottom: 10px;"> %
+					<p><b>사용처</b></p>
+					<input type = "text" name="company_name" placeholder= "사용처를 입력해주세요" style="margin-bottom: 10px;">
+					<p><b>온라인/오프라인 구분</b></p>
+					<select name = "location_id" style="margin-bottom: 10px; width: 100px;">
+						<option value="">-------</option>
+						<option value="1">온라인</option>
+						<option value="2">오프라인</option>
+					</select>
+					<p><b>사용기한</b></p>
+					<input type="date" name="pd_date" pattern="yyyy-MM-dd" style="margin-bottom: 10px;">
 					
 					<input type="hidden" name="pd_img" id="pd_img">
 					<input type="hidden" name="pd_desc" id="pd_desc">
-					<input type="hidden" name="pd_price" id="pd_price" value=4300>
-					<input type="hidden" name="category_id" id="category_id" value=3>
-					<input type="hidden" name="company_name" id="company_name" value="company1">
-					<input type="hidden" name="location_id" id="location_id" value=1>
-					<input type="hidden" name="pd_discount" id="pd_discount" value=22>
 					
-					<button type="submit" class="btn btn-secondary"
+					<button type="submit" class="btn btn-primary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">등록</button>	
 					<button type="reset" class="btn btn-secondary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">취소</button>
@@ -232,6 +188,7 @@
 	</form>
 	<script>
 		function su(){
+			
 			let pd_desc = null;
 			if(CKEDITOR.instances.write_editor.getData() != null){
 				pd_desc = CKEDITOR.instances.write_editor.getData();
@@ -272,8 +229,6 @@
 				$("#pd_img").val(pd_img);
 				return true;
 			}
-			
-			return false;
 		}
 	
 
