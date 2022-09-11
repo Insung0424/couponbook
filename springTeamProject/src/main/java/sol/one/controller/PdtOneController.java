@@ -1,13 +1,21 @@
 package sol.one.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
@@ -37,6 +45,25 @@ public class PdtOneController {
 	public void pdtOne(@RequestParam("product_id") int product_id, Model model) {
 		model.addAttribute("onePdt", pdtService.getOnePdt(product_id));
 		
+	}
+	
+	@RequestMapping(value = "/getImg", method = RequestMethod.GET)
+	public ResponseEntity<byte[]> getImg(String fileNameNPath) {
+		// 테이블에서 열 값에 저장할때 이미지경로와 이름이 전체가 저장되므로 그 값을 받아서 파일을 생성함
+		// ex)
+		// C:\Users\agdis\Documents\workspace-sts-3.9.11.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springTeamProject\resources\images\src\2022\09\07\c5ad886f.png
+		File file = new File(fileNameNPath);
+
+		ResponseEntity<byte[]> img = null;
+		try {
+			HttpHeaders header = new HttpHeaders();
+			header.add("Content-type", Files.probeContentType(file.toPath()));
+			img = new ResponseEntity<byte[]>(FileCopyUtils.copyToByteArray(file), header, HttpStatus.OK);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return img;
 	}
 
 }
