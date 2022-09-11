@@ -4,7 +4,7 @@
 <mapper namespace="sol.one.mapper.CategoryMapper">
 
 <select id="list_all_category" resultType="sol.one.VO.ProductVO">
-select *from pj_product;
+select *from pj_product
 </select>
 <select id="list_category" resultType="sol.one.VO.ProductVO">
 select *from pj_product where category_id=#{category_id}

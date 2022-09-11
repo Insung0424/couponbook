@@ -111,12 +111,12 @@ function service(){
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="/category/list_all">  전체
-				</a> <a class="dropdown-item" href="#">  편의점
-				</a> <a class="dropdown-item" href="#">  커피/음료
-				</a> <a class="dropdown-item" href="#">  외식
-				</a> <a class="dropdown-item" href="#">  상품권
-				</a> <a class="dropdown-item" href="#">  기타
+				<a class="dropdown-item" href="/category/all">  전체
+				</a> <a class="dropdown-item" href="/category/category?category_id=1">  편의점
+				</a> <a class="dropdown-item" href="/category/category?category_id=2">  커피/음료
+				</a> <a class="dropdown-item" href="/category/category?category_id=3">  외식
+				</a> <a class="dropdown-item" href="/category/category?category_id=4">  상품권
+				</a> <a class="dropdown-item" href="/category/category?category_id=5">  기타
 				</a>
 				<div class="dropdown-divider"></div>
 				

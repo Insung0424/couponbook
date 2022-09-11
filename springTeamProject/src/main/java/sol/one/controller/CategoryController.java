@@ -19,14 +19,13 @@ public class CategoryController {
 	
 	private final CategoryService service;
 	
-	@GetMapping("/list_all")
-	public String list_all(Model model) throws Exception {
+	@GetMapping("/all")
+	public void list_all(Model model) throws Exception {
 		model.addAttribute("list_all",service.list_all_category());
-		return "main/list_all";
+		
 	}
-	@GetMapping("/list_cat")
-	public String list_cat(int category_id,Model model) throws Exception{
+	@GetMapping("/category")
+	public void list_cat(int category_id,Model model) throws Exception{
 		model.addAttribute("list_cat",service.list_category(category_id));
-		return "main/list_cat";
 	}
 }
