@@ -87,12 +87,12 @@ header {
 							</button>
 						</form>
 					</div>
-
+				
 					<c:set var="userID" value="${mem.email}" />
 				<c:choose>
 					<c:when test="${empty userID}">
-						<form class="l-flex" role="signin">
-							<a class="btn btn-warning" href="member/login" style="margin-right: 5px;">로그인</a>
+						<form class="l-flex" role="signin" method="get">
+							<input type="submit" class="btn btn-warning" formaction="member/login" style="margin-right: 5px;" value="로그인" style="border: none; background: transparent;">
 							<a id="custom-login-btn" class="btn btn-lg" 
 								href="https://kauth.kakao.com/oauth/authorize?client_id=e90605fb64b5ed5eeffcf586eb651d12&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 								<img src="/resources/kakao_login_small.png"
@@ -100,14 +100,16 @@ header {
 							</a>
 						</form>
 						<form class="re-flex" role="signup">
-							<a class="btn btn-secondary" href="member/join" style="margin-right: 5px;">회원가입</a>
+							<input type="submit" class="btn btn-secondary" formaction="member/join" style="margin-right: 5px;" value="회원가입" style="border: none; background: transparent;">
 						</form>
 					</c:when>
 				
 					<c:when test="${!empty userID}">
 						<!-- 마이페이지 경로 수정 필요 -->
-						<a href="member/myPage" class="btn  btn-outline-warning me-3">마이페이지</a><br><br>
-						<a href="member/logout" class="btn btn-danger">로그아웃</a><br><br>
+						<form class="re-flex" role="sign">
+						<input type="submit" formaction="member/myPage" class="btn  btn-outline-warning me-3" value="마이페이지" style="border: none; background: transparent;"><br><br>
+						<input type="submit" formaction="member/logout" class="btn btn-danger" value="로그아웃" style="border: none; background: transparent;"><br><br>
+						</form>
 					</c:when>
 				</c:choose>
 				

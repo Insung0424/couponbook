@@ -65,13 +65,13 @@ header {
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"> 카테고리 </a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">전체</a></li>
-								<li><a class="dropdown-item" href="#">편의점</a></li>
-								<li><a class="dropdown-item" href="#">커피/음료</a></li>
-								<li><a class="dropdown-item" href="#">외식</a></li>
-								<li><a class="dropdown-item" href="#">상품권</a></li>
-								<li><a class="dropdown-item" href="#">기타</a></li>
+						<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="/category/all">전체</a></li>
+								<li><a class="dropdown-item" href="/category/category?category_id=1">편의점</a></li>
+								<li><a class="dropdown-item" href="/category/category?category_id=2">커피/음료</a></li>
+								<li><a class="dropdown-item" href="/category/category?category_id=3">외식</a></li>
+								<li><a class="dropdown-item" href="/category/category?category_id=4">상품권</a></li>
+								<li><a class="dropdown-item" href="/category/category?category_id=5">기타</a></li>
 							</ul></li>
 					</ul>
 					<div style="margin-right: 50px;">
@@ -92,7 +92,7 @@ header {
 				<c:choose>
 					<c:when test="${empty userID}">
 						<form class="l-flex" role="signin">
-							<a class="btn btn-warning" href="member/login" style="margin-right: 5px;">로그인</a>
+							<a class="btn btn-warning" href="/member/login" style="margin-right: 5px;">로그인</a>
 							<a id="custom-login-btn" class="btn btn-lg" 
 								href="https://kauth.kakao.com/oauth/authorize?client_id=e90605fb64b5ed5eeffcf586eb651d12&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 								<img src="/resources/kakao_login_small.png"
@@ -100,14 +100,14 @@ header {
 							</a>
 						</form>
 						<form class="re-flex" role="signup">
-							<a class="btn btn-secondary" href="member/join" style="margin-right: 5px;">회원가입</a>
+							<a class="btn btn-secondary" href="/member/join" style="margin-right: 5px;">회원가입</a>
 						</form>
 					</c:when>
 				
 					<c:when test="${!empty userID}">
 						<!-- 마이페이지 경로 수정 필요 -->
-						<a href="member/myPage" class="btn  btn-outline-warning me-3">마이페이지</a><br><br>
-						<a href="member/logout" class="btn btn-danger">로그아웃</a><br><br>
+						<a href="/member/myPage" class="btn  btn-outline-warning me-3">마이페이지</a><br><br>
+						<a href="/member/logout" class="btn btn-danger">로그아웃</a><br><br>
 					</c:when>
 				</c:choose>
 				
@@ -161,22 +161,26 @@ header {
 			</div>
 		</div>
 	</div>
-	<h1 style="margin-left: 250px; margin-top: 50px;"><c:forEach items="${list_cat }" var="list_cat"><c:set var="category_id" value="${list_cat.category_id }"/>
+	<h1 style="margin-left: 250px; margin-top: 50px;">
+	<c:set var="category_id" value="${param.category_id }"/>
 								<c:if test="${category_id eq 1}">
-								편의점 쿠폰
+								편의점
 								</c:if>
 								<c:if test="${category_id eq 2}">
-								커피/음료 쿠폰
+								커피/음료
 								</c:if>
 								<c:if test="${category_id eq 3}">
-								외식 쿠폰
+								외식
 								</c:if>
 								<c:if test="${category_id eq 4}">
-								상품권 쿠폰
+								상품권
 								</c:if>
 								<c:if test="${category_id eq 5}">
-								기타 쿠폰
-								</c:if></c:forEach></h1>
+								기타
+								</c:if>
+									
+								</h1>
+							
 	<div class="container text-center" style="margin-top: 30px;">
 	
 		<c:forEach items="${list_cat }" var="list_cat">
