@@ -61,29 +61,26 @@ public class ProductController {
 	public void strade() {}
 	
 	@PostMapping("/postTrade")
-	public String putT(int pd_status) {
+	public String putT(int pd_status,int user_id_buy,int user_id_sell) {
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(3);
-		vo.setSell_user_id(2);
+		vo.setBuyer_user_id(user_id_buy);
+		vo.setSell_user_id(user_id_sell);
 		tradelogservice.insertTradeLog(vo);
 		
-		return "redirect:/product/main";
+		return "redirect:/category/all";
 	}
 	
 	@PostMapping("/postTrade2")
-	public String putT2(int pd_status) {
+	public String putT2(int pd_status,int user_id_buy,int user_id_sell) {
 		T_tradeVO vo = new T_tradeVO();
 		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(3);
-		vo.setSell_user_id(2);
+		vo.setBuyer_user_id(user_id_buy);
+		vo.setSell_user_id(user_id_sell);
 		tradelogservice.insertTradeLog(vo);
 		
-		return "redirect:/product/main";
+		return "redirect:/category/all";
 	}
-	
-	@GetMapping("/new")
-	public void new1() {}
 	
 	
 }

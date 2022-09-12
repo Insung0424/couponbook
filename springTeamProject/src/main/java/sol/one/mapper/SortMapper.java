@@ -17,4 +17,6 @@ public interface SortMapper {
 	public List<ProductVO> list_price_desc()throws Exception;
 	
 	public List<ProductVO> list_price_asc()throws Exception;
+	
+	public int count_all()throws Exception;
 }

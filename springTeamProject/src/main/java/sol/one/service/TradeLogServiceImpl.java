@@ -33,5 +33,11 @@ public class TradeLogServiceImpl implements TradeLogService {
 	public List<T_tradeVO> readMyBuyList(int buyer_user_id) {
 		return mapper.getMySellList(buyer_user_id);
 	}
+
+	@Override
+	public int update(int product_id,int pd_status) {
+		return mapper.up_pd(product_id,pd_status);
+	}
+
 	
 }

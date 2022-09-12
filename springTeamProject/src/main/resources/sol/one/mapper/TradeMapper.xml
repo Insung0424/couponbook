@@ -20,4 +20,8 @@
 		select * from pj_trade where buyer_user_id = #{buyer_user_id}
 	</select>
 	
+	<update id="up_pd">
+		update pj_product set pd_status = #{pd_status} where product_id = #{product_id}
+	</update>
+	
 </mapper>

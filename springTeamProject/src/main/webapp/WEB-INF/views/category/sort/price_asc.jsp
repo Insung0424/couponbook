@@ -1,4 +1,3 @@
-
 <!DOCTYPE html><%@ page language="java"
    contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <html lang="en">
@@ -90,12 +89,9 @@
 .card_dis, .card_dis2 {
    display: none;
 }
-
-#card_content:hover {
-   text-decoration: none;
-}
 </style>
 </head>
+
 
 
 
@@ -126,29 +122,32 @@
             <div class="card shadow mb-4">
                <div class="container"
                   style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
-                  <p class="title_name">전체쿠폰</p>
+                  <p class="title_name">낮은가격순</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp전체 게시물 <c:out value="${count_all }"/>개 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="/category/sort/time_desc" id="time_desc">최신순</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<a href="/category/sort/price_asc" id="price_asc">낮은가격</a>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<a href="/category/sort/price_desc" id="price_desc" >높은가격</a>
+		
                   <!--  -->
 
-                  <ul style="width: 100%; display: flex; flex-wrap: wrap;">
-                     <c:forEach items="${list_all }" var="list_all">
-
-                        <li style="list-style: none; margin-left: 25px; width: 30%;"
-                           class="card_dis"><a id="card_content"
-                           href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
+                  <ul style="width: 100%; display: flex; flex-wrap: wrap;" id="prod">
+ <c:forEach items="${price_asc }" var="price_asc">
+                    
+                        <li style="list-style: none; margin: 5px; width: 30%;"
+                           class="card_dis"><a>
                               <div class="card_poto">
+                              <a href='/category/detail?product_id=<c:out value="${price_asc.product_id }"/>'>
                                  <img alt="noimg"
-                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop">
-
+                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop" >
+								</a>
                               </div>
                               <div class="card_info">
-
+                              
                                  <div class="card_title_content">
-
-                                    <p class="card_title">${list_all.pd_name }</p>
+                                
+                                    <a class="card-link" href='/category/detail?product_id=<c:out value="${price_asc.product_id }"/>'>${price_asc.pd_name }</a>
                                  </div>
-                                 <p class="card_adr">${list_all.pd_price }</p>
+                                 <p class="card_adr">${price_asc.pd_price }</p>
                                  <p class="card_option">
-                                    <c:set var="category_id" value="${list_all.category_id }" />
+                                    <c:set var="category_id" value="${price_asc.category_id }" />
                                     <c:if test="${category_id eq 1}">
                         편의점
                         </c:if>
@@ -165,7 +164,7 @@
                         기타
                         </c:if>
                                  </p>
-
+                                 
                               </div>
                         </a></li>
                      </c:forEach>
@@ -180,7 +179,7 @@
          </div>
 
          <!--  -->
-
+   
       </div>
    </div>
    <%@include file="/WEB-INF/views/includes/main_footer.jsp"%>
@@ -223,6 +222,8 @@
       });
    </script>
 
+   
+
    <!-- Bootstrap core JavaScript-->
    <script
       src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
@@ -236,5 +237,7 @@
 
 
 
+
 </body>
+
 </html>
