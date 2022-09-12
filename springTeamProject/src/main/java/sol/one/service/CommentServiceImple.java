@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import sol.one.VO.Comment2VO;
 import sol.one.VO.CommentVO;
 import sol.one.mapper.CommentMapper;
 
@@ -25,12 +26,12 @@ public class CommentServiceImple implements CommentService{
 	}
 
 	@Override
-	public List<CommentVO> getComment(int product_id,int user_id_1,int user_id_2) {
+	public List<Comment2VO> getComment(int product_id,int user_id_1,int user_id_2) {
 		return mapper.read(product_id,user_id_1,user_id_2);
 	}
 
 	@Override
-	public List<CommentVO> getAllComment(int product_id) {
+	public List<Comment2VO> getAllComment(int product_id) {
 		return mapper.readAll(product_id);
 	}
 	

@@ -71,7 +71,7 @@ public class WriteController {
 		int n = productservice.getI(pd_img);
 		
 		//등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시
-		return "redirect:/product/contentPage?product_id="+n;
+		return "redirect:/category/detail?product_id="+n;
 		
 		
 		//return "/product/mainTest";

@@ -14,11 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import sol.one.VO.Comment2VO;
 import sol.one.VO.CommentVO;
+import sol.one.VO.MemberVO;
 import sol.one.service.CommentService;
+import sol.one.service.MemService;
 
 @RequestMapping("/replies")
 @RestController
@@ -26,6 +30,9 @@ public class CommentController {
 	
 	@Autowired
 	private CommentService service;
+	
+	@Autowired
+	private MemService userservice;
 	
 	@PostMapping("/new")
 	public String insertReply(@RequestBody CommentVO vo) {
@@ -42,14 +49,14 @@ public class CommentController {
 		return "insert";
 	}
 	
-	@GetMapping("/get/{product_id}")
-	public Map<String,Object> getAllComment(@PathVariable int product_id,Model model){
+	@GetMapping("/get")
+	public Map<String,Object> getAllComment(@RequestParam("product_id")int product_id,Model model){
 		System.out.println("good?");
-		List<CommentVO> list = service.getAllComment(product_id);
-		ModelAndView view = new ModelAndView();
-		view.setViewName("/product/main");
+		List<Comment2VO> list = service.getAllComment(product_id);
+		
 		Map<String,Object> map = new HashMap<>();
 		map.put("list", list);
+		
 		return map;
 	}
 	
@@ -58,7 +65,7 @@ public class CommentController {
 		System.out.println("good?");
 		Map<String,Object> map = new HashMap<>();
 		
-		int[] comment_no_level = service.getLevel(product_id,user_id_1);
+		int[] comment_no_level = service.getLevel(product_id,user_id_2);
 		if(comment_no_level.length > 0) {
 			
 			ModelAndView view = new ModelAndView();
@@ -66,14 +73,14 @@ public class CommentController {
 			
 			map.put("count", comment_no_level.length);
 			
-			List<CommentVO> list = service.getComment(product_id,user_id_1,user_id_2);
+			List<Comment2VO> list = service.getComment(product_id,user_id_1,user_id_2);
 			map.put("list", list);
 			return map;
 		}
 		else {
 			ModelAndView view = new ModelAndView();
 			view.setViewName("redirect:/product/main");
-			List<CommentVO> list = service.getComment(product_id,user_id_1,user_id_2);
+			List<Comment2VO> list = service.getComment(product_id,user_id_1,user_id_2);
 			map.put("list", list);
 			map.put("count", 0);
 			return map;

@@ -51,38 +51,43 @@ public class CommentMapperTests {
     	mapper.insert_co_tab(vo);
     }
     
-    @Test
-    public void testRead() {
-    	int product_id = 1;
-    	log.info(mapper.readAll(product_id));
-    }
-    
-    @Test
-    public void testdelete() {
-    	int comment_no = 1;
-    	mapper.delete(comment_no);
-    	CommentVO vo = new CommentVO();
-    	vo.setProduct_id(1);
-    	log.info(mapper.readAll(vo.getProduct_id()));
-    }
-    
-    @Test
-    public void testdelall() {
-    	int product_id = 1;
-    	mapper.deleteAll(product_id);
-    	CommentVO vo = new CommentVO();
-    	vo.setProduct_id(1);
-    	log.info(mapper.readAll(vo.getProduct_id()));
-    }
-    
-    @Test
-    public void testUpdate() {
-    	CommentVO vo = new CommentVO();
-    	vo.setUser_id(1);
-    	vo.setComment_no(2);
-    	vo.setComment_content("변경댓글");
-    	mapper.update(vo);
-    	vo.setProduct_id(1);
-    	log.info(mapper.readAll(vo.getProduct_id()));
-    }
+//    @Test
+//    public void testRead() {
+//    	int product_id = 381;
+//    	int user_id_1 = 42;
+//    	log.info(mapper.readAll(product_id,user_id_1));
+//    }
+//    
+//    
+//    @Test
+//    public void testdelete() {
+//    	int comment_no = 1;
+//    	mapper.delete(comment_no);
+//    	CommentVO vo = new CommentVO();
+//    	vo.setProduct_id(1);
+//    	int user_id_1 = 42;
+//    	log.info(mapper.readAll(vo.getProduct_id(),user_id_1));
+//    }
+//    
+//    @Test
+//    public void testdelall() {
+//    	int product_id = 1;
+//    	mapper.deleteAll(product_id);
+//    	CommentVO vo = new CommentVO();
+//    	vo.setProduct_id(1);
+//    	int user_id_1 = 42;
+//    	log.info(mapper.readAll(vo.getProduct_id(),user_id_1));
+//    }
+//    
+//    @Test
+//    public void testUpdate() {
+//    	CommentVO vo = new CommentVO();
+//    	vo.setUser_id(1);
+//    	vo.setComment_no(2);
+//    	vo.setComment_content("변경댓글");
+//    	mapper.update(vo);
+//    	vo.setProduct_id(1);
+//    	int user_id_1 = 42;
+//    	log.info(mapper.readAll(vo.getProduct_id(),user_id_1));
+//    }
 }
