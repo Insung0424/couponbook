@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,12 @@
 	<p>쿠폰이름	:	<c:out value="${onePdt.pd_name }" /></p>
 	<p>쿠폰가격	:	<c:out value="${onePdt.pd_price }" /></p>
 	<p>거래상태	:	<c:out value="${onePdt.pd_status }" /></p>
-	<p>사용처	: 	<span id="pd_desc"> <c:out value="${onePdt.pd_desc }" /> </span> </p>
+		<c:set var="img" value="${fn:split(onePdt.pd_img, ',')[0]}"></c:set>
+		<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
+		<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
+	<p>쿠폰이미지	: 	<img src="${simg2}" class="card-img-top" alt="Not Found Image"> </p>
+	<p>사용처	: 	 ${onePdt.pd_desc } </p>
+	<!-- ckeditor 로 db로 값을 삽입하면 html 태그 전체가 삽입되므로 값자체를 화면에 띄우거나 다른 방법을 사용해야한다 -->
 	<p>쿠폰할인율	:	<c:out value="${onePdt.pd_discount }" /></p>
 	<p>등록일	:	<c:out value="${onePdt.pd_date }" /></p>
 	

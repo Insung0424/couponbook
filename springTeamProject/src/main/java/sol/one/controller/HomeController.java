@@ -1,10 +1,13 @@
 package sol.one.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.http.HttpRequest;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +16,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -23,9 +27,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import sol.one.VO.MemberVO;
 import sol.one.VO.ProductVO;
 import sol.one.service.PdtOneService;
 import com.google.gson.JsonObject;
@@ -71,10 +77,16 @@ public class HomeController {
 	}
 
 	@GetMapping("/write")
-	public void write() {}
+	public void write(@SessionAttribute("mem")MemberVO mem, HttpSession session) {
+		
+	}
 
 	@GetMapping("/main2")
-	public void main2() {
+	public void main2(@SessionAttribute("mem")MemberVO mem, HttpSession session) {
+
+		session.getAttribute("mem");
+		
+		session.setAttribute("mem", mem);
 	}
 
 	// ckeditor4 를 이용한 이미지 업로드

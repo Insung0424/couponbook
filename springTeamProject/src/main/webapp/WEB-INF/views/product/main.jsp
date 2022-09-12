@@ -33,6 +33,7 @@
    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet" href="../resources/report.css"><!-- 신고기능모달창을 위한 css 삭제하면 모달창이 아니라 페이지에 추가되는 방식으로 작동함 -->
 
 </head>
 <body>
