@@ -1,11 +1,12 @@
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
 <head>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -38,20 +39,18 @@
 </head>
 
 <script type="text/javascript">
-function service(){
-	
-		var check="${mem}";
-		if(check==""){
+	function service() {
+
+		var check = "${mem}";
+		if (check == "") {
 			alert("로그인 후 이용하세요");
 			event.preventDefault();
-			location.href="/loginMain";
-		}else{
+			location.href = "/member/login";
+		} else {
 			return true;
 		}
-			
-		
-	}
 
+	}
 </script>
 
 <!------------------------------------------------------------------------------------  -->
@@ -66,9 +65,9 @@ function service(){
 	<form
 		class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 		<div class="input-group">
-		 <input type="text"
-				class="form-control bg-light border-0 small" placeholder="검색어 입력"
-				aria-label="Search" aria-describedby="basic-addon2">
+			<input type="text" class="form-control bg-light border-0 small"
+				placeholder="검색어 입력" aria-label="Search"
+				aria-describedby="basic-addon2">
 			<div class="input-group-append">
 				<button class="btn btn-primary" type="button">
 					<i class="fas fa-search fa-sm"></i>
@@ -101,6 +100,9 @@ function service(){
 				</form>
 			</div></li>
 
+
+		<a href="write" class="btn w-100 h-50 mt-3 btn-primary">상품등록</a>
+				<div class="topbar-divider d-none d-sm-block"></div>
 		<!-- Nav Item - Alerts -->
 		<li class="nav-item dropdown no-arrow"><a
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
@@ -111,15 +113,17 @@ function service(){
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="/category/all">  전체
-				</a> <a class="dropdown-item" href="/category/category?category_id=1">  편의점
-				</a> <a class="dropdown-item" href="/category/category?category_id=2">  커피/음료
-				</a> <a class="dropdown-item" href="/category/category?category_id=3">  외식
-				</a> <a class="dropdown-item" href="/category/category?category_id=4">  상품권
-				</a> <a class="dropdown-item" href="/category/category?category_id=5">  기타
-				</a>
+				<a class="dropdown-item" href="/category/all"> 전체 </a> <a
+					class="dropdown-item" href="/category/category?category_id=1">
+					편의점 </a> <a class="dropdown-item"
+					href="/category/category?category_id=2"> 커피/음료 </a> <a
+					class="dropdown-item" href="/category/category?category_id=3">
+					외식 </a> <a class="dropdown-item"
+					href="/category/category?category_id=4"> 상품권 </a> <a
+					class="dropdown-item" href="/category/category?category_id=5">
+					기타 </a>
 				<div class="dropdown-divider"></div>
-				
+
 			</div></li>
 
 
@@ -128,11 +132,11 @@ function service(){
 
 		<!-- Nav Item - User Information -->
 		<li class="nav-item dropdown no-arrow"><a
-			class="nav-link dropdown-toggle"  id="userDropdown"
-			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if test="${mem==null}">로그인을 해주세요</c:if><c:if test="${mem!=null}">${mem.nickname }</c:if> </span> <svg
-					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+			class="nav-link dropdown-toggle" id="userDropdown" role="button"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if
+						test="${mem==null}">로그인을 해주세요</c:if> <c:if test="${mem!=null}">${mem.nickname }</c:if>
+			</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path
 						d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
@@ -140,29 +144,44 @@ function service(){
 		</a> <!-- Dropdown - User Information -->
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-				aria-labelledby="userDropdown"><form method="post">	<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
-				<a class="dropdown-item"> <i
-					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="내 정보" formaction="/mypage/myInfo"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item"> <i
-					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;" onclick="service()">
-				</a>
+				aria-labelledby="userDropdown">
+				<form method="post">
+					<input type="hidden" id="session_user_id" name="session_user_id"
+						value="${mem.user_id}"> <a class="dropdown-item"> <i
+						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input
+						type="submit" value="내 정보" formaction="/mypage/myInfo"
+						style="border: none; background: transparent;" onclick="service()">
+					</a> <a class="dropdown-item"> <i
+						class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input
+						type="submit" value="관심상품" formaction="/mypage/myLike"
+						style="border: none; background: transparent;" onclick="service()">
+					</a> <a class="dropdown-item"> <i
+						class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i><input
+						type="submit" value="거래내역" formaction="/mypage/myTrade"
+						style="border: none; background: transparent;" onclick="service()">
+					</a> <a class="dropdown-item"> <i
+						class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input
+						type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"
+						style="border: none; background: transparent;" onclick="service()">
+					</a> <a class="dropdown-item"> <i
+						class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input
+						type="submit" value="내 댓글" formaction="/mypage/myComment"
+						style="border: none; background: transparent;" onclick="service()">
+					</a>
 				</form>
 				<div class="dropdown-divider"></div>
-				<c:if test="${mem==null}"><a class="dropdown-item" href="/loginMain" 
-					data-target="#loginModal"> <i
-					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그인
-					
-				</a></c:if>
-				<c:if test="${mem!=null}"><a class="dropdown-item" href="/logout"
-					data-target="#logoutModal"><i
-					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그아웃
-				</a></c:if>
+				<c:if test="${mem==null}">
+					<a class="dropdown-item" href="/member/login"
+						data-target="#loginModal"> <i
+						class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그인
+
+					</a>
+				</c:if>
+				<c:if test="${mem!=null}">
+					<a class="dropdown-item" href="/logout" data-target="#logoutModal"><i
+						class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>로그아웃
+					</a>
+				</c:if>
 			</div></li>
 
 
