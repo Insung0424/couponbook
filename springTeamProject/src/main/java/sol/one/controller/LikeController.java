@@ -30,7 +30,7 @@ public class LikeController {
     
         likeService.insertL(likeVO);                    
         
-        return "redirect:/main";
+        return "redirect:/";
     }
  
   
