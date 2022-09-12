@@ -94,7 +94,7 @@ header {
 				<c:choose>
 					<c:when test="${empty userID}">
 						<form class="l-flex" role="signin">
-							<a class="btn btn-warning" href="member/login" style="margin-right: 5px;">로그인</a>
+							<a class="btn btn-warning" href="/member/login" style="margin-right: 5px;">로그인</a>
 							<a id="custom-login-btn" class="btn btn-lg" 
 								href="https://kauth.kakao.com/oauth/authorize?client_id=e90605fb64b5ed5eeffcf586eb651d12&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 								<img src="/resources/kakao_login_small.png"
@@ -102,7 +102,7 @@ header {
 							</a>
 						</form>
 						<form class="re-flex" role="signup">
-							<a class="btn btn-secondary" href="member/join" style="margin-right: 5px;">회원가입</a>
+							<a class="btn btn-secondary" href="/member/join" style="margin-right: 5px;">회원가입</a>
 						</form>
 					</c:when>
 				
@@ -127,7 +127,7 @@ header {
 			<div class="col">
 			
 				<%-- 쿠폰상페보기 링크 --%>
-				<a class="card-link" href='/product/pdtOne?product_id=<c:out value="${pdtList.product_id }"/>'
+				<a class="card-link" href='/product/contentPage?product_id=<c:out value="${pdtList.product_id }"/>'
 					style="text-decoration: none; color: black; text-align: left;">
 					<div class="card" style="width: 18rem;">
 					<c:set var="img" value="${fn:split(pdtList.pd_img, ',')[1]}"></c:set>
@@ -136,9 +136,11 @@ header {
 						<img src="/getImg?fileNameNPath=${simg2}" class="card-img-top" alt="...">
 						<div class="card-body">
 							<p class="card-id"><c:out value="${pdtList.product_id }" /></p>
+							<!-- product_id는 없어도 될 듯함  -->
 							<p class="card-title"><c:out value="${pdtList.pd_name }" /></p>
-							<div class="card-price">가격<c:out value="${pdtList.pd_price }" /></div>
-							<div class="card-variety">사용처<c:out value="${pdtList.pd_desc }" /></div>
+							<div class="card-price">가격 <c:out value="${pdtList.pd_price }" />원</div>
+							<div class="card-variety">사용처 <c:out value="${pdtList.company_name }" /></div>
+							<!-- pd_desc을 사용처말고 company_name 을 사용처로 변경  -->
 						</div>
 					</div>
 				</a>

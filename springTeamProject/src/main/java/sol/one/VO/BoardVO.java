@@ -15,8 +15,6 @@ public class BoardVO {
 	private Date board_write_time;
 //	private Date bod_updated;
 	private int pd_discount;
-	private Date pd_date;
-
-	
+	private String pd_date;
 
 }

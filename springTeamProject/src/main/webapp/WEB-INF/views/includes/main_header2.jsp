@@ -1,5 +1,4 @@
-<!DOCTYPE html><%@ page language="java"
-	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<!DOCTYPE html><%@ page language="java" pageEncoding="utf-8"%>
 <html lang="en">
 
 <head>
@@ -123,7 +122,9 @@
 					class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
 					로그아웃
 				</a>
-			</div></li>
+			</div>
+				<a class="btn btn-primary" href="/write"
+					style="margin-right: 5px;">상품 등록</a></li>
 
 
 	</ul>

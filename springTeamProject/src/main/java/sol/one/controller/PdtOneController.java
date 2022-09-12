@@ -47,6 +47,11 @@ public class PdtOneController {
 		
 	}
 	
+	@GetMapping("/contentPage")
+	public void contentpage(@RequestParam("product_id") int product_id, Model model) {
+		model.addAttribute("onePdt", pdtService.getOnePdt(product_id));
+	}
+	
 	@RequestMapping(value = "/getImg", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImg(String fileNameNPath) {
 		// 테이블에서 열 값에 저장할때 이미지경로와 이름이 전체가 저장되므로 그 값을 받아서 파일을 생성함

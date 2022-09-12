@@ -29,10 +29,10 @@
 	#result_card {
 		position: relative;
 	}
-	.imgDeleteBtn{
+	#imgDeleteBtn{
 	    position: absolute;
 	    top: 0;
-	    right: 5%;
+	    right: 1%;
 	    background-color: #ef7d7d;
 	    color: wheat;
 	    font-weight: 900;
@@ -176,7 +176,8 @@
 					
 					<input type="hidden" name="pd_img" id="pd_img">
 					<input type="hidden" name="pd_desc" id="pd_desc">
-					
+					<input type="hidden" name="user_id" value="${mem.user_id}">	
+									
 					<button type="submit" class="btn btn-primary"
 						style="float: right; margin-bottom: 10px; margin-right: 5px;">등록</button>	
 					<button type="reset" class="btn btn-secondary"

@@ -86,7 +86,4 @@ public class ProductController {
 	public void new1() {}
 	
 	
-	@GetMapping("/contentPage")
-	public void contentpage() {}
-	
 }

@@ -88,7 +88,7 @@ public class MemController {
 		else {
 			// 로그인 성공 하면 service에서 반환 받은 loginMem 을 세션에 담아서 메인 페이지로 이동한다
 			session.setAttribute("mem", loginMem);
-			return "redirect:/main2";
+			return "redirect:/product/mainTest";
 		}
 	}
 	

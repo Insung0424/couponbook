@@ -30,8 +30,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import net.coobird.thumbnailator.Thumbnails;
+import sol.one.VO.BoardVO;
 import sol.one.VO.ImageVO;
 import sol.one.VO.ProductVO;
+import sol.one.service.BoardServiceImpl;
 import sol.one.service.ProductServiceImpl;
 
 @Controller
@@ -40,10 +42,12 @@ public class WriteController {
 	
 	private ProductServiceImpl productservice;
 	
+	private BoardServiceImpl boardservice;
+	
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
 	public String add(String pd_name,String pd_img,String pd_desc,String company_name,String pd_price,
-			int category_id,int location_id,int pd_discount,String pd_date) {
+			int category_id,int location_id,int pd_discount,String pd_date,int user_id) {
 		ProductVO vo = new ProductVO();
 		vo.setPd_desc(pd_desc);
 		vo.setPd_img(pd_img);
@@ -56,9 +60,17 @@ public class WriteController {
 		vo.setPd_date(pd_date);
 		productservice.add(vo);
 		
+		BoardVO bvo = new BoardVO();
+		bvo.setUser_id(user_id);
+		bvo.setBoard_title(pd_name);
+		bvo.setBoard_content(pd_desc);
+		bvo.setPd_discount(pd_discount);
+		bvo.setPd_date(pd_date);
+		boardservice.insertBoard(bvo);
+		
 		//model.addAttribute("vo", vo); 등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시
 		//return "상세페이지";
-		return "main2";
+		return "/product/mainTest";
 	}
 
 	// 파일 및 이미지 한글 깨지면 produces = MediaType.APPLICATION_JSON_UTF8_VALUE 추가

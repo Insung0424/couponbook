@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,7 +36,7 @@
 	<div class="modal-body">
 		<div class="mb-3">
 			작성자
-			<input type="text" id="writer" readonly value="${vo.user_id }" class="form-control"/>
+			<input type="text" id="writer" readonly value="${mem.email}" class="form-control"/>
 		
 			내용
 			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="5"></textarea>
@@ -79,8 +79,8 @@
 	
 <script type="text/javascript">
 $("#add_btn").click(function(){
-	const product_id = ${vo.product_id};
-	const user_id = ${vo.user_id};
+	const product_id = ${onePdt.product_id };
+	const user_id = ${mem.email};
 	const comment_content = CKEDITOR.instances.editor1.getData();
 
 	if(user_id == ''){
@@ -110,9 +110,9 @@ $("#add_btn").click(function(){
 				console.log('통신성공' + data);
 				if(data == "InsertSuccess") {
 					console.log('댓글 등록 완료')
-					$('#user_id').val(${vo.user_id});
+					$('#user_id').val(${mem.email});
 					CKEDITOR.instances.editor1.setData() = '';
-  					let user_id = ${vo.user_id};
+  					let user_id = ${mem.email};
   	              	if(user_id  == 1){
   	              		getAllList();
   	              	}
