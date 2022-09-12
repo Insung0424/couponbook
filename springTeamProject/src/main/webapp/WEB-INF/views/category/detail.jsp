@@ -191,10 +191,13 @@ style="display: block;" value="거래완료하기"/>
 		
 		$(document).ready(function (){
 			$("#modal_report").hide();
+			
 		});
+		
 		$("#modal_btn_report").click(function(){
 			$("#modal_report").fadeIn();
 		});
+		
 		$("#report_cancel").click(function(){
 			$("#modal_report").fadeOut();
 		});
@@ -203,10 +206,22 @@ style="display: block;" value="거래완료하기"/>
 			//버튼 숨기기,보이기
 			$("#modal_TradingEnd").toggle(); 
 			// 거래 완료 유형선택자 페이지 제공	
-			$("#modal_trade_content").load("buyerTradeEnd");
-			// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
-			if($("#modal_trade_content").load("buyerTradeEnd")){
-				$("#modal_trade_content").show("buyerTradeEnd");
+			
+			let sell = ${detail.user_id };
+			let buy = ${mem.user_id};
+			
+			if(buy != sell){
+				$("#modal_trade_content").load("buyerTradeEnd");
+				// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+				if($("#modal_trade_content").load("buyerTradeEnd")){
+					$("#modal_trade_content").show("buyerTradeEnd");
+				}
+			}else{
+				$("#modal_trade_content").load("sellerTradeEnd");
+				// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+				if($("#modal_trade_content").load("sellerTradeEnd")){
+					$("#modal_trade_content").show("sellerTradeEnd");
+				}
 			}
 		});
 	</script>
