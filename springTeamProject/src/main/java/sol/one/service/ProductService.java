@@ -1,5 +1,8 @@
 package sol.one.service;
 
+import java.util.List;
+
+import sol.one.VO.LikeVO;
 import sol.one.VO.ProductVO;
 
 public interface ProductService {
@@ -16,4 +19,12 @@ public interface ProductService {
 	
 	public int status_change(int product_id); // 거래상태조절
 
+	
+	// 카트 담기
+	public int addCart(LikeVO cart) throws Exception;
+	
+	
+	
+	
+	
 }

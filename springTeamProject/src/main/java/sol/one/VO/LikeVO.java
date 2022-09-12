@@ -8,6 +8,15 @@ import lombok.Data;
 public class LikeVO {
 	
 	private int product_id;
-	private int user_id;
+	private long user_id;
 	private Date like_time;
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

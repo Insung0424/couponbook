@@ -1,5 +1,6 @@
 package sol.one.mapper;
 
+
 import sol.one.VO.ProductVO;
 
 public interface ProductMapper {
@@ -15,5 +16,8 @@ public interface ProductMapper {
 	public int selectPimg(String pd_img);
 	
 	public int pd_status_c(int product_id); // 거래상태조절
+	
+	
+	
 
 }

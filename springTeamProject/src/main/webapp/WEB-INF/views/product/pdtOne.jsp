@@ -17,6 +17,7 @@
 	<h3>상세페이지 확인</h3><hr>
 	
 	<!-- 받아온 쿠폰 정보를 출력 -->
+
 	<p>상품 ID	:	<c:out value="${onePdt.product_id }" /></p>
 	<p>카테고리	:	<c:out value="${onePdt.category_id }" /></p>
 	<p>회사이름	:	<c:out value="${onePdt.company_name }" /></p>
@@ -32,7 +33,17 @@
 	<p>쿠폰할인율	:	<c:out value="${onePdt.pd_discount }" /></p>
 	<p>등록일	:	<c:out value="${onePdt.pd_date }" /></p>
 	
-	<!-- 지도 출력 -->
+      <form name="form1" method="post" 
+            action="${path}/product/pdtOne/insertL.do">
+                <input type="hidden" name="product_id"
+                value="${onePdt.product_id}">       
+                <input type="submit" value="좋아요 리스트에 담기">
+      </form>
+
+
+
+
+	<!-- 지도 출력 -->   
 	<div id="map" style="width:600px;height:350px;"></div>
 	
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8fda0bdd386436f995da2c1fca117179&libraries=services"></script>

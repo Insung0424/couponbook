@@ -1,1 +1,7 @@
 /.metadata/
+
+springTeamProject/src/main/java/sol/one/controller/PdtOneController.java
+
+springTeamProject/src/main/webapp/WEB-INF/spring/root-context.xml
+
+springTeamProject/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF

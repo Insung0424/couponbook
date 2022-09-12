@@ -34,4 +34,6 @@ public class ProductVO {
 	
 	private String pd_date;
 	
+	
+	
 }
