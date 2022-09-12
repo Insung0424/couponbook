@@ -123,8 +123,8 @@
 					<div class="container"
 						style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
 						 <p class="title_name">
-							<c:forEach items="${list_cat }" var="list_cat">
-								<c:set var="category_id" value="${list_cat.category_id }" />
+
+								<c:set var="category_id" value="${param.category_id }" />
 								<c:if test="${category_id eq 1}">
                         편의점 쿠폰
                         </c:if>
@@ -140,14 +140,14 @@
 								<c:if test="${category_id eq 5}">
                         기타 쿠폰
                         </c:if>
-							</c:forEach>
+				
 						</p>
 
 						<!--  -->
 
 						<ul style="width: 100%; display: flex; flex-wrap: wrap;">
 
-							<c:forEach items="${list_all }" var="list_all">
+							<c:forEach items="${list_cat }" var="list_cat">
 								<li style="list-style: none; margin: 5px; width: 30%;"
 									class="card_dis"><a>
 										<div class="card_poto">
