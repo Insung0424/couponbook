@@ -1,7 +1,7 @@
 
 <!DOCTYPE html><%@ page language="java"
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
@@ -17,17 +17,28 @@
 <title>마이페이지</title>
 
 <!-- Custom fonts for this template-->
-<link href="/resources/vendor/fontawesome-free/css/all.min.css"
+<link
+	href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="../resources/home.css">
-<style type="text/css">
-</style>
+<link
+	href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/home.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
+	rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 
 </head>
 
@@ -66,53 +77,58 @@
 					<div class="row ">
 						<div class="col-xl-12 col-lg-7" style="grid-area: main2;">
 							<div class="card shadow mb-4">
-								<div class="container"
-									style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
-
-									<div class="row">
-										<div class="col">
-							<table>
-						<tr>
-							<th>글번호</th>
-							<th>상품번호</th>
-							<th>글제목</th>
-							<th>유저아이디</th>
-							<th>글내용</th>
-							<th>게시시간</th>
-							<th>할인율</th>
-							<th>유효기간</th>						
-						</tr>
-						<c:forEach items="${board}" var = "board">					
-							<tr>
-								<td><c:out value="${board.board_no}" /></td>
-								<td><c:out value="${board.product_id}"/></td>
-								<td><c:out value="${board.board_title}"/></td>
-								<td><c:out value="${board.user_id}"/></td>
-								<td><c:out value="${board.board_content}"/></td>
-								<td><c:out value="${board.board_write_time}"/></td>
-								<td><c:out value="${board.pd_discount}"/></td>
-								<td><c:out value="${board.pd_date}"/></td>	
-							</tr>
-						</c:forEach>	
-					</table>
-										</div>
-									</div>
+								<input class="form-control" id="myInput" type="text"
+									placeholder="검색">
+								<div class="table-wrap"
+									style="width: 100%; height: 500px; overflow: auto">
 
 
 
-
+									<table class="table">
+										<thead class="thead-primary">
+											<tr>
+												<th>글번호</th>
+												<th>상품번호</th>
+												<th>글제목</th>
+												<th>유저아이디</th>
+												<th>글내용</th>
+												<th>게시시간</th>
+												<th>할인율</th>
+												<th>유효기간</th>
+											</tr>
+											<c:forEach items="${board}" var="board">
+												<tbody id="myTable">
+													<tr>
+														<td><c:out value="${board.board_no}" /></td>
+														<td><c:out value="${board.product_id}" /></td>
+														<td><c:out value="${board.board_title}" /></td>
+														<td><c:out value="${board.user_id}" /></td>
+														<td><c:out value="${board.board_content}" /></td>
+														<td><c:out value="${board.board_write_time}" /></td>
+														<td><c:out value="${board.pd_discount}" /></td>
+														<td><c:out value="${board.pd_date}" /></td>
+													</tr>
+												</tbody>
+											</c:forEach>
+									</table>
 								</div>
-
-								<!-- Card Body -->
-
-
-
 							</div>
+
+
+
+
 						</div>
+
+						<!-- Card Body -->
+
+
+
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 
 
@@ -127,11 +143,40 @@
 	</a>
 
 
+
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$("#myInput")
+									.on(
+											"keyup",
+											function() {
+												var value = $(this).val()
+														.toLowerCase();
+												$("#myTable tr")
+														.filter(
+																function() {
+																	$(this)
+																			.toggle(
+																					$(
+																							this)
+																							.text()
+																							.toLowerCase()
+																							.indexOf(
+																									value) > -1)
+																});
+											});
+						});
+	</script>
 	<!-- Bootstrap core JavaScript-->
-	<script src="/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- Custom scripts for all pages-->
-	<script src="/resources/js/sb-admin-2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 
 
 
