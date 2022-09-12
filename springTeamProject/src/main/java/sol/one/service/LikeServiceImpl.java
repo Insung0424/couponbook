@@ -21,10 +21,7 @@ public class LikeServiceImpl implements LikeService {
 		 likeDao.insertL(likeVO);
 	 }
 	 
-	 @Override
-	    public void deleteL(int product_id) {
-	        likeDao.deleteL(product_id);
-	    }
+
 	 
 	 
 	 

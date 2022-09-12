@@ -33,11 +33,14 @@
 	<p>쿠폰할인율	:	<c:out value="${onePdt.pd_discount }" /></p>
 	<p>등록일	:	<c:out value="${onePdt.pd_date }" /></p>
 	
-      <form name="form1" method="post" 
-            action="${path}/product/pdtOne/insertL.do">
-                <input type="hidden" name="product_id"
-                value="${onePdt.product_id}">       
-                <input type="submit" value="좋아요 리스트에 담기">
+   <form name="form1" method="post" 
+            action="${path}/product/contentPage/insertL.do">
+       <input type="hidden" id="product_id" name="product_id"
+                value=1>        
+           <input type="hidden" id="user_id" name="user_id"
+                value=2>          
+                            
+                <input type="submit" value="관심상품에 담기">
       </form>
 
 

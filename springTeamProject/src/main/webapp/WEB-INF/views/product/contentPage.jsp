@@ -74,6 +74,18 @@
 			<!-- ckeditor 로 db로 값을 삽입하면 html 태그 전체가 삽입되므로 값자체를 화면에 띄우거나 다른 방법을 사용해야한다 -->
 			<p>쿠폰할인율	:	<c:out value="${onePdt.pd_discount }" /></p>
 			<p>등록일	:	<c:out value="${onePdt.pd_date }" /></p>
+			
+   <form name="form1" method="post" 
+            action="${path}/product/contentPage/insertL.do">
+       <input type="hidden" id="product_id" name="product_id"
+                value=1>        
+           <input type="hidden" id="user_id" name="user_id"
+                value=2>          
+                            
+                <input type="submit" value="관심상품에 담기">
+      </form>
+
+
 
 
 		</div>

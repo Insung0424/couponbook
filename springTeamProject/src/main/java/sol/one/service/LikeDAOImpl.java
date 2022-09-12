@@ -32,11 +32,7 @@ public class LikeDAOImpl implements LikeDAO {
 	   	    
 	    
 
-		@Override
-		public void deleteL(int product_id) {
-			// TODO Auto-generated method stub
-			
-		}             	    
+   	    
 	    
 	    
 	   
