@@ -37,6 +37,19 @@ public class CategoryServiceImpl implements CategoryService{
 		// TODO Auto-generated method stub
 		return mapper.list_category(category_id);
 	}
+
+	@Override
+	public int count_all() throws Exception {
+		return mapper.count_all();
+		
+	}
+
+	@Override
+	public int count_category(int category_id) throws Exception {
+		return mapper.count_category(category_id);
+		
+	}
+	
 	
 	
 	

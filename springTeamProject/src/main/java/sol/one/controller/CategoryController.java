@@ -22,10 +22,14 @@ public class CategoryController {
 	@GetMapping("/all")
 	public void list_all(Model model) throws Exception {
 		model.addAttribute("list_all",service.list_all_category());
+		model.addAttribute("count_all", service.count_all());
 		
 	}
 	@GetMapping("/category")
 	public void list_cat(int category_id,Model model) throws Exception{
 		model.addAttribute("list_cat",service.list_category(category_id));
+		model.addAttribute("count_category", service.count_category(category_id));
 	}
+	
+
 }

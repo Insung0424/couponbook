@@ -9,4 +9,10 @@ select *from pj_product
 <select id="list_category" resultType="sol.one.VO.ProductVO">
 select *from pj_product where category_id=#{category_id}
 </select>
+<select id="count_all" resultType="int">
+select count(*) from pj_product
+</select>
+<select id="count_category" resultType="int">
+select count(*) from pj_product where category_id=#{category_id}
+</select>
 </mapper>

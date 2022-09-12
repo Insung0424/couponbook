@@ -108,7 +108,7 @@ header {
 						<!-- 마이페이지 경로 수정 필요 -->
 						<form method="post" class="re-flex" role="sign">
 						<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id }">					
-						<input type="submit" formaction="/member/myPage" class="btn  btn-outline-warning me-3" value="마이페이지" style="border: none; background: transparent;"><br><br>
+						<input type="submit" formaction="/mypage/myInfo" class="btn  btn-outline-warning me-3" value="마이페이지" style="border: none; background: transparent;"><br><br>
 						</form>
 						<a href="/member/logout" class="btn btn-danger">로그아웃</a><br><br>
 
@@ -167,7 +167,7 @@ header {
 	</div>
 	<h1 style="margin-left: 250px; margin-top: 50px;">전체 쿠폰</h1>
 	<div class="container text-center" style="margin-top: 30px;">
-	
+		전체 게시물 <c:out value="${count_all }"/>개
 		<c:forEach items="${list_all }" var="list_all">
 	
 		<div class="row">

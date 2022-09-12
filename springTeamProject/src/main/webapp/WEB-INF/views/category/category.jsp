@@ -184,7 +184,22 @@ header {
 								</h1>
 							
 	<div class="container text-center" style="margin-top: 30px;">
-	
+		<c:set var="category_id" value="${param.category_id }"/>
+		<c:if test="${category_id eq 1}">
+								편의점 게시물 <c:out value="${count_category }"/>개
+								</c:if>
+								<c:if test="${category_id eq 2}">
+								커피/음료 게시물 <c:out value="${count_category }"/>개
+								</c:if>
+								<c:if test="${category_id eq 3}">
+								외식 게시물 <c:out value="${count_category }"/>개
+								</c:if>
+								<c:if test="${category_id eq 4}">
+								상품권 게시물 <c:out value="${count_category }"/>개
+								</c:if>
+								<c:if test="${category_id eq 5}">
+								기타 게시물 <c:out value="${count_category }"/>개
+								</c:if>
 		<c:forEach items="${list_cat }" var="list_cat">
 	
 		<div class="row">

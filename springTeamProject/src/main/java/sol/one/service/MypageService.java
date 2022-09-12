@@ -36,7 +36,6 @@ public interface MypageService {
 	//���������� �� �ŷ����� ��ȸ�ϱ�
 	public List<T_tradeVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception;
 	
-
 	public List<BoardVO> list_board_mypage(Long user_id) throws Exception;
 	
 	//���������� �� ��� ��ȸ�ϱ�

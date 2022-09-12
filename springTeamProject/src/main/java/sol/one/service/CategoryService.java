@@ -12,4 +12,8 @@ public interface CategoryService {
 	public List<ProductVO> list_all_category()throws Exception;
 	
 	public List<ProductVO> list_category(int category_id) throws Exception;
+
+	public int count_all()throws Exception;
+	
+	public int count_category(int category_id)throws Exception;
 }

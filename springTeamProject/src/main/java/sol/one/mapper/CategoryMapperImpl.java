@@ -34,6 +34,19 @@ private static final Logger log = LoggerFactory.getLogger(MypageMapperImpl.class
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("CategoryMapper.list_category",category_id);
 	}
+
+
+	@Override
+	public int count_all() throws Exception {
+		return sqlSession.selectOne("CategoryMapper.count_all");
+		
+	}
+
+
+	@Override
+	public int count_category(int category_id) throws Exception {
+		return sqlSession.selectOne("CategoryMapper.count_category",category_id);
+	}
 	
 	
 }
