@@ -3,7 +3,7 @@
     
 <!DOCTYPE html>
 <html>
-<head>
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 <meta charset="UTF-8">
 <title>Trading End</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
