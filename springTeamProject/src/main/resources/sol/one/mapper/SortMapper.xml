@@ -20,5 +20,8 @@ select *from pj_product order by pd_price desc
 <select id="list_price_asc">
 select *from pj_product order by pd_price asc
 </select>
+<select id="count_all" resultType="int">
+select count(*) from pj_product
+</select>
 
 </mapper>

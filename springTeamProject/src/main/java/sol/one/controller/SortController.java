@@ -22,26 +22,32 @@ public class SortController {
 	
 	@GetMapping("/time_desc")
 	public void time_desc(Model model) throws Exception {
-		model.addAttribute("time_desc",service.list_time_desc());	
+		model.addAttribute("time_desc",service.list_time_desc());
+		model.addAttribute("count_all",service.count_all());
 	}
 	@GetMapping("/time_asc")
 	public void time_asc(Model model) throws Exception{
 		model.addAttribute("time_asc",service.list_time_asc());
+		model.addAttribute("count_all",service.count_all());
 	}
 	@GetMapping("/discount_desc")
 	public void discount_desc(Model model) throws Exception{
 		model.addAttribute("discount_desc",service.list_discount_desc());
+		model.addAttribute("count_all",service.count_all());
 	}
 	@GetMapping("/discount_asc")
 	public void discount_asc(Model model) throws Exception{
 		model.addAttribute("discount_asc",service.list_discount_desc());
+		model.addAttribute("count_all",service.count_all());
 	}
 	@GetMapping("/price_desc")
 	public void price_desc(Model model) throws Exception{
 		model.addAttribute("price_desc",service.list_price_desc());
+		model.addAttribute("count_all",service.count_all());
 	}
 	@GetMapping("/price_asc")
 	public void price_asc(Model model) throws Exception{
 		model.addAttribute("price_asc",service.list_price_asc());
+		model.addAttribute("count_all",service.count_all());
 	}
 }

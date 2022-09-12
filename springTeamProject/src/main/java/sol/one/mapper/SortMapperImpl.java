@@ -61,6 +61,13 @@ private static final Logger log = LoggerFactory.getLogger(SortMapperImpl.class);
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("SortMapper.list_price_asc");
 	}
+
+
+	@Override
+	public int count_all() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("SortMapper.count_all");
+	}
 	
 	
 }

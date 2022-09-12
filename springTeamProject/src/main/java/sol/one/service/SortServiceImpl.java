@@ -66,6 +66,13 @@ public class SortServiceImpl implements SortService{
 		// TODO Auto-generated method stub
 		return mapper.list_price_asc();
 	}
+
+
+	@Override
+	public int count_all() throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.count_all();
+	}
 	
 	
 	
