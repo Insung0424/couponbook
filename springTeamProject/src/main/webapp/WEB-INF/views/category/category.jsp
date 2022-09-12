@@ -157,7 +157,7 @@
 										</div>
 										<div class="card_info">
 											<div class="card_title_content">
-												<span class="card_title">${list_cat.pd_name }</span>
+												<a class="card-link" href='/category/detail?product_id=<c:out value="${list_cat.product_id }"/>'>${list_cat.pd_name }</a>
 											</div>
 											<p class="card_adr">${list_cat.pd_price }</p>
 											<p class="card_option">
