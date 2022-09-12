@@ -44,7 +44,7 @@ function service(){
 		if(check==""){
 			alert("로그인 후 이용하세요");
 			event.preventDefault();
-			location.href="loginMain";
+			location.href="/loginMain";
 		}else{
 			return true;
 		}
@@ -128,7 +128,7 @@ function service(){
 
 		<!-- Nav Item - User Information -->
 		<li class="nav-item dropdown no-arrow"><a
-			class="nav-link dropdown-toggle" href="#" id="userDropdown"
+			class="nav-link dropdown-toggle"  id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
 				class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if test="${mem==null}">로그인을 해주세요</c:if><c:if test="${mem!=null}">${mem.nickname }</c:if> </span> <svg
@@ -143,13 +143,13 @@ function service(){
 				aria-labelledby="userDropdown"><form method="post">	<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
 				<a class="dropdown-item"> <i
 					class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="내 정보" formaction="/mypage/myInfo"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item" href="#"> <i
+				</a> <a class="dropdown-item"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item" href="#"> <i
+				</a> <a class="dropdown-item"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i><input type="submit" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item" href="#"> <i
+				</a> <a class="dropdown-item"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;" onclick="service()">
-				</a> <a class="dropdown-item" href="#"> <i
+				</a> <a class="dropdown-item"> <i
 					class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input type="submit" value="내 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;" onclick="service()">
 				</a>
 				</form>

@@ -209,7 +209,7 @@
 
 										</div>
 								</div>
-								<button type="button" class="btn btn-primary btn-lg">정보수정</button>
+								<button type="submit" class="btn btn-primary btn-lg" id="submit">정보수정</button>
 
 							
 							</div>

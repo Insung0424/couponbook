@@ -92,7 +92,7 @@
 }
 </style>
 </head>
-<<<<<<< Updated upstream
+
 
 
 
@@ -123,10 +123,13 @@
             <div class="card shadow mb-4">
                <div class="container"
                   style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
-                  <p class="title_name">인기쿠폰</p>
+                  <p class="title_name">인기쿠폰</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp전체 게시물 <c:out value="${count_all }"/>개 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button id="time_desc" style="border: none; background: transparent;">최신순</button>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<button id="price_asc" style="border: none; background: transparent;">낮은가격</button>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
+			<button id="price_desc" style="border: none; background: transparent;">높은가격</button>
+		
                   <!--  -->
 
-                  <ul style="width: 100%; display: flex; flex-wrap: wrap;">
+                  <ul style="width: 100%; display: flex; flex-wrap: wrap;" id="prod">
  <c:forEach items="${list_all }" var="list_all">
                     
                         <li style="list-style: none; margin: 5px; width: 30%;"
@@ -253,6 +256,8 @@
          });
       });
    </script>
+
+   
 
    <!-- Bootstrap core JavaScript-->
    <script
@@ -457,7 +462,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
 		crossorigin="anonymous"></script>
->>>>>>> Stashed changes
+
 </body>
 
 </html>

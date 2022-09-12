@@ -32,34 +32,40 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import sol.one.VO.MemberVO;
+import sol.one.VO.Page;
+import sol.one.VO.PageDTO2;
 import sol.one.VO.ProductVO;
+import sol.one.service.CategoryService;
+import sol.one.service.PageService;
 import sol.one.service.PdtOneService;
 import com.google.gson.JsonObject;
+
+import lombok.RequiredArgsConstructor;
 
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
+@RequiredArgsConstructor
 public class HomeController {
+	
+	private final CategoryService service;
+	private final PageService pservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	/**
 	 * Simply selects the home view to render by returning its name.
+	 * @throws Exception 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "mypage/myComment";
+	public String home(Model model,Page p) throws Exception {
+		model.addAttribute("list_all",service.list_all_category());
+		model.addAttribute("count_all", service.count_all());
+		model.addAttribute("list",pservice.getPage(p));
+		model.addAttribute("pp", new PageDTO2(p,pservice.getTotal(p)));
+		return "category/all";
 	}
 	
 	@GetMapping("/main3")
