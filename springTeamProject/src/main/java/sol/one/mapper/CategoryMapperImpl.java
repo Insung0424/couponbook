@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
+import sol.one.VO.DetailVO;
 import sol.one.VO.ProductVO;
 
 @Repository
@@ -46,6 +47,13 @@ private static final Logger log = LoggerFactory.getLogger(MypageMapperImpl.class
 	@Override
 	public int count_category(int category_id) throws Exception {
 		return sqlSession.selectOne("CategoryMapper.count_category",category_id);
+	}
+
+
+	@Override
+	public List<DetailVO> detail(int product_id) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("CategoryMapper.detail",product_id);
 	}
 	
 	

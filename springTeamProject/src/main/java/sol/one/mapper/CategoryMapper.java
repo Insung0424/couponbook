@@ -2,6 +2,7 @@ package sol.one.mapper;
 
 import java.util.List;
 
+import sol.one.VO.DetailVO;
 import sol.one.VO.ProductVO;
 
 public interface CategoryMapper {
@@ -13,4 +14,7 @@ public interface CategoryMapper {
 	public int count_all()throws Exception;
 	
 	public int count_category(int category_id)throws Exception;
+	
+	public List<DetailVO> detail(int product_id)throws Exception;
+	
 }

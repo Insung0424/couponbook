@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
+import sol.one.VO.DetailVO;
 import sol.one.VO.ProductVO;
 import sol.one.mapper.CategoryMapper;
 
@@ -48,6 +49,12 @@ public class CategoryServiceImpl implements CategoryService{
 	public int count_category(int category_id) throws Exception {
 		return mapper.count_category(category_id);
 		
+	}
+
+	@Override
+	public List<DetailVO> detail(int product_id) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.detail(product_id);
 	}
 	
 	
