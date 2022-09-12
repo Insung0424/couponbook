@@ -53,7 +53,6 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public List<DetailVO> detail(int product_id) throws Exception {
-		// TODO Auto-generated method stub
 		return mapper.detail(product_id);
 	}
 	

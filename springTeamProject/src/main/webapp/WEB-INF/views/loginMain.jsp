@@ -41,7 +41,7 @@
 			<c:when test="${!empty userID}">
 				${mem.user_name } 로그인 성공
 				<p>${mem.user_id } // ${mem.nickname } // ${mem.email }</p>
-				<a href="member/myPage" class="w-75 btn btn-lg btn-outline-warning">마이페이지</a><br><br>
+				<a href="/mypage/myInfo" class="w-75 btn btn-lg btn-outline-warning">마이페이지</a><br><br>
 				<a href="member/logout" class="w-75 btn btn-lg btn-danger">로그아웃</a><br><br>
 			</c:when>
 		</c:choose>

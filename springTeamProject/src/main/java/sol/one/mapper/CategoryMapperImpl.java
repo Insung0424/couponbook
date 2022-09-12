@@ -52,7 +52,6 @@ private static final Logger log = LoggerFactory.getLogger(MypageMapperImpl.class
 
 	@Override
 	public List<DetailVO> detail(int product_id) throws Exception {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList("CategoryMapper.detail",product_id);
 	}
 	
