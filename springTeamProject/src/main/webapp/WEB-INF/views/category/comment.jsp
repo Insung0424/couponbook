@@ -79,8 +79,8 @@
 	
 <script type="text/javascript">
 $("#add_btn").click(function(){
-	const product_id = ${onePdt.product_id };
-	const user_id = ${mem.email};
+	const product_id = ${detail.product_id };
+	const user_id = ${mem.user_id};
 	const comment_content = CKEDITOR.instances.editor1.getData();
 
 	if(user_id == ''){
@@ -131,8 +131,8 @@ $("#add_btn").click(function(){
 
 
 function getAllList() {
-	const product_id= ${vo.product_id};
-	const user_id_1= ${vo.user_id};
+	const product_id= ${detail.product_id};
+	const user_id_1= ${detail.user_id};
 	console.log(product_id);
 	
 	$.getJSON("<c:url value='/replies/get/'/>"+product_id,
@@ -177,9 +177,9 @@ function getAllList() {
 		
 		
 function getList() {
-	const product_id= ${vo.product_id};
-	const user_id_1= ${vo.user_id};
-	const user_id_2 = 1; //상품페이지에 등록된 유저 아이디
+	const product_id= ${detail.product_id};
+	const user_id_1= ${mem.user_id};
+	const user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
 	$.ajax({
 		type : "get",
 		url:"/replies/get/comment",
@@ -238,8 +238,8 @@ function getList() {
 	})};
 		
 $("#more_comment").click(function(){
-	let user_id = ${vo.user_id};
-	if(user_id  == 1){//판매자일 경우
+	let user_id = ${mem.user_id};
+	if(user_id  == ${detail.user_id}){//판매자일 경우
 		getAllList();
 	}
 	else{//구매자일경우

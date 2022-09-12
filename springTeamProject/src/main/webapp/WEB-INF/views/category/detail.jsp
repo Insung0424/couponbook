@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
-
-<html lang="ko">
+<html>
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,8 +40,6 @@
 <script src="../resources/ckeditor/ckeditor.js"></script>
 
 
-
-
 </head>
 
 <body style="background-color: #f2f2f2">
@@ -52,8 +47,6 @@
 		<%@include file="/WEB-INF/views/includes/main_header2.jsp"%>
 	</header>
 	
-	<hr style="border: solid 1px black;">
-
 	<div class="container text-center"
 		style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
 
@@ -112,12 +105,17 @@
 		</div>
 
 	</div>
-
+	
+	<div style="width: 90%; height:600px; margin: 0 auto;">
+		<!-- comment start -->
+		<%@ include file="comment.jsp" %>
+	<!-- comment end -->
+	</div>
 
 
 	<a id="top_btn">TOP</a>
 	
-
+	
 	
 <!-- 거래완료 -->
 <input type="button" id="modal_TradingEnd" class="btn btn-primary"
@@ -126,6 +124,8 @@ style="display: block;" value="거래완료하기"/>
 	<div id="modal_trade_content"></div>
 </div>
 <!-- 거래완료 -->
+
+
 
 <!-- 신고 기능 모달 창 -->
 <button id="modal_btn_report" class="btn btn-primary">신고</button>
@@ -137,14 +137,15 @@ style="display: block;" value="거래완료하기"/>
 				불량사용자신고
 			</div>
 		</div>
+		<form action="${pageContext.request.contextPath}/mypage/sendEmail" method="post">
 		<div class="modal-body">
 			<div class="mb-3">
 			  <label for="exampleFormControlInput1" class="form-label">신고종류</label>
 			  <select id="re_title" class="form-select form-select-sm">
 					<option value="">유형선택</option>
-					<option value="1">허위매물</option>
-					<option value="2">삼자거래사기</option>
-					<option value="3">또 추가할 항목</option>
+					<option value="허위매물">허위매물</option>
+					<option value="삼자거래사기">삼자거래사기</option>
+					<option value="또 추가할 항목">또 추가할 항목</option>
 			  </select>
 			</div>
 			<div class="mb-3">
@@ -154,20 +155,17 @@ style="display: block;" value="거래완료하기"/>
 				    CKEDITOR.replace( 'editor4' );
 				</script>
 			</div>
+			<input type="hidden" value="${detail.user_id }" name="user_id">
+			<input type="hidden" value="${detail.email }" name="email">
 		</div>
 		<div class="modal-footer">
 			<button id="report_submit" class="btn btn-primary">확인</button>
 			<button id="report_cancel" class="btn btn-primary">취소</button>
 		</div>
+		</form>
 	</div>
 </div>
 <!-- 신고 기능 모달 창 -->	
-
-	<!-- comment start -->
-	
-	<%@ include file="comment.jsp" %>
-	
-	<!-- comment end -->
 	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e243b14fc7e2d54b66eb97ad3a69c95&libraries=services"></script>
