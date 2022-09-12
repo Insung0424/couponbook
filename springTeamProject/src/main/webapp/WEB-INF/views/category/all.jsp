@@ -90,9 +90,12 @@
 .card_dis, .card_dis2 {
    display: none;
 }
+
+#card_content:hover {
+   text-decoration: none;
+}
 </style>
 </head>
-
 
 
 
@@ -123,28 +126,25 @@
             <div class="card shadow mb-4">
                <div class="container"
                   style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
-                  <p class="title_name">인기쿠폰</p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp전체 게시물 <c:out value="${count_all }"/>개 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button id="time_desc" style="border: none; background: transparent;">최신순</button>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<button id="price_asc" style="border: none; background: transparent;">낮은가격</button>&nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp
-			<button id="price_desc" style="border: none; background: transparent;">높은가격</button>
-		
+                  <p class="title_name">전체쿠폰</p>
                   <!--  -->
 
-                  <ul style="width: 100%; display: flex; flex-wrap: wrap;" id="prod">
- <c:forEach items="${list_all }" var="list_all">
-                    
-                        <li style="list-style: none; margin: 5px; width: 30%;"
-                           class="card_dis"><a>
+                  <ul style="width: 100%; display: flex; flex-wrap: wrap;">
+                     <c:forEach items="${list_all }" var="list_all">
+
+                        <li style="list-style: none; margin-left: 25px; width: 30%;"
+                           class="card_dis"><a id="card_content"
+                           href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
                               <div class="card_poto">
-                              <a href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
                                  <img alt="noimg"
-                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop" >
-								</a>
+                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop">
+
                               </div>
                               <div class="card_info">
-                              
+
                                  <div class="card_title_content">
-                                
-                                    <a class="card-link" href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>${list_all.pd_name }</a>
+
+                                    <p class="card_title">${list_all.pd_name }</p>
                                  </div>
                                  <p class="card_adr">${list_all.pd_price }</p>
                                  <p class="card_option">
@@ -165,7 +165,7 @@
                         기타
                         </c:if>
                                  </p>
-                                 
+
                               </div>
                         </a></li>
                      </c:forEach>
@@ -180,42 +180,7 @@
          </div>
 
          <!--  -->
-         <div class="col-xl-12 col-lg-7"
-            style="width: 80%; margin: 0 auto; marborder-radius: 10px;">
-            <div class="card shadow mb-4">
-               <div class="container"
-                  style="background-color: white; margin-bottom: 30px; border-radius: 10px; text-align: center;">
-                  <p class="title_name">기한임박 쿠폰</p>
-                  <ul style="width: 100%; display: flex; flex-wrap: wrap;">
 
-                     <%
-                        for (int i = 0; i < 20; i++) {
-                     %>
-                     <li style="list-style: none; margin: 5px; width: 30%;"
-                        class="card_dis2"><a>
-                           <div class="card_poto">
-                              <img alt="noimg"
-                                 src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop">
-
-                           </div>
-                           <div class="card_info">
-                              <div class="card_title_content">
-                                 <span class="card_title">제목</span>
-                              </div>
-                              <p class="card_adr">서울시 강북구</p>
-                              <p class="card_option">추천</p>
-                           </div>
-                     </a></li>
-                     <%
-                        }
-                     %>
-                  </ul>
-                  <div class="more_btn" id="load2">
-                     <span class="more_text">더보기</span>
-                  </div>
-               </div>
-            </div>
-         </div>
       </div>
    </div>
    <%@include file="/WEB-INF/views/includes/main_footer.jsp"%>
@@ -258,8 +223,6 @@
       });
    </script>
 
-   
-
    <!-- Bootstrap core JavaScript-->
    <script
       src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
@@ -273,7 +236,5 @@
 
 
 
-
 </body>
-
 </html>

@@ -35,94 +35,100 @@
 
 </head>
 <script type="text/javascript">
-function service(){
-	
-		var check="${mem}";
-		if(check==""){
+	function service() {
+
+		var check = "${mem}";
+		if (check == "") {
 			alert("로그인 후 이용하세요");
 			event.preventDefault();
-			location.href="loginMain";
-		}else{
+			location.href = "/member/login";
+		} else {
 			return true;
 		}
-			
-		
-	}
 
+	}
 </script>
 
 
-	<!-- Sidebar -->
-	
-		<ul
-			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-			id="accordionSidebar">
+<!-- Sidebar -->
 
-			<a
-				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="/category/all">
+<ul
+	class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+	id="accordionSidebar">
 
-				<div class="sidebar-brand-text mx-3">CouponBook</div>
-			</a>
+	<a
+		class="sidebar-brand d-flex align-items-center justify-content-center"
+		href="/category/all">
 
-			<hr class="sidebar-divider my-0">
+		<div class="sidebar-brand-text mx-3">CouponBook</div>
+	</a>
 
-			<!-- Nav Item - Dashboard -->
-			<form method="post" id="form">
-			<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
-			<li class="nav-item active"><a class="nav-link "
-				href="index.html"> 
-				
-				<span><input type="submit" value="내정보 조회" formaction="/mypage/myInfo"style="border: none; background: transparent;"></span></a></li>
+	<hr class="sidebar-divider my-0">
 
-			<hr class="sidebar-divider">
+	<!-- Nav Item - Dashboard -->
+	<form method="post" id="form">
+		<input type="hidden" id="session_user_id" name="session_user_id"
+			value="${mem.user_id}">
+		<li class="nav-item active"><a class="nav-link "
+			href="index.html"> <span><input type="submit"
+					value="내정보 조회" formaction="/mypage/myInfo"
+					style="border: none; background: transparent;" onclick="service()"></span></a></li>
 
-			<!-- Heading -->
-			
-			<div class="sidebar-heading">마이페이지</div>
-			
-		
-			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" id="myLike" value="관심상품" formaction="/mypage/myLike"style="border: none; background: transparent;" onclick="service()"></span>
-			</a></li>
+		<hr class="sidebar-divider">
 
-			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" id="myTrade" value="거래내역" formaction="/mypage/myTrade"style="border: none; background: transparent;" onclick="service()"></span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" id="myBoard" value="내가 올린 쿠폰" formaction="/mypage/myBoard"style="border: none; background: transparent;" onclick="service()"></span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" id="myComment" value="내가 단 댓글" formaction="/mypage/myComment"style="border: none; background: transparent;" onclick="service()"></span>
-			</a></li>
-			<li class="nav-item"><a class="nav-link"
-				style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
-					<span><input type="submit" id="delete" value="회원탈퇴" formaction="/mypage/delete_info_mypageView"style="border: none; background: transparent;" onclick="service()"
-></span>
-			</a></li>
-		</form>
+		<!-- Heading -->
+
+		<div class="sidebar-heading">마이페이지</div>
 
 
+		<li class="nav-item"><a class="nav-link"
+			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
+					type="submit" id="myLike" value="관심상품" formaction="/mypage/myLike"
+					style="border: none; background: transparent;" onclick="service()"></span>
+		</a></li>
+
+		<li class="nav-item"><a class="nav-link"
+			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
+					type="submit" id="myTrade" value="거래내역"
+					formaction="/mypage/myTrade"
+					style="border: none; background: transparent;" onclick="service()"></span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link"
+			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
+					type="submit" id="myBoard" value="내가 올린 쿠폰"
+					formaction="/mypage/myBoard"
+					style="border: none; background: transparent;" onclick="service()"></span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link"
+			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
+					type="submit" id="myComment" value="내가 단 댓글"
+					formaction="/mypage/myComment"
+					style="border: none; background: transparent;" onclick="service()"></span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link"
+			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
+					type="submit" id="delete" value="회원탈퇴"
+					formaction="/mypage/delete_info_mypageView"
+					style="border: none; background: transparent;" onclick="service()"></span>
+		</a></li>
+	</form>
 
 
 
 
 
-			<hr class="sidebar-divider d-none d-md-block">
-			<!-- 사이드 바 숨기기 버튼 -->
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
-			</div>
 
 
-		</ul>
-		
-		
-		
-		
-		<!-- Sidebar end -->
+	<hr class="sidebar-divider d-none d-md-block">
+	<!-- 사이드 바 숨기기 버튼 -->
+	<div class="text-center d-none d-md-inline">
+		<button class="rounded-circle border-0" id="sidebarToggle"></button>
+	</div>
 
+
+</ul>
+
+
+
+
+<!-- Sidebar end -->
