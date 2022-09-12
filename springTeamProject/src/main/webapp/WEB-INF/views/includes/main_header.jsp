@@ -131,7 +131,7 @@ function service(){
 			class="nav-link dropdown-toggle" href="#" id="userDropdown"
 			role="button" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">사용자 이름 </span> <svg
+				class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if test="${mem==null}">로그인을 해주세요</c:if><c:if test="${mem!=null}">${mem.nickname }</c:if> </span> <svg
 					xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path

@@ -105,8 +105,10 @@ header {
 					</c:when>
 				
 					<c:when test="${!empty userID}">
-						<!-- 마이페이지 경로 수정 필요 -->
-						<a href="/member/myPage" class="btn  btn-outline-warning me-3">마이페이지</a><br><br>
+					<form class="l-flex" role="sign" method="post">
+					<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id }">
+						<input type="submit"formaction="/mypage/myInfo" class="btn btn-outline-warning me-3" value="마이페이지"><br><br>
+						</form>
 						<a href="/member/logout" class="btn btn-danger">로그아웃</a><br><br>
 					</c:when>
 				</c:choose>

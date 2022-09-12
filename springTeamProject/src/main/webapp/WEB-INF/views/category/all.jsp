@@ -106,12 +106,12 @@ header {
 				
 					<c:when test="${!empty userID}">
 						<!-- 마이페이지 경로 수정 필요 -->
-						<form method="get" class="re-flex" role="sign">
-						
+						<form method="post" class="re-flex" role="sign">
+						<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id }">					
 						<input type="submit" formaction="/member/myPage" class="btn  btn-outline-warning me-3" value="마이페이지" style="border: none; background: transparent;"><br><br>
-						<!-- /member/myPage를 /mypage/myInfo로 바꾸고 싶은데 css가 없어서 기다리는중 -->
-						<input type="submit" formaction="/member/logout" class="btn btn-danger" value="로그아웃" style="border: none; background: transparent;"><br><br>
 						</form>
+						<a href="/member/logout" class="btn btn-danger">로그아웃</a><br><br>
+
 					</c:when>
 				</c:choose>
 				

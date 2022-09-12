@@ -6,7 +6,10 @@
 <html lang="en">
 
 <head>
+<style type="text/css">
 
+
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -16,15 +19,27 @@
 
 <title>마이페이지</title>
 <!-- Custom fonts for this template-->
-<link href="resources/vendor/fontawesome-free/css/all.min.css"
+<link href="/resources/vendor/fontawesome-free/css/all.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 <!-- Custom styles for this template-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="../resources/home.css">
+
+<!-- Custom styles for this template-->
+<link href="/resources/css/sb-admin-2.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="../resources/home.css">
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700'
+	rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="resources/css/style.css">
 </head>
 
 
@@ -106,7 +121,7 @@
 					}
 			});
 		})
-		
+	
 	</script>
 <!------------------------------------------------------------------------------------  -->
 
@@ -134,8 +149,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<div> 
-						class="d-sm-flex align-items-center justify-content-between mb-4">
+					<div class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">내정보</h1>
 					</div>
 					
@@ -143,39 +157,39 @@
 						<div class="col-xl-12 col-lg-7" style="grid-area: main2;">
 							<div class="card shadow mb-4">
 								<div class="container"
-									style="background-color: white; margin-bottom: 30px; border-radius: 10px; justify-content: center;">
+									style="background-color: white; margin-bottom: 15px; border-radius: 10px; justify-content: center;">
 										<form action="/mypage/update" method="post" id="Form">
 										<input type="hidden" id="user_id" name="user_id" value="${mem.user_id}">
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display: block;">
 												<label for="floatingInput">이메일</label> <input type="email"
 													class="form-control" id="email" name="email"
 													value="${mem.email}" readonly="readonly">
 											</div>
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display: block;">
 												<label for="floatingInput">새 비밀번호</label> <input type="password"
 													class="form-control" id="password" name="password"
 													>
 											</div>
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display: block;">
 												<label for="floatingInput">새 비밀번호 확인</label> <input type="password"
 													class="form-control" id="password2" name="password2"
 													>
 											</div>
 
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 100px; margin: 20px; display: block;">
 												<label for="floatingInput">닉네임</label> <input type="text"
 													class="form-control" id="nickname" name="nickname"
 													value="${mem.nickname}"/>
 											</div>
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 100px; margin: 20px; display: block;">
 												<label for="floatingInput">이름</label> <input type="text"
 													class="form-control" id="user_name" name="user_name"
 													value="${mem.user_name}"/>
@@ -184,7 +198,7 @@
 										</div>
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display: block;">
 												<label for="floatingInput">전화번호</label> <input type="text"
 													class="form-control" id="phone" name="phone"
 													value="${mem.phone}"/>
@@ -193,19 +207,19 @@
 										</div>
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display:block;">
 												<label for="floatingInput">우편번호</label> <input type="text"
 													class="form-control" id="zip_no" name="zip_no"
 													value="${mem.zip_no}"/>
 											</div>
 										<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display: block;">
 												<label for="floatingInput">주소</label> <input type="text"
 													class="form-control" id="addr" name="addr"
 													value="${mem.addr}"/>
 											</div>
 											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
+												style="width: 300px; margin: 20px; display: block;">
 												<label for="floatingInput">상세 주소</label> <input type="text"
 													class="form-control" id="addr2" name="addr2"
 													value="${mem.addr2}"/>
@@ -226,11 +240,13 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 
 
 
 	<!--------------------------------------------------------------------------------------------------------------------------  -->
+	
 	<%@include file="/WEB-INF/views/includes/main_footer.jsp"%>
 
 
@@ -240,10 +256,10 @@
 
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- Custom scripts for all pages-->
-	<script src="resources/js/sb-admin-2.min.js"></script>
+	<script src="/resources/js/sb-admin-2.min.js"></script>
 
 
 
