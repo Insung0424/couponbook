@@ -68,9 +68,13 @@ public class WriteController {
 		bvo.setPd_date(pd_date);
 		boardservice.insertBoard(bvo);
 		
-		//model.addAttribute("vo", vo); 등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시
-		//return "상세페이지";
-		return "/product/mainTest";
+		int n = productservice.getI(pd_img);
+		
+		//등록하고 상세페이지로 바로 이동해서 작성된 글을 보여줄시
+		return "redirect:/product/contentPage?product_id="+n;
+		
+		
+		//return "/product/mainTest";
 	}
 
 	// 파일 및 이미지 한글 깨지면 produces = MediaType.APPLICATION_JSON_UTF8_VALUE 추가

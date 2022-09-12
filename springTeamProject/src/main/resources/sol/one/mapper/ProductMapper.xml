@@ -18,6 +18,10 @@
 		select * from pj_product where product_id = #{product_id} 
 	</select>
 	
+	<select id="selectPimg" resultType="int">
+		select product_id from pj_product where pd_img = #{pd_img} 
+	</select>
+	
 	<delete id="deleteP">
 		delete from pj_product where product_id = #{product_id}
 	</delete>

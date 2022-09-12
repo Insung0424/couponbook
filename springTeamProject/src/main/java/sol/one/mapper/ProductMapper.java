@@ -12,6 +12,8 @@ public interface ProductMapper {
 	
 	public ProductVO selectP(int product_id); // 보기?
 	
+	public int selectPimg(String pd_img);
+	
 	public int pd_status_c(int product_id); // 거래상태조절
 
 }

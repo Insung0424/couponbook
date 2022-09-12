@@ -12,6 +12,8 @@ public interface ProductService {
 	
 	public ProductVO get(int product_id); // 보기?
 	
+	public int getI(String pd_img); // 글 등록 후 상세페이지 바로보여주기
+	
 	public int status_change(int product_id); // 거래상태조절
 
 }

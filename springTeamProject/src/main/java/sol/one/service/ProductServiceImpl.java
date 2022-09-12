@@ -39,4 +39,9 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.pd_status_c(product_id);
 	}
 
+	@Override
+	public int getI(String pd_img) {
+		return mapper.selectPimg(pd_img);
+	}
+
 }
