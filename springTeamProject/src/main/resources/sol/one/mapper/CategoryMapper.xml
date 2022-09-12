@@ -16,6 +16,6 @@ select count(*) from pj_product
 select count(*) from pj_product where category_id=#{category_id}
 </select>
 <select id="detail" resultType="sol.one.VO.DetailVO">
-select *from pj_board b, pj_product p where b.product_id=p.product_id and b.product_id=#{product_id}
+select *from pj_board b, pj_product p where p.product_id = b.product_id and b.product_id = #{product_id}
 </select>
 </mapper>

@@ -36,7 +36,11 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/map.css">
 
-
+<!-- 댓글,신고,거래완료,ckeditor를 위한 css,js -->
+<link rel="stylesheet" href="../resources/css/style.css">
+<link rel="stylesheet" href="../resources/report.css"><!-- 신고기능모달창을 위한 css 삭제하면 모달창이 아니라 페이지에 추가되는 방식으로 작동함 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../resources/ckeditor/ckeditor.js"></script>
 
 
 
@@ -57,6 +61,7 @@
 		<div class=content
 			style="margin-top: 30px; margin-bottom: 30px; height: 500px; width: 90%; background-color: white; margin: 0 auto;">
 
+
 	<c:forEach items="${detail }" var="detail">
 			<p style="text-align: left;">글 내용</p>
 			<!-- 받아온 쿠폰 정보를 출력 -->
@@ -76,7 +81,7 @@
 			<p>쿠폰할인율	:	<c:out value="${detail.pd_discount }" /></p>
 			<p>등록일	:	<c:out value="${detail.pd_date }" /></p>
 
-</c:forEach>
+	</c:forEach>
 		</div>
 		
 		<div class="map_wrap">
@@ -88,7 +93,7 @@
 				<div class="option">
 					<div>
 						<form onsubmit="searchPlaces(); return false;">
-							키워드 : <input type="text" value="${detail.company_name }&nbsp;${detail.location_id}" id="keyword" size="15">
+							키워드 : <input type="text" value="${detail.company_name }" id="keyword" size="15">
 							<button type="submit">검색하기</button>
 						</form>
 					</div>
@@ -111,6 +116,59 @@
 
 
 	<a id="top_btn">TOP</a>
+	
+
+	
+<!-- 거래완료 -->
+<input type="button" id="modal_TradingEnd" class="btn btn-primary"
+style="display: block;" value="거래완료하기"/>
+<div id="modal_trade">
+	<div id="modal_trade_content"></div>
+</div>
+<!-- 거래완료 -->
+
+<!-- 신고 기능 모달 창 -->
+<button id="modal_btn_report" class="btn btn-primary">신고</button>
+
+<div id="modal_report">
+	<div id="modal_report_content">
+		<div class="modal-header">
+			<div class="modal-title">
+				불량사용자신고
+			</div>
+		</div>
+		<div class="modal-body">
+			<div class="mb-3">
+			  <label for="exampleFormControlInput1" class="form-label">신고종류</label>
+			  <select id="re_title" class="form-select form-select-sm">
+					<option value="">유형선택</option>
+					<option value="1">허위매물</option>
+					<option value="2">삼자거래사기</option>
+					<option value="3">또 추가할 항목</option>
+			  </select>
+			</div>
+			<div class="mb-3">
+			  <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
+			  <textarea class="form-control" id="editor4" name="editor4" rows="5"></textarea>
+				<script type="text/javascript">
+				    CKEDITOR.replace( 'editor4' );
+				</script>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button id="report_submit" class="btn btn-primary">확인</button>
+			<button id="report_cancel" class="btn btn-primary">취소</button>
+		</div>
+	</div>
+</div>
+<!-- 신고 기능 모달 창 -->	
+
+	<!-- comment start -->
+	
+	<%@ include file="comment.jsp" %>
+	
+	<!-- comment end -->
+	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e243b14fc7e2d54b66eb97ad3a69c95&libraries=services"></script>
 
@@ -130,6 +188,28 @@
 				}, 400);
 				return false;
 			});
+		});
+		
+		
+		$(document).ready(function (){
+			$("#modal_report").hide();
+		});
+		$("#modal_btn_report").click(function(){
+			$("#modal_report").fadeIn();
+		});
+		$("#report_cancel").click(function(){
+			$("#modal_report").fadeOut();
+		});
+
+		$("#modal_TradingEnd").click(function(){
+			//버튼 숨기기,보이기
+			$("#modal_TradingEnd").toggle(); 
+			// 거래 완료 유형선택자 페이지 제공	
+			$("#modal_trade_content").load("buyerTradeEnd");
+			// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+			if($("#modal_trade_content").load("buyerTradeEnd")){
+				$("#modal_trade_content").show("buyerTradeEnd");
+			}
 		});
 	</script>
 
