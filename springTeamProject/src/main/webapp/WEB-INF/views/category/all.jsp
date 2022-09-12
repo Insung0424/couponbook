@@ -135,9 +135,10 @@
                         <li style="list-style: none; margin: 5px; width: 30%;"
                            class="card_dis"><a>
                               <div class="card_poto">
+                              <a href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
                                  <img alt="noimg"
-                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop">
-
+                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop" >
+								</a>
                               </div>
                               <div class="card_info">
                               

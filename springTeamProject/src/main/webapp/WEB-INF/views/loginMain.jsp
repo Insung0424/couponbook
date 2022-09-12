@@ -41,8 +41,11 @@
 			<c:when test="${!empty userID}">
 				${mem.user_name } 로그인 성공
 				<p>${mem.user_id } // ${mem.nickname } // ${mem.email }</p>
-				<button type="submit" formaction="/mypage/myInfo" class="w-75 btn btn-lg btn-outline-warning" value="마이페이지"><br><br>
-				<a href="member/logout" class="w-75 btn btn-lg btn-danger">로그아웃</a><br><br>
+				<form method="post">
+				<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id }">
+				<input type="submit" formaction="/mypage/myInfo" class="w-75 btn btn-lg btn-outline-warning" value="마이페이지"/><br><br>
+				</form>
+				<a href="/member/logout" class="w-75 btn btn-lg btn-danger">로그아웃</a><br><br>
 			</c:when>
 		</c:choose>
 		
