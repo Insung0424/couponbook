@@ -26,11 +26,11 @@
 	margin-left: 30px;
 }
 
-h1 {
+h2 {
   position: relative;
   text-align: center;
 }
-h1 span {
+h2 span {
   position: relative;
   z-index: 2;
   display: inline-block;
@@ -39,7 +39,7 @@ h1 span {
   background-color: #fff;
   text-align: left;
 }
-h1::before {
+h2::before {
   position: absolute;
   top: 50%;
   z-index: 1;
@@ -53,11 +53,11 @@ h1::before {
 }
 
 
-h2 {
+h3 {
   position: relative;
   text-align: left;
 }
-h2 span {
+h3 span {
   position: relative;
   z-index: 2;
   display: inline-block;
@@ -66,7 +66,7 @@ h2 span {
   background-color: #fff;
   text-align: left;
 }
-h2::before {
+h3::before {
   position: absolute;
   top: 50%;
   z-index: 1;
@@ -102,7 +102,7 @@ transform: translate(5px, 10px);
 <body>
 	<div class="modal-header">
 		<div class="modal-title">
-			댓글
+		<h1><span>댓글</span></h1>		
 		</div>
 	</div>
 	<div class="modal-body">
@@ -113,7 +113,7 @@ transform: translate(5px, 10px);
 		</span></div>
 		
 	<div style="display:inline-block; border-radius:10px; background: #2f6ddc; margin-bottom: 0px; font-size: 100%; padding: 20px;">		
-			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="4" cols="50" placeholder="내용을 입력하세요"></textarea>
+			<textarea class="form-control" id="editor1" name="editor1" class="com_comment" rows="4" cols="80" placeholder="내용을 입력하세요"></textarea>
 			<script type="text/javascript">
 			    CKEDITOR.replace( 'editor1' );
 			</script></div>

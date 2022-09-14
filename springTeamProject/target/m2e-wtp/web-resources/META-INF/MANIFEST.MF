@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< refs/remotes/origin/main
 Built-By: harteh
 Build-Jdk: 11.0.11
+=======
+Built-By: lee
+Build-Jdk: 1.8.0_333
+>>>>>>> aa
 Created-By: Maven Integration for Eclipse
 
