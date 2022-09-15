@@ -45,8 +45,9 @@ public class KakaoMemService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=e90605fb64b5ed5eeffcf586eb651d12");  //본인이 발급받은 key
-            sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin");     // 본인이 설정해 놓은 경로
+            sb.append("&client_id=e90605fb64b5ed5eeffcf586eb651d12");
+//            sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin");
+            sb.append("&redirect_uri=http://www.couponbook.shop/member/kakaoLogin");
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
