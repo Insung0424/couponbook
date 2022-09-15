@@ -145,13 +145,17 @@
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown">
-				<form method="post">
+				<form method="get">
 					<input type="hidden" id="session_user_id" name="session_user_id"
 						value="${mem.user_id}"> <a class="dropdown-item"> <i
 						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input
-						type="submit" value="내 정보" formaction="/mypage/myInfo"
+						type="submit" value="내 정보" formaction="/mypage/checkPassword"
 						style="border: none; background: transparent;" onclick="service()">
-					</a> <a class="dropdown-item"> <i
+						
+					</a> </form>
+					<form method="post"><input type="hidden" id="session_user_id" name="session_user_id"
+						value="${mem.user_id}">
+					<a class="dropdown-item"> <i
 						class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input
 						type="submit" value="관심상품" formaction="/mypage/myLike"
 						style="border: none; background: transparent;" onclick="service()">
