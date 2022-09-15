@@ -24,18 +24,22 @@ public class LikeController {
     @Inject
     LikeService likeService;
 
-    @RequestMapping(value = "/category/detail/insertL.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/category/detail/insertL.do", method = RequestMethod.GET)
     public String insert(@ModelAttribute LikeVO likeVO, HttpSession session){
-    	
-    	String user_id = (String)session.getAttribute("user_id");
-    	 
-        if (user_id == null) {
-            return "redirect:/member/login";
-        }    	    	
+    	    
     		likeService.insertL(likeVO);               
         
-    		return "redirect:/mypage/myLike";
+    		return "redirect:/category/all";
     }
+    
+    @RequestMapping(value = "/category/detail/deleteL.do", method = RequestMethod.GET)
+    public String deleteL(@ModelAttribute LikeVO likeVO, HttpSession session) {
+ 
+        likeService.deleteL(likeVO);
+ 
+        return "redirect:/category/all";
+    }    
+    
         
     }   
 

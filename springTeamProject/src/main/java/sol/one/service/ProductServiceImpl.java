@@ -50,9 +50,14 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int addCart(LikeVO cart) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public void modifyProduct(ProductVO product) {
+		mapper.modifyProduct(product);
 	}
+
+//	@Override
+//	public int addCart(LikeVO cart) throws Exception {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 }

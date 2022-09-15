@@ -32,4 +32,10 @@
 		where product_no = #{product_no} and user_id = #{user_id}
 	</update>
 	
+	<update id="modifyBoard">
+		update pj_board 
+		set board_title = #{board_title}, board_content = #{board_content}, pd_discount = #{pd_discount}, pd_date = #{pd_date},board_write_time=current_date
+		where product_id = #{product_id} and user_id = #{user_id}
+	</update>
+	
 </mapper>

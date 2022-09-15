@@ -12,9 +12,9 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
-	<!-- 로컬 DB를 위한 설정   -->
 
- 	
+
+>>>>>>> main
  	<!-- 팀 DB  -->
  	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="connectionTimeout" value="3000"/>

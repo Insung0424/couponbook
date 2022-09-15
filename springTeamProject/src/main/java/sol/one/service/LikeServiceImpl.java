@@ -22,7 +22,10 @@ public class LikeServiceImpl implements LikeService {
 	 }
 	 
 
-	 
+	 @Override
+	    public void deleteL(LikeVO likeVO) {
+	        likeDao.deleteL(likeVO);
+	    }
 	 
 	 
 	 

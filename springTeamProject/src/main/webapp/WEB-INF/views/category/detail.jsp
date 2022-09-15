@@ -102,14 +102,29 @@
 							<span> 원</span>
 						</h3>
 												
-		<form name="form1" method="post" 
+		<form name="form1" method="get" 
             action="${path}/category/detail/insertL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
                 value="${mem.user_id }">                                      
            <input type="submit" value="관심상품에 담기">
-        </form>   
+        <form name="form1" method="get" 
+            action="${path}/category/detail/deleteL.do">
+           <input type="hidden" id="product_id" name="product_id"
+                value="${detail.product_id }">        
+           <input type="hidden" id="user_id" name="user_id"
+                value="${mem.user_id }">                                      
+           <input type="submit" value="관심상품에서 지우기">
+        </form>
+        <c:set var="writer_user_id" value="${detail.user_id }"/>
+        <c:if test="${mem.user_id ==writer_user_id}">
+        <form method="get">
+         <input type="hidden" id="product_id" name="product_id"
+                value="${param.product_id }">    
+        <input type="submit" value="수정" formaction="/modifyPostView">
+        </form>
+        </c:if>
       				
 					</div>
 				</div>

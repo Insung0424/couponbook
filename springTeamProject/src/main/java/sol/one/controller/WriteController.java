@@ -13,6 +13,7 @@ import java.util.UUID;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,6 +36,7 @@ import sol.one.VO.BoardVO;
 import sol.one.VO.ImageVO;
 import sol.one.VO.ProductVO;
 import sol.one.service.BoardServiceImpl;
+import sol.one.service.CategoryService;
 import sol.one.service.ProductServiceImpl;
 
 @Controller
@@ -43,6 +46,8 @@ public class WriteController {
 	private ProductServiceImpl productservice;
 	
 	private BoardServiceImpl boardservice;
+	
+	private final CategoryService categoryservice;
 	
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
@@ -206,6 +211,27 @@ public class WriteController {
 		}
 		
 		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+	@GetMapping("/modifyPostView")
+	public String modifyPostView(@RequestParam("product_id")int product_id,Model model)throws Exception{
+		model.addAttribute("detail",categoryservice.detail(product_id));
+		return "category/modifyPost";
+	}
+	@PostMapping("/modify")
+	public String modify(ProductVO product,String pd_name,String pd_desc,String pd_date,
+			int pd_discount,int product_id,int user_id,int board_no,HttpSession session)throws Exception{
+
+		productservice.modifyProduct(product);
+		BoardVO board=new BoardVO();
+		board.setBoard_title(pd_name);
+		board.setBoard_content(pd_desc);
+		board.setPd_discount(pd_discount);
+		board.setBoard_no(board_no);
+		board.setPd_date(pd_date);
+		board.setProduct_id(product_id);
+		board.setUser_id(user_id);
+		boardservice.modifyBoard(board);
+		return "redirect:/";
 	}
 
 }

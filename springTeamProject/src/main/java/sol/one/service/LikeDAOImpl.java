@@ -32,6 +32,11 @@ public class LikeDAOImpl implements LikeDAO {
 	   	    
 	    
 
+		@Override
+		public void deleteL(LikeVO likeVO) {
+			sqlSession.delete("deleteL",likeVO);
+			
+		}      
    	    
 	    
 	    

@@ -62,25 +62,24 @@
 
 		<div class="sidebar-brand-text mx-3">CouponBook</div>
 	</a>
-
+<form method="get" id="form">
 	<hr class="sidebar-divider my-0">
 
 	<!-- Nav Item - Dashboard -->
-	<form method="post" id="form">
+	
 		<input type="hidden" id="session_user_id" name="session_user_id"
 			value="${mem.user_id}">
 		<li class="nav-item active"><a class="nav-link "
-			href="index.html"> <span><input type="submit"
-					value="내정보 조회" formaction="/mypage/myInfo"
-					style="border: none; background: transparent;" onclick="service()"></span></a></li>
+			> <span><input type="submit" formaction="/mypage/checkPassword" onclick="service()" value="내 정보조회" style="border: none; background: transparent;"></span></a></li>
 
 		<hr class="sidebar-divider">
+		</form>
 
 		<!-- Heading -->
 
 		<div class="sidebar-heading">마이페이지</div>
 
-
+		<form method="post" id="form">
 		<li class="nav-item"><a class="nav-link"
 			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
 					type="submit" id="myLike" value="관심상품" formaction="/mypage/myLike"

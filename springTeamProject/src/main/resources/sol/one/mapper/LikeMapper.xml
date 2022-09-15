@@ -9,4 +9,14 @@
 			values (#{product_id},#{user_id}, current_date) 
 	</insert>	
 	
+	
+	<delete id="deleteL">
+		delete from pj_like 
+		where product_id = #{product_id}
+		 and user_id = #{user_id}
+	</delete>
+	
+	
+	
+	
 	</mapper>
