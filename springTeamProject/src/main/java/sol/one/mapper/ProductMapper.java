@@ -11,6 +11,8 @@ public interface ProductMapper {
 	
 	public int modifyP(ProductVO vo); // 수정
 	
+	public void modifyProduct(ProductVO product); //민곤 글수정구현
+	
 	public ProductVO selectP(int product_id); // 보기?
 	
 	public int selectPimg(String pd_img);

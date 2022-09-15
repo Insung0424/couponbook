@@ -109,7 +109,16 @@
            <input type="hidden" id="user_id" name="user_id"
                 value="${mem.user_id }">                                      
            <input type="submit" value="관심상품에 담기">
-        </form>   
+        </form>
+        <c:set var="writer_user_id" value="${detail.user_id }"/>
+        <c:if test="${mem.user_id ==writer_user_id}">
+        <form method="get">
+         <input type="hidden" id="product_id" name="product_id"
+                value="${param.product_id }">    
+        <input type="submit" value="수정" formaction="/modifyPostView">
+        </form>
+        </c:if>
+       
       				
 					</div>
 				</div>

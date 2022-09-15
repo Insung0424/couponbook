@@ -19,6 +19,8 @@ public interface ProductService {
 	
 	public int status_change(int product_id); // 거래상태조절	
 	
+	public void modifyProduct(ProductVO product);
+	
 	
 	
 	

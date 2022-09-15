@@ -26,6 +26,10 @@
 	<delete id="deleteP">
 		delete from pj_product where product_id = #{product_id}
 	</delete>
+	<update id="modifyProduct">
+		update pj_product set company_name = #{company_name}, pd_name = #{pd_name}, pd_price = #{pd_price} 
+		,pd_desc = #{pd_desc},category_id=#{category_id},location_id = #{location_id},pd_discount = #{pd_discount} where product_id = #{product_id}
+	</update>
 	
 	
 
