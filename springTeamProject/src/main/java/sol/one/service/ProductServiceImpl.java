@@ -49,10 +49,10 @@ public class ProductServiceImpl implements ProductService{
 		return mapper.selectPimg(pd_img);
 	}
 
-	@Override
-	public int addCart(LikeVO cart) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//	@Override
+//	public int addCart(LikeVO cart) throws Exception {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 }

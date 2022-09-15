@@ -70,9 +70,7 @@
 		<input type="hidden" id="session_user_id" name="session_user_id"
 			value="${mem.user_id}">
 		<li class="nav-item active"><a class="nav-link "
-			href="index.html"> <span><input type="submit"
-					value="내정보 조회" formaction="/mypage/myInfo"
-					style="border: none; background: transparent;" onclick="service()"></span></a></li>
+			href="index.html"> <span><a href="/mypage/checkPassword" onclick="service()">내정보조회</a></span></a></li>
 
 		<hr class="sidebar-divider">
 

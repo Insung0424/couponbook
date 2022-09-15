@@ -238,5 +238,9 @@ public class MypageController {
 		service.go_report(report);
 		return "redirect:/";
 	}
+	@GetMapping("/checkPassword")
+	public String checkPassword()throws Exception{
+		return "mypage/checkPassword";
+	}
 	
 }
