@@ -9,14 +9,6 @@ public class LikeVO {
 	
 	int product_id;
 	long user_id;
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	Date like_time;	
 	
 }

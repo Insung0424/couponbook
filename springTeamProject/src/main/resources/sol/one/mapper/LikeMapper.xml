@@ -7,7 +7,6 @@
 	<insert id="insertL">
 		insert into pj_like (product_id, user_id, like_time) 
 			values (#{product_id},#{user_id}, current_date) 
-	</insert>
-	
+	</insert>	
 	
 	</mapper>

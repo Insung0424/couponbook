@@ -17,12 +17,7 @@ public interface ProductService {
 	
 	public int getI(String pd_img); // 글 등록 후 상세페이지 바로보여주기
 	
-	public int status_change(int product_id); // 거래상태조절
-
-	
-	// 카트 담기
-	public int addCart(LikeVO cart) throws Exception;
-	
+	public int status_change(int product_id); // 거래상태조절	
 	
 	
 	

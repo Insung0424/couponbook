@@ -8,11 +8,21 @@
 
 <html lang="ko">
 <head>
+<link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Main</title>
 
 <style type="text/css">
+
+	#com_writer{
+	border-radius: 5em; padding: 0.6em 1em; background: #F9F9F9; box-shadow: 1px 2px 10px rgba(0,0,0,0.2);  margin-left: 5px;"
+		}
+
+	#span_content{ 
+         border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%; 
+        } 
+
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -86,11 +96,22 @@
 						</p>
 						<p style="text-align: left;">
 							<c:out value="${detail.company_name }" />
-						</p>
+						</p>							
+					
 						<h3 style="text-align: left;">
 							<c:out value="${detail.pd_price }" />
 							<span> 원</span>
 						</h3>
+												
+		<form name="form1" method="post" 
+            action="${path}/category/detail/insertL.do">
+           <input type="hidden" id="product_id" name="product_id"
+                value="${detail.product_id }">        
+           <input type="hidden" id="user_id" name="user_id"
+                value="${mem.user_id }">                                      
+           <input type="submit" value="관심상품에 담기">
+        </form>   
+      				
 					</div>
 				</div>
 				<hr style="border: solid 1px black;">
