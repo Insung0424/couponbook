@@ -75,22 +75,18 @@
 						<div style="width: 300px; height: 300px; background-color: gray;">
 							<img style="width: 300px; height: 300px;" src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 						</div>
-					
+						<p style="text-align: left;">
+							등록일 :
+							<c:out value="${detail.pd_date }" />
+						</p>
 					</div>
 					<div class=col>
-						<div style="background: #F0F8FF; box-shadow: #F0F8FF 0 0 10px 10px; margin:10px; font-size: 100%; padding: 20px;">
-						<h3 style="text-align: left;">상품이름	:	<c:out value="${detail.pd_name }" />
-						</h3>
-						<h3 style="text-align: left;">유효기간	:	<c:out value="${detail.pd_date }" />
-						</h3>
-						<h3 style="text-align: left;">판매가격	:	<c:out value="${detail.pd_price }" />
-							<span> 원</span>
-						</h3>
-						</div>				
-						
-						<h5 style="text-align: left;"> 할인율	:	<c:out value="${onePdt.pd_discount }" />
-					    </h5>										
-						<h5 style="text-align: left;">카테고리	:	<c:set var="category_id" value="${detail.category_id  }" />
+
+						<h4 style="text-align: left;">
+							<c:out value="${detail.pd_name }" />
+						</h4>
+						<p style="text-align: left;">
+							<c:set var="category_id" value="${detail.category_id  }" />
 							<c:if test="${category_id eq 1}">
                         편의점
                         </c:if>
@@ -106,9 +102,15 @@
 							<c:if test="${category_id eq 5}">
                         기타
                         </c:if>
-						</h5>
-						<h5 style="text-align: left;"> 사용처	:	<c:out value="${detail.company_name }" />
-						</h5>	
+						</p>
+						<p style="text-align: left;">
+							<c:out value="${detail.company_name }" />
+						</p>							
+					
+						<h3 style="text-align: left;">
+							<c:out value="${detail.pd_price }" />
+							<span> 원</span>
+						</h3>	
 																	
         <c:set var="user_id" value="${mem.user_id }"/>
         <c:if test="${not empty user_id}">  
@@ -117,36 +119,28 @@
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }">
-                <p style='width:80px;float: left;'>                                      
-           <input type="submit" value="관심상품에 담기"> 
-           		</p>
-         </form>
-        
+                value="${mem.user_id }">                                      
+           <input type="submit" value="관심상품에 담기">
         <form name="form2" method="get" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }"> 
-                <p style='width:80px;float: middle;'>                                      
+                value="${mem.user_id }">                                      
            <input type="submit" value="관심상품에서 지우기">
-           	</p>
         </form>
        </c:if>
-               
+     
         <c:set var="writer_user_id" value="${detail.user_id }"/>
         <c:if test="${mem.user_id ==writer_user_id}">
           <form method="get">    
           <input type="hidden" id="product_id" name="product_id"
-                value="${param.product_id }">
-                <p style='width:80px;float: right;'>     
+                value="${param.product_id }">    
         <input type="submit" value="글 수정하기" formaction="/modifyPostView">
-        		</p>
         </form>
         </c:if>
       				
-				</div>
+					</div>
 				</div>
 				<hr style="border: solid 1px black;">
 
@@ -219,12 +213,41 @@
 			<div class="modal-footer">
 				<button id="report_submit" class="btn btn-primary">확인</button>
 				<button id="report_cancel" class="btn btn-primary">취소</button>
+				   <c:set var="writer_user_id" value="${detail.user_id }"/>
+        <c:if test="${mem.user_id ==writer_user_id}">
+          <form name="boardInfo">    
+          <input type="hidden" id="product_id" name="product_id"
+                value="${param.product_id }">
+          <input type="hidden" id="board_no" name="board_no"
+          		value="${detail.board_no }"> 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제</button>
+        </form>
+        </c:if>
 			</div>
 		</div>
 	</div>
 	</div>
 	</div>
-	
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        게시물을 정말 삭제하시겠습니까?
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-primary" onclick="clickDel(boardInfo)">삭제하기</button>
+       	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+      </div>
+    </div>
+  </div>
+</div>
 	
 	
 
@@ -592,6 +615,12 @@
 			});
 			
 		});
+		function clickDel(boardInfo) {
+			alert("성공적으로 게시물을 삭제했습니다.");
+			boardInfo.action = "/deleteBoard";
+			boardInfo.method = "post";
+			boardInfo.submit();
+		}
 	</script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>

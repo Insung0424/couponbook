@@ -24,8 +24,8 @@ public class ProductServiceImpl implements ProductService{
 	}			
 	
 	@Override
-	public int remove(int product_id) {
-		return mapper.deleteP(product_id);
+	public void deleteP(int product_id){
+		mapper.deleteP(product_id);
 	}
 
 	@Override
