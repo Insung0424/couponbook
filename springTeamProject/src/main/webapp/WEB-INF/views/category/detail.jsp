@@ -44,9 +44,19 @@
 
 <body style="background-color: #f2f2f2">
 	
-	<header>
-		<%@include file="/WEB-INF/views/includes/main_header2.jsp"%>
-	</header>
+	<!-- Page Wrapper -->
+   <div id="wrapper">
+
+      <!-- Sidebar -->
+      <%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
+
+      <!-- Sidebar end -->
+
+      <!-- Main Content -->
+      <div id="content"
+         style="width: 100%; min-height: 100%; position: relative; margin: 0;">
+
+         <%@include file="/WEB-INF/views/includes/main_header.jsp"%>
 
 	<hr style="border: solid 1px black;">
 
@@ -201,6 +211,8 @@
 				<button id="report_cancel" class="btn btn-primary">취소</button>
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 	
 	

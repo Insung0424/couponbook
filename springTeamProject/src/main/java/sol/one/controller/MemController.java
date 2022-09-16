@@ -17,7 +17,6 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import sol.one.VO.MemberVO;
 import sol.one.service.MemService;
-import sol.one.service.MypageService;
 
 @Controller
 @Log4j
@@ -28,11 +27,11 @@ public class MemController {
 	private MemService service;
 	
 	
-	//회원가입 폼으로 이동
+	//�쉶�썝媛��엯 �뤌�쑝濡� �씠�룞
 	@GetMapping("/join")
 	public void joinForm() {}
 	
-	//회원가입 처리
+	//�쉶�썝媛��엯 泥섎━
 	@PostMapping("/joinProc")
 	public String joinProc(@Valid MemberVO member, BindingResult r, HttpSession session) {
 		log.info("1. joinProc member ========== " + member);
@@ -40,11 +39,11 @@ public class MemController {
 			return "/join";
 		}
 		
-		//가입된 메일인지 확인 후 중복이면 가입 안됨
+		//媛��엯�맂 硫붿씪�씤吏� �솗�씤 �썑 以묐났�씠硫� 媛��엯 �븞�맖
 		  int chkMail = service.mailChk(member.getEmail()); 
 		  if(chkMail != 0) {
-			/* System.out.println("MC81: 가입된 메일입니다"); return "/member/join"; */ 
-				session.setAttribute("msg", "이미 가입된 메일입니다");
+			/* System.out.println("MC81: 媛��엯�맂 硫붿씪�엯�땲�떎"); return "/member/join"; */ 
+				session.setAttribute("msg", "�씠誘� 媛��엯�맂 硫붿씪�엯�땲�떎");
 				return "/errorPage";
 		  } else {
 			  service.registerMem(member); 
@@ -52,24 +51,24 @@ public class MemController {
 		  }
 	}
 	
-	//메일 중복 확인
+	//硫붿씪 以묐났 �솗�씤
 	@PostMapping("/mailChk")
 	@ResponseBody
 	public int mailChk(@RequestParam("email") String email) {
-		System.out.println("넘어온 메일 값: "+email);
+		System.out.println("�꽆�뼱�삩 硫붿씪 媛�: "+email);
 
 		int result = service.mailChk(email);
-		System.out.println("반환받은 체크 값: "+result);
+		System.out.println("諛섑솚諛쏆� 泥댄겕 媛�: "+result);
 		return result; 
 	}
 	
-	//로그인 폼으로 이동
+	//濡쒓렇�씤 �뤌�쑝濡� �씠�룞
 	@GetMapping("/login")
 	public String loginForm() {
 		return "/member/login";
 	}
 	
-	//로그인 처리
+	//濡쒓렇�씤 泥섎━
 	@PostMapping("/loginProc")
 	public String loginProc( @ModelAttribute MemberVO member, HttpSession session) {
 		
@@ -77,34 +76,34 @@ public class MemController {
 		log.info("loginProc loginMem = " + loginMem);
 		
 		if(loginMem == null) {
-			//로그인 실패 시 경고메시지와 페이지 이동
-			session.setAttribute("msg", "아이디와 비밀번호를 확인하세요");
+			//濡쒓렇�씤 �떎�뙣 �떆 寃쎄퀬硫붿떆吏��� �럹�씠吏� �씠�룞
+			session.setAttribute("msg", "�븘�씠�뵒�� 鍮꾨�踰덊샇瑜� �솗�씤�븯�꽭�슂");
 			return "/errorPage";
 		} else if(loginMem.getUser_grade() != 1) {
-			//로그인 성공 한 사용자의 등급이 1(일반회원)이 아닌 경우 = 관리자 아이디로 로그인 했을 경우
+			//濡쒓렇�씤 �꽦怨� �븳 �궗�슜�옄�쓽 �벑湲됱씠 1(�씪諛섑쉶�썝)�씠 �븘�땶 寃쎌슦 = 愿�由ъ옄 �븘�씠�뵒濡� 濡쒓렇�씤 �뻽�쓣 寃쎌슦
 			session.setAttribute("admin", loginMem);
 			return "redirect:/admin/adminMain";
 		}
 		else {
-			// 로그인 성공 하면 service에서 반환 받은 loginMem 을 세션에 담아서 메인 페이지로 이동한다
+			// 濡쒓렇�씤 �꽦怨� �븯硫� service�뿉�꽌 諛섑솚 諛쏆� loginMem �쓣 �꽭�뀡�뿉 �떞�븘�꽌 硫붿씤 �럹�씠吏�濡� �씠�룞�븳�떎
 			session.setAttribute("mem", loginMem);
 			return "redirect:/category/all";
 		}
 	}
 	
-	//마이페이지 이동
+	//留덉씠�럹�씠吏� �씠�룞
 	@GetMapping("/myPage")
 	public String myPage(@ModelAttribute MemberVO member, HttpSession session, Model model) {
 		log.info("myPage s = " + session);
 		log.info("myPage s1 = " + session.getAttribute("mem"));
 		
-//		인터셉터 설정
-//		model.addAttribute( session.getAttribute("mem") );
+//		�씤�꽣�뀎�꽣 �꽕�젙
+		model.addAttribute( session.getAttribute("mem") );
 		
 		return "/member/myPage";
 	}
 	
-	//로그아웃 처리
+	//濡쒓렇�븘�썐 泥섎━
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
