@@ -80,6 +80,8 @@
 		<div class="sidebar-heading">마이페이지</div>
 
 		<form method="post" id="form">
+		<input type="hidden" id="session_user_id" name="session_user_id"
+			value="${mem.user_id}">
 		<li class="nav-item"><a class="nav-link"
 			style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i> <span><input
 					type="submit" id="myLike" value="관심상품" formaction="/mypage/myLike"
