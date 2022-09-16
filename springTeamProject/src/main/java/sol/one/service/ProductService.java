@@ -9,7 +9,7 @@ public interface ProductService {
 	
 	public int add(ProductVO vo); //등록
 	 
-	public int remove(int product_id); // 삭제
+	public void deleteP(int product_id); // 삭제
 	
 	public int update(ProductVO vo); // 수정
 	
@@ -20,6 +20,8 @@ public interface ProductService {
 	public int status_change(int product_id); // 거래상태조절	
 	
 	public void modifyProduct(ProductVO product);
+	
+	
 	
 	
 	

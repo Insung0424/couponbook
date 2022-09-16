@@ -233,5 +233,13 @@ public class WriteController {
 		boardservice.modifyBoard(board);
 		return "redirect:/";
 	}
+	@PostMapping("/deleteBoard")
+	public String deleteBoard(int product_id,int board_no,
+			Model model)throws Exception{
+		boardservice.deleteBoard(board_no);
+		productservice.deleteP(product_id);
+		return "redirect:/";
+	}
+	
 
 }
