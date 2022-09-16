@@ -90,7 +90,7 @@
 												<th>글번호</th>
 												<th>상품번호</th>
 												<th>글제목</th>
-												<th>유저아이디</th>
+												
 												<th>글내용</th>
 												<th>게시시간</th>
 												<th>할인율</th>
@@ -99,14 +99,14 @@
 											<c:forEach items="${board}" var="board">
 												<tbody id="myTable">
 													<tr>
-														<td><c:out value="${board.board_no}" /></td>
-														<td><c:out value="${board.product_id}" /></td>
-														<td><c:out value="${board.board_title}" /></td>
-														<td><c:out value="${board.user_id}" /></td>
-														<td><c:out value="${board.board_content}" /></td>
-														<td><c:out value="${board.board_write_time}" /></td>
-														<td><c:out value="${board.pd_discount}" /></td>
-														<td><c:out value="${board.pd_date}" /></td>
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_no}" /></a></td>
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.product_id}" /></a></td>
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_title}" /></a></td>
+														
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_content}" /></a></td>
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_write_time}" /></a></td>
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.pd_discount}" /></a></td>
+														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.pd_date}" /></a></td>
 													</tr>
 												</tbody>
 											</c:forEach>

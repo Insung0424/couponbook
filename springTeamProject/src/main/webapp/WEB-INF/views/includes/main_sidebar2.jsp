@@ -63,24 +63,24 @@
 	<div class="sidebar-heading">카테고리</div>
 
 	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+		style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 			<span>전체</span>
 	</a></li>
 
 	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+		style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 			<span>편의점</span>
 	</a></li>
 	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+		style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 			<span>커피/음료</span>
 	</a></li>
 	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+		style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 			<span>외식</span>
 	</a></li>
 	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+		style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 			<span>상품권</span>
 	</a></li>
 	<li class="nav-item"><a class="nav-link"
