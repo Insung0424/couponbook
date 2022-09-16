@@ -100,16 +100,18 @@
 						<h3 style="text-align: left;">
 							<c:out value="${detail.pd_price }" />
 							<span> 원</span>
-						</h3>
-												
-		<form name="form1" method="get" 
+						</h3>	
+																	
+        <c:set var="user_id" value="${mem.user_id }"/>
+        <c:if test="${not empty user_id}">  
+  		<form name="form1" method="get" 
             action="${path}/category/detail/insertL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
                 value="${mem.user_id }">                                      
            <input type="submit" value="관심상품에 담기">
-        <form name="form1" method="get" 
+        <form name="form2" method="get" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
@@ -117,12 +119,14 @@
                 value="${mem.user_id }">                                      
            <input type="submit" value="관심상품에서 지우기">
         </form>
+       </c:if>
+     
         <c:set var="writer_user_id" value="${detail.user_id }"/>
         <c:if test="${mem.user_id ==writer_user_id}">
-        <form method="get">
-         <input type="hidden" id="product_id" name="product_id"
+          <form method="get">    
+          <input type="hidden" id="product_id" name="product_id"
                 value="${param.product_id }">    
-        <input type="submit" value="수정" formaction="/modifyPostView">
+        <input type="submit" value="글 수정하기" formaction="/modifyPostView">
         </form>
         </c:if>
       				
