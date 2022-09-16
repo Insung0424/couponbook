@@ -88,7 +88,7 @@
 						</h3>
 						</div>				
 						
-						<h5 style="text-align: left;"> 할인율	:	<c:out value="${onePdt.pd_discount }" />
+						<h5 style="text-align: left;"> 할인율	:	<c:out value="${detail.pd_discount }" />%
 					    </h5>										
 						<h5 style="text-align: left;">카테고리	:	<c:set var="category_id" value="${detail.category_id  }" />
 							<c:if test="${category_id eq 1}">
@@ -273,15 +273,12 @@
 		});
 
 		$("#add_btn").click(function(){
+			
 			const product_id = ${detail.product_id };
 			const user_id = ${mem.user_id};
 			const comment_content = CKEDITOR.instances.editor1.getData();
 			const seller = ${detail.user_id};
-			
-			if(user_id == null){
-				alert('로그인 후 이용해주세요');
-				return;
-			}else if(comment_content == ''){
+			if(comment_content == ''){
 				alert('내용을 입력하세요');
 				return;
 			}
@@ -316,16 +313,6 @@
 		function getAllList() {
 			const product_id= ${detail.product_id};
 			const user_id_1= ${detail.user_id};
-			console.log(product_id);
-			
-			if(user_id_1 == null){
-				alert('로그인 후 이용가능합니다');
-				return;
-			}
-			if(user_id_1 == ''){
-				alert('로그인 후 이용가능합니다');
-				return;
-			}
 			
 			$.getJSON("/replies/get?product_id="+ product_id,
 				function(data) {
@@ -375,14 +362,6 @@
 			const user_id_1= ${mem.user_id};
 			const user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
 			
-			if(user_id_1 == null){
-				alert('로그인 후 이용가능합니다');
-				return;
-			}
-			if(user_id_1 == ''){
-				alert('로그인 후 이용가능합니다');
-				return;
-			}
 			
 			$.ajax({
 				type : "get",
