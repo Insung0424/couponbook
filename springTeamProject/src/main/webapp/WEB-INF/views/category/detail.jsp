@@ -75,18 +75,22 @@
 						<div style="width: 300px; height: 300px; background-color: gray;">
 							<img style="width: 300px; height: 300px;" src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 						</div>
-						<p style="text-align: left;">
-							등록일 :
-							<c:out value="${detail.pd_date }" />
-						</p>
+					
 					</div>
 					<div class=col>
-
-						<h4 style="text-align: left;">
-							<c:out value="${detail.pd_name }" />
-						</h4>
-						<p style="text-align: left;">
-							<c:set var="category_id" value="${detail.category_id  }" />
+						<div style="background: #F0F8FF; box-shadow: #F0F8FF 0 0 10px 10px; margin:10px; font-size: 100%; padding: 20px;">
+						<h3 style="text-align: left;">상품이름	:	<c:out value="${detail.pd_name }" />
+						</h3>
+						<h3 style="text-align: left;">유효기간	:	<c:out value="${detail.pd_date }" />
+						</h3>
+						<h3 style="text-align: left;">판매가격	:	<c:out value="${detail.pd_price }" />
+							<span> 원</span>
+						</h3>
+						</div>				
+						
+						<h5 style="text-align: left;"> 할인율	:	<c:out value="${onePdt.pd_discount }" />
+					    </h5>										
+						<h5 style="text-align: left;">카테고리	:	<c:set var="category_id" value="${detail.category_id  }" />
 							<c:if test="${category_id eq 1}">
                         편의점
                         </c:if>
@@ -102,15 +106,9 @@
 							<c:if test="${category_id eq 5}">
                         기타
                         </c:if>
-						</p>
-						<p style="text-align: left;">
-							<c:out value="${detail.company_name }" />
-						</p>							
-					
-						<h3 style="text-align: left;">
-							<c:out value="${detail.pd_price }" />
-							<span> 원</span>
-						</h3>	
+						</h5>
+						<h5 style="text-align: left;"> 사용처	:	<c:out value="${detail.company_name }" />
+						</h5>	
 																	
         <c:set var="user_id" value="${mem.user_id }"/>
         <c:if test="${not empty user_id}">  
@@ -119,28 +117,36 @@
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }">                                      
-           <input type="submit" value="관심상품에 담기">
+                value="${mem.user_id }">
+                <p style='width:80px;float: left;'>                                      
+           <input type="submit" value="관심상품에 담기"> 
+           		</p>
+         </form>
+        
         <form name="form2" method="get" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }">                                      
+                value="${mem.user_id }"> 
+                <p style='width:80px;float: middle;'>                                      
            <input type="submit" value="관심상품에서 지우기">
+           	</p>
         </form>
        </c:if>
-     
+               
         <c:set var="writer_user_id" value="${detail.user_id }"/>
         <c:if test="${mem.user_id ==writer_user_id}">
           <form method="get">    
           <input type="hidden" id="product_id" name="product_id"
-                value="${param.product_id }">    
+                value="${param.product_id }">
+                <p style='width:80px;float: right;'>     
         <input type="submit" value="글 수정하기" formaction="/modifyPostView">
+        		</p>
         </form>
         </c:if>
       				
-					</div>
+				</div>
 				</div>
 				<hr style="border: solid 1px black;">
 
