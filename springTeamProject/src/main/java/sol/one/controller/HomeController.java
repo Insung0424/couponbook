@@ -81,9 +81,6 @@ public class HomeController {
 	@GetMapping("/main2")
 	public void main2(@SessionAttribute("mem")MemberVO mem, HttpSession session) {
 
-		session.getAttribute("mem");
-		
-		session.setAttribute("mem", mem);
 	}
 
 	// ckeditor4 를 이용한 이미지 업로드

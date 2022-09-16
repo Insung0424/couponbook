@@ -34,19 +34,16 @@
    </beans:bean>
 	
 	<context:component-scan base-package="sol.one.controller" />
-	<!-- <beans:bean class="sol.one.intercepter.LoginIntercepter" id="LoginIntercepter"/>
 
-	
+	<beans:bean class="sol.one.intercepter.LoginIntercepter" id="LoginIntercepter"/>
+	<!-- 인터셉터 설정  /write -->
 	<interceptors>
 		<interceptor>
-			<mvc:mapping path="/**"/>    
-	        <mvc:exclude-mapping path="/resources/**"/>
+			<mvc:mapping path="/write"/>    
 			<beans:ref bean="LoginIntercepter"/>
 		</interceptor>
-	</interceptors> -->
 
 	<!-- 인터셉터 설정  /adminMain -->
-   <interceptors>
        <interceptor>
            <mapping path="admin/adminMain"/>
            <mapping path="admin/trdAllPage"/>
@@ -56,8 +53,6 @@
            <beans:bean id="commonInterceptor" class="sol.one.intercepter.AdminChkIntercepter"/>
        </interceptor>
     </interceptors> 
-    
-    
     
     <mvc:resources mapping="/resources/**" location="/resources/" />
 	
