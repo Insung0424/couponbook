@@ -1,6 +1,8 @@
 
 <!DOCTYPE html><%@ page language="java"
    contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="en">
 
 <head>
@@ -12,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>마이페이지</title>
+<title>CouponBook</title>
 
 <!-- Custom fonts for this template-->
 <link
@@ -136,9 +138,12 @@
                            class="card_dis"><a id="card_content"
                            href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
                               <div class="card_poto">
+                            <c:set var="img" value="${fn:split(list_all.pd_img, ',')[1]}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%5C', '/')}"></c:set>
+							
                                  <img alt="noimg"
-                                    src="https://dnvefa72aowie.cloudfront.net/origin/article/202208/24b57f306f80c1ebbc2b9dbbd4c9f0792752820e9b41f924f0993db0e906bc0b.webp?q=82&s=300x300&t=crop">
-
+                                    src="/getImg?fileNameNPath=${simg2}">
+                                    
                               </div>
                               <div class="card_info">
 

@@ -27,7 +27,8 @@
 	</update>
 	
 	<select id="read" resultType="sol.one.VO.Comment2VO">
-		select * from pj_user a, pj_comment b
+		select * from pj_user a inner join pj_comment b
+		on a.user_id = b.user_id
 		where b.product_id = #{product_id} and a.user_id = #{user_id_1} or a.user_id = #{user_id_2}
 		order by b.comment_no_level, b.group_no, b.comment_no
 	</select>

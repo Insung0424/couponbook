@@ -11,7 +11,7 @@
 			select seq_product_id.currval from dual
 		</selectKey>
 		insert into pj_board(board_no, product_id, user_id, board_title, board_content, board_write_time, pd_discount, pd_date)
-		values (seq_board_no.nextval, #{product_id}, #{user_id}, #{board_title}, #{board_content}, current_date, #{pd_discount}, #{pd_date})
+		values (seq_board_no.nextval, #{product_id}, #{user_id}, #{board_title}, #{board_content}, current_date, #{pd_discount}, to_date(#{pd_date},'yyyy-MM-dd'))
 	</insert>
 	
 	<select id="getBoard" resultType="sol.one.VO.BoardVO">

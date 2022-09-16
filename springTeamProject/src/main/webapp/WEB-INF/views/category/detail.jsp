@@ -71,7 +71,7 @@
 						
 						<c:set var="img" value="${fn:split(detail.pd_img, ',')[0]}"></c:set>
 						<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
-						<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
+						<c:set var="simg2" value="${fn:replace(img, '%3A', ':')}"></c:set>
 						<div style="width: 300px; height: 300px; background-color: gray;">
 							<img style="width: 300px; height: 300px;" src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 						</div>
@@ -318,14 +318,23 @@
 			const user_id_1= ${detail.user_id};
 			console.log(product_id);
 			
+			if(user_id_1 == null){
+				alert('로그인 후 이용가능합니다');
+				return;
+			}
+			if(user_id_1 == ''){
+				alert('로그인 후 이용가능합니다');
+				return;
+			}
+			
 			$.getJSON("/replies/get?product_id="+ product_id,
 				function(data) {
 					var list = data.list;
 					
 					var comment_html = "<div>";
 					if(list.length < 1){
-						comment_html += "등록된 댓글이 없습니다";
-						
+						comment_html += "등록된 댓글이 없습니다</div>";
+						alert("등록된 댓글이 없습니다");
 					}else{
 					
 						for(i = 0;i < list.length;i++){
@@ -365,6 +374,16 @@
 			const product_id= ${detail.product_id};
 			const user_id_1= ${mem.user_id};
 			const user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
+			
+			if(user_id_1 == null){
+				alert('로그인 후 이용가능합니다');
+				return;
+			}
+			if(user_id_1 == ''){
+				alert('로그인 후 이용가능합니다');
+				return;
+			}
+			
 			$.ajax({
 				type : "get",
 				url:"/replies/get/comment",
@@ -381,8 +400,10 @@
 		            var count = data.count;  
 					if(list.length < 1){
 						comment_html += "댓글을 등록해주세요</div>";
+						alert("등록된 댓글이 없습니다. 댓글을 등록해주세요");
 					}else if(count == 0){
 						comment_html += "아직 판매자가 댓글을 확인하지않았습니다</div>";
+						alert("아직 판매자가 댓글을 확인하지않았습니다");
 		        	}else{
 					
 						for(i = 0;i < list.length;i++){
