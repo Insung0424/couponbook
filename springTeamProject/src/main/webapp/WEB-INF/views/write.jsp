@@ -45,6 +45,15 @@
 	    display: block;
 	    cursor: pointer;	
 	}
+	</style>
+	<style>
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+	  -webkit-appearance: none;
+	  margin: 0;
+}
+	
+	
 	
 </style>
 </head>
@@ -159,10 +168,15 @@
 						<option value="5">기타</option>
 					</select>
 					
-					<p><b>가격</b></p>
+					
+				
+					<p><b>판매하려는 가격</b></p>
 					<input type = "text" name="pd_price" placeholder= "가격을 입력해주세요" style="margin-bottom: 10px;"> 원
+					<p><b>정가</b></p>
+					<input type = "text" name="pd_price0" placeholder= "가격을 입력해주세요" style="margin-bottom: 10px;"> 원
+					<p><b><input type="button" name="nanu" value="할인율 계산" onclick="nanugi()"></b></p>
 					<p><b>할인율</b></p>
-					<input type = "number" name="pd_discount" placeholder= "할인율을 입력해주세요" style="margin-bottom: 10px;"> %
+					<input type = "number" name="pd_discount" placeholder= "할인율 계산결과" style="margin-bottom: 10px;"> %
 					<p><b>사용처</b></p>
 					<input type = "text" name="company_name" placeholder= "사용처를 입력해주세요" style="margin-bottom: 10px;">
 					<p><b>온라인/오프라인 구분</b></p>
@@ -188,6 +202,9 @@
 		</div>
 	</form>
 	<script>
+		function nanugi(){
+			form.pd_discount.value=Math.round(eval(100-((form.pd_price.value/form.pd_price0.value)*100)));
+		}		
 		function su(){
 			
 			let pd_desc = null;
