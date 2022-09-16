@@ -61,19 +61,9 @@
 
 
 	<!-- Topbar Search -->
-	<form
-		class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-		<div class="input-group">
-			<input type="text" class="form-control bg-light border-0 small"
-				placeholder="검색어 입력" aria-label="Search"
-				aria-describedby="basic-addon2">
-			<div class="input-group-append">
-				<button class="btn btn-primary" type="button">
-					<i class="fas fa-search fa-sm"></i>
-				</button>
-			</div>
-		</div>
-	</form>
+<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
+</script>
+<div class="gcse-search"></div>
 
 	<ul class="navbar-nav ml-auto">
 
