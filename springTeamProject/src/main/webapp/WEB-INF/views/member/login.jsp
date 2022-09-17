@@ -41,8 +41,10 @@
 
                         <button class="btn btn-lg btn-warning " type="submit"
                            style="width: 203.33px; align-self: center;">로그인</button>
+<!--                    <a id="custom-login-btn" class="btn w-100 btn-lg mt-3"
+                           href="https://kauth.kakao.com/oauth/authorize?client_id=e90605fb64b5ed5eeffcf586eb651d12&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code"> -->
                         <a id="custom-login-btn" class="btn w-100 btn-lg mt-3"
-                           href="https://kauth.kakao.com/oauth/authorize?client_id=e90605fb64b5ed5eeffcf586eb651d12&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
+                           href="https://kauth.kakao.com/oauth/authorize?client_id=e90605fb64b5ed5eeffcf586eb651d12&redirect_uri=http://www.couponbook.shop/member/kakaoLogin&response_type=code">
                            <img src="/resources/kakao_login_medium_narrow.png"
                            height="50px" alt="카카오 로그인 버튼" />
                         </a> <a href="join"
