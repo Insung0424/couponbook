@@ -11,22 +11,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
+import sol.one.VO.ImageVO;
 import sol.one.VO.Page;
 import sol.one.VO.PageDTO2;
 import sol.one.VO.T_tradeVO;
 import sol.one.service.CategoryService;
 import sol.one.service.PageService;
 import sol.one.service.TradeLogService;
-
-
-
 
 @Controller
 @RequiredArgsConstructor
@@ -90,25 +92,29 @@ public class CategoryController {
 	public void strade() {}
 	
 	@PostMapping("/postTrade")
-	public String putT(int pd_status,int user_id_buy,int user_id_sell) {
-		T_tradeVO vo = new T_tradeVO();
-		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(user_id_buy);
-		vo.setSell_user_id(user_id_sell);
+	public ResponseEntity<String> putT(@RequestBody T_tradeVO vo) {
+		System.out.println(vo);
 		tservice.insertTradeLog(vo);
 		
-		return "redirect:/category/all";
+		String good = "good";
+		ResponseEntity<String> data = new ResponseEntity<String>(good, HttpStatus.OK);
+		return data;
 	}
 	
 	@PostMapping("/postTrade2")
-	public String putT2(int pd_status,int user_id_buy,int user_id_sell,int product_id) {
-		T_tradeVO vo = new T_tradeVO();
-		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(user_id_buy);
-		vo.setSell_user_id(user_id_sell);
-		tservice.insertTradeLog(vo);
+	public ResponseEntity<String> putT2(@RequestBody T_tradeVO vo) {
+		
+		System.out.println(vo);
+		
+		tservice.insertSellTradeLog(vo);
+		int product_id = vo.getProduct_id();
+		int pd_status = vo.getPd_status();
 		tservice.update(product_id,pd_status);
-		return "redirect:/category/all";
+		
+		System.out.println("ok?");
+		String good = "good";
+		ResponseEntity<String> data = new ResponseEntity<String>(good, HttpStatus.OK);
+		return data;
 	}
 
 }

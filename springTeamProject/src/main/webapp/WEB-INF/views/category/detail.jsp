@@ -69,7 +69,7 @@
 						
 						<c:set var="img" value="${fn:split(detail.pd_img, ',')[0]}"></c:set>
 						<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
-						<c:set var="simg2" value="${fn:replace(img, '%3A', ':')}"></c:set>
+						<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
 						<div style="width: 300px; height: 300px; background-color: gray;">
 							<img style="width: 300px; height: 300px;" src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 						</div>
@@ -250,11 +250,12 @@
     </div>
   </div>
 </div>
+<input type="hidden" id="user_id" name="user_id" value="${detail.user_id }"> 
+<input type="hidden" id="mem_id" name="mem_id" value="${mem.user_id }"> 
 	
 	
 
 	<a id="top_btn">TOP</a>
-	
 	
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e243b14fc7e2d54b66eb97ad3a69c95&libraries=services"></script>
 
@@ -292,8 +293,17 @@
 			// 거래 완료 유형선택자 페이지 제공	
 			$("#modal_trade_content").load("buyerTradeEnd");
 			// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
-			if($("#modal_trade_content").load("buyerTradeEnd")){
-				$("#modal_trade_content").show("buyerTradeEnd");
+			const user_id = ${mem.user_id};
+			const seller = ${detail.user_id};
+			
+			if(seller == user_id){
+				if($("#modal_trade_content").load("sellerTradeEnd")){
+					$("#modal_trade_content").show("sellerTradeEnd");
+				}
+			}else{
+				if($("#modal_trade_content").load("buyerTradeEnd")){
+					$("#modal_trade_content").show("buyerTradeEnd");
+				}
 			}
 		});
 

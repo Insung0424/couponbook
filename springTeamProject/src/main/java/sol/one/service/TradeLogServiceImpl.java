@@ -39,5 +39,10 @@ public class TradeLogServiceImpl implements TradeLogService {
 		return mapper.up_pd(product_id,pd_status);
 	}
 
+	@Override
+	public int insertSellTradeLog(T_tradeVO vo) {
+		return mapper.putsell(vo);
+	}
+
 	
 }

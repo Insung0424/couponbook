@@ -133,7 +133,7 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
 							<p>
 								<b>할인율</b>
 							</p>
-							<input type="number" name="pd_discount" placeholder="할인율 계산결과"
+							<input type="number" name="pd_discount" placeholder="할인율 계산결과" value=""
 								style="margin-bottom: 10px;"> %
 							<p>
 								<b>사용처</b>
@@ -173,8 +173,16 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
 
 	<script>
 		function nanugi() {
-			form.pd_discount.value = Math
-					.round(eval(100 - ((form.pd_price.value / form.pd_price0.value) * 100)));
+			let price = $('input[name=pd_price]').val();
+			let price0 = $('input[name=pd_price0]').val();
+			let price1 = $('input[name=pd_discount]').val();
+			console.log(price);
+			console.log(price0);
+			
+			price1 = Math.round(eval(100-((price/price0)*100)));
+			console.log(price1);
+			
+			$('input[name=pd_discount]').attr('value',price1);
 		}
 
 		function su() {

@@ -5,7 +5,12 @@
 
 	<insert id="put">
 		insert into pj_trade(product_id,buyer_user_id,sell_user_id,pd_status,trade_time)
-		values (SEQ_TRADE_PDTID_TEST.nextval,#{buyer_user_id},#{sell_user_id},#{pd_status},current_date)
+		values (#{product_id},#{buyer_user_id},#{sell_user_id},#{pd_status},current_date)
+	</insert>
+	
+	<insert id="putsell">
+		insert into pj_trade(product_id,sell_user_id,pd_status,trade_time)
+		values (#{product_id},#{sell_user_id},#{pd_status},current_date)
 	</insert>
 	
 	<select id="getMyAll" resultType="sol.one.VO.T_tradeVO">

@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.extern.log4j.Log4j;
 import sol.one.VO.T_tradeVO;
+import sol.one.service.TradeLogService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -16,6 +17,9 @@ public class TradeMapperTests {
 
 	@Autowired
     private TradeMapper mapper;
+	
+	@Autowired
+    private TradeLogService service;
 
     @Test
     public void testMapper() {
@@ -25,11 +29,11 @@ public class TradeMapperTests {
     @Test
     public void put() {
     	T_tradeVO vo = new T_tradeVO();
-    	vo.setBuyer_user_id(3);
-    	vo.setSell_user_id(1);
-    	vo.setPd_status(1);
+    	vo.setBuyer_user_id(42);
+    	vo.setSell_user_id(81);
+    	vo.setPd_status(2);
     	log.info(vo);
-    	log.info(mapper.put(vo));
+    	log.info(service.insertTradeLog(vo));
     }
     
     @Test
