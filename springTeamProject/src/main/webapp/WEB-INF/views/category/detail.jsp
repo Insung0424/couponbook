@@ -379,7 +379,7 @@
 							}
 							
 							comment_html += "<span id='com_writer' value="+nickname+"><strong>" + nickname + "</strong></span><br/><br>";
-							comment_html += "<span id='span_content'>" + content + "</span><br><br>";
+							comment_html += "<div style='border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;'><span id='span_content'>" + content + "</span></div><br>";
 							comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 							if(user_id_1 == user_id_check){
 								 comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
@@ -438,7 +438,7 @@
 							}
 							
 							comment_html += "<span id='com_writer' value="+nickname+"><strong>" + nickname + "</strong></span><br/>";
-							comment_html += "<div style="border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;"><span id='span_content'>" + content + "</span></div><br>";
+							comment_html += "<div style='border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;'><span id='span_content'>" + content + "</span></div><br>";
 							comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 							if(user_id_1 == user_id_check){
 								 comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
