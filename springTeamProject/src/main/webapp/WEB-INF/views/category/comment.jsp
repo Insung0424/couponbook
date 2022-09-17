@@ -30,7 +30,7 @@
 <body>
 	<div class="modal-header">
 		<div class="modal-title">
-			댓글거래
+			댓글로 거래하기
 		</div>
 	</div>
 	<div class="modal-body">

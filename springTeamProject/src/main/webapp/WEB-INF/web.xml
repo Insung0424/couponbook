@@ -57,6 +57,15 @@
     <extension>ico</extension>
     <mime-type>image/x-icon</mime-type>
 </mime-mapping>
+
+
+  <!-- Error Page -->	
+<error-page>
+		<error-code>400</error-code>
+				<location>/WEB-INF/views/errorPage.jsp</location>
+					</error-page>
+
+
 	
 	
 </web-app>

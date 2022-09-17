@@ -15,12 +15,10 @@
 <style type="text/css">
 
 	#com_writer{
-	border-radius: 5em; padding: 0.6em 1em; background: #F9F9F9; box-shadow: 1px 2px 10px rgba(0,0,0,0.2);  margin-left: 5px;"
+	background: #fceff2; box-shadow: #fceff2 0 0 10px 10px; margin:10px; font-size: 100%; padding: 20px;
 		}
 
-	#span_content{ 
-         border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%; 
-        } 
+
 
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -103,16 +101,10 @@
                         </c:if>
 							<c:if test="${category_id eq 5}">
                         기타
-                        </c:if>
-						</p>
-						<p style="text-align: left;">
-							<c:out value="${detail.company_name }" />
-						</p>							
-					
-						<h3 style="text-align: left;">
-							<c:out value="${detail.pd_price }" />
-							<span> 원</span>
-						</h3>	
+                           </c:if>
+						</h5>
+						<h5 style="text-align: left;"> 사용처	:	<c:out value="${detail.company_name }" />
+						</h5>	
 																	
         <c:set var="user_id" value="${mem.user_id }"/>
         <c:if test="${not empty user_id}">  
@@ -121,24 +113,36 @@
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }">                                      
-           <input type="submit" value="관심상품에 담기">
+                value="${mem.user_id }">
+           <input type="hidden" id="pd_name" name="pd_name"
+                value="${detail.pd_name }">   
+                <p style='width:80px;float: left;'>                                      
+           <input type="submit" value="관심상품에 담기"> 
+           		</p>
+         </form>
+        
         <form name="form2" method="get" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }">                                      
+                value="${mem.user_id }"> 
+           <input type="hidden" id="pd_name" name="pd_name"
+                value="${detail.pd_name }">
+                <p style='width:80px;float: middle;'>                                      
            <input type="submit" value="관심상품에서 지우기">
+           	</p>
         </form>
        </c:if>
-     
+               
         <c:set var="writer_user_id" value="${detail.user_id }"/>
         <c:if test="${mem.user_id ==writer_user_id}">
           <form method="get">    
           <input type="hidden" id="product_id" name="product_id"
-                value="${param.product_id }">    
+                value="${param.product_id }">
+                <p style='width:80px;float: right;'>     
         <input type="submit" value="글 수정하기" formaction="/modifyPostView">
+        		</p>
         </form>
         </c:if>
       				
@@ -364,8 +368,8 @@
 								comment_html += "<span style='display:inline-block; margin-left:20px;'>&nbsp;</span></div><div style='display:inline-block;>";
 							}
 							
-							comment_html += "<span id='com_writer' value="+nickname+"><strong>" + nickname + "</strong></span><br/>";
-							comment_html += "<span id='span_content'>" + content + "</span><br>";
+							comment_html += "<span id='com_writer' value="+nickname+"><strong>" + nickname + "</strong></span><br/><br>";
+							comment_html += "<span id='span_content'>" + content + "</span><br><br>";
 							comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 							if(user_id_1 == user_id_check){
 								 comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
@@ -424,7 +428,7 @@
 							}
 							
 							comment_html += "<span id='com_writer' value="+nickname+"><strong>" + nickname + "</strong></span><br/>";
-							comment_html += "<span id='span_content'>" + content + "</span><br>";
+							comment_html += "<div style="border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;"><span id='span_content'>" + content + "</span></div><br>";
 							comment_html += "<span id='span_write_time'>" + time + "</span><br>";
 							if(user_id_1 == user_id_check){
 								 comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";

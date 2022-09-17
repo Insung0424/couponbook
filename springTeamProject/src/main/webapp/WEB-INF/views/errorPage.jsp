@@ -9,7 +9,7 @@ if(session != null){
 	%>
 	<script type="text/javascript">
 	var msg = '${msg }';
-	alert(msg);
+	alert("오류를 다시 한번 확인해주세요");
 	window.history.back();
 	</script>
 	<%
