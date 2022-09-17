@@ -1,68 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<link rel="shortcut icon"
-	href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/resources/favicon.ico" />'
-	type="image/x-icon">
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 <meta charset="UTF-8">
 <title>상품 등록</title>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-	crossorigin="anonymous">
-
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+   crossorigin="anonymous">
+   
 <style type="text/css">
-#result_card img {
-	max-width: 100%;
-	height: auto;
-	display: block;
-	padding: 5px;
-	margin-top: 10px;
-	margin: auto;
+   #result_card img{
+      max-width: 100%;
+       height: auto;
+       display: block;
+       padding: 5px;
+       margin-top: 10px;
+       margin: auto;   
+   }
+   #result_card {
+      position: relative;
+   }
+   #imgDeleteBtn{
+       position: absolute;
+       top: 0;
+       right: 1%;
+       background-color: #ef7d7d;
+       color: wheat;
+       font-weight: 900;
+       width: 30px;
+       height: 30px;
+       border-radius: 50%;
+       line-height: 26px;
+       text-align: center;
+       border: none;
+       display: block;
+       cursor: pointer;   
+   }
+   </style>
+   <style>
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
 }
-
-#result_card {
-	position: relative;
-}
-
-#imgDeleteBtn {
-	position: absolute;
-	top: 0;
-	right: 1%;
-	background-color: #ef7d7d;
-	color: wheat;
-	font-weight: 900;
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	line-height: 26px;
-	text-align: center;
-	border: none;
-	display: block;
-	cursor: pointer;
-}
-</style>
-<style>
-input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-inner-spin-button
-	{
-	-webkit-appearance: none;
-	margin: 0;
-}
+   
+   
+   
 </style>
 </head>
 <body>
-	<!-- Page Wrapper -->
+<!-- Page Wrapper -->
 	<div id="wrapper">
 
 		<!-- Sidebar -->
@@ -217,7 +213,13 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
 			
 			let pd_price = $('input[name=pd_price]').val();
 			if(pd_price == ''){
-				alert('가격을 입력해주세요');
+				alert('쿠폰의 판매가격을 입력해주세요');
+				return false;
+			}
+			
+			let pd_price0 = $('input[name=pd_price0]').val();
+			if(pd_price0 == ''){
+				alert('쿠폰의 정가를 입력해주세요');
 				return false;
 			}
 			
@@ -248,120 +250,116 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
 			return true;
 			
 		};
+   
 
-		$("input[type='file']").on("change", function(e) {
+      $("input[type='file']").on("change", function(e) {
+         
+         if($("#imgDeleteBtn").length > 0){
+            alert("x 버튼을 눌러 기존이미지를 지워주세요");
+            return;
+         }
+         
+         let fileInput = $('input[name="file"]');
+         let fileList = fileInput[0].files;
+         let fileObj = fileList[0];
+         let formData = new FormData();
+         
+         if (!fileCheck(fileObj.name, fileObj.size)) {
+            return false;
+         }
+         
+         formData.append("file", fileObj);
 
-			if ($("#imgDeleteBtn").length > 0) {
-				alert("x 버튼을 눌러 기존이미지를 지워주세요");
-				return;
-			}
+         $.ajax({
+            url : '/upload',
+            processData : false,
+            contentType : false,
+            data : formData,
+            type : 'POST',
+            dataType : 'json',
+            success : function(data) {
+               console.log(data);
+               showImg(data);
+            },
+            error : function(data) {
+               alert("이미지 파일을 올려주세요");
+            }
+         });
 
-			let fileInput = $('input[name="file"]');
-			let fileList = fileInput[0].files;
-			let fileObj = fileList[0];
-			let formData = new FormData();
+      });
 
-			if (!fileCheck(fileObj.name, fileObj.size)) {
-				return false;
-			}
+      let regex = new RegExp("(.*?)\.(jpg|png)$");
+      let maxSize = 10485760; //10MB   
 
-			formData.append("file", fileObj);
+      function fileCheck(fileName, fileSize) {
 
-			$.ajax({
-				url : '/upload',
-				processData : false,
-				contentType : false,
-				data : formData,
-				type : 'POST',
-				dataType : 'json',
-				success : function(data) {
-					console.log(data);
-					showImg(data);
-				},
-				error : function(data) {
-					alert("이미지 파일을 올려주세요");
-				}
-			});
+         if (fileSize >= maxSize) {
+            alert("파일 사이즈 초과");
+            return false;
+         }
 
-		});
+         if (!regex.test(fileName)) {
+            alert("해당 종류의 파일은 업로드할 수 없습니다.");
+            return false;
+         }
 
-		let regex = new RegExp(
-				"(.*?)\.(jpg|jpeg|png|gif|bmp|JPG|JPEG|PNG|GIF|BMP)$");
-		let maxSize = 10485760; //10MB	
+         return true;
 
-		function fileCheck(fileName, fileSize) {
-
-			if (fileSize >= maxSize) {
-				alert("파일 사이즈 초과");
-				return false;
-			}
-
-			if (!regex.test(fileName)) {
-				alert("해당 종류의 파일은 업로드할 수 없습니다.");
-				return false;
-			}
-
-			return true;
-
-		}
-
-		function showImg(image) {
-			if (!image || image.length == 0) {
-				return
-
-			}
-			let uploadData = $("#uploadData"); // 이미지 들어갈 위치
-			let img = image.img;
-			let simg = image.simg; // 썸네일 이미지 불러오기
-			let str = "";
-			console.log(img);
-
-			let encodingImg = encodeURIComponent(img);
-			let encodingsImg = encodeURIComponent(simg);
-
-			str += "<div id='result_card'>";
-			str += "<img src='/getImg?fileNameNPath=" + encodingImg + "'>";
-			str += "<div id='imgDeleteBtn' data-file = '" + encodingImg + "'>x</div>";
-			str += "<input type='hidden' name='img' value='" + encodingImg + "'>";
-			str += "<input type='hidden' name='simg' value='" + encodingsImg + "'>";
-			str += "</div>";
-			// 에러 발생시 console 확인 -> .replace(/\\/g, '/') 로 해결가능한 문제일경우 uploaddata 에 추가
-			// 한글인코딩 문제 일경우 ->  encodeURIComponent(uploadData);
-			uploadData.append(str);
-		}
-
-		function deleteImg() {
-			let file = $("#imgDeleteBtn").data("file");
-			let deletediv = $("#result_card");
-
-			$.ajax({
-				url : '/deleteImg',
-				data : {
-					fileNameNPath : file
-				},
-				dataType : 'text',
-				type : 'POST',
-				success : function(result) {
-					console.log(result);
-
-					deletediv.remove();
-					$("input[type='file']").val("");
-				},
-				error : function(result) {
-					console.log(result);
-					alert("파일 삭제 실패");
-				}
-			});
-		}
-
-		$("#uploadData").on("click", "#imgDeleteBtn", function(e) {
-			deleteImg();
-		});
-	</script>
-	<script>
-		src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-		integrity = "sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-		crossorigin = "anonymous"
-	</script>
+      }
+      
+      function showImg(image){
+         if(!image || image.length == 0){
+            return
+         }
+         let uploadData = $("#uploadData"); // 이미지 들어갈 위치
+         let img = image.img;
+         let simg = image.simg; // 썸네일 이미지 불러오기
+         let str = "";
+         console.log(img);
+         
+         let encodingImg = encodeURIComponent(img);
+         let encodingsImg = encodeURIComponent(simg);
+         
+         str += "<div id='result_card'>";
+         str += "<img src='/getImg?fileNameNPath=" + encodingImg +"'>";
+         str += "<div id='imgDeleteBtn' data-file = '" + encodingImg + "'>x</div>";
+         str += "<input type='hidden' name='img' value='" + encodingImg + "'>";
+         str += "<input type='hidden' name='simg' value='" + encodingsImg + "'>";
+         str += "</div>";
+         // 에러 발생시 console 확인 -> .replace(/\\/g, '/') 로 해결가능한 문제일경우 uploaddata 에 추가
+         // 한글인코딩 문제 일경우 ->  encodeURIComponent(uploadData);
+         uploadData.append(str);    
+      }
+      
+      function deleteImg(){
+         let file = $("#imgDeleteBtn").data("file");
+         let deletediv = $("#result_card");
+         
+         $.ajax({
+            url: '/deleteImg',
+            data : {fileNameNPath : file},
+            dataType : 'text',
+            type : 'POST',
+            success : function(result){
+               console.log(result);
+               
+               deletediv.remove();
+               $("input[type='file']").val("");
+            },
+            error : function(result){
+               console.log(result);
+               alert("파일 삭제 실패");
+            }
+          });
+      }
+      
+      $("#uploadData").on("click", "#imgDeleteBtn", function(e){
+         deleteImg();
+      });
+   </script>
+   <script>
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"</script>
 </body>
 </html>

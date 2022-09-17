@@ -63,7 +63,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">좋아요 리스트</h1>
+						<h1 class="h3 mb-0 text-gray-800">관심상품 리스트</h1>
 					</div>
 					<div class="row ">
 						<div class="col-xl-12 col-lg-7" style="grid-area: main2;">
@@ -80,17 +80,20 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>상품번호</th>
-												<th>좋아요 등록날짜</th>		
+												<th>상품 이름(클릭시 페이지 이동)</th>											
+												<th>관심상품 등록날짜</th>		
 											</tr>
 										</thead>
 										<tbody id="myTable">
 											<c:forEach items="${like}" var = "like">					
-							<tr>
-								<td><c:out value="${like.product_id}"/></td>
+							<tr>								
+								<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_name}"/></a>
+								</td>
 								<td><c:out value="${like.like_time}"/></td>			
 							</tr>
-						</c:forEach>	
+						</c:forEach>							
+											
+						
 										</tbody>
 									</table>
 								</div>

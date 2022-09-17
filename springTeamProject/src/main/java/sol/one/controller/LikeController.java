@@ -29,7 +29,7 @@ public class LikeController {
     
     	likeService.insertL(likeVO);               
         
-    		return "redirect:/mypage/mylike";
+    		return "redirect:/category/all";
     }
     
     @RequestMapping(value = "/category/detail/deleteL.do", method = RequestMethod.GET)
@@ -37,7 +37,7 @@ public class LikeController {
     
     	likeService.deleteL(likeVO);
  
-        return "redirect:/mypage/mylike";
+        return "redirect:/category/all";
     }    
     
         

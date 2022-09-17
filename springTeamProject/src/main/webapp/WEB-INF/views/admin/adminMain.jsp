@@ -14,33 +14,22 @@
         <h1 class="h2">Chart  <span class="fs-5"> 일자별 거래건수 차트 (1주 단위)</span></h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           
-          <!-- <div class="dropdown">
-	          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-	            <span data-feather="calendar" class="align-text-bottom"></span>
-	            This week
-	          </button>
-	          
-	          <ul class="dropdown-menu">
-				  <li><a class="dropdown-item" href="#">Action</a></li>
-				  <li><a class="dropdown-item" href="#">Another action</a></li>
-				  <li><a class="dropdown-item" href="#">Something else here</a></li>
-			  </ul>
-          </div> -->
-        
-        	<!-- 기준날짜 검색  -->
+        	<!-- 기준날짜 검색  
         	<form id="chkDateForm" action="/admin/adminMain"  method='get'>
         	<div class="bd-search  d-flex justify-content-end" id="dateSearch" >
 	        	<div class="input-group mb-3">
 	         
 			  		<input type="text" class="datepicker_input form-control" placeholder="기준일" id="trade_time" name="trade_time" value='2022-08-20' required aria-label="Date input 3 (using aria-label)">
 	         
-		        	<!-- 검색 조건 설정  pageMaker.cri.type 은 input hidden 으로 넘겨줌 : 날짜만 검색  
-					<input type='hidden' name='type' value='<c:out value="T"/>' />  -->
+		        	
 					<button class="btn btn-outline-secondary" type="submit" id="button-addon2">검색</button>
 				</div>
 	        </div>
         	
         	</form>
+        	-->
+        	<!-- 검색 조건 설정  pageMaker.cri.type 은 input hidden 으로 넘겨줌 : 날짜만 검색  
+			<input type='hidden' name='type' value='<c:out value="T"/>' />  -->
         	
         </div>
       </div>
@@ -109,10 +98,17 @@ function getGraph(){
 	
 	var chkTime = new Date(trade_time);
 	
-	var chkY = chkTime.getFullYear();
+	//레이블
+	/* var chkY = chkTime.getFullYear();
 	var chkM = chkTime.getMonth()+1;
 	var chkD = chkTime.getDate()-7;
 	var dateName = [chkY, chkM, chkD];
+	for (let i=0; i<data.length; i++){
+		console.log("문장으로 합침===  "+[chkY, chkM, chkD]);
+		labelList.push([chkY, chkM, chkD]);
+		chkD++;
+	}
+		console.log("날짜---  "+labelList); */
 	
 	$.ajax({
 		url:'/tradeWeekCnt',
@@ -125,13 +121,6 @@ function getGraph(){
 				console.log(data[i]);
 				tradeCntList.push(data[i]);
 			}
-			//레이블
-			for (let i=0; i<data.length; i++){
-				console.log("문장으로 합침===  "+[chkY, chkM, chkD]);
-				labelList.push([chkY, chkM, chkD]);
-				chkD++;
-			}
-				console.log("날짜---  "+labelList);
 			
 			// Graphs
 			  // eslint-disable-next-line no-unused-vars
@@ -139,7 +128,7 @@ function getGraph(){
 			 new Chart(document.getElementById('myChart'), {
 			    type: 'line',
 			    data: {
-			      labels: labelList,
+			      labels: ['-7','-6','-5','-4','-3','-2','-1'],
 			      datasets: [{
 			        data: tradeCntList,
 			        label: "거래내역",
