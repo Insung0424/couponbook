@@ -58,8 +58,6 @@
 
          <%@include file="/WEB-INF/views/includes/main_header.jsp"%>
 
-	<hr style="border: solid 1px black;">
-
 	<div class="container text-center" style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
 
 
@@ -75,10 +73,7 @@
 						<div style="width: 300px; height: 300px; background-color: gray;">
 							<img style="width: 300px; height: 300px;" src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 						</div>
-						<p style="text-align: left;">
-							등록일 :
-							<c:out value="${detail.pd_date }" />
-						</p>
+						
 					</div>
 					<div class=col>
 						<div style="background: #F0F8FF; box-shadow: #F0F8FF 0 0 10px 10px; margin:10px; font-size: 100%; padding: 20px;">

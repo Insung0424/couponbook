@@ -13,7 +13,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
-	<!-- 로컬 DB를 위한 설정   
+	<!-- 로컬 DB를 위한 설정   -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig" >
 		<property value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"
 			name="driverClassName" />
