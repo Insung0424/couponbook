@@ -37,4 +37,8 @@
 		select pd_status from pj_trade where product_id = #{product_id} and sell_user_id = #{sell_user_id} and buyer_user_id = #{buyer_user_id}
 	</select>
 	
+	<select resultType="sol.one.VO.LikeVO" id="getMyLike">
+		select product_id from pj_Like where user_id = #{user_id} and product_id = #{product_id}
+	</select>
+	
 </mapper>

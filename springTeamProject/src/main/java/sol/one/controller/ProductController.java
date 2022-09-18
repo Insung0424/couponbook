@@ -35,6 +35,7 @@ import com.google.gson.JsonObject;
 
 import lombok.AllArgsConstructor;
 import sol.one.VO.CommentVO;
+import sol.one.VO.LikeVO;
 import sol.one.VO.T_tradeVO;
 import sol.one.service.TradeLogService;
 
@@ -46,7 +47,7 @@ public class ProductController {
 	private TradeLogService tradelogservice;
 
 	@GetMapping("/get/getMySellPdstatus")
-	public Map<String,Object> main(int product_id,int sell_user_id) {
+	public Map<String,Object> getMySellPdstatus(int product_id,int sell_user_id) {
 		Map<String,Object> map = new HashMap<>();
 		T_tradeVO vo = tradelogservice.getsellmypdstatus(product_id,sell_user_id);
 		if(vo == null) {
@@ -62,7 +63,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/get/getMyBuyPdstatus")
-	public Map<String,Object> main(int product_id,int sell_user_id,int buyer_user_id) {
+	public Map<String,Object> getMyBuyPdstatus(int product_id,int sell_user_id,int buyer_user_id) {
 		Map<String,Object> map = new HashMap<>();
 		T_tradeVO vo = tradelogservice.getbuymypdstatus(product_id,sell_user_id,buyer_user_id);
 		if(vo == null) {
@@ -77,5 +78,18 @@ public class ProductController {
 		
 	}
 	
-	
+	@GetMapping("/getMyLike")
+	public Map<String,Object> getMyLike(int product_id,int user_id) {
+		Map<String,Object> map = new HashMap<>();
+		LikeVO vo = tradelogservice.getLike(product_id, user_id);
+		if(vo == null) {
+			map.put("like", "nolike");
+			return map;
+		}
+		else {
+			map.put("like", "like");
+			return map;
+		}
+		
+	} 
 }

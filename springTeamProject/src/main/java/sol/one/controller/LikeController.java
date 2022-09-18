@@ -24,15 +24,15 @@ public class LikeController {
     @Inject
     LikeService likeService;
 
-    @RequestMapping(value = "/category/detail/insertL.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/category/detail/insertL.do", method = RequestMethod.POST)
     public String insert(@ModelAttribute LikeVO likeVO, HttpSession session){
     
     	likeService.insertL(likeVO);               
         
-    		return "redirect:/category/all";
+    	return "redirect:/category/all";
     }
     
-    @RequestMapping(value = "/category/detail/deleteL.do", method = RequestMethod.GET)
+    @RequestMapping(value = "/category/detail/deleteL.do", method = RequestMethod.POST)
     public String deleteL(@ModelAttribute LikeVO likeVO, HttpSession session) {
     
     	likeService.deleteL(likeVO);

@@ -106,8 +106,8 @@
 																	
         <c:set var="user_id" value="${mem.user_id }"/>
         <c:if test="${not empty user_id}">  
-  		<form name="form1" method="get" 
-            action="${path}/category/detail/insertL.do">
+  		<form name="form1" method="post" 
+            action="${path}/category/detail/insertL.do" onsubmit="return getLike()">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
            <input type="hidden" id="user_id" name="user_id"
@@ -119,7 +119,7 @@
            		</p>
          </form>
         
-        <form name="form2" method="get" 
+        <form name="form2" method="post" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
@@ -280,6 +280,45 @@
 			});
 		});
 		
+		function getLike(){
+			let product_id = $("#product_id").val();
+			const user_id = ${mem.user_id};
+			var flag = false;
+			
+			$.ajax({
+				type:'get',
+				url : '/product/getMyLike',
+				aysc : false,
+				data : {
+	                "product_id" : product_id,
+	                "user_id" : user_id
+				},
+				contentType : 'application/json',
+				success : function(data){
+					var like = data.like;
+					if(like == "nolike"){
+						alert("찜목록등록완료");
+						flag = true;
+					}
+					else{
+						alert("이미추가한상품입니다");
+						flag = false;
+					}
+				},
+				error : function(request, status, error){
+					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					console.log(status);
+					flag = false;
+				}
+			});
+			
+			console.log(product_id);
+			console.log(user_id);
+			console.log(flag);
+			
+			return flag;
+		}
+		
 		$("#modal_btn_report").click(function(){
 			$("#modal_report").fadeIn();
 		});
@@ -308,6 +347,7 @@
 		                "product_id" : product_id,
 		                "sell_user_id" : seller
 					},
+					aysc : false,
 					contentType : 'application/json',
 					success : function(data){
 						var log = data.pd_status;
@@ -342,6 +382,7 @@
 		                "sell_user_id" : seller,
 		                "buyer_user_id" : user_id
 					},
+					aysc : false,
 					contentType : 'application/json',
 					success : function(data){
 						var log = data.pd_status;

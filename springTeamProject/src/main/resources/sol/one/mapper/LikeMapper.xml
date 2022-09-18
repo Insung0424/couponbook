@@ -16,8 +16,7 @@
 		where product_id = #{product_id}
 		 and user_id = #{user_id}
 	</delete>
-	
-	
+
 	
 	
 	</mapper>

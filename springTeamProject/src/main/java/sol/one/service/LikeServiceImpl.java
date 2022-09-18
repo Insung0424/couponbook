@@ -26,6 +26,8 @@ public class LikeServiceImpl implements LikeService {
 	    public void deleteL(LikeVO likeVO) {
 	        likeDao.deleteL(likeVO);
 	    }
+
+
 	 
 	 
 	 

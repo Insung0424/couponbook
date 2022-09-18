@@ -2,6 +2,7 @@ package sol.one.service;
 
 import java.util.List;
 
+import sol.one.VO.LikeVO;
 import sol.one.VO.T_tradeVO;
 
 public interface TradeLogService {
@@ -14,4 +15,5 @@ public interface TradeLogService {
 	public int update(int product_id,int pd_status);
 	public T_tradeVO getsellmypdstatus(int product_id,int sell_user_id);
 	public T_tradeVO getbuymypdstatus(int product_id,int sell_user_id,int buyer_user_id);
+	public LikeVO getLike(int product_id,int user_id);
 }

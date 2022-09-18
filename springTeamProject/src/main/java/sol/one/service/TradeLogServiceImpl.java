@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import sol.one.VO.LikeVO;
 import sol.one.VO.T_tradeVO;
 import sol.one.mapper.TradeMapper;
 
@@ -52,6 +53,11 @@ public class TradeLogServiceImpl implements TradeLogService {
 	@Override
 	public T_tradeVO getbuymypdstatus(int product_id, int sell_user_id, int buyer_user_id) {
 		return mapper.getBuyPdstatus(product_id, sell_user_id, buyer_user_id);
+	}
+
+	@Override
+	public LikeVO getLike(int product_id, int user_id) {
+		return mapper.getMyLike(product_id, user_id);
 	}
 
 	

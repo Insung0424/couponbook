@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import sol.one.VO.LikeVO;
 import sol.one.VO.T_tradeVO;
 
 public interface TradeMapper {
@@ -23,6 +24,8 @@ public interface TradeMapper {
 	public T_tradeVO getSellPdstatus(@Param("product_id")int product_id,@Param("sell_user_id")int sell_user_id);
 
 	public T_tradeVO getBuyPdstatus(@Param("product_id")int product_id,@Param("sell_user_id")int sell_user_id,@Param("buyer_user_id")int buyer_user_id);
+	
+	public LikeVO getMyLike(@Param("product_id")int product_id, @Param("user_id")int user_id);
 	
 	
 }
