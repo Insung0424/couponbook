@@ -121,7 +121,7 @@
            <input type="submit" value="관심상품에 담기"> 
            		</p>
          </form>
-        <form name="form2" method="get" 
+        <form name="form2" method="post" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
