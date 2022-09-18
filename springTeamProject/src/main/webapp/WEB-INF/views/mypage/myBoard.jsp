@@ -6,7 +6,11 @@
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-
+<style type="text/css">
+ a:link { color: black; text-decoration: none;}	
+ a:visited { color: black; text-decoration: none;}	
+ a:hover { color: #006DD7; text-decoration: underline;}
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -99,14 +103,14 @@
 											<c:forEach items="${board}" var="board">
 												<tbody id="myTable">
 													<tr>
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_no}" /></a></td>
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.product_id}" /></a></td>
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_title}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_no}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.product_id}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_title}" /></a></td>
 														
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_content}" /></a></td>
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.board_write_time}" /></a></td>
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.pd_discount}" /></a></td>
-														<td><a href='/category/detail?product_id=${board.product_id }'><c:out value="${board.pd_date}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_content}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_write_time}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_discount}" /></a></td>
+														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_date}" /></a></td>
 													</tr>
 												</tbody>
 											</c:forEach>
