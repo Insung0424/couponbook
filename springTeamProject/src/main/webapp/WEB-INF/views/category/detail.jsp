@@ -18,8 +18,6 @@
 	background: #fceff2; box-shadow: #fceff2 0 0 10px 10px; margin:10px; font-size: 100%; padding: 20px;
 		}
 
-
-
 </style>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,8 +30,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/map.css">
 
 <!-- 댓글,신고,거래완료,ckeditor를 위한 css,js -->
-<link rel="stylesheet" href="../resources/css/style.css">
-<link rel="stylesheet" href="../resources/report.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/report.css">
 <!-- 신고기능모달창을 위한 css 삭제하면 모달창이 아니라 페이지에 추가되는 방식으로 작동함 현재 경로를 잡지 못하고 있음 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
@@ -220,7 +218,7 @@
 				<button id="report_submit" class="btn btn-primary">확인</button>
 				<button id="report_cancel" class="btn btn-primary">취소</button>
 				   <c:set var="writer_user_id" value="${detail.user_id }"/>
-        <c:if test="${mem.user_id ==writer_user_id}">
+        <c:if test="${mem.user_id == writer_user_id}">
           <form name="boardInfo">    
           <input type="hidden" id="product_id" name="product_id"
                 value="${param.product_id }">
@@ -267,8 +265,6 @@
 	<script>
 		$(document).ready(function() {
 			
-			$("#modal_report").hide();
-			
 			$(window).scroll(function() {
 				if ($(this).scrollTop() > 100) {
 					$('#top_btn').fadeIn();
@@ -295,19 +291,81 @@
 			//버튼 숨기기,보이기
 			$("#modal_TradingEnd").toggle(); 
 			// 거래 완료 유형선택자 페이지 제공	
-			$("#modal_trade_content").load("buyerTradeEnd");
+			//$("#modal_trade_content").load("buyerTradeEnd");
 			// 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
+			
+			let product_id = $("#product_id").val();
+			let sell_user_id = $("#user_id").val();
+			let buyer_user_id = $("#mem_id").val();
 			const user_id = ${mem.user_id};
 			const seller = ${detail.user_id};
 			
 			if(seller == user_id){
-				if($("#modal_trade_content").load("sellerTradeEnd")){
-					$("#modal_trade_content").show("sellerTradeEnd");
-				}
-			}else{
-				if($("#modal_trade_content").load("buyerTradeEnd")){
-					$("#modal_trade_content").show("buyerTradeEnd");
-				}
+				$.ajax({
+					type:'get',
+					url : '/product/get/getMySellPdstatus',
+					data : {
+		                "product_id" : product_id,
+		                "sell_user_id" : seller
+					},
+					contentType : 'application/json',
+					success : function(data){
+						var log = data.pd_status;
+						if(log == "notradelog"){
+							if($("#modal_trade_content").load("sellerTradeEnd")){
+								$("#modal_trade_content").show("sellerTradeEnd")
+							}
+							$("#modal_trade_content").load("sellerTradeEnd");
+						}else if(log == 1){
+							if($("#modal_trade_content").load("sellerTradeEnd")){
+								$("#modal_trade_content").show("sellerTradeEnd")
+							}
+							$("#modal_trade_content").load("sellerTradeEnd");
+						}
+						else if(log == 2){
+							alert("이미 거래완료한 상품입니다");
+						}else{
+							alert("사기거래로 신고된 상품입니다");
+						}
+					},
+					error : function(){
+						alert("네트워크에 오류가 발생했습니다");
+					}
+				});
+			}
+			else{
+				$.ajax({
+					type:'get',
+					url : '/product/get/getMyBuyPdstatus',
+					data : {
+		                "product_id" : product_id,
+		                "sell_user_id" : seller,
+		                "buyer_user_id" : user_id
+					},
+					contentType : 'application/json',
+					success : function(data){
+						var log = data.pd_status;
+						if(log == "notradelog"){
+							if($("#modal_trade_content").load("buyerTradeEnd")){
+								$("#modal_trade_content").show("buyerTradeEnd");
+							}
+							$("#modal_trade_content").load("sellerTradeEnd");
+						}else if(log == 1){
+							if($("#modal_trade_content").load("buyerTradeEnd")){
+								$("#modal_trade_content").show("buyerTradeEnd");
+							}
+							$("#modal_trade_content").load("sellerTradeEnd");
+						}
+						else if(log == 2){
+							alert("이미 거래완료한 상품입니다");
+						}else{
+							alert("사기거래로 신고된 상품입니다");
+						}
+					},
+					error : function(){
+						alert("네트워크에 오류가 발생했습니다");
+					}
+				});
 			}
 		});
 

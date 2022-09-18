@@ -13,7 +13,7 @@ select *from pj_product where category_id=#{category_id}
 select count(*) from pj_product
 </select>
 <select id="count_category" resultType="int">
-select count(*) from pj_product where category_id=#{category_id}
+select count(*) from pj_product where category_id=#{category_id} and pd_status not in (2) order by product_id desc
 </select>
 <select id="detail" resultType="sol.one.VO.DetailVO">
 select * from pj_board b, pj_product p where p.product_id = b.product_id and b.product_id = #{product_id}

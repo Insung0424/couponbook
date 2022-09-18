@@ -12,7 +12,7 @@
 }
 
 #modal_content{
-  width: 50%; height:700px;
+  width: 50%; height:800px;
   background:#fff; border-radius:10px;
   position:relative; top:50%; left:50%;
   margin-top:-100px; margin-left: -25%;

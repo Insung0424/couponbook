@@ -29,4 +29,12 @@
 		update pj_product set pd_status = #{pd_status} where product_id = #{product_id}
 	</update>
 	
+	<select id="getSellPdstatus" resultType="sol.one.VO.T_tradeVO">
+		select pd_status from pj_trade where product_id = #{product_id} and sell_user_id = #{sell_user_id}
+	</select>
+	
+	<select id="getBuyPdstatus" resultType="sol.one.VO.T_tradeVO">
+		select pd_status from pj_trade where product_id = #{product_id} and sell_user_id = #{sell_user_id} and buyer_user_id = #{buyer_user_id}
+	</select>
+	
 </mapper>

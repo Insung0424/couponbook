@@ -9,12 +9,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-<div>
+<div class="modal-header">
+	<h3>거래완료유형선택</h3>
+</div>
+<div class="modal-body">
 	<select name="pd_status" id="pd_status" class="form-select form-select-sm">
 			<option value="">거래유형선택</option>
 			<option value="2">정상거래완료</option>
 			<option value="3">사기거래신고</option>
 	</select>
+</div>
+<div class="modal-footer">
 	<input id="Trade" type="button" class="btn btn-primary" value="확인">
 	<input type="button" id="cancel" class="btn btn-primary" value="취소">
 </div>

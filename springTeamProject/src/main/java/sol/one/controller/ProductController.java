@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,9 +23,11 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -34,52 +38,43 @@ import sol.one.VO.CommentVO;
 import sol.one.VO.T_tradeVO;
 import sol.one.service.TradeLogService;
 
-@Controller
 @RequestMapping("/product")
-@AllArgsConstructor
+@RestController
 public class ProductController {
 	
 	@Autowired
 	private TradeLogService tradelogservice;
 
-	@GetMapping("/main")
-	public void main(Model model) {
-		CommentVO vo = new CommentVO();
-		vo.setUser_id(1);
-		vo.setProduct_id(1);
+	@GetMapping("/get/getMySellPdstatus")
+	public Map<String,Object> main(int product_id,int sell_user_id) {
+		Map<String,Object> map = new HashMap<>();
+		T_tradeVO vo = tradelogservice.getsellmypdstatus(product_id,sell_user_id);
+		if(vo == null) {
+			map.put("pd_status", "notradelog");
+			return map;
+		}
+		else {
+			int pd_status = vo.getPd_status();
+			map.put("pd_status", pd_status);
+			return map;
+		}
 		
-		model.addAttribute("vo",vo);
 	}
 	
-	@GetMapping("/comment")
-	public void comment(Model model) {}
-	
-	@GetMapping("/buyerTradeEnd")
-	public void btrade() {}
-	
-	@GetMapping("/sellerTradeEnd")
-	public void strade() {}
-	
-	@PostMapping("/postTrade")
-	public String putT(int pd_status,int user_id_buy,int user_id_sell) {
-		T_tradeVO vo = new T_tradeVO();
-		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(user_id_buy);
-		vo.setSell_user_id(user_id_sell);
-		tradelogservice.insertTradeLog(vo);
+	@GetMapping("/get/getMyBuyPdstatus")
+	public Map<String,Object> main(int product_id,int sell_user_id,int buyer_user_id) {
+		Map<String,Object> map = new HashMap<>();
+		T_tradeVO vo = tradelogservice.getbuymypdstatus(product_id,sell_user_id,buyer_user_id);
+		if(vo == null) {
+			map.put("pd_status", "notradelog");
+			return map;
+		}
+		else {
+			int pd_status = vo.getPd_status();
+			map.put("pd_status", pd_status);
+			return map;
+		}
 		
-		return "redirect:/category/all";
-	}
-	
-	@PostMapping("/postTrade2")
-	public String putT2(int pd_status,int user_id_buy,int user_id_sell) {
-		T_tradeVO vo = new T_tradeVO();
-		vo.setPd_status(pd_status);
-		vo.setBuyer_user_id(user_id_buy);
-		vo.setSell_user_id(user_id_sell);
-		tradelogservice.insertTradeLog(vo);
-		
-		return "redirect:/category/all";
 	}
 	
 	

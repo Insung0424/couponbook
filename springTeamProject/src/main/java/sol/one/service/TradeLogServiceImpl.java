@@ -44,5 +44,15 @@ public class TradeLogServiceImpl implements TradeLogService {
 		return mapper.putsell(vo);
 	}
 
+	@Override
+	public T_tradeVO getsellmypdstatus(int product_id,int sell_user_id) {
+		return mapper.getSellPdstatus(product_id,sell_user_id);
+	}
+
+	@Override
+	public T_tradeVO getbuymypdstatus(int product_id, int sell_user_id, int buyer_user_id) {
+		return mapper.getBuyPdstatus(product_id, sell_user_id, buyer_user_id);
+	}
+
 	
 }

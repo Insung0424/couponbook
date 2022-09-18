@@ -19,4 +19,10 @@ public interface TradeMapper {
 	public List<T_tradeVO> getMyBuyList(int buyer_user_id);
 	
 	public int up_pd(@Param("product_id")int product_id,@Param("pd_status")int pd_status);
+	
+	public T_tradeVO getSellPdstatus(@Param("product_id")int product_id,@Param("sell_user_id")int sell_user_id);
+
+	public T_tradeVO getBuyPdstatus(@Param("product_id")int product_id,@Param("sell_user_id")int sell_user_id,@Param("buyer_user_id")int buyer_user_id);
+	
+	
 }
