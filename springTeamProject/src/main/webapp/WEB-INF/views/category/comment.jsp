@@ -7,6 +7,7 @@
 
 <style>
 #modal {
+<<<<<<< HEAD
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -35,10 +36,41 @@
 #span {
 	display: inline-block;
 	margin-left: 30px;
+=======
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.8);
+   top: 0;
+   left: 0;
+   display: none;
+}
+
+#modal_content {
+   width: 50%;
+   height: 800px;
+   background: #fff;
+   border-radius: 10px;
+   position: relative;
+   top: 50%;
+   left: 50%;
+   margin-top: -100px;
+   margin-left: -25%;
+   text-align: center;
+   box-sizing: border-box;
+   padding: 50px 0;
+   line-height: 23px;
+}
+
+#span {
+   display: inline-block;
+   margin-left: 30px;
+>>>>>>> main
 }
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<div class="modal-header">
 		<div class="modal-title">댓글로 거래하기</div>
 		
@@ -96,6 +128,65 @@
 			</div>
 		</div>
 	</div>
+=======
+   <div class="modal-header">
+      <div class="modal-title">댓글로 거래하기</div>
+      
+      <div class="col" style="text-align: right; display: inline-block;">
+         <input type="button" id="modal_TradingEnd" class="btn btn-success"
+            style="display: inline-block;" value="거래완료하기" />
+         <button id="modal_btn_report" class="btn btn-danger">신고</button>
+
+      </div>
+      
+   </div>
+   <div class="modal-body">
+      <div class="mb-3">
+         작성자 <input type="text" id="writer" readonly value="${mem.email}"
+            class="form-control" /> 내용
+         <textarea class="form-control" id="editor1" name="editor1"
+            class="com_comment" rows="5"></textarea>
+         <script type="text/javascript">
+            CKEDITOR.replace('editor1');
+         </script>
+      </div>
+   </div>
+   <div class="modal-footer">
+      <button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
+      <input type="button" id="more_comment" value="댓글 보기"
+         class="btn btn-primary">
+
+   </div>
+
+   <span id="comment_list"></span>
+
+   <div id='modal'>
+      <div id='modal_content'>
+         <div class="modal-header">
+            <div class="modal-title">내용</div>
+            <button type="button" class="close" data-dismiss="modal"
+               aria-label="Close">
+               <span aria-hidden="true" style="font-size: 1em;">×</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="mb-3">
+               <textarea class="form-control" id="editor2" name="editor2"
+                  class="modal_com_content" rows="5"></textarea>
+               <script type="text/javascript">
+                  CKEDITOR.replace('editor2');
+               </script>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" id="modal_modify_btn" class="btn btn-primary">등록</button>
+            <button type="button" id="modal_modify_cancel_btn"
+               class="btn btn-primary">취소</button>
+            </td>
+         </div>
+      </div>
+   </div>
+>>>>>>> main
 
 </body>
 </html>

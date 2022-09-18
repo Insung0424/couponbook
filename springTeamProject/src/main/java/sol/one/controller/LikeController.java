@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import sol.one.VO.LikeVO;
 import sol.one.VO.MemberVO;
@@ -23,21 +24,27 @@ public class LikeController {
 	
     @Inject
     LikeService likeService;
+ 
 
+    @ResponseBody
     @RequestMapping(value = "/category/detail/insertL.do", method = RequestMethod.POST)
     public String insert(@ModelAttribute LikeVO likeVO, HttpSession session){
     
     	likeService.insertL(likeVO);               
+        int product_id = likeVO.getProduct_id();
         
-    	return "redirect:/category/all";
+    	return "/category/detail?product_id="+product_id;
     }
     
+    @ResponseBody
     @RequestMapping(value = "/category/detail/deleteL.do", method = RequestMethod.POST)
     public String deleteL(@ModelAttribute LikeVO likeVO, HttpSession session) {
     
     	likeService.deleteL(likeVO);
  
-        return "redirect:/category/all";
+    	int product_id = likeVO.getProduct_id();
+        
+    	return "/category/detail?product_id="+product_id;
     }    
     
         
