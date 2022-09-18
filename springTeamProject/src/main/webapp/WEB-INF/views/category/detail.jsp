@@ -3,6 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:forEach items="${detail }" var="detail">
 <!DOCTYPE html>
 
@@ -75,7 +76,10 @@
 						<div style="background: #F0F8FF; box-shadow: #F0F8FF 0 0 10px 10px; margin:10px; font-size: 100%; padding: 20px;">
 						<h3 style="text-align: left;">상품이름	:	<c:out value="${detail.pd_name }" />
 						</h3>
-						<h3 style="text-align: left;">유효기간	:	<c:out value="${detail.pd_date }" />
+						<h3 style="text-align: left;">유효기간	:	
+						<fmt:parseDate var="dateValue" pattern="yyyy-MM-dd" value="${detail.pd_date}"/>
+						<fmt:formatDate value="${dateValue }" pattern="yyyy-MM-dd" var="date"/>
+						<c:out value="${date}" />
 						</h3>
 						<h3 style="text-align: left;">판매가격	:	<c:out value="${detail.pd_price }" />
 							<span> 원</span>
@@ -175,7 +179,15 @@
   </div>
 </div>
 				<hr style="border: solid 1px black;">
-
+			<div>
+			<div>
+				<textarea class="form-control" id="read_editor"
+								name="read_editor" rows="5" readonly="readonly">${detail.pd_desc }</textarea>
+				<script type="text/javascript">
+					CKEDITOR.replace('read_editor');
+				</script>
+			</div>
+			</div>
 			<div class="map_wrap">
 					<div id="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
@@ -434,9 +446,11 @@
 					if(data == "InsertSuccess"){
 						if(user_id  == seller){
 	  	              		getAllList();
+	  	              		CKEDITOR.instances.editor1.setData("");  	              	
 	  	              	}
 	  	             	 else{
 	  	              		getList();
+	  	              		CKEDITOR.instances.editor1.setData(""); 	
 	  	              	}
 					}
 				},
@@ -635,9 +649,11 @@
 				      			  
 					              if(user_id  == seller){
 					            	  getAllList();
+					            	  CKEDITOR.instances.editor1.setData(""); 
 					              }
 					              else{
 					              	  getList();
+					              	  CKEDITOR.instances.editor1.setData(""); 
 					              }
 			            	   
 			               },
@@ -692,9 +708,11 @@
 				      			  
 					              if(user_id  == seller){
 					            	  getAllList();
+					            	  CKEDITOR.instances.editor1.setData(""); 
 					              }
 					              else{
 					              	  getList();
+					              	  CKEDITOR.instances.editor1.setData(""); 
 					              }
 			            	   }else{
 			            		   console.log("실패");

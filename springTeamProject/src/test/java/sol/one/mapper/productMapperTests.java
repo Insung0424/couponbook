@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import lombok.extern.log4j.Log4j;
+import sol.one.VO.DetailVO;
 import sol.one.VO.ProductVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -16,6 +17,9 @@ public class productMapperTests {
 	
 	 @Autowired
 	 private ProductMapper mapper;
+	 
+	 @Autowired
+	 private CategoryMapper cmapper;
 	 
 	 @Test
      public void testMapper( ) {
@@ -45,4 +49,13 @@ public class productMapperTests {
 		 log.info(vo);
 	 }
 	 
+	 
+	 @Test
+	 public void get() {
+		 try {
+			DetailVO v0 =  (DetailVO) cmapper.detail(481);
+			log.info(v0);
+		} catch (Exception e) {
+		}
+	 }
 }

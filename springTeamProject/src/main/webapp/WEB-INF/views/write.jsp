@@ -271,7 +271,7 @@ input[type='number']::-webkit-inner-spin-button {
          formData.append("file", fileObj);
 
          $.ajax({
-            url : '/upload',
+            url : 'upload',
             processData : false,
             contentType : false,
             data : formData,
@@ -288,7 +288,7 @@ input[type='number']::-webkit-inner-spin-button {
 
       });
 
-      let regex = new RegExp("(.*?)\.(jpg|png)$");
+      let regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|JPG|JPEG|PNG|GIF|BMP)$");
       let maxSize = 10485760; //10MB   
 
       function fileCheck(fileName, fileSize) {
