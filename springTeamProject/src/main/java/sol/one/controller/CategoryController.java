@@ -62,6 +62,8 @@ public class CategoryController {
 	public void detail(@RequestParam("product_id")int product_id, Model model) throws Exception {
 		
 		model.addAttribute("detail", service.detail(product_id));
+		model.addAttribute("message", "삭제되었습니다");
+		model.addAttribute("url1", "/category/all");
 	}
 	@RequestMapping(value = "/getImg", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImg(String fileNameNPath) {

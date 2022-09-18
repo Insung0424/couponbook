@@ -137,13 +137,43 @@
           <input type="hidden" id="product_id" name="product_id"
                 value="${param.product_id }">
                 <p style='width:80px;float: right;'>     
-        <input type="submit" value="글 수정하기" formaction="/modifyPostView">
+        <input type="submit" class="btn btn-primary"value="글 수정하기" formaction="/modifyPostView">
         		</p>
         </form>
+       
         </c:if>
+        <c:set var="writer_user_id" value="${detail.user_id }"/>
+        	<c:if test="${mem.user_id == writer_user_id}">
+        	<form method="post" action="/deleteBoard" id="boardInfo" name="boardInfo">    
+          <input type="hidden" id="product_id" name="product_id" value="${param.product_id }">
+          <input type="hidden" id="board_no" name="board_no" value="${detail.board_no }">      	
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  삭제
+</button>  		
+          		</form>
+          		 </c:if>
       				
 					</div>
 				</div>
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        게시물을 정말 삭제하시겠습니까?
+      </div>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-primary" onclick="deleteBoard();document.getElementById('boardInfo').submit();">삭제하기</button>
+       	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
+      </div>
+    </div>
+  </div>
+</div>
 				<hr style="border: solid 1px black;">
 
 			<div class="map_wrap">
@@ -183,16 +213,7 @@
 	<div id="modal_trade">
 		<div id="modal_trade_content"></div>
 	</div>
-	   <c:set var="writer_user_id" value="${detail.user_id }"/>
-        <c:if test="${mem.user_id ==writer_user_id}">
-          <form name="boardInfo">    
-          <input type="hidden" id="product_id" name="product_id"
-                value="${param.product_id }">
-          <input type="hidden" id="board_no" name="board_no"
-          		value="${detail.board_no }"> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제</button>
-        </form>
-        </c:if>
+
 
 	<!-- 신고 기능 모달 창 -->
 	<button id="modal_btn_report" class="btn btn-primary">신고</button>
@@ -226,43 +247,13 @@
 				<button id="report_submit" class="btn btn-primary">확인</button>
 				<button id="report_cancel" class="btn btn-primary">취소</button>
 
-				   <c:set var="writer_user_id" value="${detail.user_id }"/>
-        <c:if test="${mem.user_id == writer_user_id}">
-         
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제</button>
-      
-        </c:if>
-         <form name="boardInfo" action="/deleteBoard" id="boardInfo">    
-          <input type="hidden" id="product_id" name="product_id"
-                value="${param.product_id }">
-          <input type="hidden" id="board_no" name="board_no"
-          		value="${detail.board_no }"> 
-          		</form>
 			</div>
 		</div>
 	</div>
 	</div>
 	</div>
 	<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        게시물을 정말 삭제하시겠습니까?
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn btn-primary" id="deletee" onclick="clickDel()">삭제하기</button>
-       	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <input type="hidden" id="user_id" name="user_id" value="${detail.user_id }"> 
 <input type="hidden" id="mem_id" name="mem_id" value="${mem.user_id }"> 
 	
@@ -720,13 +711,14 @@
 			});
 			
 		});
-		function clickDel() {
-			alert("성공적으로 게시물을 삭제했습니다.");
-			document.getElementById("boardInfo").submit();
+		function deleteBoard(){
+			var message='${message}';
+			alert(message);
 			location.href="/category/all";
-
-			
 		}
+		
+
+
 
 	</script>
 
