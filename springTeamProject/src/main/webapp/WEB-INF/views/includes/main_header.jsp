@@ -61,8 +61,6 @@
 
 
 	<!-- Topbar Search -->
-<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
-</script>
 <div class="gcse-search"></div>
 
 	<ul class="navbar-nav ml-auto">
