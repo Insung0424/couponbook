@@ -6,7 +6,11 @@
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-
+<style type="text/css">
+ a:link { color: black; text-decoration: none;}	
+ a:visited { color: black; text-decoration: none;}	
+ a:hover { color: #006DD7; text-decoration: underline;}
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -94,10 +98,10 @@
 										<tbody id="myTable">
 										<c:forEach items="${comment}" var = "comment">					
 											<tr>
-										<td><c:out value="${comment.product_id}" /></td>
-										<td><c:out value="${comment.user_id}"/></td>
-										<td><c:out value="${comment.comment_content}"/></td>
-										<td><c:out value="${comment.comment_write_time}"/></td>
+										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.product_id}" /></a></td>
+										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.user_id}"/></a></td>
+										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}"/></a></td>
+										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_write_time}"/></a></td>
 											</tr>
 										</c:forEach>	
 										</tbody>

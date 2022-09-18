@@ -6,7 +6,14 @@
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-
+<style type="text/css">
+ /* link - 아직 클릭하지 않은 경우 red 색상 설정 */
+ a:link { color: black; text-decoration: none;}	
+ /* visited - 한번 클릭하거나 전에 클릭한적 있을 경우 #c71d44 설정 */
+ a:visited { color: black; text-decoration: none;}	
+ /* hover - 마우스를 해당 링크에 위치했을 경우 #006DD7 설정 */
+ a:hover { color: black; text-decoration: underline;}
+</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -94,18 +101,18 @@
 										<tbody id="myTable">
 													<c:forEach items="${trade}" var = "trade">					
 							<tr>
-								<td><c:out value="${trade.product_id}" /></td>
-								<td><c:out value="${trade.buyer_user_id}"/></td>
-								<td><c:out value="${trade.sell_user_id}"/></td>
-								<td><c:out value="${trade.pd_status}"/></td>
-								<td><c:set var="pd_status" value="${trade.pd_status }"/>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.product_id}" /></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.buyer_user_id}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.sell_user_id}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_status}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:set var="pd_status" value="${trade.pd_status }"/>
 								<c:if test="${pd_status eq 1}">
 								거래중
 								</c:if>
 								<c:if test="${pd_status eq 2}">
 								거래완료
 								</c:if>
-								<td><c:out value="${trade.trade_time}"/></td>
+								</a><td><c:out value="${trade.trade_time}"/></td>
 							</tr>
 						</c:forEach>	
 										</tbody>
