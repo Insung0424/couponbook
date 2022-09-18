@@ -110,16 +110,14 @@
             action="${path}/category/detail/insertL.do" onsubmit="return getLike()">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
-           <input type="hidden" id="user_id" name="user_id"
-                value="${mem.user_id }">
+           <input type="hidden" id="user_id" name="user_id"value="${mem.user_id }">
            <input type="hidden" id="pd_name" name="pd_name"
                 value="${detail.pd_name }">   
                 <p style='width:80px;float: left;'>                                      
            <input type="submit" value="관심상품에 담기"> 
            		</p>
          </form>
-        
-        <form name="form2" method="post" 
+        <form name="form2" method="get" 
             action="${path}/category/detail/deleteL.do">
            <input type="hidden" id="product_id" name="product_id"
                 value="${detail.product_id }">        
@@ -185,6 +183,16 @@
 	<div id="modal_trade">
 		<div id="modal_trade_content"></div>
 	</div>
+	   <c:set var="writer_user_id" value="${detail.user_id }"/>
+        <c:if test="${mem.user_id ==writer_user_id}">
+          <form name="boardInfo">    
+          <input type="hidden" id="product_id" name="product_id"
+                value="${param.product_id }">
+          <input type="hidden" id="board_no" name="board_no"
+          		value="${detail.board_no }"> 
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제</button>
+        </form>
+        </c:if>
 
 	<!-- 신고 기능 모달 창 -->
 	<button id="modal_btn_report" class="btn btn-primary">신고</button>
@@ -217,16 +225,19 @@
 			<div class="modal-footer">
 				<button id="report_submit" class="btn btn-primary">확인</button>
 				<button id="report_cancel" class="btn btn-primary">취소</button>
+
 				   <c:set var="writer_user_id" value="${detail.user_id }"/>
         <c:if test="${mem.user_id == writer_user_id}">
-          <form name="boardInfo">    
+         
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제</button>
+      
+        </c:if>
+         <form name="boardInfo" action="/deleteBoard" id="boardInfo">    
           <input type="hidden" id="product_id" name="product_id"
                 value="${param.product_id }">
           <input type="hidden" id="board_no" name="board_no"
           		value="${detail.board_no }"> 
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제</button>
-        </form>
-        </c:if>
+          		</form>
 			</div>
 		</div>
 	</div>
@@ -246,7 +257,7 @@
         게시물을 정말 삭제하시겠습니까?
       </div>
       <div class="modal-footer">
-      	<button type="button" class="btn btn-primary" onclick="clickDel(boardInfo)">삭제하기</button>
+      	<button type="button" class="btn btn-primary" id="deletee" onclick="clickDel()">삭제하기</button>
        	<button type="button" class="btn btn-secondary" data-dismiss="modal">취소하기</button>
       </div>
     </div>
@@ -709,12 +720,14 @@
 			});
 			
 		});
-		function clickDel(boardInfo) {
+		function clickDel() {
 			alert("성공적으로 게시물을 삭제했습니다.");
-			boardInfo.action = "/deleteBoard";
-			boardInfo.method = "post";
-			boardInfo.submit();
+			document.getElementById("boardInfo").submit();
+			location.href="/category/all";
+
+			
 		}
+
 	</script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
