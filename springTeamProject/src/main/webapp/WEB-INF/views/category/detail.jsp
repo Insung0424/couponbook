@@ -289,17 +289,21 @@
 				}, 400);
 				return false;
 			});
+			
+			if(${detail.pd_status} == 2){
+				alert("판매자가 이미 판매완료한 상품입니다");
+			}
+			
 		});
 		
 		function getLike(){
 			let product_id = $("#product_id").val();
 			const user_id = ${mem.user_id};
 			var flag = false;
-			
 			$.ajax({
 				type:'get',
 				url : '/product/getMyLike',
-				aysc : false,
+				async : false,
 				data : {
 	                "product_id" : product_id,
 	                "user_id" : user_id
@@ -313,22 +317,16 @@
 					}
 					else{
 						alert("이미추가한상품입니다");
-						flag = false;
 					}
 				},
-				error : function(request, status, error){
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-					console.log(status);
-					flag = false;
+				error : function(){
+					console.log(flag);
 				}
 			});
 			
-			console.log(product_id);
-			console.log(user_id);
-			console.log(flag);
 			
 			return flag;
-		}
+		};
 		
 		$("#modal_btn_report").click(function(){
 			$("#modal_report").fadeIn();
