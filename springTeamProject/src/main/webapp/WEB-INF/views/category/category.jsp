@@ -154,8 +154,7 @@
 									class="card_dis"><a>
 										<div class="card_poto">
 							<c:set var="img" value="${fn:split(list_cat.pd_img, ',')[1]}"></c:set>
-							<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
-							<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
+										<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
                                  <img alt="noimg"
                                     src="/getImg?fileNameNPath=${simg2}">

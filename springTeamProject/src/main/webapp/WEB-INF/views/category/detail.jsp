@@ -65,8 +65,7 @@
 					<div class="col" style="text-align: center;">
 						
 						<c:set var="img" value="${fn:split(detail.pd_img, ',')[0]}"></c:set>
-						<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
-						<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
+						<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 						<div style="width: 300px; height: 300px; background-color: gray;">
 							<img style="width: 300px; height: 300px;" src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 						</div>
