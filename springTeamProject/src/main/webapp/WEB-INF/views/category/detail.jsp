@@ -657,45 +657,54 @@ body {
               success:function(data){
                   console.log('통신성공');
                   var comment_html = "<div id='comment_box'>";
-                  var list = data.list;
+                  var li = data.list;
                   var count = data.count;  
-               if(list.length < 1){
+               if(count == -1){
                   comment_html += "댓글을 등록해주세요</div>";
                   alert("등록된 댓글이 없습니다. 댓글을 등록해주세요");
                }else if(count == 0){
                   comment_html += "아직 판매자가 댓글을 확인하지않았습니다</div>";
                   alert("아직 판매자가 댓글을 확인하지않았습니다");
                  }else{
-               
-                  for(i = 0;i < list.length;i++){
-                     let content = list[i].comment_content;
-                     let user_id_check = list[i].user_id;
-                     let time = list[i].comment_write_time;
-                     let comment_no = list[i].comment_no;
-                     let comment_no_level = list[i].comment_no_level;
-                     let group_no = list[i].group_no;
-                     let nickname = list[i].nickname;
-                     
-                     if(group_no >= 2){
-                        comment_html += "</div><div id='comment_box2' style='display:inline-block;'>";
-                     }
-                     
-                     comment_html += "<span id='com_writer' value="+nickname+">" + nickname + "</span><br/>";
-                     comment_html += "<div style='border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;'><span id='span_content'>" + content + "</span></div><br>";
-                     comment_html += "<div style=' display: flex;'> <span id='span_write_time' style='margin:5px;'>" + time + "</span><br>";
-                     
-                     
-                     
-                     if(user_id_1 == user_id_check){
-                         comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
-                         comment_html += "&nbsp;";
-                         comment_html += "<button id='delete' data-id ="+ comment_no +" class='btn btn-primary'>삭제</button><br></div><hr>";
-                     }
-                     else{
-                        comment_html += "<button id='answer' data-id ="+ comment_no_level +" class='btn btn-primary'>답글</button> </div><br></div><hr>";
-                     }
-                     
-                  }
+                	 console.log(li);
+                	 
+                	 for(j = 0;j<li.length; j++){
+                		 
+                		 var list = li[j];
+                		 
+                		 console.log(list);
+                		 
+	                  for(i = 0;i < list.length;i++){
+	                     let content = list[i].comment_content;
+	                     let user_id_check = list[i].user_id;
+	                     let time = list[i].comment_write_time;
+	                     let comment_no = list[i].comment_no;
+	                     let comment_no_level = list[i].comment_no_level;
+	                     let group_no = list[i].group_no;
+	                     let nickname = list[i].nickname;
+	                     
+	                     if(group_no >= 2){
+	                        comment_html += "</div><div id='comment_box2' style='display:inline-block;'>";
+	                     }
+	                     
+	                     comment_html += "<span id='com_writer' value="+nickname+">" + nickname + "</span><br/>";
+	                     comment_html += "<div style='border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;'><span id='span_content'>" + content + "</span></div><br>";
+	                     comment_html += "<div style=' display: flex;'> <span id='span_write_time' style='margin:5px;'>" + time + "</span><br>";
+	                     
+	                     
+	                     
+	                     if(user_id_1 == user_id_check){
+	                         comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
+	                         comment_html += "&nbsp;";
+	                         comment_html += "<button id='delete' data-id ="+ comment_no +" class='btn btn-primary'>삭제</button><br></div><hr>";
+	                     }
+	                     else{
+	                        comment_html += "<button id='answer' data-id ="+ comment_no_level +" class='btn btn-primary'>답글</button> </div><br></div><hr>";
+	                     }
+	                     
+	                  }
+	                  
+                	}
                }
                
                $("#comment_list").html(comment_html);

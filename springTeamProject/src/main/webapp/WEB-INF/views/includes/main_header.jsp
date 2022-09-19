@@ -102,14 +102,14 @@
 			<div
 				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="/category/all"> 전체 </a> <a
-					class="dropdown-item" href="/category/category?category_id=1">
-					편의점 </a> <a class="dropdown-item"
-					href="/category/category?category_id=2"> 커피/음료 </a> <a
-					class="dropdown-item" href="/category/category?category_id=3">
-					외식 </a> <a class="dropdown-item"
-					href="/category/category?category_id=4"> 상품권 </a> <a
-					class="dropdown-item" href="/category/category?category_id=5">
+				<a class="dropdown-item" href="/category/all"> 전체 </a> 
+				<a class="dropdown-item" href="/category/category?category_id=1">
+					편의점 </a> 
+				<a class="dropdown-item" href="/category/category?category_id=2"> 커피/음료 </a> 
+				<a class="dropdown-item" href="/category/category?category_id=3">
+					외식 </a> 
+				<a class="dropdown-item" href="/category/category?category_id=4"> 상품권 </a> 
+				<a class="dropdown-item" href="/category/category?category_id=5">
 					기타 </a>
 				<div class="dropdown-divider"></div>
 
@@ -123,8 +123,9 @@
 		<li class="nav-item dropdown no-arrow"><a
 			class="nav-link dropdown-toggle" id="userDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if
-						test="${mem==null}">로그인을 해주세요</c:if> <c:if test="${mem!=null}">${mem.nickname }</c:if>
+				<span class="mr-2 d-none d-lg-inline text-gray-600 small">
+				<c:if test="${mem==null}">로그인을 해주세요</c:if> 
+				<c:if test="${mem!=null}">${mem.nickname }</c:if>
 			</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path

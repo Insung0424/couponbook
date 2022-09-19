@@ -24,4 +24,5 @@ public class CommentVO {
 	
 	private int group_no;
 	
+	
 }

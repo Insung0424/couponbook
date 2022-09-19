@@ -1,5 +1,6 @@
 package sol.one.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,24 +66,68 @@ public class CommentController {
 		System.out.println("good?");
 		Map<String,Object> map = new HashMap<>();
 		
-		int[] comment_no_level = service.getLevel(product_id,user_id_2);
-		if(comment_no_level.length > 0) {
+		int[] sellerComment_no_level = service.getLevel(product_id,user_id_2); // 판매자
+		int[] buyerComment_no_level = service.getLevel(product_id,user_id_1); // 구매자
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		int size = -1;
+		
+		int seller = sellerComment_no_level.length;
+		int buyer = buyerComment_no_level.length;
+		
+		if((seller != 0 && buyer != 0)&&(seller>=buyer)) {
+			for(int i=0;i<seller;i++) {
+				for(int j=0;j<buyer;j++) {
+					int s = sellerComment_no_level[i];
+					int t = buyerComment_no_level[j];
+					if(s == t) {
+						arr.add(s);
+					}
+				}
+			}
+			size = 0; // 겹치는 게 없을때
+		}else {
+			for(int i=0;i<buyer;i++) {
+				for(int j=0;j<seller;j++) {
+					if(buyerComment_no_level[i] == sellerComment_no_level[j]) {
+						arr.add(buyerComment_no_level[i]);
+					}
+				}
+			}
+			size = 0; // 겹치는 게 없을때
+		}
+		
+		if(arr != null) {
+			size = arr.size();
+		}
+		
+		if(size > 0) { // 정상출력
 			
 			ModelAndView view = new ModelAndView();
 			view.setViewName("redirect:/product/main");
 			
-			map.put("count", comment_no_level.length);
-			
-			List<Comment2VO> list = service.getComment(product_id,user_id_1,user_id_2);
-			map.put("list", list);
+			map.put("count", size);
+			List<Comment2VO> list = new ArrayList<Comment2VO>();
+			List<List> li = new ArrayList<List>();
+			for(int i=0;i<size;i++) {
+				int comment_no_level = buyerComment_no_level[i];
+				list = service.getComment(product_id,user_id_1,user_id_2,comment_no_level);
+				li.add(list);
+			}
+			map.put("list", li);
 			return map;
 		}
-		else {
+		else if(size == 0) { // 댓글 등록했으나 서로 답글단 상황은 아님
 			ModelAndView view = new ModelAndView();
 			view.setViewName("redirect:/product/main");
-			List<Comment2VO> list = service.getComment(product_id,user_id_1,user_id_2);
-			map.put("list", list);
-			map.put("count", 0);
+			
+			map.put("count", size);
+			
+			return map;
+		}
+		else { //아직 댓글 등록안함
+			ModelAndView view = new ModelAndView();
+			view.setViewName("redirect:/product/main");
+			map.put("count", size);
 			return map;
 		}
 	}
