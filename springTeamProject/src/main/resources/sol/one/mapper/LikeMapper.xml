@@ -16,6 +16,10 @@
 		where product_id = #{product_id}
 		 and user_id = #{user_id}
 	</delete>
+	
+	<select id="count_like" resultType="int">
+	select count(*) from pj_like where user_id=#{user_id} and product_id=#{product_id}
+	</select>
 
 	
 	

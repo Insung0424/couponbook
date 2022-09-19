@@ -28,6 +28,14 @@ public class LikeServiceImpl implements LikeService {
 	    }
 
 
+	@Override
+	public int count_like(LikeVO likeVO) {
+		
+		return likeDao.count_like(likeVO);
+	}
+	 
+
+
 	 
 	 
 	 

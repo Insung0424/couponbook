@@ -24,4 +24,8 @@ public class CommentVO {
 	
 	private int group_no;
 	
+	//-----------추가
+	
+	private String nickname;
+	
 }
