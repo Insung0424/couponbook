@@ -103,14 +103,14 @@
 											<c:forEach items="${board}" var="board">
 												<tbody id="myTable">
 													<tr>
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_no}" /></a></td>
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.product_id}" /></a></td>
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_title}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_no}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.product_id}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_title}" /></a></td>
 														
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_content}" /></a></td>
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_write_time}" /></a></td>
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_discount}" /></a></td>
-														<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_date}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_content}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_write_time}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_discount}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_date}" /></a></td>
 													</tr>
 												</tbody>
 											</c:forEach>
