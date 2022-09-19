@@ -41,15 +41,21 @@
 <body>
    <div class="modal-header">
       <div class="modal-title">댓글로 거래하기</div>
-      
+
+
+      <div id="modal_trade" style="height: 50px; margin-left: 200px;">
+         <div id="modal_trade_content"></div>
+      </div>
+
+
       <div class="col" style="text-align: right; display: inline-block;">
          <input type="button" id="modal_TradingEnd" class="btn btn-success"
             style="display: inline-block;" value="거래완료하기" />
          <button id="modal_btn_report" class="btn btn-danger">신고</button>
-
       </div>
-      
    </div>
+
+
    <div class="modal-body">
       <div class="mb-3">
          작성자 <input type="text" id="writer" readonly value="${mem.email}"

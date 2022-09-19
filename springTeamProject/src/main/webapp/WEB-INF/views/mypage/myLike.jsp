@@ -87,7 +87,7 @@
 										<tbody id="myTable">
 											<c:forEach items="${like}" var = "like">					
 							<tr>								
-								<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_name}"/></a>
+								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_name}"/></a>
 								</td>
 								<td><c:out value="${like.like_time}"/></td>			
 							</tr>

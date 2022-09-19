@@ -141,8 +141,8 @@
                             <c:set var="img" value="${fn:split(list_all.pd_img, ',')[1]}"></c:set>
 							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
-                                 <img alt="noimg"
-                                    src="/getImg?fileNameNPath=${simg2}">
+                                 <img style="width: 100%; height: 100%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
                                     
                               </div>
                               <div class="card_info">
