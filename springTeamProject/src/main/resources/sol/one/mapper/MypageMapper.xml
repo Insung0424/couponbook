@@ -83,17 +83,20 @@
 			pj_Board
 		where
 			user_id=#{user_id}
+		and board_status=1
 		order by 
 			board_write_time desc
 	</select>
 	<select resultType="sol.one.VO.CommentVO" id="list_comment_mypage">
 		select * 
 		from 
-			pj_Comment
-		where 
-			user_id=#{user_id}
+			pj_Comment c,pj_user u
+		where
+			c.user_id=u.user_id
+		and
+			c.user_id=#{user_id}
 		order by
-			comment_write_time desc
+			c.comment_write_time desc
 	</select>
 	<select resultType="sol.one.VO.ReportVO" id="list_report_mypage">
 		select * 

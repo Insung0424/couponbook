@@ -8,4 +8,5 @@ public interface LikeService {
  
     public void deleteL(LikeVO likeVO); // 장바구니 아이템 개별 삭제 
     
+    public int count_like(LikeVO likeVO);
 }

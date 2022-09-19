@@ -11,4 +11,6 @@ public interface LikeDAO {
 	 
 	    public void deleteL(LikeVO likeVO);
 	    
+	    public int count_like(LikeVO likeVO);
+	    
 	}

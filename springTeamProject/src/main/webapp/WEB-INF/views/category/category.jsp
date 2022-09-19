@@ -153,7 +153,8 @@
 
 							<c:forEach items="${list_cat }" var="list_cat">
 								<li style="list-style: none; margin: 5px; width: 30%;"
-									class="card_dis"><a>
+									class="card_dis"><a id="card_content"
+                           href='/category/detail?product_id=<c:out value="${list_cat.product_id }"/>'>
 										<div class="card_poto">
 							<c:set var="img" value="${fn:split(list_cat.pd_img, ',')[1]}"></c:set>
 										<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
