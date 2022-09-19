@@ -96,7 +96,8 @@ body {
 </head>
 
 <body style="background-color: #f2f2f2">
-
+<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
+</script>
    <!-- Page Wrapper -->
    <div id="wrapper">
 
