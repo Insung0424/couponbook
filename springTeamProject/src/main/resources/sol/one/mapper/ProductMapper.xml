@@ -4,8 +4,8 @@
 <mapper namespace="sol.one.mapper.ProductMapper">
 
 	<insert id="insertP">
-		insert into pj_product(product_id,category_id,company_name,pd_name,pd_price,pd_status,pd_img,pd_desc,location_id,pd_discount,pd_date)
-		values(seq_product_id.nextVal,#{category_id},#{company_name},#{pd_name},#{pd_price},1,#{pd_img},#{pd_desc},#{location_id},#{pd_discount},to_date(#{pd_date},'yyyy-MM-dd'))
+		insert into pj_product(product_id,category_id,company_name,pd_name,pd_price,pd_status,pd_img,pd_desc,location_id,pd_discount,pd_date,pd_price0)
+		values(seq_product_id.nextVal,#{category_id},#{company_name},#{pd_name},#{pd_price},1,#{pd_img},#{pd_desc},#{location_id},#{pd_discount},to_date(#{pd_date},'yyyy-MM-dd'),#{pd_price0})
 	</insert>
 		
 	

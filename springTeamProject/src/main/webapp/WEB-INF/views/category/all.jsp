@@ -6,6 +6,8 @@
 <html lang="en">
 
 <head>
+<link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+<link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -139,11 +141,10 @@
                            href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
                               <div class="card_poto">
                             <c:set var="img" value="${fn:split(list_all.pd_img, ',')[1]}"></c:set>
-							<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
-							<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
-                                 <img alt="noimg"
-                                    src="/getImg?fileNameNPath=${simg2}">
+                                 <img style="width: 100%; height: 100%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
                                     
                               </div>
                               <div class="card_info">
@@ -152,7 +153,17 @@
 
                                     <p class="card_title">${list_all.pd_name }</p>
                                  </div>
-                                 <p class="card_adr">${list_all.pd_price }</p>
+                                  <c:set var="price1" value="${list_all.pd_price0 }"></c:set>
+                                  <c:set var="price2" value="${list_all.pd_price }"></c:set>
+                                 <p class="card_adr">${price1 }</p>
+                                 <p class="card_adr" id="p_discount">
+                                 <script>
+                                 	let pd_discount = Math.round(eval(100-((${price2 }/${price1 })*100)));
+                                 	console.log(pd_discount);
+                                 	$("#p_discount").html(pd_discount);
+                                 </script>
+                                 </p>                                 
+                                 <p class="card_adr">${price2 }</p>
                                  <p class="card_option">
                                     <c:set var="category_id" value="${list_all.category_id }" />
                                     <c:if test="${category_id eq 1}">
@@ -201,10 +212,10 @@
       class="fas fa-angle-up"></i>
    </a>
 
-
+	
    <script>
       $(function() {
-
+  		
          $(".card_dis").slice(0, 6).show(); // 초기갯수
          $("#load").click(function(e) { // 클릭시 more
             e.preventDefault();
@@ -215,6 +226,7 @@
          });
       });
    </script>
+   
    <script>
       $(function() {
 
@@ -228,6 +240,9 @@
          });
       });
    </script>
+   
+   
+   
 
    <!-- Bootstrap core JavaScript-->
    <script

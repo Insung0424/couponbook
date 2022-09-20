@@ -84,7 +84,7 @@
 			<span>상품권</span>
 	</a></li>
 	<li class="nav-item"><a class="nav-link"
-		style="font-weight: bold;" href="#"> <i class="fas fa-fw fa-cog"></i>
+		style="font-weight: bold;"> <i class="fas fa-fw fa-cog"></i>
 			<span>기타</span>
 	</a></li>
 

@@ -9,6 +9,8 @@
 
 	<html lang="ko">
 <head>
+<link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+<link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Main</title>
@@ -94,6 +96,9 @@ body {
 </head>
 
 <body style="background-color: #f2f2f2">
+<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
+</script>
+   <!-- Page Wrapper -->
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
@@ -120,6 +125,7 @@ body {
 					<div class=row style="margin-bottom: 50px;">
 						<div class="col" style="">
 
+<<<<<<< HEAD
 							<c:set var="img" value="${fn:split(detail.pd_img, ',')[0]}"></c:set>
 							<c:set var="simg1" value="${fn:replace(img, '%5C', '/')}"></c:set>
 							<c:set var="simg2" value="${fn:replace(simg1, '%3A', ':')}"></c:set>
@@ -128,6 +134,17 @@ body {
 								<img style="width: 300px; height: 300px;"
 									src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 							</div>
+=======
+                     <c:set var="img" value="${fn:split(detail.pd_img, ',')[1]}"></c:set>
+										<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+                     <div
+                        style="width: 300px; height: 300px; background-color: gray; display: flex; justify-content: center;">
+                        <img style="width: 100%; height: 100%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
+                           
+                           
+                     </div>
+>>>>>>> main
 
 						</div>
 						<div class=col>
@@ -175,6 +192,7 @@ body {
                         </c:if> <c:if test="${category_id eq 5}">
                         기타
                            </c:if></span>
+<<<<<<< HEAD
 							</h3>
 							<h3 id="mini_title" style="text-align: left;">
 								사용처 : <span id="mini_content"> <c:out
@@ -328,26 +346,89 @@ body {
                               aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                            </button>
+=======
+                     </h3>
+                     <h3 id="mini_title" style="text-align: left;">
+                        사용처 : <span id="mini_content"> <c:out
+                              value="${detail.company_name }" />
+                        </span>
+                     </h3>
+                     <div class="row">
+                        <div class="col" style="padding: 0;">
+                           <c:set var="user_id" value="${mem.user_id }" />
+                           <c:if test="${not empty user_id}">
+                              <input type="hidden" id="product_id" name="product_id"
+                                 value="${detail.product_id }">
+                              <input type="hidden" id="user_id" name="user_id"
+                                 value="${mem.user_id }">
+                              <input type="hidden" id="pd_name" name="pd_name"
+                                 value="${detail.pd_name }">
+                              <input type="button" value="찜하기" id="like"
+                                 style="width: 100%;" class="btn btn-primary">
+                           </c:if>
+>>>>>>> main
                         </div>
-                        <div class="modal-body">게시물을 정말 삭제하시겠습니까?</div>
-                        <div class="modal-footer">
-                           <button type="button" class="btn btn-primary"
-                              onclick="deleteBoard();document.getElementById('boardInfo').submit();">삭제하기</button>
-                           <button type="button" class="btn btn-secondary"
-                              data-dismiss="modal">취소하기</button>
+                        <div class="col">
+                           <c:set var="writer_user_id" value="${detail.user_id }" />
+                           <c:if test="${mem.user_id ==writer_user_id}">
+                              <form method="get">
+                                 <input type="hidden" id="product_id" name="product_id"
+                                    value="${param.product_id }">
+                                 <p style='width: 80px; float: right;'>
+                                    <input type="submit" class="btn btn-info" value="글 수정하기"
+                                       formaction="/modifyPostView">
+                                 </p>
+
+                              </form>
+
+                           </c:if>
+                           <c:set var="writer_user_id" value="${detail.user_id }" />
+                           <c:if test="${mem.user_id == writer_user_id}">
+                              <form method="post" action="/deleteBoard" id="boardInfo"
+                                 name="boardInfo">
+                                 <input type="hidden" id="product_id" name="product_id"
+                                    value="${param.product_id }"> <input type="hidden"
+                                    id="board_no" name="board_no" value="${detail.board_no }">
+                                 <button type="button" class="btn btn-secondary"
+                                    data-toggle="modal" data-target="#exampleModal">삭제</button>
+                              </form>
+                           </c:if>
                         </div>
                      </div>
                   </div>
-               </div>
-               <hr style="border: solid 1px black;">
-               <div>
-                  <div style="display: none;">
-                     <textarea class="form-control" id="read_editor"
-                        name="read_editor" rows="5" readonly="readonly"></textarea>
-                     <script type="text/javascript">
+                  <div class="modal fade" id="exampleModal" tabindex="-1"
+                     role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                     <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
+                              <button type="button" class="close" data-dismiss="modal"
+                                 aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                              </button>
+                           </div>
+                           <div class="modal-body">게시물을 정말 삭제하시겠습니까?</div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-primary"
+                                 onclick="deleteBoard();document.getElementById('boardInfo').submit();">삭제하기</button>
+                              <button type="button" class="btn btn-secondary"
+                                 data-dismiss="modal">취소하기</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr style="border: solid 1px black;">
+                  <div>
+                     <div style="display: none;">
+                        <textarea class="form-control" id="read_editor"
+                           name="read_editor" rows="5" readonly="readonly"></textarea>
+                        <script type="text/javascript">
                CKEDITOR.replace('read_editor');
             </script>
+                     </div>
                   </div>
+<<<<<<< HEAD
                </div>
                <div class="map_wrap">
                   <div id="map"
@@ -389,11 +470,56 @@ body {
 		</div>
 	</div>
 	<!-- Modal -->
+=======
+                  <div class="map_wrap">
+                     <div id="map"
+                        style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+
+                     <div id="menu_wrap" class="bg_white">
+                        <div class="option">
+                           <div>
+                              <form onsubmit="searchPlaces(); return false;">
+                                 키워드 : <input type="text" value="${detail.company_name }"
+                                    id="keyword" size="15">
+                                 <button type="submit">검색하기</button>
+                              </form>
+                           </div>
+                        </div>
+                        <hr>
+                        <ul id="placesList"></ul>
+                        <div id="pagination"></div>
+                     </div>
+                  </div>
+                  <hr style="border: solid 1px black; margin-top: 10px;">
+
+                  <div class=content
+                     style="word-break: break-all; margin-top: 50px; margin-bottom: 30px; height: 500px; width: 100%; background-color: white; margin: 0 auto; font-size: 2em; text-align: left;">
+                     ${detail.pd_desc }</div>
+
+
+
+
+               </div>
+               <div class="container text-center"
+                  style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
+
+
+
+
+                  <%@include file="comment.jsp"%>
+               </div>
+            </div>
+
+            <a class="scroll-to-top rounded" id="top_btn" href="#page-top">
+               <i class="fas fa-angle-up"></i>
+            </a>
+>>>>>>> main
 
 	<input type="hidden" id="user_id" name="user_id"
 		value="${detail.user_id}">
 	<input type="hidden" id="mem_id" name="mem_id" value="${mem.user_id }">
 
+<<<<<<< HEAD
 
 
 
@@ -634,57 +760,65 @@ body {
 			}
 		});
 
+=======
+            <!-- 거래완료 -->
+            <!-- <input type="button" id="modal_TradingEnd" class="btn btn-primary"
+            style="display: block;" value="거래완료하기" />
+         <button id="modal_btn_report" class="btn btn-primary">신고</button> -->
 
-         <!-- 신고 기능 모달 창 -->
 
-         <div id="modal_report">
-            <div id="modal_report_content">
-               <div class="modal-header">
-                  <div class="modal-title">불량사용자신고</div>
-               </div>
-               <div class="modal-body">
-                  <div class="mb-3">
-                     <label for="exampleFormControlInput1" class="form-label">신고종류</label>
-                     <select id="re_title" class="form-select form-select-sm">
-                        <option value="">유형선택</option>
-                        <option value="1">허위매물</option>
-                        <option value="2">삼자거래사기</option>
-                        <option value="3">또 추가할 항목</option>
-                     </select>
+>>>>>>> main
+
+            <!-- 신고 기능 모달 창 -->
+
+            <div id="modal_report">
+               <div id="modal_report_content">
+                  <div class="modal-header">
+                     <div class="modal-title">불량사용자신고</div>
                   </div>
-                  <div class="mb-3">
-                     <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
-                     <textarea class="form-control" id="editor4" name="editor4"
-                        rows="5"></textarea>
-                     <script type="text/javascript">
+                  <div class="modal-body">
+                     <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">신고종류</label>
+                        <select id="re_title" class="form-select form-select-sm">
+                           <option value="">유형선택</option>
+                           <option value="1">허위매물</option>
+                           <option value="2">삼자거래사기</option>
+                           <option value="3">또 추가할 항목</option>
+                        </select>
+                     </div>
+                     <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
+                        <textarea class="form-control" id="editor4" name="editor4"
+                           rows="5"></textarea>
+                        <script type="text/javascript">
                    CKEDITOR.replace( 'editor4' );
                </script>
+                     </div>
                   </div>
-               </div>
-               <div class="modal-footer">
-                  <button id="report_submit" class="btn btn-primary">확인</button>
-                  <button id="report_cancel" class="btn btn-primary">취소</button>
+                  <div class="modal-footer">
+                     <button id="report_submit" class="btn btn-primary">확인</button>
+                     <button id="report_cancel" class="btn btn-primary">취소</button>
 
+                  </div>
                </div>
             </div>
          </div>
       </div>
-   </div>
-   <!-- Modal -->
+      <!-- Modal -->
 
-   <input type="hidden" id="user_id" name="user_id"
-      value="${detail.user_id}">
-   <input type="hidden" id="mem_id" name="mem_id" value="${mem.user_id }">
-
+      <input type="hidden" id="user_id" name="user_id"
+         value="${detail.user_id}"> <input type="hidden" id="mem_id"
+         name="mem_id" value="${mem.user_id }">
 
 
 
 
-   <script type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0e243b14fc7e2d54b66eb97ad3a69c95&libraries=services"></script>
 
-   <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-   <script>
+      <script type="text/javascript"
+         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0b5d92b8ee871200a69f42873e88b086&libraries=services"></script>
+
+      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script>
       $(document).ready(function() {
          
          $(window).scroll(function() {
@@ -708,77 +842,77 @@ body {
       });
       
       $("#like").click(function (){
-	         let product_id = $("#product_id").val();
-	         let user_id = ${mem.user_id};
-	         let pd_name = $("#pd_name").val();
-	         
-	         $.ajax({
-	            type:'get',
-	            url : '/product/getMyLike',
-	            async : false,
-	            data : {
-	                   "product_id" : product_id,
-	                   "user_id" : user_id
-	            },
-	            contentType : 'application/json',
-	            success : function(data){
-	            	
-	               var like = data.like;
-	               
-	               if(like == "nolike"){
-	            	   
-	            	  $.ajax({
-		 	              type:'post',
-			              url : '/category/detail/insertL.do',
-			              async : false,
-			              data : {
-			                     "product_id" : product_id,
-			                     "user_id" : user_id,
-			                     "pd_name" : pd_name
-			              },
-			              success : function(data){
-			            	  
-			              },
-			              error : function(){
-			              	alert("등록error");
-			              }
-			              
-			           });  
-	            	  
-	                  alert("찜목록등록완료");
-	               }
-	               else{
-	            	   
-	            	   $.ajax({
-			 	              type:'post',
-				              url : '/category/detail/deleteL.do',
-				              async : false,
-				              data : {
-				                     "product_id" : product_id,
-				                     "user_id" : user_id,
-				                     "pd_name" : pd_name
-				              },
-				              success : function(data){
-				            	  
-				              },
-				              error : function(){
-				              	alert("삭제error");
-				              }
-				              
-				           }); 
-	            	   
-	                  alert("찜목록해제");
-	               }
-	            },
-	            
-	            error : function(status){
-	            	console.log(status);
-	            	alert("확인error");
-	            }
-	            
-	         });
-	         
-	      });
+            let product_id = $("#product_id").val();
+            let user_id = ${mem.user_id};
+            let pd_name = $("#pd_name").val();
+            
+            $.ajax({
+               type:'get',
+               url : '/product/getMyLike',
+               async : false,
+               data : {
+                      "product_id" : product_id,
+                      "user_id" : user_id
+               },
+               contentType : 'application/json',
+               success : function(data){
+                  
+                  var like = data.like;
+                  
+                  if(like == "nolike"){
+                     
+                    $.ajax({
+                        type:'post',
+                       url : '/category/detail/insertL.do',
+                       async : false,
+                       data : {
+                              "product_id" : product_id,
+                              "user_id" : user_id,
+                              "pd_name" : pd_name
+                       },
+                       success : function(data){
+                          
+                       },
+                       error : function(){
+                          alert("등록error");
+                       }
+                       
+                    });  
+                    
+                     alert("찜목록등록완료");
+                  }
+                  else{
+                     
+                     $.ajax({
+                           type:'post',
+                          url : '/category/detail/deleteL.do',
+                          async : false,
+                          data : {
+                                 "product_id" : product_id,
+                                 "user_id" : user_id,
+                                 "pd_name" : pd_name
+                          },
+                          success : function(data){
+                             
+                          },
+                          error : function(){
+                             alert("삭제error");
+                          }
+                          
+                       }); 
+                     
+                     alert("찜목록해제");
+                  }
+               },
+               
+               error : function(status){
+                  console.log(status);
+                  alert("확인error");
+               }
+               
+            });
+            
+         });
       
       $("#modal_btn_report").click(function(){
          $("#modal_report").fadeIn();
@@ -815,6 +949,7 @@ body {
                   if(log == "notradelog"){
                      if($("#modal_trade_content").load("sellerTradeEnd")){
                         $("#modal_trade_content").show("sellerTradeEnd")
+                        
                      }
                      $("#modal_trade_content").load("sellerTradeEnd");
                   }else if(log == 1){
@@ -979,45 +1114,54 @@ body {
               success:function(data){
                   console.log('통신성공');
                   var comment_html = "<div id='comment_box'>";
-                  var list = data.list;
+                  var li = data.list;
                   var count = data.count;  
-               if(list.length < 1){
+               if(count == -1){
                   comment_html += "댓글을 등록해주세요</div>";
                   alert("등록된 댓글이 없습니다. 댓글을 등록해주세요");
                }else if(count == 0){
                   comment_html += "아직 판매자가 댓글을 확인하지않았습니다</div>";
                   alert("아직 판매자가 댓글을 확인하지않았습니다");
                  }else{
-               
-                  for(i = 0;i < list.length;i++){
-                     let content = list[i].comment_content;
-                     let user_id_check = list[i].user_id;
-                     let time = list[i].comment_write_time;
-                     let comment_no = list[i].comment_no;
-                     let comment_no_level = list[i].comment_no_level;
-                     let group_no = list[i].group_no;
-                     let nickname = list[i].nickname;
-                     
-                     if(group_no >= 2){
-                        comment_html += "</div><div id='comment_box2' style='display:inline-block;'>";
-                     }
-                     
-                     comment_html += "<span id='com_writer' value="+nickname+">" + nickname + "</span><br/>";
-                     comment_html += "<div style='border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;'><span id='span_content'>" + content + "</span></div><br>";
-                     comment_html += "<div style=' display: flex;'> <span id='span_write_time' style='margin:5px;'>" + time + "</span><br>";
-                     
-                     
-                     
-                     if(user_id_1 == user_id_check){
-                         comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
-                         comment_html += "&nbsp;";
-                         comment_html += "<button id='delete' data-id ="+ comment_no +" class='btn btn-primary'>삭제</button><br></div><hr>";
-                     }
-                     else{
-                        comment_html += "<button id='answer' data-id ="+ comment_no_level +" class='btn btn-primary'>답글</button> </div><br></div><hr>";
-                     }
-                     
-                  }
+                	 console.log(li);
+                	 
+                	 for(j = 0;j<li.length; j++){
+                		 
+                		 var list = li[j];
+                		 
+                		 console.log(list);
+                		 
+	                  for(i = 0;i < list.length;i++){
+	                     let content = list[i].comment_content;
+	                     let user_id_check = list[i].user_id;
+	                     let time = list[i].comment_write_time;
+	                     let comment_no = list[i].comment_no;
+	                     let comment_no_level = list[i].comment_no_level;
+	                     let group_no = list[i].group_no;
+	                     let nickname = list[i].nickname;
+	                     
+	                     if(group_no >= 2){
+	                        comment_html += "</div><div id='comment_box2' style='display:inline-block;'>";
+	                     }
+	                     
+	                     comment_html += "<span id='com_writer' value="+nickname+">" + nickname + "</span><br/>";
+	                     comment_html += "<div style='border: #ffb6c1 solid 1px; border-left: #ffb6c1 solid 10px; padding: 20px; background: #fff; font-size: 100%;'><span id='span_content'>" + content + "</span></div><br>";
+	                     comment_html += "<div style=' display: flex;'> <span id='span_write_time' style='margin:5px;'>" + time + "</span><br>";
+	                     
+	                     
+	                     
+	                     if(user_id_1 == user_id_check){
+	                         comment_html += "<button id='update' data-id =" + comment_no + " class='btn btn-primary'>수정</button>";
+	                         comment_html += "&nbsp;";
+	                         comment_html += "<button id='delete' data-id ="+ comment_no +" class='btn btn-primary'>삭제</button><br></div><hr>";
+	                     }
+	                     else{
+	                        comment_html += "<button id='answer' data-id ="+ comment_no_level +" class='btn btn-primary'>답글</button> </div><br></div><hr>";
+	                     }
+	                     
+	                  }
+	                  
+                	}
                }
                
                $("#comment_list").html(comment_html);
@@ -1189,6 +1333,7 @@ body {
       }
       
 
+<<<<<<< HEAD
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/slide.js/"></script>
@@ -1200,6 +1345,24 @@ body {
 	<!-- Custom scripts for all pages-->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
+=======
+
+
+   </script>
+
+      <script
+         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script
+         src="${pageContext.request.contextPath}/resources/js/slide.js/"></script>
+      <script src="${pageContext.request.contextPath}/resources/map.js/"></script>
+      <script
+         src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+      <script
+         src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Custom scripts for all pages-->
+      <script
+         src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
+>>>>>>> main
 </c:forEach>
 </body>
 </html>

@@ -46,7 +46,7 @@
 				<h5>정인성</h5>
 				<ul class="list-unstyled text-small">
 					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="#"> GIT</a></li>
+						class="link-secondary text-decoration-none" href="https://github.com/Insung0424"> GIT</a></li>
 
 				</ul>
 			</div>
@@ -54,7 +54,7 @@
 				<h5>김보미</h5>
 				<ul class="list-unstyled text-small">
 					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="#">GIT</a></li>
+						class="link-secondary text-decoration-none" href="https://github.com/harteh">GIT</a></li>
 
 				</ul>
 			</div>
@@ -62,7 +62,7 @@
 				<h5>이규원</h5>
 				<ul class="list-unstyled text-small">
 					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="#">GIT</a></li>
+						class="link-secondary text-decoration-none" href="https://github.com/keekee383">GIT</a></li>
 
 				</ul>
 			</div>
@@ -70,7 +70,7 @@
 				<h5>최민곤</h5>
 				<ul class="list-unstyled text-small">
 					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="#">GIT</a></li>
+						class="link-secondary text-decoration-none" href="https://github.com/skandy57">GIT</a></li>
 
 				</ul>
 			</div>
@@ -78,7 +78,7 @@
 				<h5>황종환</h5>
 				<ul class="list-unstyled text-small">
 					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="#">GIT</a></li>
+						class="link-secondary text-decoration-none" href="https://github.com/hpositive">GIT</a></li>
 
 				</ul>
 			</div>
@@ -86,7 +86,7 @@
 				<h5>송현민</h5>
 				<ul class="list-unstyled text-small">
 					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="#">GIT</a></li>
+						class="link-secondary text-decoration-none" href="https://github.com/shm308">GIT</a></li>
 
 				</ul>
 			</div>

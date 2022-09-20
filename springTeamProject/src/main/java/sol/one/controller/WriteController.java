@@ -52,7 +52,7 @@ public class WriteController {
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
 	public String add(String pd_name,String pd_img,String pd_desc,String company_name,String pd_price,
-			int category_id,int location_id,int pd_discount,String pd_date,int user_id) {
+			int category_id,int location_id,int pd_discount,String pd_date,int user_id,String pd_price0) {
 		ProductVO vo = new ProductVO();
 		vo.setPd_desc(pd_desc);
 		vo.setPd_img(pd_img);
@@ -63,6 +63,7 @@ public class WriteController {
 		vo.setCompany_name(company_name);
 		vo.setPd_price(pd_price);
 		vo.setPd_date(pd_date);
+		vo.setPd_price0(pd_price0);
 		productservice.add(vo);
 		
 		BoardVO bvo = new BoardVO();

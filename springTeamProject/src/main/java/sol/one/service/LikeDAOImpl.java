@@ -36,7 +36,17 @@ public class LikeDAOImpl implements LikeDAO {
 		public void deleteL(LikeVO likeVO) {
 			sqlSession.delete("deleteL",likeVO);
 			
+		}
+
+
+
+		@Override
+		public int count_like(LikeVO likeVO) {
+	
+			return sqlSession.selectOne("LikeMapper.count_like",likeVO);
 		}      
+		
+		
    	    
 	    
 	    

@@ -90,7 +90,7 @@
 										<thead class="thead-primary">
 											<tr>
 												<th>상품번호</th>
-												<th>유저아이디</th>
+												<th>유저닉네임</th>
 												<th>댓글내용</th>
 												<th>게시시간</th>	
 											</tr>
@@ -98,10 +98,10 @@
 										<tbody id="myTable">
 										<c:forEach items="${comment}" var = "comment">					
 											<tr>
-										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.product_id}" /></a></td>
-										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.user_id}"/></a></td>
-										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}"/></a></td>
-										<td><a href="<c:url value='http://www.couponbook.shop/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_write_time}"/></a></td>
+										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.product_id}" /></a></td>
+										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.nickname}"/></a></td>
+										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}"/></a></td>
+										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_write_time}"/></a></td>
 											</tr>
 										</c:forEach>	
 										</tbody>
