@@ -63,7 +63,15 @@
 				}
 			})
 		});
+			$("#deletee").keyup(function(event) {
+				  // Enter 처리
+				  if (event.keyCode == '13') {
+				    $("deletee").trigger("click");
+				  };
+				});
+				
 	})
+	
 	</script>
 
 
@@ -108,6 +116,7 @@
                        <input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
                        <input type="hidden" id="user_id" name="user_id" value="${mem.user_id}">
                        <input type="hidden" id="session_password" name="session_password" value="${mem.password }">
+                     
                        <input type="password" id = "password" name="password" class="form-control form-control-inline text-center" placeholder="비밀번호" />
 
                          <button type="button" id="deletee" name="delete" class="btn btn-primary">확인</button><a href="/" class="btn btn-default">취소</a>
