@@ -39,7 +39,7 @@
 	<select id="tradeWeekCnt" resultType="int">
 		select count(*) from pj_trade_test 
 		where pd_status = 1  
-		and trade_time >= to_char(SYSDATE-7, 'YY/MM/DD') 
+		and trade_time >= SYSDATE-7
 		group by trade_time 
 		order by trade_time 
 	</select>
@@ -52,7 +52,7 @@
 		order by trade_time  -->
 		select * from pj_trade_test
 		where pd_status = 1 
-		and trade_time >= to_char(SYSDATE-7, 'YY/MM/DD')
+		and trade_time >= SYSDATE-7
 		order by trade_time
 	</select>
 	
