@@ -85,16 +85,17 @@ public class CommentController {
 				}
 			}
 			size = 0; // 겹치는 게 없을때
-		}else {
-			for(int i=0;i<buyer;i++) {
-				for(int j=0;j<seller;j++) {
-					if(buyerComment_no_level[i] == sellerComment_no_level[j]) {
-						arr.add(buyerComment_no_level[i]);
-					}
-				}
-			}
-			size = 0; // 겹치는 게 없을때
 		}
+//		else { //정신이 없이 만들어서 왜 만든건지 모르겠음
+//			for(int i=0;i<buyer;i++) {
+//				for(int j=0;j<seller;j++) {
+//					if(buyerComment_no_level[i] == sellerComment_no_level[j]) {
+//						arr.add(buyerComment_no_level[i]);
+//					}
+//				}
+//			}
+//			size = 0; // 겹치는 게 없을때
+//		}
 		
 		if(arr != null) {
 			size = arr.size();

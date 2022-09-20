@@ -153,7 +153,17 @@
 
                                     <p class="card_title">${list_all.pd_name }</p>
                                  </div>
-                                 <p class="card_adr">${list_all.pd_price }</p>
+                                  <c:set var="price1" value="${list_all.pd_price0 }"></c:set>
+                                  <c:set var="price2" value="${list_all.pd_price }"></c:set>
+                                 <p class="card_adr">${price1 }</p>
+                                 <p class="card_adr" id="p_discount">
+                                 <script>
+                                 	let pd_discount = Math.round(eval(100-((${price2 }/${price1 })*100)));
+                                 	console.log(pd_discount);
+                                 	$("#p_discount").html(pd_discount);
+                                 </script>
+                                 </p>                                 
+                                 <p class="card_adr">${price2 }</p>
                                  <p class="card_option">
                                     <c:set var="category_id" value="${list_all.category_id }" />
                                     <c:if test="${category_id eq 1}">
@@ -202,10 +212,10 @@
       class="fas fa-angle-up"></i>
    </a>
 
-
+	
    <script>
       $(function() {
-
+  		
          $(".card_dis").slice(0, 6).show(); // 초기갯수
          $("#load").click(function(e) { // 클릭시 more
             e.preventDefault();
@@ -216,6 +226,7 @@
          });
       });
    </script>
+   
    <script>
       $(function() {
 
@@ -229,6 +240,9 @@
          });
       });
    </script>
+   
+   
+   
 
    <!-- Bootstrap core JavaScript-->
    <script

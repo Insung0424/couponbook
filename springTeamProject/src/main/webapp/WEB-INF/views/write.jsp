@@ -331,7 +331,7 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
 
       });
 
-      let regex = new RegExp("(.*?)\.(jpg|png)$");
+      let regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|JPG|JPEG|PNG|GIF|BMP)$");
       let maxSize = 10485760; //10MB   
 
       function fileCheck(fileName, fileSize) {

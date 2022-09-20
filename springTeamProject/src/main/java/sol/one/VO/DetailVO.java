@@ -28,6 +28,8 @@ public class DetailVO {
 	
 	private String pd_price; 
 	
+	private String pd_price0; 
+
 	private int pd_status; 
 	
 	private String pd_img; 

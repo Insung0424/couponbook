@@ -167,7 +167,17 @@
 											<div class="card_title_content">
 												<a class="card-link" href='/category/detail?product_id=<c:out value="${list_cat.product_id }"/>'>${list_cat.pd_name }</a>
 											</div>
-											<p class="card_adr">${list_cat.pd_price }</p>
+											 <c:set var="price1" value="${list_cat.pd_price0 }"></c:set>
+			                                 <c:set var="price2" value="${list_cat.pd_price }"></c:set>
+			                                 <p class="card_adr">${price1 }</p>
+			                                 <p class="card_adr" id="p_discount">
+			                                 <script>
+			                                 	let pd_discount = Math.round(eval(100-((${price2 }/${price1 })*100)));
+			                                 	console.log(pd_discount);
+			                                 	$("#p_discount").html(pd_discount);
+			                                 </script>
+			                                 </p>                                 
+			                                 <p class="card_adr">${price2 }</p>
 											<p class="card_option">
 												<c:set var="category_id" value="${list_cat.category_id }" />
 												<c:if test="${category_id eq 1}">
