@@ -73,7 +73,7 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
       <div id="content"
          style="width: 100%; min-height: 100%; position: relative; margin: 0;">
 
-         <%@include file="/WEB-INF/views/includes/main_header3.jsp"%>
+         <%@include file="/WEB-INF/views/includes/main_header.jsp"%>
 
 
          <form action="/product_add" method="post"
