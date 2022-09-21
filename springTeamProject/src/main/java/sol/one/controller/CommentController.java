@@ -24,6 +24,7 @@ import sol.one.VO.CommentVO;
 import sol.one.VO.MemberVO;
 import sol.one.service.CommentService;
 import sol.one.service.MemService;
+import sol.one.service.TradeLogService;
 
 @RequestMapping("/replies")
 @RestController
@@ -31,9 +32,6 @@ public class CommentController {
 	
 	@Autowired
 	private CommentService service;
-	
-	@Autowired
-	private MemService userservice;
 	
 	@PostMapping("/new")
 	public String insertReply(@RequestBody CommentVO vo) {

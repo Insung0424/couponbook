@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -89,12 +91,14 @@ public class WriteController {
 			@RequestParam("file") MultipartFile file) throws UnsupportedEncodingException {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-
+		System.out.println(file.getSize());
 		// 이미지 파일인지 체크
 		File checkfile = new File(file.getOriginalFilename());
 		String type = null;
 		try {
+			
 			type = Files.probeContentType(checkfile.toPath());
+			
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -105,10 +109,8 @@ public class WriteController {
 
 		String fileRealName = file.getOriginalFilename();
 		long size = file.getSize();
-//		System.out.println(file.getOriginalFilename());
-//		System.out.println(file.getContentType());
-//		System.out.println(file.getSize());
-		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
+//		String fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
+		String fileExtension = ".PNG";
 		String uploadFolder = req.getSession().getServletContext().getRealPath("/resources/images/src");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -144,7 +146,7 @@ public class WriteController {
 			File thumbnailFile = new File(uploadPath, "s_" + uploadFileName);
 			BufferedImage bo_image = ImageIO.read(saveFile);
 			// 비율
-			double ratio = 4;
+			double ratio = 2;
 			// 넓이 높이
 			int width = (int) (bo_image.getWidth() / ratio);
 			int height = (int) (bo_image.getHeight() / ratio);
@@ -174,6 +176,8 @@ public class WriteController {
 	 * }
 	 */
 
+	
+	// 이미지 첨부시 미리보기 이미지생성해주는 부분
 	@RequestMapping(value = "/getImg", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImg(String fileNameNPath) {
 		// 테이블에서 열 값에 저장할때 이미지경로와 이름이 전체가 저장되므로 그 값을 받아서 파일을 생성함
