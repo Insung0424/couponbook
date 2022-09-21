@@ -34,7 +34,6 @@
 
 <link rel="stylesheet" href="/resources/css/style.css">
 
-
 </head>
 
 <script type="text/javascript">
