@@ -39,8 +39,8 @@
 	<!-- 인터셉터 설정  /write -->
 	<interceptors>
 		<interceptor>
-			<mvc:mapping path="/write"/>    
-			<mvc:mapping path="/category/detail"/>    
+			<mvc:mapping path="/write"/>   
+			    
 			<beans:ref bean="LoginIntercepter"/>
 		</interceptor>
 

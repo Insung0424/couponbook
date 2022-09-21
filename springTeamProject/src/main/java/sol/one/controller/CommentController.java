@@ -24,6 +24,7 @@ import sol.one.VO.CommentVO;
 import sol.one.VO.MemberVO;
 import sol.one.service.CommentService;
 import sol.one.service.MemService;
+import sol.one.service.TradeLogService;
 
 @RequestMapping("/replies")
 @RestController
@@ -31,9 +32,6 @@ public class CommentController {
 	
 	@Autowired
 	private CommentService service;
-	
-	@Autowired
-	private MemService userservice;
 	
 	@PostMapping("/new")
 	public String insertReply(@RequestBody CommentVO vo) {
@@ -74,6 +72,13 @@ public class CommentController {
 		int seller = sellerComment_no_level.length;
 		int buyer = buyerComment_no_level.length;
 		
+		if(buyer == 0) { // 구매자가 댓글을 등록하지않고 댓글보기를 클릭했을때
+			ModelAndView view = new ModelAndView();
+			view.setViewName("redirect:/product/main");
+			map.put("count", size);
+			return map;
+		}
+		
 		if((seller != 0 && buyer != 0)&&(seller>=buyer)) {
 			for(int i=0;i<seller;i++) {
 				for(int j=0;j<buyer;j++) {
@@ -97,9 +102,7 @@ public class CommentController {
 //			size = 0; // 겹치는 게 없을때
 //		}
 		
-		if(arr != null) {
-			size = arr.size();
-		}
+		size = arr.size();
 		
 		if(size > 0) { // 정상출력
 			
@@ -117,18 +120,12 @@ public class CommentController {
 			map.put("list", li);
 			return map;
 		}
-		else if(size == 0) { // 댓글 등록했으나 서로 답글단 상황은 아님
+		else { // 댓글 등록했으나 서로 답글단 상황은 아님
 			ModelAndView view = new ModelAndView();
 			view.setViewName("redirect:/product/main");
 			
 			map.put("count", size);
 			
-			return map;
-		}
-		else { //아직 댓글 등록안함
-			ModelAndView view = new ModelAndView();
-			view.setViewName("redirect:/product/main");
-			map.put("count", size);
 			return map;
 		}
 	}

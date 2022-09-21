@@ -158,7 +158,7 @@ public class CategoryController {
 							String fileName = file.getOriginalFilename();
 							byte[] bytes = file.getBytes();
 
-							String uploadPath = req.getSession().getServletContext().getRealPath("/resources/images/src"); // ������
+							String uploadPath = req.getSession().getServletContext().getRealPath("/resources/images/src");
 							System.out.println("uploadPath:" + uploadPath);
 
 							File uploadFile = new File(uploadPath);
@@ -172,7 +172,7 @@ public class CategoryController {
 							out.write(bytes);
 
 							printWriter = resp.getWriter();
-							String fileUrl = req.getContextPath() + "/resources/images/src/" + fileName2 + fileName; // url���
+							String fileUrl = req.getContextPath() + "/resources/images/src/" + fileName2 + fileName;
 							System.out.println("fileUrl :" + fileUrl);
 
 							JsonObject json = new JsonObject();

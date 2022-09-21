@@ -20,6 +20,7 @@ import sol.one.VO.LikeVO;
 import sol.one.VO.MemberVO;
 import sol.one.VO.ReportVO;
 import sol.one.VO.T_tradeVO;
+import sol.one.VO.tradelistVO;
 import sol.one.controller.MypageController;
 import sol.one.mapper.MypageMapper;
 
@@ -68,7 +69,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<T_tradeVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception {
+	public List<tradelistVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception {
 		log.info("list_trade_mypage");
 		return mapper.list_trade_mypage(user_id);
 	}
