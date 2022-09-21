@@ -62,18 +62,29 @@
             class="form-control" /> 내용
          <textarea class="form-control" id="editor1" name="editor1"
             class="com_comment" rows="5"></textarea>
+       <c:choose>
+       	<c:when test="${not empty user_id}">
          <script type="text/javascript">
             CKEDITOR.replace('editor1');
          </script>
+        </c:when>
+        <c:otherwise>
+        	<script type="text/javascript">
+           	 CKEDITOR.replace('editor1');
+           	 CKEDITOR.instances.editor1.config.readOnly = true;
+        	 CKEDITOR.instances.editor1.setData("로그인후 댓글을 남길 수 있습니다");
+        	</script>
+        </c:otherwise>
+       </c:choose>
       </div>
    </div>
+   <c:if test="${not empty user_id}"> 
    <div class="modal-footer">
       <button type="button" id="add_btn" class="btn btn-primary">댓글등록</button>
       <input type="button" id="more_comment" value="댓글 보기"
          class="btn btn-primary">
-
    </div>
-
+	</c:if>
    <span id="comment_list"></span>
 
    <div id='modal'>
