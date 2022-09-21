@@ -68,14 +68,15 @@
 			like_time desc
 	</select>
 		<!--마이페이지 내 거래내역 로그  -->
-	<select resultType="sol.one.VO.T_tradeVO" id="list_trade_mypage">
-		select * from pj_Trade_test
-		where 
-			buyer_user_id=#{user_id}
-		or
-			sell_user_id=#{user_id}
-		order by 
-			trade_time desc
+	<select resultType="sol.one.VO.tradelistVO" id="list_trade_mypage">
+	select DISTINCT p.product_id,p.pd_status,p.pd_name,
+		p.pd_price,p.pd_price0,p.pd_img,t.trade_time,
+		p.pd_discount,p.pd_date from pj_trade_test t,pj_product p 
+		where t.product_id=p.product_id 
+		and (t.sell_user_id=#{user_id} or t.buyer_user_id=#{user_id}) 
+		group by  p.product_id,p.pd_status,p.pd_name,t.trade_time,
+		p.pd_price,p.pd_price0,p.pd_img,
+		p.pd_discount,p.pd_date order by t.trade_time desc
 	</select>
 	<select resultType="sol.one.VO.BoardVO" id="list_board_mypage">
 		select * 

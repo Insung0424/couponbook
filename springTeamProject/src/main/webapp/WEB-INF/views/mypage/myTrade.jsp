@@ -3,6 +3,7 @@
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
@@ -91,9 +92,11 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
+												<th>상품이미지</th>
 												<th>상품번호</th>
-												<th>구매자</th>
-												<th>판매자</th>
+												<th>상품이름</th>
+												<th>상품가격</th>
+												<th>할인율</th>
 												<th>거래상태</th>
 												<th>거래개시시간</th>		
 											</tr>
@@ -101,10 +104,15 @@
 										<tbody id="myTable">
 													<c:forEach items="${trade}" var = "trade">					
 							<tr>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:set var="img" value="${fn:split(trade.pd_img, ',')[1]}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+							
+                                 <img style="width: 100%; height: 100%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.product_id}" /></a></td>
-								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.buyer_user_id}"/></a></td>
-								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.sell_user_id}"/></a></td>
-								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_status}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_name}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_price}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_discount}"/>%</a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:set var="pd_status" value="${trade.pd_status }"/>
 								<c:if test="${pd_status eq 1}">
 								거래중

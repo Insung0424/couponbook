@@ -11,6 +11,7 @@ import sol.one.VO.LikeVO;
 import sol.one.VO.MemberVO;
 import sol.one.VO.ReportVO;
 import sol.one.VO.T_tradeVO;
+import sol.one.VO.tradelistVO;
 
 
 @Service
@@ -34,7 +35,7 @@ public interface MypageService {
 	public List<LikeVO> list_like_mypage(Long user_id) throws Exception;
 	
 	//���������� �� �ŷ����� ��ȸ�ϱ�
-	public List<T_tradeVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception;
+	public List<tradelistVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception;
 	
 	public List<BoardVO> list_board_mypage(Long user_id) throws Exception;
 	
