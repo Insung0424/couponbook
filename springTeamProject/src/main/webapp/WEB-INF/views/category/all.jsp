@@ -138,7 +138,7 @@
                   <ul style="width: 100%; display: flex; flex-wrap: wrap;">
                      <c:forEach items="${list_all }" var="list_all">
 
-                        <li style="list-style: none; margin-left: 25px; width: 30%;"
+                        <li style="list-style: none; margin-left: 25px;margin-bottom:25px; width: 30%;  border-radius: 15px;  box-shadow: 5px 5px 5px grey ;"
                            class="card_dis"><a id="card_content"
                            href='/category/detail?product_id=<c:out value="${list_all.product_id }"/>'>
                               <div class="card_poto">
