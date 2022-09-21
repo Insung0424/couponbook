@@ -155,18 +155,18 @@
 
                                     <p class="card_title">${list_all.pd_name }</p>
                                  </div>
-                                  <c:set var="price1" value="${list_all.pd_price0 }"></c:set>
-                                  <c:set var="price2" value="${list_all.pd_price }"></c:set>
+                                 <c:set var="price1" value="${list_all.pd_price0 }"></c:set>
+                                 <c:set var="price2" value="${list_all.pd_price }"></c:set>
                                  <p class="card_adr"  style="text-decoration:line-through;">${price1 }원</p>
-                                 
-                                 <!-- 첫번째 게시물만 할인율이 뜨는 문제가 있어서 테스트로 db의 pd_discount를 적용 <script>
-                                 	let pd_discount = Math.round(eval(100-((${price2 }/${price1 })*100)));
-                                 	console.log(pd_discount);
-                                 	$("#p_discount").html(pd_discount);
-                                 </script>-->
-                                                                  
                                  <p class="card_adr" style="">${price2 }원</p>
                                  <p class="card_adr" id="p_discount" style="color: red;font-size:2em; font-weight: bold; text-align: right;">${list_all.pd_discount }%</p>
+                                <!-- 원래 할인율 출력을 위해 짜려던 동적태그생성방식 깜빡하고 그냥 태그에 바로 값을 넣어서 오류가 생긴거였음 
+                             
+                                 <script>
+                                 	let pd_discount = Math.round(eval(100-((${price2 }/${price1 })*100)));
+									let discount_html = "<span>"+pd_discount+"%</span>";                                 	
+                                 	$("#p_discount").html(discount_html);
+                                 </script> -->
                                  <p class="card_option">
                                     <c:set var="category_id" value="${list_all.category_id }" />
                                     <c:if test="${category_id eq 1}">
