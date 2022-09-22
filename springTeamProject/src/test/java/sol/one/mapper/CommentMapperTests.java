@@ -32,7 +32,7 @@ public class CommentMapperTests {
     public void testreply() {
     	CommentVO vo = new CommentVO();
     	vo.setProduct_id(1);
-    	vo.setUser_id(2);
+    	vo.setUser_id(2L);
     	vo.setComment_content("작성자 2의 text4");
     	log.info(vo);
     	mapper.insert_co(vo);
@@ -42,7 +42,7 @@ public class CommentMapperTests {
     public void testreply_tab() {
     	CommentVO vo = new CommentVO();
     	vo.setProduct_id(1);
-    	vo.setUser_id(2);
+    	vo.setUser_id(2L);
     	vo.setComment_content("text1 - 작성자2의 답글");
     	vo.setComment_no_level(156);
     	vo.setComment_no(156);

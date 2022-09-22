@@ -43,7 +43,7 @@ public class BoardMapperTests {
 		 
 		 
 		 BoardVO vo = new BoardVO();
-		 vo.setUser_id(1);
+		 vo.setUser_id(1L);
 		 vo.setBoard_title("쿠폰2");
 		 vo.setBoard_content("desc2");
 		 vo.setPd_discount(13);

@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class tradelistVO {
 		
-	private int product_id;
+		private int product_id;
 		
 		private int pd_status;
 		

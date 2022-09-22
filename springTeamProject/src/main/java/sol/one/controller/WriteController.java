@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnails;
 import sol.one.VO.BoardVO;
 import sol.one.VO.ImageVO;
@@ -41,6 +42,7 @@ import sol.one.service.BoardServiceImpl;
 import sol.one.service.CategoryService;
 import sol.one.service.ProductServiceImpl;
 
+@Log4j
 @Controller
 @AllArgsConstructor
 public class WriteController {
@@ -54,7 +56,7 @@ public class WriteController {
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
 	public String add(String pd_name,String pd_img,String pd_desc,String company_name,String pd_price,
-			int category_id,int location_id,int pd_discount,String pd_date,int user_id,String pd_price0) {
+			int category_id,int location_id,int pd_discount,String pd_date,Long user_id,String pd_price0) {
 		ProductVO vo = new ProductVO();
 		vo.setPd_desc(pd_desc);
 		vo.setPd_img(pd_img);
@@ -224,8 +226,9 @@ public class WriteController {
 	}
 	@PostMapping("/modify")
 	public String modify(ProductVO product,String pd_name,String pd_desc,String pd_date,
-			int pd_discount,int product_id,int user_id,int board_no,HttpSession session)throws Exception{
-
+			int pd_discount,int product_id,Long user_id,int board_no,HttpSession session)throws Exception{
+		
+		log.info("hi");
 		productservice.modifyProduct(product);
 		BoardVO board=new BoardVO();
 		board.setBoard_title(pd_name);
@@ -234,9 +237,10 @@ public class WriteController {
 		board.setPd_date(pd_date);
 		board.setProduct_id(product_id);
 		board.setUser_id(user_id);
-		System.out.println("=====================================================================================");
+		log.info(pd_date);
+		log.info(board);
 		boardservice.modifyBoard(board);
-		System.out.println("=====================================================================================");
+		log.info(board);
 		return "redirect:/";
 	}
 	@PostMapping("/deleteBoard")
