@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sol.one.mapper.FindMapper">
+		
+	<select id="getIdnickname" resultType="sol.one.VO.MemberVO">
+		select email from pj_user 
+		where nickname = #{nickname} 
+	</select>
+	
+	<select id="getIdphone" resultType="sol.one.VO.MemberVO">
+		select email from pj_user 
+		where phone = #{phone} 
+	</select>
+
+	<select id="checkIdnNickname" parameterType="sol.one.VO.MemberVO" resultType="int">
+		SELECT COUNT(*) FROM pj_user 
+		where email = #{email} and nickname = #{nickname}
+	</select>
+	
+	<update id="updateNewPassword">
+		update pj_user set password = #{password} where email = #{email} and nickname = #{nickname}
+	</update>
+	
+</mapper>
