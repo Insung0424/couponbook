@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import sol.one.VO.BoardVO;
+import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
 import sol.one.VO.LikeVO;
 import sol.one.VO.MemberVO;
@@ -72,7 +73,7 @@ public class MypageMapperImpl implements MypageMapper{
 	}
 
 	@Override
-	public List<BoardVO> list_board_mypage(Long user_id) throws Exception {
+	public List<BoardlistVO> list_board_mypage(Long user_id) throws Exception {
 	
 		return sqlSession.selectList("MypageMapper.list_board_mypage",user_id);
 	}

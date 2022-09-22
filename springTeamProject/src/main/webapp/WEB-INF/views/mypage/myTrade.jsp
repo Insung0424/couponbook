@@ -111,7 +111,7 @@
                            src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.product_id}" /></a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_name}"/></a></td>
-								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_price}"/></a></td>
+								<td><a href='/category/detail?product_id=${trade.product_id }'><span style="text-decoration:line-through;"><c:out value="${trade.pd_price0}" /></span>원&rarr;<span><c:out value="${trade.pd_price}" /></span>원</a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_discount}"/>%</a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:set var="pd_status" value="${trade.pd_status }"/>
 								<c:if test="${pd_status eq 1}">
@@ -120,7 +120,7 @@
 								<c:if test="${pd_status eq 2}">
 								거래완료
 								</c:if>
-								</a><td><c:out value="${trade.trade_time}"/></td>
+								</a></td><td><c:out value="${trade.trade_time}"/></td>
 							</tr>
 						</c:forEach>	
 										</tbody>
