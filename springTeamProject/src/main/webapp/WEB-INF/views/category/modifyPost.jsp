@@ -121,7 +121,7 @@
 </svg>
 									</a>
 										<ul class="dropdown-menu dropdown-user">
-											<li><a class="dropdown-item" href="#"><svg
+											<li><a class="dropdown-item" href="/mypage/myinfo"><svg
 														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 														fill="currentColor" class="bi bi-person-fill"
 														viewBox="0 0 16 16">
@@ -129,7 +129,7 @@
 															d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
 </svg>마이페이지</a></li>
 
-											<li><a class="dropdown-item" href="main.jsp"><svg
+											<li><a class="dropdown-item" href="/"><svg
 														xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 														fill="currentColor" class="bi bi-box-arrow-right"
 														viewBox="0 0 16 16">
@@ -157,7 +157,7 @@
 					<div class="container" style="margin-top: 30px;">
 						<div class="row">
 							<div class="col">
-								<h2 style="margin-bottom: 30px;">상품 등록</h2>
+								<h2 style="margin-bottom: 30px;">상품 등록정보 수정</h2>
 							</div>
 							<div class="col" style="margin-top: 10px;">
 								<button type="submit" class="btn btn-primary"
@@ -176,7 +176,7 @@
 								<p>
 									<b>글 제목</b>
 								</p>
-								<input type="text" name="pd_name" placeholder="제목을 입력하세요"
+								<input type="text" name="pd_name" placeholder="제목을 입력하세요"  value="${detail.pd_name }"
 									style="width: 500px; margin-bottom: 10px;">
 
 							</div>

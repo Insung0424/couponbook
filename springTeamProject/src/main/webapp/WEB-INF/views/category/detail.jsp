@@ -645,7 +645,6 @@ body {
          const user_id_1= ${mem.user_id};
          const user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
          
-         
          $.ajax({
             type : "get",
             url:"/replies/get/comment",

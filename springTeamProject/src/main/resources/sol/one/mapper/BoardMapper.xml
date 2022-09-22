@@ -34,7 +34,7 @@
 	
 	<update id="modifyBoard" parameterType="sol.one.VO.BoardVO">
 		update pj_board 
-		set board_title = #{board_title}, board_content = #{board_content}, pd_discount = #{pd_discount}, pd_date = #{pd_date}, board_write_time = to_date(current_date,'yyyy-MM-dd')
+		set board_title = #{board_title}, board_content = #{board_content}, pd_discount = #{pd_discount}, pd_date =to_date(#{pd_date},'yyyy-MM-dd'), board_write_time = current_date
 		where product_id = #{product_id} and user_id = #{user_id}
 	</update>
 	

@@ -118,7 +118,7 @@
                        <input type="hidden" id="session_password" name="session_password" value="${mem.password }">
                      
                        <input type="password" id = "password" name="password" class="form-control form-control-inline text-center" placeholder="비밀번호" />
-
+						<input hidden="hidden"/>
                          <button type="button" id="deletee" name="delete" class="btn btn-primary">확인</button><a href="/" class="btn btn-default">취소</a>
                        </form>
 								</div>
