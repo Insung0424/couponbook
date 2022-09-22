@@ -57,4 +57,7 @@
     
     <mvc:resources mapping="/resources/**" location="/resources/" />
 	
+	<mvc:resources mapping="/sitemap3333.xml" location="WEB-INF/views/category/sitemap3333.xml" order="0"/> 
+	
+	
 </beans:beans>
