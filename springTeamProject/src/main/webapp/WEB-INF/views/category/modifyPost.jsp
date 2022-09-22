@@ -176,7 +176,7 @@
 								<p>
 									<b>글 제목</b>
 								</p>
-								<input type="text" name="pd_name" placeholder="제목을 입력하세요"
+								<input type="text" name="pd_name" placeholder="제목을 입력하세요" value="${detail.pd_name }"
 									style="width: 500px; margin-bottom: 10px;">
 
 							</div>
