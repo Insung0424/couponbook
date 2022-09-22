@@ -10,7 +10,7 @@
 			resultType="int">
 			select seq_product_id.currval from dual
 		</selectKey>
-		insert into pj_board(board_no, product_id, user_id, board_title, board_content, board_write_time, pd_discount, pd_date,board_status)
+		insert into pj_board(board_no, product_id, user_id, board_title, board_content, board_write_time, pd_discount, pd_date, board_status)
 		values (seq_board_no.nextval, #{product_id}, #{user_id}, #{board_title}, #{board_content}, current_date, #{pd_discount}, to_date(#{pd_date},'yyyy-MM-dd'),1)
 	</insert>
 	
@@ -34,7 +34,7 @@
 	
 	<update id="modifyBoard">
 		update pj_board 
-		set board_title = #{board_title}, board_content = #{board_content}, pd_discount = #{pd_discount}, pd_date = #{pd_date},board_write_time=current_date
+		set board_title = #{board_title}, board_content = #{board_content}, pd_discount = #{pd_discount}, pd_date = #{pd_date}, board_write_time = to_date(current_date,'yyyy-MM-dd')
 		where product_id = #{product_id} and user_id = #{user_id}
 	</update>
 	

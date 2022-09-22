@@ -231,11 +231,12 @@ public class WriteController {
 		board.setBoard_title(pd_name);
 		board.setBoard_content(pd_desc);
 		board.setPd_discount(pd_discount);
-		board.setBoard_no(board_no);
 		board.setPd_date(pd_date);
 		board.setProduct_id(product_id);
 		board.setUser_id(user_id);
+		System.out.println("=====================================================================================");
 		boardservice.modifyBoard(board);
+		System.out.println("=====================================================================================");
 		return "redirect:/";
 	}
 	@PostMapping("/deleteBoard")

@@ -107,7 +107,7 @@
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.product_id}" /></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_title}" /></a></td>
 														
-														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_content}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_content}" escapeXml="false"/></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_write_time}" /></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_discount}" /></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_date}" /></a></td>

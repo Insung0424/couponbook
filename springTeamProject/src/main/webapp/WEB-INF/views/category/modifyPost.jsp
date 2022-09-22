@@ -243,7 +243,7 @@
 									<b>정가</b>
 								</p>
 								<input type="text" name="pd_price0" placeholder="가격을 입력해주세요"
-									style="margin-bottom: 10px;" value="${detail.pd_price}">
+									style="margin-bottom: 10px;" value="${detail.pd_price0}">
 								원
 							</div>
 							<div class="col">
@@ -276,6 +276,19 @@
 	</div>
 
 	<script>
+		function nanugi() {
+	        let price = $('input[name=pd_price]').val();
+	        let price0 = $('input[name=pd_price0]').val();
+	        let price1 = $('input[name=pd_discount]').val();
+	        console.log(price);
+	        console.log(price0);
+	        
+	        price1 = Math.round(eval(100-((price/price0)*100)));
+	        console.log(price1);
+	        
+	        $('input[name=pd_discount]').attr('value',price1);
+	     }
+	
 		function su(){
 			
 	         let pd_name = $('input[name=pd_name]').val();

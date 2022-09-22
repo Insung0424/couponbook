@@ -100,7 +100,7 @@
 											<tr>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.product_id}" /></a></td>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.nickname}"/></a></td>
-										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}"/></a></td>
+										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}" escapeXml="false"/></a></td>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_write_time}"/></a></td>
 											</tr>
 										</c:forEach>	
