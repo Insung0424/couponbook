@@ -78,15 +78,23 @@
 		p.pd_price,p.pd_price0,p.pd_img,
 		p.pd_discount,p.pd_date order by t.trade_time desc
 	</select>
-	<select resultType="sol.one.VO.BoardVO" id="list_board_mypage">
-		select * 
+	<select resultType="sol.one.VO.BoardlistVO" id="list_board_mypage">
+		select DISTINCT b.product_id,b.user_id,
+		b.board_title,b.board_write_time,p.product_id,
+		p.pd_discount,p.pd_date,p.category_id,p.pd_name,
+		p.pd_price,p.pd_price0,p.pd_status,p.pd_img 
 		from 
-			pj_Board
-		where
-			user_id=#{user_id}
-		and board_status=1
-		order by 
-			board_write_time desc
+		pj_board b,pj_product p 
+		where 
+		b.product_id=p.product_id 
+		and
+		user_id=#{user_id} and board_status=1 
+		group by 
+		b.product_id,b.user_id,b.board_title,
+		b.board_write_time,p.product_id,
+		p.pd_discount,p.pd_date,p.category_id,p.pd_name,
+		p.pd_price,p.pd_price0,p.pd_status,p.pd_img
+		order by board_write_time desc
 	</select>
 	<select resultType="sol.one.VO.CommentVO" id="list_comment_mypage">
 		select * 

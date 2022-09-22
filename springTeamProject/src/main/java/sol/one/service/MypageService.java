@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import sol.one.VO.BoardVO;
+import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
 import sol.one.VO.LikeVO;
 import sol.one.VO.MemberVO;
@@ -37,7 +38,7 @@ public interface MypageService {
 	//���������� �� �ŷ����� ��ȸ�ϱ�
 	public List<tradelistVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception;
 	
-	public List<BoardVO> list_board_mypage(Long user_id) throws Exception;
+	public List<BoardlistVO> list_board_mypage(Long user_id) throws Exception;
 	
 	//���������� �� ��� ��ȸ�ϱ�
 	public List<CommentVO> list_comment_mypage(Long user_id)throws Exception;

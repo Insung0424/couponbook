@@ -3,6 +3,7 @@
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
@@ -91,26 +92,52 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>글번호</th>
-												<th>상품번호</th>
-												<th>글제목</th>
-												
-												<th>글내용</th>
-												<th>게시시간</th>
+												<th>상품이미지</th>
+												<th>상품이름</th>
+												<th>카테고리</th>
+												<th>상품가격</th>											
 												<th>할인율</th>
+												<th>게시시간</th>											
 												<th>유효기간</th>
+												<th>거래상태</th>
 											</tr>
 											<c:forEach items="${board}" var="board">
 												<tbody id="myTable">
-													<tr>
-														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_no}" /></a></td>
-														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.product_id}" /></a></td>
-														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_title}" /></a></td>
+													<tr>	<td><a href='/category/detail?product_id=${board.product_id }'><c:set var="img" value="${fn:split(board.pd_img, ',')[1]}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+							
+                                 <img style="width: 100%; height: 100%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_name}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"> <c:set var="category_id" value="${board.category_id }" />
+                                    <c:if test="${category_id eq 1}">
+                        편의점
+                        </c:if>
+                                    <c:if test="${category_id eq 2}">
+                        커피/음료
+                        </c:if>
+                                    <c:if test="${category_id eq 3}">
+                        외식
+                        </c:if>
+                                    <c:if test="${category_id eq 4}">
+                        상품권
+                        </c:if>
+                                    <c:if test="${category_id eq 5}">
+                        기타
+                        </c:if></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><span style="text-decoration:line-through;"><c:out value="${board.pd_price0}" /></span>원&rarr;<span><c:out value="${board.pd_price}" /></span>원</a></td>
 														
-														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_content}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_discount}" />%</a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.board_write_time}" /></a></td>
-														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_discount}" /></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_date}" /></a></td>
+														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:set var="pd_status" value="${board.pd_status }"/>
+								<c:if test="${pd_status eq 1}">
+								거래중
+								</c:if>
+								<c:if test="${pd_status eq 2}">
+								거래완료
+								</c:if>
+								</a></td>
 													</tr>
 												</tbody>
 											</c:forEach>

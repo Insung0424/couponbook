@@ -158,6 +158,7 @@
                                  <c:set var="price1" value="${list_all.pd_price0 }"></c:set>
                                  <c:set var="price2" value="${list_all.pd_price }"></c:set>
                                  <p class="card_adr"  style="text-decoration:line-through;">${price1 }원</p>
+                                 
                                  <p class="card_adr" style="">${price2 }원</p>
                                  <p class="card_adr" id="p_discount" style="color: red;font-size:2em; font-weight: bold; text-align: right;">${list_all.pd_discount }%</p>
                                 <!-- 원래 할인율 출력을 위해 짜려던 동적태그생성방식 깜빡하고 그냥 태그에 바로 값을 넣어서 오류가 생긴거였음 
