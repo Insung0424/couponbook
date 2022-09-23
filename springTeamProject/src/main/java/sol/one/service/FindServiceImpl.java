@@ -34,4 +34,14 @@ public class FindServiceImpl implements FindService {
 		return mapper.updateNewPassword(member);
 	}
 
+	@Override
+	public int checkIdnPhone(MemberVO member) {
+		return mapper.checkIdnPhone(member);
+	}
+	
+	@Override
+	public int updateNewPassword2(MemberVO member) {
+		return mapper.updateNewPassword2(member);
+	}
+
 }

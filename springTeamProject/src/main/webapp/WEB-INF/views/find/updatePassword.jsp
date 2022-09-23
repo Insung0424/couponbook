@@ -17,6 +17,7 @@
 		비밀번호 확인 : <input type="password" id="password-chk">
 		<input type="hidden" name="email" value="${mem.email}"/>
 		<input type="hidden" name="nickname" value="${mem.nickname}"/>
+		<input type="hidden" name="phone" value="${mem.phone}"/>
 		<button type="submit" class="btn btn-primary">확인</button>
 		<button type="reset" class="btn btn-primary">초기화</button>
 	</div>

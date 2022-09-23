@@ -18,8 +18,17 @@
 		where email = #{email} and nickname = #{nickname}
 	</select>
 	
+	<select id="checkIdnPhone" parameterType="sol.one.VO.MemberVO" resultType="int">
+		SELECT COUNT(*) FROM pj_user 
+		where email = #{email} and phone = #{phone}
+	</select>
+	
 	<update id="updateNewPassword">
 		update pj_user set password = #{password} where email = #{email} and nickname = #{nickname}
+	</update>
+	
+	<update id="updateNewPassword2">
+		update pj_user set password = #{password} where email = #{email} and phone = #{phone}
 	</update>
 	
 </mapper>
