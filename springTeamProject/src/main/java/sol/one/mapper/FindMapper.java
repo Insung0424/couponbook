@@ -10,6 +10,6 @@ public interface FindMapper {
 	
 	public int checkIdnNickname(MemberVO member);
 	
-	public int updateNewPassword(String password);
+	public int updateNewPassword(MemberVO member);
 	
 }

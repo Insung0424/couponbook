@@ -3,12 +3,12 @@
 
 <mapper namespace="sol.one.mapper.FindMapper">
 		
-	<select id="getIdnickname" resultType="sol.one.VO.MemberVO">
+	<select id="getIdnickname" resultType="String">
 		select email from pj_user 
 		where nickname = #{nickname} 
 	</select>
 	
-	<select id="getIdphone" resultType="sol.one.VO.MemberVO">
+	<select id="getIdphone" resultType="String">
 		select email from pj_user 
 		where phone = #{phone} 
 	</select>

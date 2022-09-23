@@ -10,7 +10,7 @@ import sol.one.mapper.FindMapper;
 @Service
 @Log4j
 @RequiredArgsConstructor
-public class FindImplService implements FindService {
+public class FindServiceImpl implements FindService {
 	
 	private final FindMapper mapper;
 
@@ -30,8 +30,8 @@ public class FindImplService implements FindService {
 	}
 
 	@Override
-	public int updateNewPassword(String password) {
-		return mapper.updateNewPassword(password);
+	public int updateNewPassword(MemberVO member) {
+		return mapper.updateNewPassword(member);
 	}
 
 }
