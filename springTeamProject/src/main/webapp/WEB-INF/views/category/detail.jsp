@@ -188,18 +188,20 @@ body {
                               value="${detail.company_name }" />
                         </span>
                      </h3>
-                     <div class="row">
+                     <div class="row" id = "row1">
                         <div class="col" style="padding: 0;">
                            <c:set var="user_id" value="${mem.user_id }" />
                            <c:if test="${not empty user_id}">
+                           <form method = "get" id = "frm">
                               <input type="hidden" id="product_id" name="product_id"
                                  value="${detail.product_id }">
                               <input type="hidden" id="user_id" name="user_id"
                                  value="${mem.user_id }">
                               <input type="hidden" id="pd_name" name="pd_name"
                                  value="${detail.pd_name }">
-                              <input type="button" value="찜하기" id="like"
-                                 style="width: 100%;" class="btn btn-primary">
+                              <input type="button" value="🤍" id="like"
+                                 style = "background-color: white; border: 1px solid black; float: left; margin-left: 15px; border-radius: 5px;">
+                                 </form>
                            </c:if>
                         </div>
                         <div class="col">
@@ -403,7 +405,7 @@ body {
                   
                   var like = data.like;
                   
-                  if(like == "nolike"){
+                 if(like == "nolike"){
                      
                     $.ajax({
                         type:'post',
@@ -415,15 +417,16 @@ body {
                               "pd_name" : pd_name
                        },
                        success : function(data){
-                          
+                    	   
                        },
                        error : function(){
                           alert("등록error");
                        }
                        
                     });  
-                    
+                    frm.like.value = "❤️";
                      alert("찜목록등록완료");
+                    
                   }
                   else{
                      
@@ -437,14 +440,13 @@ body {
                                  "pd_name" : pd_name
                           },
                           success : function(data){
-                             
                           },
                           error : function(){
                              alert("삭제error");
                           }
                           
                        }); 
-                     
+                     frm.like.value = "🤍";
                      alert("찜목록해제");
                   }
                },
@@ -455,6 +457,7 @@ body {
                }
                
             });
+            
             
          });
       

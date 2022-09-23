@@ -93,7 +93,7 @@ html {
 					id="passnickname" style="width: 300px; margin: 0 auto;"
 					placeholder="닉네임 입력"> <br>
 				<button class="btn btn-primary">확인</button>
-				<input type="button" value="돌아가기" id="back" class="btn btn-primary" />
+				<input type="button" value="돌아가기" id="back2" class="btn btn-primary" />
 			</form>
 		</div>
 	</div>
@@ -128,6 +128,9 @@ html {
 		});
 
 		$("#back").click(function() {
+			history.go(-1);
+		});
+		$("#back2").click(function() {
 			history.go(-1);
 		});
 
