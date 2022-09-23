@@ -51,7 +51,7 @@
                            class="btn w-100 btn-lg btn-outline-warning mt-3">회원가입</a>
                      </fieldset>
                   </form>
-
+				<a class="btn btn primary" href="/find/idnpassword">아이디  / 비밀번호 찾기</a>
                </div>
             </div>
          </div>
