@@ -61,8 +61,23 @@ public class FIndController {
 	
 	
 	@PostMapping("/checknicknamenemail")
-	public ModelAndView findIdp(ModelAndView mv, MemberVO vo) {
+	public ModelAndView findIdn(ModelAndView mv, MemberVO vo) {
 		if(service.checkIdnNickname(vo) == 0) {
+			mv.setViewName("/find/NOdata");
+			String result = "해당정보로 검색된 결과가 없습니다";
+			mv.addObject("result", result);
+			return mv;
+		}
+		
+		mv.setViewName("find/updatePassword");
+		mv.addObject("mem", vo);
+		return mv;
+	}
+	
+	@PostMapping("/checkphonenemail")
+	public ModelAndView findIdp(ModelAndView mv, MemberVO vo) {
+		
+		if(service.checkIdnPhone(vo) == 0) {
 			mv.setViewName("/find/NOdata");
 			String result = "해당정보로 검색된 결과가 없습니다";
 			mv.addObject("result", result);
@@ -83,13 +98,25 @@ public class FIndController {
 	@PostMapping("/changepw")
 	public String chagepassword(MemberVO vo) {
 		
-		if(service.updateNewPassword(vo) == 0) {
-			String fail = "<script> alert('비밀번호를 변경할 수 없습니다. 다시한번 확인해주세요.'); document.location.href='/'; </script>";
-			return fail;
+		if(vo.getNickname() != null && vo.getPhone() == null) {
+			if(service.updateNewPassword(vo) == 0) {
+				String fail = "<script> alert('비밀번호를 변경할 수 없습니다. 다시한번 확인해주세요.'); document.location.href='/'; </script>";
+				return fail;
+			}
+			
+			String pass = "<script> alert('비밀번호가 변경되었습니다.'); document.location.href='/'; </script>";
+			return pass;
+		}
+		else {
+			if(service.updateNewPassword2(vo) == 0) {
+				String fail = "<script> alert('비밀번호를 변경할 수 없습니다. 다시한번 확인해주세요.'); document.location.href='/'; </script>";
+				return fail;
+			}
+			
+			String pass = "<script> alert('비밀번호가 변경되었습니다.'); document.location.href='/'; </script>";
+			return pass;
 		}
 		
-		String pass = "<script> alert('비밀번호가 변경되었습니다.'); document.location.href='/'; </script>";
-		return pass;
 	}
 	
 }

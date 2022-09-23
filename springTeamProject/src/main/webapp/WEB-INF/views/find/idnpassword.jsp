@@ -38,14 +38,32 @@
 </div>
 
 <div id="findPasswordnChage" style="display: none;">
-	<p>회원가입시 입력한 이메일과 닉네임을 입력해주세요</p>
-	<form action="/find/checknicknamenemail" method="post" onsubmit="return checkPass()" id="form3">
-		이메일 : <input type="email" name="email" id="passemail"><br>
-		닉네임 : <input type="text" name="nickname" id="passnickname">
-		<br>
-		<button class="btn btn-primary">확인</button>
-		<input type="button" value="돌아가기" id="back" class="btn btn-primary"/>
-	</form>
+
+<input id="findemailNickname" type="button" value="이메일과 닉네임으로 아이디 찾기" />&nbsp;<input id="findemailPhone" type="button" value="이메일과 전화번호로 아이디 찾기" />
+
+	<div id="findpasswordnick">
+		<p>회원가입시 입력한 이메일과 닉네임을 입력해주세요</p>
+		<form action="/find/checknicknamenemail" method="post" onsubmit="return checkPass()" id="form3">
+			이메일 : <input type="email" name="email" id="passemail"><br>
+			닉네임 : <input type="text" name="nickname" id="passnickname">
+			<br>
+			<button class="btn btn-primary">확인</button>
+			<input type="button" value="돌아가기" id="back" class="btn btn-primary"/>
+		</form>
+	</div>
+	
+	<div id="findpasswordphone" style="display: none;">
+		<p>회원가입시 입력한 이메일과 전화번호를 입력해주세요</p>
+		<form action="/find/checkphonenemail" method="post" onsubmit="return checkPass2()" id="form4">
+			이메일 : <input type="email" name="email" id="passemail2"><br>
+			전화번호 : <input type="text" id="passphone">
+			<br>
+			<button class="btn btn-primary">확인</button>
+			<input type="button" value="돌아가기" id="back" class="btn btn-primary"/>
+		</form>
+	</div>
+	
+	
 </div>
 
 
@@ -76,6 +94,20 @@ $("#findIdNickname").click(function(){
 	if($("#findNickname").css("display") == "none"){
 		$("#findNickname").css("display","block");
 		$("#findphone").css("display","none");
+	}
+});
+
+$("#findemailNickname").click(function(){
+	if($("#findpasswordnick").css("display") == "none"){
+		$("#findpasswordnick").css("display","block");
+		$("#findpasswordphone").css("display","none");
+	}
+});
+
+$("#findemailPhone").click(function(){
+	if($("#findpasswordphone").css("display") == "none"){
+		$("#findpasswordphone").css("display","block");
+		$("#findpasswordnick").css("display","none");
 	}
 });
 
@@ -124,6 +156,35 @@ function checkPass(){
 		$('#passnickname').focus();
 		return false;
 	}
+};
+
+function checkPass2(){
+	if($('#passemail2').val() == ''){
+		alert('이메일을 입력해주세요');
+		$('#passemail2').focus();
+		return false;
+	}
+	
+	if($('#passphone').val() == ''){
+		alert('전화번호를 입력해주세요');
+		$('#passphone').focus();
+		return false;
+	}
+	
+	let p = $('#passphone').val();
+	let phone = Phone_format(p);
+	
+	console.log(p);
+	console.log(phone);
+	
+	let form = $("#form4");
+	
+	let input = document.createElement('input');
+	input.type = 'hidden';
+	input.name = 'phone';
+	input.value = phone;
+	form.append(input);
+	
 };
 
 function Phone_format(number){

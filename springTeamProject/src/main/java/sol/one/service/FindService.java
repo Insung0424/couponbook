@@ -11,7 +11,11 @@ public interface FindService {
 	public String getIdphone(String phone);
 	
 	public int checkIdnNickname(MemberVO member);
+
+	public int checkIdnPhone(MemberVO member);
 	
 	public int updateNewPassword(MemberVO member);
+
+	public int updateNewPassword2(MemberVO member);
 	
 }
