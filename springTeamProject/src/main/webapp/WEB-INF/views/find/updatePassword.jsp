@@ -25,15 +25,16 @@ html {
 <body>
 	<div id="box">
 		<h3 style="font-weight: bold;">비밀번호 입력</h3>
+		<p>비밀번호가 초기화됬습니다</p>
 		<p>새로운 비밀번호를 입력해주세요</p>
 		<form action="/find/changepw" method="post" id=form
 			onsubmit="return pwCheck()">
 			<div>
-				새로운 비밀번호 : <input class="form-control" type="password" id="password"
-					name="password"
+				새로운 비밀번호  <input class="form-control" type="password" id="password"
+					name="password" placeholder="새로운 비밀번호를 입력해주세요"
 					style="width: 300px; margin: 0 auto; margin-bottom: 5px; margin-top: 5px;">
-				비밀번호 확인 : <input class="form-control" type="password"
-					id="password-chk"
+				비밀번호 확인  <input class="form-control" type="password"
+					id="password-chk" placeholder="비밀번호 확인"
 					style="width: 300px; margin: 0 auto; margin-top: 5px;"> <input
 					type="hidden" name="email" value="${mem.email}" /> <input
 					type="hidden" name="nickname" value="${mem.nickname}" /> <input
@@ -74,10 +75,11 @@ html {
 				alert("입력한 비밀번호가 같지 않습니다");
 				pwChkisTrue = false;
 				return false;
-			} else {
-				pwChkisTrue = true;
-				return true;
 			}
+			
+			pwChkisTrue = true;
+			return true;
+			
 		}
 	</script>
 </body>

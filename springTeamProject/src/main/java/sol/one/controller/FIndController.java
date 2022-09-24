@@ -98,7 +98,7 @@ public class FIndController {
 	@PostMapping("/changepw")
 	public String chagepassword(MemberVO vo) {
 		
-		if(vo.getNickname() != null && vo.getPhone() == null) {
+		if(vo.getNickname() != null && vo.getPhone() == "") {
 			if(service.updateNewPassword(vo) == 0) {
 				String fail = "<script> alert('비밀번호를 변경할 수 없습니다. 다시한번 확인해주세요.'); document.location.href='/'; </script>";
 				return fail;
@@ -107,7 +107,7 @@ public class FIndController {
 			String pass = "<script> alert('비밀번호가 변경되었습니다.'); document.location.href='/'; </script>";
 			return pass;
 		}
-		else {
+		else if(vo.getPhone() != null && vo.getNickname() == ""){
 			if(service.updateNewPassword2(vo) == 0) {
 				String fail = "<script> alert('비밀번호를 변경할 수 없습니다. 다시한번 확인해주세요.'); document.location.href='/'; </script>";
 				return fail;
@@ -115,6 +115,10 @@ public class FIndController {
 			
 			String pass = "<script> alert('비밀번호가 변경되었습니다.'); document.location.href='/'; </script>";
 			return pass;
+		}
+		else {
+			String fail = "<script> alert('비밀번호를 변경할 수 없습니다. 다시한번 확인해주세요.'); document.location.href='/'; </script>";
+			return fail;
 		}
 		
 	}

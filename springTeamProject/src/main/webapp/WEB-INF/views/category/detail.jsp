@@ -374,6 +374,7 @@ body {
                $('#top_btn').fadeOut();
             }
          });
+         
          $('#top_btn').click(function() {
             $('html, body').animate({
                scrollTop : 0
@@ -385,8 +386,36 @@ body {
             alert("판매자가 이미 판매완료한 상품입니다");
          }
          
+         checkLike();
+         
       });
       
+      function checkLike(){
+        	 let product_id = $("#product_id").val();
+             let user_id = ${mem.user_id};
+             let pd_name = $("#pd_name").val();
+             
+             $.ajax({
+                type:'get',
+                url : '/product/getMyLike',
+                data : {
+                       "product_id" : product_id,
+                       "user_id" : user_id
+                },
+                contentType : 'application/json',
+                success : function(data){
+                   
+                  var like = data.like;
+                   
+                  if(like == "nolike"){
+                	  frm.like.value = "🤍";
+                  }else{
+                	  frm.like.value = "❤️";
+                  }
+         		} //success
+             }) //ajax
+      };
+             
       $("#like").click(function (){
             let product_id = $("#product_id").val();
             let user_id = ${mem.user_id};
@@ -659,7 +688,6 @@ body {
               },
               contentType: 'application/json',
               success:function(data){
-                  console.log('통신성공');
                   var comment_html = "<div id='comment_box'>";
                   var li = data.list;
                   var count = data.count;  
@@ -735,14 +763,12 @@ body {
          const comment_no = $(this).data("id");
          console.log(comment_no);
          alert('댓글을 삭제하시겠습니까?');
-         console.log('댓글삭제');
                  $.ajax({
                      type:'delete',
                      url:'<c:url value="/replies/delete/"/>'+comment_no,
                      data:JSON.stringify({"comment_no":comment_no}),
                      contentType: 'application/json',
                      success:function(data){
-                        console.log('통신성공'+data);
                         let user_id = ${mem.user_id};
                        let seller = ${detail.user_id};
                        
@@ -772,7 +798,6 @@ body {
          
          $("#modal_modify_btn").click(function(){
             const modal_com_content = CKEDITOR.instances.editor2.getData();
-            console.log('댓글수정');
             if(modal_com_content == ''){
                alert("내용을 입력해주세요");
             }
@@ -787,7 +812,6 @@ body {
                         ),
                         contentType: 'application/json',
                         success:function(data){
-                           console.log('통신성공'+data);
                           $('.modal_com_content').val('');
                              $("#modal").fadeOut();
                                  let user_id = ${mem.user_id};
@@ -846,7 +870,6 @@ body {
                         contentType: 'application/json',
                         success:function(data){
                            if(data == "insert"){
-                           console.log('통신성공'+data);
                            $('.modal_com_content').val('');
                              $("#modal").fadeOut();
                                let user_id = ${mem.user_id};
@@ -878,10 +901,6 @@ body {
          alert(message);
          location.href="/category/all";
       }
-      
-
-
-
    </script>
 
       <script
