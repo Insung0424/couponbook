@@ -53,7 +53,7 @@
             
             <!-- disabled -->
             <div class="col-3 pt-3 mb-3">
-              <input type="button" class="btn btn-outline-warning mt-3" onclick="mailChk()" value="메일중복확인"  >
+              <input type="button" class="btn btn-outline-primary mt-3" onclick="mailChk()" value="메일중복확인"  >
             </div>
             
             <script type="text/javascript">
@@ -125,7 +125,7 @@
 			  <input type="text" class="form-control" name="zip_no" id="sample6_postcode" placeholder="우편번호" readonly>
             </div>
             <div class="col-6 mt-4 pt-2">
-				<input type="button" class="btn btn-outline-warning" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+				<input type="button" class="btn btn-outline-primary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
             </div>
             <div class="col-12 ">
 				<input type="text" class="form-control" name="addr" id="sample6_address" readonly  placeholder="주소"><br>
@@ -193,7 +193,7 @@
 
 			<hr class="my-4">
 
-          <button class="w-100 btn btn-warning btn-lg" type="submit">회원등록</button>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">회원등록</button>
         </form>
       </div>
     </div>
