@@ -28,28 +28,28 @@ public class CommentMapperTests {
     	log.info(comment_no_level);
     }
     
-    @Test
-    public void testreply() {
-    	CommentVO vo = new CommentVO();
-    	vo.setProduct_id(1);
-    	vo.setUser_id(2);
-    	vo.setComment_content("작성자 2의 text4");
-    	log.info(vo);
-    	mapper.insert_co(vo);
-    }
-    
-    @Test
-    public void testreply_tab() {
-    	CommentVO vo = new CommentVO();
-    	vo.setProduct_id(1);
-    	vo.setUser_id(2);
-    	vo.setComment_content("text1 - 작성자2의 답글");
-    	vo.setComment_no_level(156);
-    	vo.setComment_no(156);
-    	log.info(vo);
-    	mapper.tabGroupNoUp(vo);
-    	mapper.insert_co_tab(vo);
-    }
+//    @Test
+//    public void testreply() {
+//    	CommentVO vo = new CommentVO();
+//    	vo.setProduct_id(1);
+//    	vo.setUser_id(2);
+//    	vo.setComment_content("작성자 2의 text4");
+//    	log.info(vo);
+//    	mapper.insert_co(vo);
+//    }
+//    
+//    @Test
+//    public void testreply_tab() {
+//    	CommentVO vo = new CommentVO();
+//    	vo.setProduct_id(1);
+//    	vo.setUser_id(2);
+//    	vo.setComment_content("text1 - 작성자2의 답글");
+//    	vo.setComment_no_level(156);
+//    	vo.setComment_no(156);
+//    	log.info(vo);
+//    	mapper.tabGroupNoUp(vo);
+//    	mapper.insert_co_tab(vo);
+//    }
     
 //    @Test
 //    public void testRead() {

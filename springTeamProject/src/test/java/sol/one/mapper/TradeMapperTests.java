@@ -26,15 +26,15 @@ public class TradeMapperTests {
         log.info(mapper);
     }
     
-    @Test
-    public void put() {
-    	T_tradeVO vo = new T_tradeVO();
-    	vo.setBuyer_user_id(42);
-    	vo.setSell_user_id(81);
-    	vo.setPd_status(2);
-    	log.info(vo);
-    	log.info(service.insertTradeLog(vo));
-    }
+//    @Test
+//    public void put() {
+//    	T_tradeVO vo = new T_tradeVO();
+//    	vo.setBuyer_user_id(42);
+//    	vo.setSell_user_id(81);
+//    	vo.setPd_status(2);
+//    	log.info(vo);
+//    	log.info(service.insertTradeLog(vo));
+//    }
     
     @Test
     public void get1() {

@@ -11,7 +11,7 @@ public class CommentlistVO {
 
 	private int product_id;
 	
-	private int user_id;
+	private Long user_id;
 	
 	String pd_name;
 	

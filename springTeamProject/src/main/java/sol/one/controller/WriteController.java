@@ -54,7 +54,7 @@ public class WriteController {
 	//등록버튼을 눌렀을때 
 	@PostMapping("/product_add")
 	public String add(String pd_name,String pd_img,String pd_desc,String company_name,String pd_price,
-			int category_id,int location_id,int pd_discount,String pd_date,int user_id,String pd_price0) {
+			int category_id,int location_id,int pd_discount,String pd_date,Long user_id,String pd_price0) {
 		ProductVO vo = new ProductVO();
 		vo.setPd_desc(pd_desc);
 		vo.setPd_img(pd_img);
@@ -224,7 +224,7 @@ public class WriteController {
 	}
 	@PostMapping("/modify")
 	public String modify(ProductVO product,String pd_name,String pd_desc,String pd_date,
-			int pd_discount,int product_id,int user_id,int board_no,HttpSession session)throws Exception{
+			int pd_discount,int product_id,Long user_id,int board_no,HttpSession session)throws Exception{
 
 		productservice.modifyProduct(product);
 		BoardVO board=new BoardVO();

@@ -126,8 +126,8 @@ body {
                <div class=row style="margin-bottom: 50px;">
                   <div class="col" style="">
 
-                     <c:set var="img" value="${fn:split(detail.pd_img, ',')[1]}"></c:set>
-										<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+                     <c:set var="img" value="${fn:split(detail.pd_img, ',')[0]}"></c:set>
+					<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
                      <div
                         style="width: 300px; height: 300px; background-color: gray; display: flex; justify-content: center;">
                         <img style="width: 100%; height: 100%;"

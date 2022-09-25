@@ -9,7 +9,7 @@ public class BoardlistVO {
 	
 	private int product_id;
 	
-	private int user_id;
+	private Long user_id;
 	
 	private Date board_write_time;
 	
