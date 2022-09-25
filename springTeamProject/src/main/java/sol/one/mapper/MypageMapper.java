@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import sol.one.VO.BoardVO;
 import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
+import sol.one.VO.CommentlistVO;
 import sol.one.VO.LikeVO;
 import sol.one.VO.LikelistVO;
 import sol.one.VO.MemberVO;
@@ -33,7 +34,7 @@ public interface MypageMapper {
 
 	public List<BoardlistVO> list_board_mypage(Long user_id) throws Exception;
 
-	public List<CommentVO> list_comment_mypage(Long user_id) throws Exception;
+	public List<CommentlistVO> list_comment_mypage(Long user_id) throws Exception;
 
 	public List<ReportVO> list_report_mypage(Long user_id) throws Exception;
 

@@ -132,7 +132,7 @@
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_date}" /></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:set var="pd_status" value="${board.pd_status }"/>
 								<c:if test="${pd_status eq 1}">
-								거래중
+								판매중
 								</c:if>
 								<c:if test="${pd_status eq 2}">
 								거래완료
