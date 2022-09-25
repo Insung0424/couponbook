@@ -19,14 +19,13 @@ html {
 #find {
 	text-align: center;
 	margin: 0 auto;
-	margin-top: 10%;
+	margin-top: 30%;
 }
 
 #findIdnNickPhone, #findPasswordnChage {
 	height: 100%;
 	margin: 0 auto;
 	text-align: center;
-	margin-top: 30%;
 }
 
 .panel-title {
@@ -38,18 +37,19 @@ html {
 
 	<div class="container" style="height: 100%">
 
-		<div id="find"></div>
+		<div id="find">
+			<input class="btn btn-link" id="findId" type="button" value="아이디 찾기" />
+				&nbsp; 
+			<input class="btn btn-link" id="findPassword" type="button" value="비밀번호 찾기" />
+		</div>
 
 		<div id="findIdnNickPhone">
 
 
 			<div class="form-group">
-				<input class="btn btn-link" id="findId" type="button" value="아이디 찾기" />
-				&nbsp; <input class="btn btn-link" id="findPassword" type="button"
-					value="비밀번호 찾기" /> <input class="btn btn-link" id="findIdNickname"
-					type="button" value="닉네임으로 아이디 찾기" /> &nbsp; <input
-					class="btn btn-link" id="findIdPhone" type="button"
-					value="전화번호로 아이디 찾기" />
+				<input class="btn btn-link" id="findIdNickname" type="button" value="닉네임으로 아이디 찾기" /> 
+				&nbsp;
+				<input class="btn btn-link" id="findIdPhone" type="button" value="전화번호로 아이디 찾기" />
 			</div>
 
 			<div class="panel-heading">
