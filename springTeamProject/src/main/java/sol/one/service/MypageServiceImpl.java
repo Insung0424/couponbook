@@ -18,6 +18,7 @@ import sol.one.VO.BoardVO;
 import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
 import sol.one.VO.LikeVO;
+import sol.one.VO.LikelistVO;
 import sol.one.VO.MemberVO;
 import sol.one.VO.ReportVO;
 import sol.one.VO.T_tradeVO;
@@ -64,7 +65,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<LikeVO> list_like_mypage(Long user_id) throws Exception {
+	public List<LikelistVO> list_like_mypage(Long user_id) throws Exception {
 		log.info("list_like_mypage");
 		return mapper.list_like_mypage(user_id);
 	}

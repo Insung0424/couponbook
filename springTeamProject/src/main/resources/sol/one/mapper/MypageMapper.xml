@@ -58,14 +58,16 @@
 	</insert>
 
 	<!-- 마이페이지 내 관심상품 조회 -->
-	<select resultType="sol.one.VO.LikeVO" id="list_like_mypage">
-		select * 
-		from 
-			pj_Like
-		where 
-			user_id=#{user_id}
-		order by 
-			like_time desc
+	<select resultType="sol.one.VO.LikelistVO" id="list_like_mypage">
+	select DISTINCT l.product_id,l.user_id,
+	l.like_time,l.pd_name,p.pd_img,p.pd_price,p.pd_discount
+	from pj_like l,pj_product p 
+	where l.product_id=p.product_id and 
+	l.user_id=#{user_id}
+	group by
+	l.product_id,l.user_id,
+	l.like_time,l.pd_name,p.pd_img,p.pd_price,p.pd_discount
+	order by l.like_time desc
 	</select>
 		<!--마이페이지 내 거래내역 로그  -->
 	<select resultType="sol.one.VO.tradelistVO" id="list_trade_mypage">

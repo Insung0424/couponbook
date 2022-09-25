@@ -3,6 +3,7 @@
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
@@ -80,16 +81,26 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
+												<th>상품이미지</th>
 												<th>상품 이름(클릭시 페이지 이동)</th>											
+												<th>상품 가격</th>											
+												<th>할인율</th>											
 												<th>관심상품 등록날짜</th>		
 											</tr>
 										</thead>
 										<tbody id="myTable">
 											<c:forEach items="${like}" var = "like">					
-							<tr>								
+							<tr>						
+							<td><a href='/category/detail?product_id=${like.product_id }'><c:set var="img" value="${fn:split(like.pd_img, ',')[1]}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+							
+                                 <img style="width: 42%; height: 42%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>		
 								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_name}"/></a>
 								</td>
-								<td><c:out value="${like.like_time}"/></td>			
+								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_price}"/>원</a></td>			
+								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_discount}"/>%</a></td>			
+								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.like_time}"/></a></td>			
 							</tr>
 						</c:forEach>							
 											

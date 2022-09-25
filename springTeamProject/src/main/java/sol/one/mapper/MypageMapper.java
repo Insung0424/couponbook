@@ -8,6 +8,7 @@ import sol.one.VO.BoardVO;
 import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
 import sol.one.VO.LikeVO;
+import sol.one.VO.LikelistVO;
 import sol.one.VO.MemberVO;
 import sol.one.VO.ReportVO;
 import sol.one.VO.T_tradeVO;
@@ -26,7 +27,7 @@ public interface MypageMapper {
 	
 	public void go_report(ReportVO report)throws Exception;
 	
-	public List<LikeVO> list_like_mypage(Long user_id) throws Exception;
+	public List<LikelistVO> list_like_mypage(Long user_id) throws Exception;
 
 	public List<tradelistVO> list_trade_mypage(@Param("user_id")Long user_id) throws Exception;
 
