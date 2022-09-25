@@ -60,14 +60,11 @@
 	<!-- 마이페이지 내 관심상품 조회 -->
 	<select resultType="sol.one.VO.LikelistVO" id="list_like_mypage">
 	select DISTINCT l.product_id,l.user_id,
-	l.like_time,l.pd_name,p.pd_img,p.pd_price,p.pd_discount
+	l.like_time,l.pd_name,p.pd_img,p.pd_price,p.pd_discount,p.pd_status
 	from pj_like l,pj_product p 
 	where l.product_id=p.product_id and 
 	l.user_id=#{user_id}
-	group by
-	l.product_id,l.user_id,
-	l.like_time,l.pd_name,p.pd_img,p.pd_price,p.pd_discount
-	order by l.like_time desc
+	group by l.product_id,l.user_id,l.like_time,l.pd_name,p.pd_img,p.pd_price,p.pd_discount,p.pd_status order by l.like_time desc
 	</select>
 		<!--마이페이지 내 거래내역 로그  -->
 	<select resultType="sol.one.VO.tradelistVO" id="list_trade_mypage">
@@ -98,16 +95,17 @@
 		p.pd_price,p.pd_price0,p.pd_status,p.pd_img
 		order by board_write_time desc
 	</select>
-	<select resultType="sol.one.VO.CommentVO" id="list_comment_mypage">
-		select * 
-		from 
-			pj_Comment c,pj_user u
-		where
-			c.user_id=u.user_id
-		and
-			c.user_id=#{user_id}
-		order by
-			c.comment_write_time desc
+	<select resultType="sol.one.VO.CommentlistVO" id="list_comment_mypage">
+		select DISTINCT p.pd_name,p.pd_img,u.user_id,
+		p.product_id,c.comment_content,c.comment_write_time,
+		c.comment_no_level,c.group_no,u.nickname 
+		from pj_product p,pj_comment c,pj_user u 
+		where c.user_id=u.user_id 
+		and c.product_id=p.product_id 
+		and c.user_id=#{user_id} 
+		group by p.pd_name,p.pd_img,u.user_id,
+		p.product_id,c.comment_content,c.comment_write_time,
+		c.comment_no_level,c.group_no,u.nickname order by c.comment_write_time desc
 	</select>
 	<select resultType="sol.one.VO.ReportVO" id="list_report_mypage">
 		select * 

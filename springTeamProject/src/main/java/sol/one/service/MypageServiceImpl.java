@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import sol.one.VO.BoardVO;
 import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
+import sol.one.VO.CommentlistVO;
 import sol.one.VO.LikeVO;
 import sol.one.VO.LikelistVO;
 import sol.one.VO.MemberVO;
@@ -83,7 +84,7 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public List<CommentVO> list_comment_mypage(Long user_id) throws Exception {
+	public List<CommentlistVO> list_comment_mypage(Long user_id) throws Exception {
 		log.info("list_comment_mypage");
 		return mapper.list_comment_mypage(user_id);
 	}

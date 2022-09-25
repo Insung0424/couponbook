@@ -86,6 +86,7 @@
 												<th>상품 가격</th>											
 												<th>할인율</th>											
 												<th>관심상품 등록날짜</th>		
+												<th>거래상태</th>		
 											</tr>
 										</thead>
 										<tbody id="myTable">
@@ -101,6 +102,14 @@
 								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_price}"/>원</a></td>			
 								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_discount}"/>%</a></td>			
 								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.like_time}"/></a></td>			
+								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:set var="pd_status" value="${like.pd_status }"/>
+								<c:if test="${pd_status eq 1}">
+								판매중
+								</c:if>
+								<c:if test="${pd_status eq 2}">
+								거래완료
+								</c:if>
+								</a></td>
 							</tr>
 						</c:forEach>							
 											

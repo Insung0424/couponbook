@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import sol.one.VO.BoardVO;
 import sol.one.VO.BoardlistVO;
 import sol.one.VO.CommentVO;
+import sol.one.VO.CommentlistVO;
 import sol.one.VO.LikeVO;
 import sol.one.VO.LikelistVO;
 import sol.one.VO.MemberVO;
@@ -42,7 +43,7 @@ public interface MypageService {
 	public List<BoardlistVO> list_board_mypage(Long user_id) throws Exception;
 	
 	//���������� �� ��� ��ȸ�ϱ�
-	public List<CommentVO> list_comment_mypage(Long user_id)throws Exception;
+	public List<CommentlistVO> list_comment_mypage(Long user_id)throws Exception;
 	
 	//���������� �� �Ű� ��ȸ�ϱ�
 	public List<ReportVO> list_report_mypage(Long user_id)throws Exception;

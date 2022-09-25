@@ -20,4 +20,6 @@ public class LikelistVO {
 	private String pd_price;
 	
 	private int pd_discount;
+	
+	private int pd_status;
 }

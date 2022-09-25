@@ -3,6 +3,7 @@
 	contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="en">
 
 <head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
@@ -89,8 +90,8 @@
 									<table class="table">
 										<thead class="thead-primary">
 											<tr>
-												<th>상품번호</th>
-												<th>유저닉네임</th>
+												<th>상품이미지</th>
+												<th>상품이름</th>												
 												<th>댓글내용</th>
 												<th>게시시간</th>	
 											</tr>
@@ -98,8 +99,12 @@
 										<tbody id="myTable">
 										<c:forEach items="${comment}" var = "comment">					
 											<tr>
-										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.product_id}" /></a></td>
-										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.nickname}"/></a></td>
+										<td><a href='/category/detail?product_id=${comment.product_id }'><c:set var="img" value="${fn:split(comment.pd_img, ',')[1]}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+							
+                                 <img style="width: 45%; height: 45%;"
+                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
+										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.pd_name}"/></a></td>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}" escapeXml="false" /></a></td>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_write_time}"/></a></td>
 											</tr>
