@@ -47,6 +47,45 @@
 
 	}
 </script>
+<script>		
+var TRange=null;
+
+function findString (str) {
+ if (parseInt(navigator.appVersion)<4) return;
+ var strFound;
+ if (window.find) {
+
+  // CODE FOR BROWSERS THAT SUPPORT window.find
+
+  strFound=self.find(str);
+  if (!strFound) {
+   strFound=self.find(str,0,1);
+   while (self.find(str,0,1)) continue;
+  }
+ }
+ else if (navigator.appName.indexOf("Microsoft")!=-1) {
+
+  // EXPLORER-SPECIFIC CODE
+
+  if (TRange!=null) {
+   TRange.collapse(false);
+   strFound=TRange.findText(str);
+   if (strFound) TRange.select();
+  }
+  if (TRange==null || strFound==0) {
+   TRange=self.document.body.createTextRange();
+   strFound=TRange.findText(str);
+   if (strFound) TRange.select();
+  }
+ }
+ else if (navigator.appName=="Opera") {
+  alert ("Opera 브라우저는 검색 기능을 지원하지 않습니다")
+  return;
+ }
+ if (!strFound) alert ("'"+str+"' : 현재 페이지 내에 없습니다")
+ return;
+}
+</script>
 
 
 <!-- Sidebar -->
@@ -111,11 +150,24 @@
 					formaction="/mypage/delete_info_mypageView"
 					style="border: none; background: transparent;" onclick="service()"></span>
 		</a></li>
+
+	
 	</form>
+	
 
-
-
-
+<p>
+<p style="border-left: 10px solid #688FF4; padding: 0.5em; border-bottom: 2px solid #688FF4; ">
+<span style="color: #000000;">
+페이지 내에서 찾기
+</span>
+</p>
+<table border=0 cellpadding=1 cellspacing=1><tr><td valign=top>
+<iframe id="srchform2" 
+ src="javascript:'<html><body style=margin:0px; ><form action=\'javascript:void();\' onSubmit=if(this.t1.value!=\'\')parent.findString(this.t1.value);return(false); ><input type=text id=t1 name=t1 size=20><input type=submit name=b1 value=검색></form></body></html>'" 
+ width=220 height=34 border=0 frameborder=0 scrolling=no>
+</iframe>
+</td><td valign=top width=99 style="padding-top:3px;"><g:plusone size="medium"></g:plusone></td>
+</tr></table>
 
 
 
