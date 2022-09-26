@@ -22,11 +22,11 @@ public class CommentMapperTests {
         log.info(mapper);
     }
     
-    @Test
-    public void getLevel() {
-    	int[] comment_no_level = mapper.getCommentNoLevel(1,2);
-    	log.info(comment_no_level);
-    }
+//    @Test
+//    public void getLevel() {
+//    	int[] comment_no_level = mapper.getCommentNoLevel(1,2);
+//    	log.info(comment_no_level);
+//    }
     
 //    @Test
 //    public void testreply() {

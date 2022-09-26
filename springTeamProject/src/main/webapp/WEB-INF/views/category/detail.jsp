@@ -199,7 +199,10 @@ body {
                                  value="${mem.user_id }">
                               <input type="hidden" id="pd_name" name="pd_name"
                                  value="${detail.pd_name }">
-                              <input type="button" value="🤍" id="like"
+                                 
+                                 <!-- heart -->
+                                 
+                              <input type="button" value="♡" id="like"
                                  style = "background-color: white; border: 1px solid black; float: left; margin-left: 15px; border-radius: 5px;">
                                  </form>
                            </c:if>
@@ -391,9 +394,9 @@ body {
       });
       
       function checkLike(){
-        	 let product_id = $("#product_id").val();
-             let user_id = ${mem.user_id};
-             let pd_name = $("#pd_name").val();
+        	 var product_id = $("#product_id").val();
+        	 var user_id = ${mem.user_id};
+        	 var pd_name = $("#pd_name").val();
              
              $.ajax({
                 type:'get',
@@ -408,7 +411,7 @@ body {
                   var like = data.like;
                    
                   if(like == "nolike"){
-                	  frm.like.value = "🤍";
+                	  frm.like.value = "♡";
                   }else{
                 	  frm.like.value = "❤️";
                   }
@@ -417,9 +420,9 @@ body {
       };
              
       $("#like").click(function (){
-            let product_id = $("#product_id").val();
-            let user_id = ${mem.user_id};
-            let pd_name = $("#pd_name").val();
+    	  var product_id = $("#product_id").val();
+    	  var user_id = ${mem.user_id};
+    	  var pd_name = $("#pd_name").val();
             
             $.ajax({
                type:'get',
@@ -454,7 +457,7 @@ body {
                        
                     });  
                     frm.like.value = "❤️";
-                     alert("찜목록등록완료");
+                     alert("관심상품등록완료");
                     
                   }
                   else{
@@ -475,8 +478,8 @@ body {
                           }
                           
                        }); 
-                     frm.like.value = "🤍";
-                     alert("찜목록해제");
+                     frm.like.value = "♡";
+                     alert("관심상품해제");
                   }
                },
                
@@ -504,11 +507,11 @@ body {
          //$("#modal_trade_content").load("buyerTradeEnd");
          // 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌
          
-         let product_id = $("#product_id").val();
-         let sell_user_id = $("#user_id").val();
-         let buyer_user_id = $("#mem_id").val();
-         const user_id = ${mem.user_id};
-         const seller = ${detail.user_id};
+         var product_id = $("#product_id").val();
+         var sell_user_id = $("#user_id").val();
+         var buyer_user_id = $("#mem_id").val();
+         var user_id = ${mem.user_id};
+         var seller = ${detail.user_id};
          
          if(seller == user_id){
             $.ajax({
@@ -584,10 +587,10 @@ body {
 
       $("#add_btn").click(function(){
          
-         const product_id = ${detail.product_id };
-         const user_id = ${mem.user_id};
-         const comment_content = CKEDITOR.instances.editor1.getData();
-         const seller = ${detail.user_id};
+    	  var product_id = ${detail.product_id };
+    	  var user_id = ${mem.user_id};
+    	  var comment_content = CKEDITOR.instances.editor1.getData();
+    	  var seller = ${detail.user_id};
          if(comment_content == ''){
             alert('내용을 입력하세요');
             return;
@@ -623,8 +626,8 @@ body {
       });
       
       function getAllList() {
-         const product_id= ${detail.product_id};
-         const user_id_1= ${detail.user_id};
+    	  var product_id= ${detail.product_id};
+    	  var user_id_1= ${detail.user_id};
          
          $.getJSON("/replies/get?product_id="+ product_id,
             function(data) {
@@ -673,9 +676,9 @@ body {
             
             
       function getList() {
-         const product_id= ${detail.product_id};
-         const user_id_1= ${mem.user_id};
-         const user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
+    	  var product_id= ${detail.product_id};
+    	  var user_id_1= ${mem.user_id};
+    	  var user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
          
          
          $.ajax({
@@ -748,8 +751,8 @@ body {
          })};
             
       $("#more_comment").click(function(){
-         let user_id = ${mem.user_id};
-         let seller = ${detail.user_id};
+    	  var user_id = ${mem.user_id};
+    	  var seller = ${detail.user_id};
          
          if(user_id  == seller){//판매자일 경우
             getAllList();
@@ -769,8 +772,8 @@ body {
                      data:JSON.stringify({"comment_no":comment_no}),
                      contentType: 'application/json',
                      success:function(data){
-                        let user_id = ${mem.user_id};
-                       let seller = ${detail.user_id};
+                    	 var user_id = ${mem.user_id};
+                    	 var seller = ${detail.user_id};
                        
                        if(user_id  == seller){
                           getAllList();
@@ -787,7 +790,7 @@ body {
       });
 
       $(document).on("click", "#update", function(){
-         const comment_no = $(this).data("id");
+    	  var comment_no = $(this).data("id");
          $("#modal").fadeIn();
          $("#modal_modify_cancel_btn").click(function(){
             $("#modal").fadeOut();
@@ -797,7 +800,7 @@ body {
          });
          
          $("#modal_modify_btn").click(function(){
-            const modal_com_content = CKEDITOR.instances.editor2.getData();
+        	 var modal_com_content = CKEDITOR.instances.editor2.getData();
             if(modal_com_content == ''){
                alert("내용을 입력해주세요");
             }
@@ -814,8 +817,8 @@ body {
                         success:function(data){
                           $('.modal_com_content').val('');
                              $("#modal").fadeOut();
-                                 let user_id = ${mem.user_id};
-                             let seller = ${detail.user_id};
+                             var user_id = ${mem.user_id};
+                             var seller = ${detail.user_id};
                              
                              if(user_id  == seller){
                                 getAllList();
@@ -837,7 +840,7 @@ body {
       });
 
       $(document).on("click", "#answer", function(){
-         const comment_no_level = $(this).data("id");
+    	  var comment_no_level = $(this).data("id");
          $("#modal").fadeIn();
          $("#modal_modify_cancel_btn").click(function(){
             $("#modal").fadeOut();
@@ -846,9 +849,9 @@ body {
             $("#modal").fadeOut();
          });
          $("#modal_modify_btn").click(function(){
-            const modal_com_content = CKEDITOR.instances.editor2.getData();
-            const product_id = ${detail.product_id};
-            const user_id = ${mem.user_id};
+        	 var modal_com_content = CKEDITOR.instances.editor2.getData();
+        	 var product_id = ${detail.product_id};
+        	 var user_id = ${mem.user_id};
             
             if(modal_com_content == ''){
                alert("내용을 입력해주세요");
@@ -872,8 +875,8 @@ body {
                            if(data == "insert"){
                            $('.modal_com_content').val('');
                              $("#modal").fadeOut();
-                               let user_id = ${mem.user_id};
-                             let seller = ${detail.user_id};
+                             var user_id = ${mem.user_id};
+                             var seller = ${detail.user_id};
                              
                              if(user_id  == seller){
                                 getAllList();

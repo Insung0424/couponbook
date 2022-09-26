@@ -53,4 +53,5 @@
 		set comment_content = #{comment_content}
 		where comment_no = #{comment_no}
 	</update>
+	
 </mapper>

@@ -7,9 +7,9 @@ import lombok.Data;
 @Data
 public class LikeVO {
 	
-	int product_id;
-	long user_id;
-	Date like_time;	
-	String pd_name;
+	private int product_id;
+	private Long user_id;
+	private Date like_time;	
+	private String pd_name;
 	
 }

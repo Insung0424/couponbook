@@ -36,19 +36,19 @@ public class TradeMapperTests {
 //    	log.info(service.insertTradeLog(vo));
 //    }
     
-    @Test
-    public void get1() {
-    	log.info(mapper.getMyAll(1));
-    }
-    
-    @Test
-    public void get2() {
-    	log.info(mapper.getMyBuyList(1));
-    }
-    
-    @Test
-    public void get3() {
-    	log.info(mapper.getMySellList(1));
-    }
+//    @Test
+//    public void get1() {
+//    	log.info(mapper.getMyAll(1));
+//    }
+//    
+//    @Test
+//    public void get2() {
+//    	log.info(mapper.getMyBuyList(1));
+//    }
+//    
+//    @Test
+//    public void get3() {
+//    	log.info(mapper.getMySellList(1));
+//    }
     
 }

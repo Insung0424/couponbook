@@ -9,7 +9,7 @@ public class LikelistVO {
 	
 	int product_id;
 	
-	long user_id;
+	Long user_id;
 	
 	Date like_time;	
 	

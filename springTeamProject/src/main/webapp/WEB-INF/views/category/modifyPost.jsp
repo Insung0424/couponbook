@@ -202,6 +202,19 @@
 		</div>
 
 		<script>
+		function nanugi() {
+	         let price = $('input[name=pd_price]').val();
+	         let price0 = $('input[name=pd_price0]').val();
+	         let price1 = $('input[name=nanu]').val();
+	         console.log(price);
+	         console.log(price0);
+	         
+	         price1 = Math.round(eval(100-((price/price0)*100)));
+	         console.log(price1);
+	         
+	         $('input[name=nanu]').attr('value',price1);
+	      }
+		
 		function su(){
 			
 	         let pd_name = $('input[name=pd_name]').val();

@@ -21,17 +21,17 @@ public class TradeLogServiceImpl implements TradeLogService {
 	}
 
 	@Override
-	public List<T_tradeVO> readMyAllList(int user_id) {
+	public List<T_tradeVO> readMyAllList(Long user_id) {
 		return mapper.getMyAll(user_id);
 	}
 
 	@Override
-	public List<T_tradeVO> readMySellList(int sell_user_id) {
+	public List<T_tradeVO> readMySellList(Long sell_user_id) {
 		return mapper.getMySellList(sell_user_id);
 	}
 
 	@Override
-	public List<T_tradeVO> readMyBuyList(int buyer_user_id) {
+	public List<T_tradeVO> readMyBuyList(Long buyer_user_id) {
 		return mapper.getMySellList(buyer_user_id);
 	}
 
@@ -46,17 +46,17 @@ public class TradeLogServiceImpl implements TradeLogService {
 	}
 
 	@Override
-	public T_tradeVO getsellmypdstatus(int product_id,int sell_user_id) {
+	public T_tradeVO getsellmypdstatus(int product_id,Long sell_user_id) {
 		return mapper.getSellPdstatus(product_id,sell_user_id);
 	}
 
 	@Override
-	public T_tradeVO getbuymypdstatus(int product_id, int sell_user_id, int buyer_user_id) {
+	public T_tradeVO getbuymypdstatus(int product_id, Long sell_user_id, Long buyer_user_id) {
 		return mapper.getBuyPdstatus(product_id, sell_user_id, buyer_user_id);
 	}
 
 	@Override
-	public LikeVO getLike(int product_id, int user_id) {
+	public LikeVO getLike(int product_id, Long user_id) {
 		return mapper.getMyLike(product_id, user_id);
 	}
 

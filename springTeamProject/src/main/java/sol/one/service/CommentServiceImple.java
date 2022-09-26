@@ -26,7 +26,7 @@ public class CommentServiceImple implements CommentService{
 	}
 
 	@Override
-	public List<Comment2VO> getComment(int product_id,int user_id_1,int user_id_2,int comment_no_level) {
+	public List<Comment2VO> getComment(int product_id,Long user_id_1,Long user_id_2,int comment_no_level) {
 		return mapper.read(product_id,user_id_1,user_id_2,comment_no_level);
 	}
 
@@ -61,7 +61,7 @@ public class CommentServiceImple implements CommentService{
 	}
 
 	@Override
-	public int[] getLevel(int product_id,int user_id) {
+	public int[] getLevel(int product_id,Long user_id) {
 		return mapper.getCommentNoLevel(product_id,user_id);
 	}
 
