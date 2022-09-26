@@ -54,23 +54,19 @@
 <!------------------------------------------------------------------------------------  -->
 
 <!-- Page Wrapper -->
-
 <nav
 	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-
 	<!-- Topbar Search -->	
 	<li class="nav-item dropdown no-arrow"><a
-		class="nav-link dropdown-toggle"  id="userDropdown"
+		  id="userDropdown"
 		role="button" data-toggle="dropdown" aria-haspopup="true"
-		aria-expanded="false"> <span
-			class="">타 사이트 시세 검색</span>
+		aria-expanded="false"><span>타 사이트 시세 검색</span>
 	</a> <!-- Dropdown - User Information -->
 		<div
 			class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 			aria-labelledby="userDropdown">
 			<a class="dropdown-item" >상품 이름을 입력해보세요</a> 
-			<a class="dropdown-item" >다른 사이트 시세를 검색해볼 수 있습니다</a>				
+			<a class="dropdown-item" >다른 사이트에 대한 구글 검색 결과를 볼 수 있습니다</a>				
 		</div></li>
 <script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
 </script>
