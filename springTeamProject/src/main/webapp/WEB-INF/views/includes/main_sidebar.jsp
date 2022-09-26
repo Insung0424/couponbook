@@ -82,7 +82,7 @@ function findString (str) {
   alert ("Opera 브라우저는 검색 기능을 지원하지 않습니다")
   return;
  }
- if (!strFound) alert ("'"+str+"' : 현재 페이지 내에 없습니다")
+ if (!strFound) alert ("'"+str+"' : 현재 페이지 내에 더 이상 없습니다")
  return;
 }
 </script>
@@ -151,20 +151,17 @@ function findString (str) {
 					style="border: none; background: transparent;" onclick="service()"></span>
 		</a></li>
 
-	
 	</form>
-	
-
-<p>
-<p style="border-left: 10px solid #688FF4; padding: 0.5em; border-bottom: 2px solid #688FF4; ">
-<span style="color: #000000;">
-페이지 내에서 찾기
-</span>
-</p>
+<hr class="sidebar-divider my-0">	
+<li class="nav-item"><a class="nav-link"
+			style="font-weight: bold;"> <i class="fas fa-search"></i> <span style="border: none; background: transparent; color: #000000;"> 현재 페이지 내 찾기 </span>
+		</a></li>
 <table border=0 cellpadding=1 cellspacing=1><tr><td valign=top>
 <iframe id="srchform2" 
- src="javascript:'<html><body style=margin:0px; ><form action=\'javascript:void();\' onSubmit=if(this.t1.value!=\'\')parent.findString(this.t1.value);return(false); ><input type=text id=t1 name=t1 size=20><input type=submit name=b1 value=검색></form></body></html>'" 
- width=220 height=34 border=0 frameborder=0 scrolling=no>
+ src="javascript:'<html><body style=margin:0px; ><form action=\'javascript:void();\' onSubmit=if(this.t1.value!=\'\')parent.findString(this.t1.value);return(false); >
+ <input type=text id=t1 name=t1 size=10>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10140;&nbsp;&nbsp;<input type=submit name=b1 value=검색></form></body></html>'" 
+ width=100 height=50 border=0 frameborder=0 scrolling=no>
 </iframe>
 </td><td valign=top width=99 style="padding-top:3px;"><g:plusone size="medium"></g:plusone></td>
 </tr></table>
