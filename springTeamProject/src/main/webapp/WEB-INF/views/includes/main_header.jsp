@@ -66,9 +66,10 @@
 			class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 			aria-labelledby="userDropdown">
 			<a class="dropdown-item" >시세 등 정보를 위해 상품 이름을 입력해보세요</a> 
-			<a class="dropdown-item" >다른 중고거래 업체들에 대한 구글 검색 결과를 볼 수 있습니다</a>				
+			<a class="dropdown-item" >다른 업체들에 대한 구글 검색 결과를 볼 수 있습니다</a>				
 		    <a class="dropdown-item" >	&#x25A3; 기프티스타</a> 
-		    <a class="dropdown-item" >	&#x25A3; 니콘내콘 등</a>		    
+		    <a class="dropdown-item" >	&#x25A3; 니콘내콘</a>
+		    <a class="dropdown-item" >	&#x25A3; 기프티쇼 등</a>		    
 		</div></li>
 <script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
 </script>
