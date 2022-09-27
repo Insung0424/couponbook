@@ -60,15 +60,15 @@
 	<li class="nav-item dropdown no-arrow"><a
 		  id="userDropdown"
 		role="button" data-toggle="dropdown" aria-haspopup="true"
-		aria-expanded="false"><span>다른 사이트 정보 검색</span>
+		aria-expanded="false"><span>다른 업체 정보 검색</span>
 	</a> <!-- Dropdown - User Information -->
 		<div
 			class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 			aria-labelledby="userDropdown">
 			<a class="dropdown-item" >시세 등 정보를 위해 상품 이름을 입력해보세요</a> 
-			<a class="dropdown-item" >아래 대표적 사이트들에 대한 구글 검색 결과를 볼 수 있습니다</a>				
+			<a class="dropdown-item" >다른 중고거래 업체들에 대한 구글 검색 결과를 볼 수 있습니다</a>				
 		    <a class="dropdown-item" >	&#x25A3; 기프티스타</a> 
-		    <a class="dropdown-item" >	&#x25A3; 니콘내콘</a>		    
+		    <a class="dropdown-item" >	&#x25A3; 니콘내콘 등</a>		    
 		</div></li>
 <script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
 </script>
