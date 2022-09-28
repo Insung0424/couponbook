@@ -88,7 +88,7 @@
 				</form>
 			</div></li>
 
-		<a href="/write" class="btn w-100 h-50 mt-3 btn-primary">상품등록</a>
+		<a href="/write" class="btn w-100 h-50 mt-3 btn-primary" style="color:white;">상품등록</a>
 				<div class="topbar-divider d-none d-sm-block"></div>
 		<!-- Nav Item - Alerts -->
 		<li class="nav-item dropdown no-arrow"><a
