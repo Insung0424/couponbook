@@ -305,7 +305,11 @@ body {
 						style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
 
 
-
+<div class="col" style="text-align: right; display: inline-block;">
+         <input type="button" id="modal_TradingEnd" class="btn btn-success"
+            style="display: inline-block;" value="거래완료하기" />
+         <button id="modal_btn_report" class="btn btn-danger">신고</button>
+      </div>
 
 						<%@include file="comment.jsp"%>
 					</div>
@@ -320,7 +324,6 @@ body {
 				<!-- <input type="button" id="modal_TradingEnd" class="btn btn-primary"
             style="display: block;" value="거래완료하기" />
          <button id="modal_btn_report" class="btn btn-primary">신고</button> -->
-
 
 
 				<!-- 신고 기능 모달 창 -->
@@ -504,10 +507,13 @@ body {
       $("#report_cancel").click(function(){
          $("#modal_report").fadeOut();
       });
+      
+      
+
 
       $("#modal_TradingEnd").click(function(){
          //버튼 숨기기,보이기
-         $("#modal_TradingEnd").toggle(); 
+         $("#modal_TradingEnd").toggle("hide"); 
          // 거래 완료 유형선택자 페이지 제공   
          //$("#modal_trade_content").load("buyerTradeEnd");
          // 한번 로드 후 취소누르면 hide로 내용을 숨김처리하므로 show로 보여줌

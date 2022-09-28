@@ -48,11 +48,7 @@
       </div>
 
 
-      <div class="col" style="text-align: right; display: inline-block;">
-         <input type="button" id="modal_TradingEnd" class="btn btn-success"
-            style="display: inline-block;" value="거래완료하기" />
-         <button id="modal_btn_report" class="btn btn-danger">신고</button>
-      </div>
+      
    </div>
 
 
