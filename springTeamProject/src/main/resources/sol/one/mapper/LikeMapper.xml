@@ -5,22 +5,40 @@
 
 
 	<insert id="insertL">
-		insert into pj_like (product_id, user_id, like_time, pd_name) 
-			values (#{product_id},#{user_id}, current_date, #{pd_name}) 
-	</insert>	
-	
-	
-	
+		insert into pj_like (product_id, user_id, like_time,
+		pd_name)
+		values (#{product_id},#{user_id}, current_date, #{pd_name})
+	</insert>
+
+
+
+
 	<delete id="deleteL">
-		delete from pj_like 
+		delete from pj_like
 		where product_id = #{product_id}
-		 and user_id = #{user_id}
+		and user_id = #{user_id}
 	</delete>
-	
+
+	<update id="updateL_add">
+		update pj_product set pd_like = pd_like +1 where
+		product_id =#{product_id}
+
+	</update>
+
+
+	<update id="updateL_min">
+		update pj_product set pd_like = pd_like -1 where
+		product_id =#{product_id}
+
+	</update>
+
+
 	<select id="count_like" resultType="int">
-	select count(*) from pj_like where user_id=#{user_id} and product_id=#{product_id}
+		select count(*) from pj_like
+		where user_id=#{user_id} and
+		product_id=#{product_id}
 	</select>
 
-	
-	
-	</mapper>
+
+
+</mapper>

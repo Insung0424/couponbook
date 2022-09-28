@@ -11,6 +11,10 @@ public interface LikeDAO {
 	 
 	    public void deleteL(LikeVO likeVO);
 	    
+	    public void updateL_add(int product_id); //장바구니 추가
+	    
+	    public void updateL_min(int product_id);
+	    
 	    public int count_like(LikeVO likeVO);
 	    
 	}

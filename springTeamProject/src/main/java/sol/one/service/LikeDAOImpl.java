@@ -1,7 +1,5 @@
 package sol.one.service;
 
-
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,44 +18,35 @@ import sol.one.service.LikeDAO;
 @Repository
 public class LikeDAOImpl implements LikeDAO {
 
-	
-	   @Inject
-	    SqlSession sqlSession;
-	
-	   
-	    @Override
-	    public void insertL(LikeVO likeVO) {
-	        sqlSession.insert("insertL",likeVO);
-	    }
-	   	    
-	    
+	@Inject
+	SqlSession sqlSession;
 
-		@Override
-		public void deleteL(LikeVO likeVO) {
-			sqlSession.delete("deleteL",likeVO);
-			
-		}
-
-
-
-		@Override
-		public int count_like(LikeVO likeVO) {
-	
-			return sqlSession.selectOne("LikeMapper.count_like",likeVO);
-		}      
-		
-		
-   	    
-	    
-	    
-	   
-
-	    	    
-	    
-	    
+	@Override
+	public void insertL(LikeVO likeVO) {
+		sqlSession.insert("insertL", likeVO);
 	}
-	
-	
-	
-	
 
+	@Override
+	public void deleteL(LikeVO likeVO) {
+		sqlSession.delete("deleteL", likeVO);
+
+	}
+
+	@Override
+	public void updateL_add(int product_id) {
+		sqlSession.update("updateL_add", product_id);
+	}
+
+	@Override
+	public void updateL_min(int product_id) {
+		sqlSession.update("updateL_min", product_id);
+
+	}
+
+	@Override
+	public int count_like(LikeVO likeVO) {
+
+		return sqlSession.selectOne("LikeMapper.count_like", likeVO);
+	}
+
+}

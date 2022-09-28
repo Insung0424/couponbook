@@ -26,7 +26,18 @@ public class LikeServiceImpl implements LikeService {
 	    public void deleteL(LikeVO likeVO) {
 	        likeDao.deleteL(likeVO);
 	    }
-
+	 
+	 @Override
+		public void updateL_add(int product_id) {
+			likeDao.updateL_add(product_id);
+		}
+		
+		
+		@Override
+		public void updateL_min(int product_id) {
+			likeDao.updateL_min(product_id);
+			
+		}
 
 	@Override
 	public int count_like(LikeVO likeVO) {
