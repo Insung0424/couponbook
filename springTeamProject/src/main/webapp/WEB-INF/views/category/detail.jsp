@@ -1,18 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-   pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:forEach items="${detail }" var="detail">
-   <!DOCTYPE html>
+	<!DOCTYPE html>
 
-   <html lang="ko">
+	<html lang="ko">
 <head>
-<link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+<link rel="shortcut icon"
+	href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+<link rel="icon" href='<c:url value="/resources/favicon.ico" />'
+	type="image/x-icon">
 
-<meta name="google-site-verification" content="W2SP-3NSepUh9GRqINVyqPzBUn54Jb_MQaqgDfllql4" />
+<meta name="google-site-verification"
+	content="W2SP-3NSepUh9GRqINVyqPzBUn54Jb_MQaqgDfllql4" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Main</title>
 
@@ -20,158 +23,164 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-   href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap"
+	rel="stylesheet">
 <link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-   rel="stylesheet">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <link
-   href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css"
-   rel="stylesheet" type="text/css">
+	href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
 <link
-   href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
 
 <!-- Custom styles for this template-->
 <link
-   href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css"
-   rel="stylesheet">
+	href="${pageContext.request.contextPath}/resources/css/sb-admin-2.min.css"
+	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/resources/home.css">
+	href="${pageContext.request.contextPath}/resources/home.css">
 <link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/resources/css/slide.css">
+	href="${pageContext.request.contextPath}/resources/css/slide.css">
 <link rel="stylesheet" type="text/css"
-   href="${pageContext.request.contextPath}/resources/map.css">
+	href="${pageContext.request.contextPath}/resources/map.css">
 
 <!-- 댓글,신고,거래완료,ckeditor를 위한 css,js -->
 <link rel="stylesheet"
-   href="${pageContext.request.contextPath}/resources/css/style.css">
+	href="${pageContext.request.contextPath}/resources/css/style.css">
 <link rel="stylesheet"
-   href="${pageContext.request.contextPath}/resources/report.css">
+	href="${pageContext.request.contextPath}/resources/report.css">
 <!-- 신고기능모달창을 위한 css 삭제하면 모달창이 아니라 페이지에 추가되는 방식으로 작동함 현재 경로를 잡지 못하고 있음 -->
 <script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 <style type="text/css">
 body {
-   font-family: 'Nanum Gothic', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 #com_writer {
-   text-align: left;
-   font-weight: bolder;
+	text-align: left;
+	font-weight: bolder;
 }
 
 #comment_box2 {
-   width: 100%;
-   padding-left: 50px;
+	width: 100%;
+	padding-left: 50px;
 }
 
 #mini_title {
-   font-weight: 700;
-   font-size: 20px;
-   font-family: "나눔고딕", NanumGothic, "Nanum Gothic", Dotum,
-      Apple SD Gothic Neo, sans-serif;
-   letter-spacing: -.12px;
-   color: #16181a;
-   -webkit-box-align: center;
-   -webkit-align-items: center;
-   -ms-flex-align: center;
-   align-items: center;
+	font-weight: 700;
+	font-size: 20px;
+	font-family: "나눔고딕", NanumGothic, "Nanum Gothic", Dotum,
+		Apple SD Gothic Neo, sans-serif;
+	letter-spacing: -.12px;
+	color: #16181a;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
 }
 
 #mini_content {
-   font-size: 17px;
-   line-height: 26px;
-   letter-spacing: -.19px;
-   color: #16181a;
-   vertical-align: middle;
-   letter-spacing: -.27px;
+	font-size: 17px;
+	line-height: 26px;
+	letter-spacing: -.19px;
+	color: #16181a;
+	vertical-align: middle;
+	letter-spacing: -.27px;
 }
 
 #price {
-   font-family: Tahoma, "Apple SD Gothic Neo", "Apple SD Gothic NEO",
-      "Nanum Gothic", Dotum, sans-serif;
+	font-family: Tahoma, "Apple SD Gothic Neo", "Apple SD Gothic NEO",
+		"Nanum Gothic", Dotum, sans-serif;
+}
+
+.content_text {
+	overflow: hidden;
+	height: auto;
+	min-height: 300px;
 }
 </style>
 </head>
 
 <body style="background-color: #f2f2f2">
-<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
+	<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
 </script>
-   <!-- Page Wrapper -->
+	<!-- Page Wrapper -->
 
-   <!-- Page Wrapper -->
-   <div id="wrapper">
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-      <!-- Sidebar -->
-      <%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
+		<!-- Sidebar -->
+		<%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
 
-      <!-- Sidebar end -->
+		<!-- Sidebar end -->
 
-      <!-- Main Content -->
-      <div id="content"
-         style="width: 100%; min-height: 100%; position: relative; margin: 0;">
+		<!-- Main Content -->
+		<div id="content"
+			style="width: 100%; min-height: 100%; position: relative; margin: 0;">
 
-         <%@include file="/WEB-INF/views/includes/main_header.jsp"%>
+			<%@include file="/WEB-INF/views/includes/main_header.jsp"%>
 
-         <div class="container text-center"
-            style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
-
-
-            <div class=content
-               style="margin-top: 30px; margin-bottom: 30px; width: 90%; background-color: white; margin: 0 auto;">
+			<div class="container text-center"
+				style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
 
 
-               <div class=row style="margin-bottom: 50px;">
-                  <div class="col" style="">
-
-                     <c:set var="img" value="${fn:split(detail.pd_img, ',')[1]}"></c:set>
-										<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
-                     <div
-                        style="width: 300px; height: 300px; background-color: gray; display: flex; justify-content: center;">
-                        <img style="width: 100%; height: 100%;"
-                           src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
-                           
-                           
-                     </div>
-
-                  </div>
-                  <div class=col>
-                     <h3
-                        style="margin: 8px 0 12px; font-size: 30px; letter-spacing: -.25px; line-height: 38px; color: #16181a; font-family: 'Nanum Gothic', sans-serif;">
-                        <c:out value="${detail.pd_name }" />
-                     </h3>
+				<div class=content
+					style="margin-top: 30px; margin-bottom: 30px; width: 90%; background-color: white; margin: 0 auto;">
 
 
-                     <hr style="border-top: 2px solid #bbb;">
+					<div class=row style="margin-bottom: 50px;">
+						<div class="col" style="">
 
-                     <h3 style="text-align: left; font-size: 15px; margin: 3px;">
-                        유효기간 :
-                        <fmt:parseDate var="dateValue" pattern="yyyy-MM-dd"
-                           value="${detail.pd_date}" />
-                        <fmt:formatDate value="${dateValue }" pattern="yyyy-MM-dd"
-                           var="date" />
-                        <c:out value="${date}" />
-                     </h3>
+							<c:set var="img" value="${fn:split(detail.pd_img, ',')[1]}"></c:set>
+							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
+							<div
+								style="width: 300px; height: 300px; background-color: gray; display: flex; justify-content: center;">
+								<img style="width: 100%; height: 100%;"
+									src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image">
 
-                     <div class="row">
-                        <h5 id="price"
-                           style="text-align: left; vertical-align: middle; font-size: 32px; letter-spacing: -.27px; color: #16181a;">
-                           <c:out value="${detail.pd_price }" />
-                           <span> 원</span><span
-                              style="margin-left: 20px; font-size: 20px; color: red;">할인율
-                              : <c:out value="${detail.pd_discount }" /> %
-                           </span>
 
-                        </h5>
-                     </div>
-                     <hr style="border-top: 2px solid #bbb;">
+							</div>
 
-                     <h3 id="mini_title" style="text-align: left;">
-                        카테고리 :<span id="mini_content"> <c:set var="category_id"
-                              value="${detail.category_id  }" /> <c:if
-                              test="${category_id eq 1}">
+						</div>
+						<div class=col>
+							<h3
+								style="margin: 8px 0 12px; font-size: 30px; letter-spacing: -.25px; line-height: 38px; color: #16181a; font-family: 'Nanum Gothic', sans-serif;">
+								<c:out value="${detail.pd_name }" />
+							</h3>
+
+
+							<hr style="border-top: 2px solid #bbb;">
+
+							<h3 style="text-align: left; font-size: 15px; margin: 3px;">
+								유효기간 :
+								<fmt:parseDate var="dateValue" pattern="yyyy-MM-dd"
+									value="${detail.pd_date}" />
+								<fmt:formatDate value="${dateValue }" pattern="yyyy-MM-dd"
+									var="date" />
+								<c:out value="${date}" />
+							</h3>
+
+							<div class="row">
+								<h5 id="price"
+									style="text-align: left; vertical-align: middle; font-size: 32px; letter-spacing: -.27px; color: #16181a;">
+									<c:out value="${detail.pd_price }" />
+									<span> 원</span><span
+										style="margin-left: 20px; font-size: 20px; color: red;">할인율
+										: <c:out value="${detail.pd_discount }" /> %
+									</span>
+
+								</h5>
+							</div>
+							<hr style="border-top: 2px solid #bbb;">
+
+							<h3 id="mini_title" style="text-align: left;">
+								카테고리 :<span id="mini_content"> <c:set var="category_id"
+										value="${detail.category_id  }" /> <c:if
+										test="${category_id eq 1}">
                         편의점
                         </c:if> <c:if test="${category_id eq 2}">
                         커피/음료
@@ -182,189 +191,188 @@ body {
                         </c:if> <c:if test="${category_id eq 5}">
                         기타
                            </c:if></span>
-                     </h3>
-                     <h3 id="mini_title" style="text-align: left;">
-                        사용처 : <span id="mini_content"> <c:out
-                              value="${detail.company_name }" />
-                        </span>
-                     </h3>
-                     <div class="row" id = "row1">
-                        <div class="col" style="padding: 0;">
-                           <c:set var="user_id" value="${mem.user_id }" />
-                           <c:if test="${not empty user_id}">
-                           <form method = "get" id = "frm">
-                              <input type="hidden" id="product_id" name="product_id"
-                                 value="${detail.product_id }">
-                              <input type="hidden" id="user_id" name="user_id"
-                                 value="${mem.user_id }">
-                              <input type="hidden" id="pd_name" name="pd_name"
-                                 value="${detail.pd_name }">
-                              <input type="button" value="🤍" id="like"
-                                 style = "background-color: white; border: 1px solid black; float: left; margin-left: 15px; border-radius: 5px;">
-                                 </form>
-                           </c:if>
-                        </div>
-                        <div class="col">
-                           <c:set var="writer_user_id" value="${detail.user_id }" />
-                           <c:if test="${mem.user_id ==writer_user_id}">
-                              <form method="get">
-                                 <input type="hidden" id="product_id" name="product_id"
-                                    value="${param.product_id }">
-                                 <p style='width: 80px; float: right;'>
-                                    <input type="submit" class="btn btn-info" value="글 수정하기"
-                                       formaction="/modifyPostView">
-                                 </p>
+							</h3>
+							<h3 id="mini_title" style="text-align: left;">
+								사용처 : <span id="mini_content"> <c:out
+										value="${detail.company_name }" />
+								</span>
+							</h3>
+							<div class="row" id="row1">
+								<div class="col" style="padding: 0;">
+									<c:set var="user_id" value="${mem.user_id }" />
+									<c:if test="${not empty user_id}">
+										<form method="get" id="frm">
+											<input type="hidden" id="product_id" name="product_id"
+												value="${detail.product_id }"> <input type="hidden"
+												id="user_id" name="user_id" value="${mem.user_id }">
+											<input type="hidden" id="pd_name" name="pd_name"
+												value="${detail.pd_name }"> <input type="button"
+												value="🤍" id="like"
+												style="background-color: white; border: 1px solid black; float: left; margin-left: 15px; border-radius: 5px;">
+										</form>
+									</c:if>
+								</div>
+								<div class="col">
+									<c:set var="writer_user_id" value="${detail.user_id }" />
+									<c:if test="${mem.user_id ==writer_user_id}">
+										<form method="get">
+											<input type="hidden" id="product_id" name="product_id"
+												value="${param.product_id }">
+											<p style='width: 80px; float: right;'>
+												<input type="submit" class="btn btn-info" value="글 수정하기"
+													formaction="/modifyPostView">
+											</p>
 
-                              </form>
+										</form>
 
-                           </c:if>
-                           <c:set var="writer_user_id" value="${detail.user_id }" />
-                           <c:if test="${mem.user_id == writer_user_id}">
-                              <form method="post" action="/deleteBoard" id="boardInfo"
-                                 name="boardInfo">
-                                 <input type="hidden" id="product_id" name="product_id"
-                                    value="${param.product_id }"> <input type="hidden"
-                                    id="board_no" name="board_no" value="${detail.board_no }">
-                                 <button type="button" class="btn btn-secondary"
-                                    data-toggle="modal" data-target="#exampleModal">삭제</button>
-                              </form>
-                           </c:if>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="modal fade" id="exampleModal" tabindex="-1"
-                     role="dialog" aria-labelledby="exampleModalLabel"
-                     aria-hidden="true">
-                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
-                              <button type="button" class="close" data-dismiss="modal"
-                                 aria-label="Close">
-                                 <span aria-hidden="true">&times;</span>
-                              </button>
-                           </div>
-                           <div class="modal-body">게시물을 정말 삭제하시겠습니까?</div>
-                           <div class="modal-footer">
-                              <button type="button" class="btn btn-primary"
-                                 onclick="deleteBoard();document.getElementById('boardInfo').submit();">삭제하기</button>
-                              <button type="button" class="btn btn-secondary"
-                                 data-dismiss="modal">취소하기</button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <hr style="border: solid 1px black;">
-                  <div>
-                     <div style="display: none;">
-                        <textarea class="form-control" id="read_editor"
-                           name="read_editor" rows="5" readonly="readonly"></textarea>
-                        <script type="text/javascript">
+									</c:if>
+									<c:set var="writer_user_id" value="${detail.user_id }" />
+									<c:if test="${mem.user_id == writer_user_id}">
+										<form method="post" action="/deleteBoard" id="boardInfo"
+											name="boardInfo">
+											<input type="hidden" id="product_id" name="product_id"
+												value="${param.product_id }"> <input type="hidden"
+												id="board_no" name="board_no" value="${detail.board_no }">
+											<button type="button" class="btn btn-secondary"
+												data-toggle="modal" data-target="#exampleModal">삭제</button>
+										</form>
+									</c:if>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="exampleModal" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">게시물 삭제</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">게시물을 정말 삭제하시겠습니까?</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary"
+											onclick="deleteBoard();document.getElementById('boardInfo').submit();">삭제하기</button>
+										<button type="button" class="btn btn-secondary"
+											data-dismiss="modal">취소하기</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr style="border: solid 1px black;">
+						<div>
+							<div style="display: none;">
+								<textarea class="form-control" id="read_editor"
+									name="read_editor" rows="5" readonly="readonly"></textarea>
+								<script type="text/javascript">
                CKEDITOR.replace('read_editor');
             </script>
-                     </div>
-                  </div>
-                  <div class="map_wrap">
-                     <div id="map"
-                        style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+							</div>
+						</div>
+						<div class="map_wrap">
+							<div id="map"
+								style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
-                     <div id="menu_wrap" class="bg_white">
-                        <div class="option">
-                           <div>
-                              <form onsubmit="searchPlaces(); return false;">
-                                 키워드 : <input type="text" value="${detail.company_name }"
-                                    id="keyword" size="15">
-                                 <button type="submit">검색하기</button>
-                              </form>
-                           </div>
-                        </div>
-                        <hr>
-                        <ul id="placesList"></ul>
-                        <div id="pagination"></div>
-                     </div>
-                  </div>
-                  <hr style="border: solid 1px black; margin-top: 10px;">
+							<div id="menu_wrap" class="bg_white">
+								<div class="option">
+									<div>
+										<form onsubmit="searchPlaces(); return false;">
+											키워드 : <input type="text" value="${detail.company_name }"
+												id="keyword" size="15">
+											<button type="submit">검색하기</button>
+										</form>
+									</div>
+								</div>
+								<hr>
+								<ul id="placesList"></ul>
+								<div id="pagination"></div>
+							</div>
+						</div>
+						<hr style="border: solid 1px black; margin-top: 10px;">
 
-                  <div class=content
-                     style="word-break: break-all; margin-top: 50px; margin-bottom: 30px; height: 500px; width: 100%; background-color: white; margin: 0 auto; font-size: 2em; text-align: left;">
-                     ${detail.pd_desc }</div>
-
-
-
-
-               </div>
-               <div class="container text-center"
-                  style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
+						<div class=content_text
+							style="word-break: break-all; margin-top: 50px; margin-bottom: 30px; width: 100%; background-color: white; margin: 0 auto; font-size: 2em; text-align: left;">
+							${detail.pd_desc }</div>
 
 
 
 
-                  <%@include file="comment.jsp"%>
-               </div>
-            </div>
-
-            <a class="scroll-to-top rounded" id="top_btn" href="#page-top">
-               <i class="fas fa-angle-up"></i>
-            </a>
+					</div>
+					<div class="container text-center"
+						style="margin-top: 30px; margin-bottom: 30px; background-color: white; border-radius: 10px; padding: 30px;">
 
 
-            <!-- 거래완료 -->
-            <!-- <input type="button" id="modal_TradingEnd" class="btn btn-primary"
+
+
+						<%@include file="comment.jsp"%>
+					</div>
+				</div>
+
+				<a class="scroll-to-top rounded" id="top_btn" href="#page-top">
+					<i class="fas fa-angle-up"></i>
+				</a>
+
+
+				<!-- 거래완료 -->
+				<!-- <input type="button" id="modal_TradingEnd" class="btn btn-primary"
             style="display: block;" value="거래완료하기" />
          <button id="modal_btn_report" class="btn btn-primary">신고</button> -->
 
 
 
-            <!-- 신고 기능 모달 창 -->
+				<!-- 신고 기능 모달 창 -->
 
-            <div id="modal_report">
-               <div id="modal_report_content">
-                  <div class="modal-header">
-                     <div class="modal-title">불량사용자신고</div>
-                  </div>
-                  <div class="modal-body">
-                     <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">신고종류</label>
-                        <select id="re_title" class="form-select form-select-sm">
-                           <option value="">유형선택</option>
-                           <option value="1">허위매물</option>
-                           <option value="2">삼자거래사기</option>
-                           <option value="3">또 추가할 항목</option>
-                        </select>
-                     </div>
-                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
-                        <textarea class="form-control" id="editor4" name="editor4"
-                           rows="5"></textarea>
-                        <script type="text/javascript">
+				<div id="modal_report">
+					<div id="modal_report_content">
+						<div class="modal-header">
+							<div class="modal-title">불량사용자신고</div>
+						</div>
+						<div class="modal-body">
+							<div class="mb-3">
+								<label for="exampleFormControlInput1" class="form-label">신고종류</label>
+								<select id="re_title" class="form-select form-select-sm">
+									<option value="">유형선택</option>
+									<option value="1">허위매물</option>
+									<option value="2">삼자거래사기</option>
+									<option value="3">또 추가할 항목</option>
+								</select>
+							</div>
+							<div class="mb-3">
+								<label for="exampleFormControlTextarea1" class="form-label">상세내용</label>
+								<textarea class="form-control" id="editor4" name="editor4"
+									rows="5"></textarea>
+								<script type="text/javascript">
                    CKEDITOR.replace( 'editor4' );
                </script>
-                     </div>
-                  </div>
-                  <div class="modal-footer">
-                     <button id="report_submit" class="btn btn-primary">확인</button>
-                     <button id="report_cancel" class="btn btn-primary">취소</button>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="report_submit" class="btn btn-primary">확인</button>
+							<button id="report_cancel" class="btn btn-primary">취소</button>
 
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- Modal -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
 
-      <input type="hidden" id="user_id" name="user_id"
-         value="${detail.user_id}"> <input type="hidden" id="mem_id"
-         name="mem_id" value="${mem.user_id }">
-
-
+		<input type="hidden" id="user_id" name="user_id"
+			value="${detail.user_id}"> <input type="hidden" id="mem_id"
+			name="mem_id" value="${mem.user_id }">
 
 
 
-      <script type="text/javascript"
-         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0b5d92b8ee871200a69f42873e88b086&libraries=services"></script>
 
-      <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-      <script>
+
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0b5d92b8ee871200a69f42873e88b086&libraries=services"></script>
+
+		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script>
       $(document).ready(function() {
          
          $(window).scroll(function() {
@@ -903,18 +911,18 @@ body {
       }
    </script>
 
-      <script
-         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-      <script
-         src="${pageContext.request.contextPath}/resources/js/slide.js/"></script>
-      <script src="${pageContext.request.contextPath}/resources/map.js/"></script>
-      <script
-         src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-      <script
-         src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- Custom scripts for all pages-->
-      <script
-         src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/js/slide.js/"></script>
+		<script src="${pageContext.request.contextPath}/resources/map.js/"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+		<script
+			src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Custom scripts for all pages-->
+		<script
+			src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
 </c:forEach>
 </body>
 </html>
