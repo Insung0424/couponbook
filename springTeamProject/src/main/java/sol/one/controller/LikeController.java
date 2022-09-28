@@ -28,21 +28,22 @@ public class LikeController {
 
     @ResponseBody
     @RequestMapping(value = "/category/detail/insertL.do", method = RequestMethod.POST)
-    public String insert(@ModelAttribute LikeVO likeVO, HttpSession session){
+    public String insert(@ModelAttribute LikeVO likeVO,int product_id, HttpSession session){
     
-    	likeService.insertL(likeVO);               
-        int product_id = likeVO.getProduct_id();
+    	likeService.insertL(likeVO);
+    	likeService.updateL_add(product_id);
+       
         
     	return "/category/detail?product_id="+product_id;
     }
     
     @ResponseBody
     @RequestMapping(value = "/category/detail/deleteL.do", method = RequestMethod.POST)
-    public String deleteL(@ModelAttribute LikeVO likeVO, HttpSession session) {
+    public String deleteL(@ModelAttribute LikeVO likeVO,int product_id, HttpSession session) {
     
     	likeService.deleteL(likeVO);
+    	likeService.updateL_min(product_id);
  
-    	int product_id = likeVO.getProduct_id();
         
     	return "/category/detail?product_id="+product_id;
     }    
