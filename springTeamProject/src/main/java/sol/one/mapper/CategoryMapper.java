@@ -15,6 +15,8 @@ public interface CategoryMapper {
 	
 	public int count_category(int category_id)throws Exception;
 	
+	public List<ProductVO> all_search(String search)throws Exception;
+	
 	public List<DetailVO> detail(int product_id)throws Exception;
 	
 }

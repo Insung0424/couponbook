@@ -30,7 +30,7 @@
       <property name="minimumIdle" value="20" />
       <property name="driverClassName"
          value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-      <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@DBSOLDESKTEAM1_low?TNS_ADMIN=/Wallet_DBSOLDESKTEAM1" />
+      <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@DBSOLDESKTEAM1_low?TNS_ADMIN=/ora/Wallet_DBSOLDESKTEAM1" />
       <property name="username" value="admin" />
       <property name="password" value="soldesk01TEAM)!" />
    </bean>

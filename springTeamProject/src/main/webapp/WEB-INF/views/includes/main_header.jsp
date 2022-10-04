@@ -87,7 +87,11 @@
 					</div>
 				</form>
 			</div></li>
-
+			
+		<form method="get">		
+		<input type="text" id="search" name="search" placeholder="상품 검색">
+		<input type="submit" value="검색" class="btn w-100 h-50 mt-3 btn-primary" style="color:white;" formaction="/category/all_search">		
+		</form>		
 		<a href="/write" class="btn w-100 h-50 mt-3 btn-primary" style="color:white;">상품등록</a>
 				<div class="topbar-divider d-none d-sm-block"></div>
 		<!-- Nav Item - Alerts -->

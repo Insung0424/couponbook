@@ -50,10 +50,17 @@ public class CategoryServiceImpl implements CategoryService{
 		return mapper.count_category(category_id);
 		
 	}
+	
 
 	@Override
 	public List<DetailVO> detail(int product_id) throws Exception {
 		return mapper.detail(product_id);
+	}
+
+	@Override
+	public List<ProductVO> all_search(String search) throws Exception {
+		
+		return mapper.all_search(search);
 	}
 	
 	

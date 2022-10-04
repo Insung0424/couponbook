@@ -54,6 +54,12 @@ private static final Logger log = LoggerFactory.getLogger(MypageMapperImpl.class
 	public List<DetailVO> detail(int product_id) throws Exception {
 		return sqlSession.selectList("CategoryMapper.detail",product_id);
 	}
+
+
+	@Override
+	public List<ProductVO> all_search(String search) throws Exception {
+		return sqlSession.selectList("CategoryMapper.all_search",search);
+	}
 	
 	
 }

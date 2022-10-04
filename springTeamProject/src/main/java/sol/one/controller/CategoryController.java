@@ -83,6 +83,12 @@ public class CategoryController {
 		model.addAttribute("message", "삭제되었습니다");
 		model.addAttribute("url1", "/category/all");
 	}
+	@GetMapping("/all_search")
+	public String search(String search,Model model)throws Exception{
+		model.addAttribute("search", service.all_search(search));
+		//전체검색
+		return "category/all_search";
+	}
 	
 	@RequestMapping(value = "/getImg", method = RequestMethod.GET)
 	public ResponseEntity<byte[]> getImg(String fileNameNPath) {
