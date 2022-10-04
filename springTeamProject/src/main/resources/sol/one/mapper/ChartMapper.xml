@@ -8,10 +8,10 @@
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'T'.toString()">
-							user_name like '%'||#{keyword}||'%' 
+							user_name like '%'||#{keyword}||'%'
 						</when>
 						<when test="type == 'C'.toString()">
-							nickname like '%'||#{keyword}||'%' 
+							nickname like '%'||#{keyword}||'%'
 						</when>
 						<when test="type == 'W'.toString()">
 							email like '%'||#{keyword}||'%'
@@ -21,41 +21,41 @@
 			</foreach>
 		</trim>
 	</sql>
-	
+
 	<sql id="criteria_date">
 		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
 			<foreach item='type' collection="typeArr">
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'T'.toString()">
-							trade_time between #{sdate} and #{edate}  
+							trade_time between #{sdate} and #{edate}
 						</when>
 					</choose>
 				</trim>
 			</foreach>
 		</trim>
 	</sql>
-	
+
 	<select id="tradeWeekCnt" resultType="int">
-		select count(*) from pj_trade_test 
-		where pd_status = 1  
+		select count(*) from
+		pj_trade_test
+		where pd_status = 1
 		and trade_time >= SYSDATE-7
-		group by trade_time 
-		order by trade_time 
+		group by trade_time
+		order by trade_time
 	</select>
-	
-	<select id="tradeWeek" resultType="sol.one.VO.T_tradeVO" parameterType="java.lang.String">
-		<!-- select * from pj_trade_test 
-		where pd_status = 1 
-		and trade_time between to_char( to_date('22/08/20')-7, 'YY/MM/DD')  
-		and to_char(to_date('22/08/20'), 'YY/MM/DD') 
-		order by trade_time  -->
+
+	<select id="tradeWeek" resultType="sol.one.VO.T_tradeVO"
+		parameterType="java.lang.String">
+		<!-- select * from pj_trade_test where pd_status = 1 and trade_time between 
+			to_char( to_date('22/08/20')-7, 'YY/MM/DD') and to_char(to_date('22/08/20'), 
+			'YY/MM/DD') order by trade_time -->
 		select * from pj_trade_test
-		where pd_status = 1 
+		where pd_status = 1
 		and trade_time >= SYSDATE-7
 		order by trade_time
 	</select>
-	
+
 	<select id="tradeAllList" resultType="sol.one.VO.T_tradeVO">
 		<![CDATA[
 		select ROWNUM, product_id, sell_user_id, buyer_user_id, pd_status, trade_time
@@ -63,7 +63,7 @@
 		order by trade_time
 		]]>
 	</select>
-	
+
 	<select id="getListWithPaging" resultType="sol.one.VO.T_tradeVO">
 		<![CDATA[
 		select 
@@ -74,7 +74,7 @@
 		 	from pj_trade_test  
 			where 
 		]]>
-		
+
 		<include refid="criteria_date"></include> 
 		<![CDATA[
 			rownum <= #{pageNum} * #{amount}
@@ -84,8 +84,8 @@
 	</select>
 
 	<select id="getTotalTrdCnt" resultType="int">
-		select count(*) from pj_trade_test where 
-		<include refid="criteria_date"></include>    
+		select count(*) from pj_trade_test where
+		<include refid="criteria_date"></include>
 		product_id is not null
 	</select>
 
@@ -99,18 +99,18 @@
 			from pj_user
 			where  
 		]]>
-		
+
 		<include refid="criteria"></include> 
 		<![CDATA[
 		   rownum <= #{pageNum} * #{amount}
 		   )
 		where rn > (#{pageNum} -1) * #{amount}   
 		]]>
-		  
+
 	</select>
 	<select id="getTotalMemCnt" resultType="int">
-		select count(*) from pj_user where 
-		<include refid="criteria"></include>  
+		select count(*) from pj_user where
+		<include refid="criteria"></include>
 		email is not null
 	</select>
 

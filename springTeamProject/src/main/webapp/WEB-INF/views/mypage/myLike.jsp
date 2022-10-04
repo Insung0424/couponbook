@@ -53,7 +53,7 @@
 			<div id="content"
 				style="height: 100vh; min-height: 100%; position: relative; padding-bottom: 100px;">
 				<!-------------- nav bar------------->
-				<%@include file="/WEB-INF/views/includes/main_header.jsp"%>
+				<%@include file="/WEB-INF/views/includes/main_header2.jsp"%>
 
 				<!------------------------------------------------------------------------------------------  -->
 

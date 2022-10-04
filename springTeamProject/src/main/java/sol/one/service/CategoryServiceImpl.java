@@ -62,7 +62,10 @@ public class CategoryServiceImpl implements CategoryService{
 		
 		return mapper.all_search(search);
 	}
-	
+	@Override
+	public List<ProductVO> list_popular_category() throws Exception {
+		return mapper.list_popular_category();
+	}
 	
 	
 	

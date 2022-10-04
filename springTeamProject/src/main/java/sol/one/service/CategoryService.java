@@ -21,5 +21,7 @@ public interface CategoryService {
 	public int count_category(int category_id)throws Exception;
 	
 	public List<DetailVO> detail(int product_id) throws Exception;
+	public List<ProductVO> list_popular_category()throws Exception;
+
 	
 }

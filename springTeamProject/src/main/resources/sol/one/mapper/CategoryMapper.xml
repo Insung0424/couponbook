@@ -6,6 +6,11 @@
 <select id="list_all_category" resultType="sol.one.VO.ProductVO">
 select * from pj_product where pd_status not in (2) and pd_isdelete=1 order by product_id desc
 </select>
+
+<select id="list_popular_category" resultType="sol.one.VO.ProductVO">
+select * from pj_product where pd_status not in (2) and pd_isdelete=1 order by pd_like desc
+</select>
+
 <select id="list_category" resultType="sol.one.VO.ProductVO">
 select * from pj_product where category_id=#{category_id} and pd_isdelete=1 and pd_status not in (2) order by product_id desc
 </select>

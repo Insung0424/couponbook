@@ -65,7 +65,6 @@ input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-i
    <div id="wrapper">
 
       <!-- Sidebar -->
-      <%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
 
       <!-- Sidebar end -->
 

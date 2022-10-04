@@ -35,7 +35,8 @@ public class ProductVO {
 	private int pd_discount; 
 	
 	private String pd_date;
-	
+	private int pd_like;
+
 	
 	
 }

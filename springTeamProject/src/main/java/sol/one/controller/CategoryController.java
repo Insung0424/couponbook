@@ -64,6 +64,8 @@ public class CategoryController {
 		model.addAttribute("count_all", service.count_all());
 		model.addAttribute("list",pservice.getPage(p));
 		model.addAttribute("pp", new PageDTO2(p,pservice.getTotal(p)));
+		model.addAttribute("popular", service.list_popular_category());
+
 
 		
 	}

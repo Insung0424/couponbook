@@ -34,6 +34,20 @@
 
 <link rel="stylesheet" href="/resources/css/style.css">
 
+
+<style type="text/css">
+.category_box li {
+	float: left;
+	margin-left: 50px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.category_box li a {
+	color: black;
+}
+]
+</style>
 </head>
 
 <script type="text/javascript">
@@ -51,83 +65,49 @@
 	}
 </script>
 
+
 <!------------------------------------------------------------------------------------  -->
 
 <!-- Page Wrapper -->
-
-<nav
-	class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-
-	<!-- Topbar Search -->
-<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
-</script>
-<div class="gcse-search"></div>
-
-	<ul class="navbar-nav ml-auto">
-
-		<li class="nav-item dropdown no-arrow d-sm-none"><a
-			class="nav-link dropdown-toggle" href="#" id="searchDropdown"
-			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> <i class="fas fa-search fa-fw"></i>
-		</a> <!-- Dropdown - Messages -->
-			<div
-				class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-				aria-labelledby="searchDropdown">
-				<form class="form-inline mr-auto w-100 navbar-search">
-					<div class="input-group">
-						<input type="text" class="form-control bg-light border-0 small"
-							placeholder="Search for..." aria-label="Search"
-							aria-describedby="basic-addon2">
-						<div class="input-group-append">
-							<button class="btn btn-primary" type="button">
-								<i class="fas fa-search fa-sm"></i>
-							</button>
-						</div>
-					</div>
-				</form>
-			</div></li>
-			
-		<form method="get">		
-		<input type="text" id="search" name="search" placeholder="상품 검색">
-		<input type="submit" value="검색" class="btn w-100 h-50 mt-3 btn-primary" style="color:white;" formaction="/category/all_search">		
-		</form>		
-		<a href="/write" class="btn w-100 h-50 mt-3 btn-primary" style="color:white;">상품등록</a>
-				<div class="topbar-divider d-none d-sm-block"></div>
-		<!-- Nav Item - Alerts -->
-		<li class="nav-item dropdown no-arrow"><a
-			class="nav-link dropdown-toggle"  id="userDropdown"
-			role="button" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="false"> <span
-				class="mr-2 d-none d-lg-inline text-gray-600 small">카테고리</span>
-		</a> <!-- Dropdown - User Information -->
-			<div
-				class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-				aria-labelledby="userDropdown">
-				<a class="dropdown-item" href="/category/all"> 전체 </a> 
-				<a class="dropdown-item" href="/category/category?category_id=1">
-					편의점 </a> 
-				<a class="dropdown-item" href="/category/category?category_id=2"> 커피/음료 </a> 
-				<a class="dropdown-item" href="/category/category?category_id=3">
-					외식 </a> 
-				<a class="dropdown-item" href="/category/category?category_id=4"> 상품권 </a> 
-				<a class="dropdown-item" href="/category/category?category_id=5">
-					기타 </a>
-				<div class="dropdown-divider"></div>
-
-			</div></li>
+<header
+	class="navbar navbar-expand navbar-light bg-white topbar  static-top shadow"
+	id="">
+	<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
+		
+	</script>
 
 
 
+	<form method="get" style="margin: 0 auto;">
+		<div class="input-group">
+			<div class="form-outline">
+				<input id="search" type="text" name="search" class="form-control"
+					placeholder="상품 검색" style="width: 700px; margin-left: 350px;" />
+
+			</div>
+			<button id="search-button" type="submit" class="btn btn-primary"
+				formaction="/category/all_search">
+				<i class="fas fa-search"></i>
+			</button>
+		</div>
+	</form>
+
+
+
+	<ul class="navbar-nav ml-auto" style="text-align: center;">
+		<a href="/write" class="btn w-100 h-50 mt-3 btn-primary"
+			style="color: white;">상품등록</a>
 		<div class="topbar-divider d-none d-sm-block"></div>
+
+
+
 
 		<!-- Nav Item - User Information -->
 		<li class="nav-item dropdown no-arrow"><a
 			class="nav-link dropdown-toggle" id="userDropdown" role="button"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<span class="mr-2 d-none d-lg-inline text-gray-600 small">
-				<c:if test="${mem==null}">로그인을 해주세요</c:if> 
-				<c:if test="${mem!=null}">${mem.nickname }</c:if>
+				<span class="mr-2 d-none d-lg-inline text-gray-600 small"> <c:if
+						test="${mem==null}">로그인을 해주세요</c:if> <c:if test="${mem!=null}">${mem.nickname }</c:if>
 			</span> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
   <path
@@ -143,11 +123,12 @@
 						class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i><input
 						type="submit" value="내 정보" formaction="/mypage/checkPassword"
 						style="border: none; background: transparent;" onclick="service()">
-						
-					</a> </form>
-					<form method="post"><input type="hidden" id="session_user_id" name="session_user_id"
-						value="${mem.user_id}">
-					<a class="dropdown-item"> <i
+
+					</a>
+				</form>
+				<form method="post">
+					<input type="hidden" id="session_user_id" name="session_user_id"
+						value="${mem.user_id}"> <a class="dropdown-item"> <i
 						class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> <input
 						type="submit" value="관심상품" formaction="/mypage/myLike"
 						style="border: none; background: transparent;" onclick="service()">
@@ -182,4 +163,18 @@
 
 
 	</ul>
+</header>
+<nav class="navbar  bg-white shadow mb-5">
+
+	<ul style="list-style: none; margin: 0 auto;" class="category_box">
+		<li><a href="/category/all">전체</a></li>
+		<li><a href="/category/category?category_id=1">편의점</a></li>
+		<li><a href="/category/category?category_id=2">커피/음료</a></li>
+		<li><a href="/category/category?category_id=3">외식</a></li>
+		<li><a href="/category/category?category_id=4">상품권</a></li>
+		<li><a href="/category/category?category_id=5">기타</a></li>
+
+	</ul>
+
+
 </nav>

@@ -61,5 +61,9 @@ private static final Logger log = LoggerFactory.getLogger(MypageMapperImpl.class
 		return sqlSession.selectList("CategoryMapper.all_search",search);
 	}
 	
-	
+
+	@Override
+	public List<ProductVO> list_popular_category() throws Exception {
+		return sqlSession.selectList("CategoryMapper.list_popular_category");
+	}
 }

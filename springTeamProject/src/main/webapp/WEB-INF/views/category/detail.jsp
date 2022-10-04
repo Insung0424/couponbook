@@ -114,7 +114,6 @@ body {
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<%@include file="/WEB-INF/views/includes/main_sidebar.jsp"%>
 
 		<!-- Sidebar end -->
 
