@@ -88,6 +88,7 @@ public class CategoryController {
 	@GetMapping("/all_search")
 	public String all_search(String search,Model model)throws Exception{
 		model.addAttribute("search", service.all_search(search));
+		model.addAttribute("search_name",search);
 		//전체검색
 		return "category/all_search";
 	}

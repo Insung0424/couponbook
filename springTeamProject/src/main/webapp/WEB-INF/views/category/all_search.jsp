@@ -132,7 +132,7 @@
             <div class="card shadow mb-4">
                <div class="container"
                   style="background-color: white; margin-bottom: 30px; border-radius: 10px;">
-                  <p class="title_name">전체쿠폰</p>
+                  <p class="title_name">"<c:out value="${search_name }"/>" 검색 결과</p>
                   <!--  -->
 
                   <ul style="width: 100%; display: flex; flex-wrap: wrap;">

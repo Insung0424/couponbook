@@ -95,7 +95,7 @@
 							<td><a href='/category/detail?product_id=${like.product_id }'><c:set var="img" value="${fn:split(like.pd_img, ',')[1]}"></c:set>
 							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
-                                 <img style="width: 42%; height: 42%;"
+                                 <img style="width: 27%; height: 27%;"
                            src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>		
 								<td><a href="<c:url value='/category/detail?product_id=${like.product_id}'/>"><c:out value="${like.pd_name}"/></a>
 								</td>

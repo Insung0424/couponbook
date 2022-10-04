@@ -58,14 +58,7 @@
 
 				</ul>
 			</div>
-			<div class="col-6 col-md">
-				<h5>이규원</h5>
-				<ul class="list-unstyled text-small">
-					<li class="mb-1"><a
-						class="link-secondary text-decoration-none" href="https://github.com/keekee383">GIT</a></li>
 
-				</ul>
-			</div>
 			<div class="col-6 col-md">
 				<h5>최민곤</h5>
 				<ul class="list-unstyled text-small">

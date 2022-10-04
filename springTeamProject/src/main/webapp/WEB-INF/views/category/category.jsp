@@ -249,15 +249,10 @@ section, ul, dl, dd {
 									</div>
 									<c:set var="price1" value="${list_cat.pd_price0 }"></c:set>
 									<c:set var="price2" value="${list_cat.pd_price }"></c:set>
-									<p class="card_adr">${price1 }</p>
-									<p class="card_adr" id="p_discount">
-										<script>
-                                             let pd_discount = Math.round(eval(100-((${price2 }/${price1 })*100)));
-                                             console.log(pd_discount);
-                                             $("#p_discount").html(pd_discount);
-                                          </script>
-									</p>
-									<p class="card_adr">${price2 }</p>
+									<p class="card_adr" style="text-decoration: line-through;">${price1 }원</p>
+								<p class="card_adr" style="">${price2 }원</p>
+									<p class="card_adr" id="p_discount"
+										style="color: red; font-size: 2em; font-weight: bold; text-align: right;">${list_cat.pd_discount }%</p>
 									<p class="card_option">
 										<c:set var="category_id" value="${list_cat.category_id }" />
 										<c:if test="${category_id eq 1}">

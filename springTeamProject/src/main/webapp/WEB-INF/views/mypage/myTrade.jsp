@@ -107,7 +107,7 @@
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:set var="img" value="${fn:split(trade.pd_img, ',')[1]}"></c:set>
 							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
-                                 <img style="width: 100%; height: 100%;"
+                                 <img style="width: 40%; height: 40%;"
                            src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.product_id}" /></a></td>
 								<td><a href='/category/detail?product_id=${trade.product_id }'><c:out value="${trade.pd_name}"/></a></td>

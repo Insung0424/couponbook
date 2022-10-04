@@ -106,7 +106,7 @@
 													<tr>	<td><a href='/category/detail?product_id=${board.product_id }'><c:set var="img" value="${fn:split(board.pd_img, ',')[1]}"></c:set>
 							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
-                                 <img style="width: 100%; height: 100%;"
+                                 <img style="width: 40%; height: 40%;"
                            src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"><c:out value="${board.pd_name}" /></a></td>
 														<td><a href="<c:url value='/category/detail?product_id=${board.product_id}'/>"> <c:set var="category_id" value="${board.category_id }" />

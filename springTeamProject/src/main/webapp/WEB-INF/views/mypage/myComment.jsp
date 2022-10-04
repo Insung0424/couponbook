@@ -102,7 +102,7 @@
 										<td><a href='/category/detail?product_id=${comment.product_id }'><c:set var="img" value="${fn:split(comment.pd_img, ',')[1]}"></c:set>
 							<c:set var="simg2" value="${fn:replace(img, '%2F', '/')}"></c:set>
 							
-                                 <img style="width: 45%; height: 45%;"
+                                 <img style="width: 25%; height: 25%;"
                            src="/getImg?fileNameNPath=${simg2}" alt="Not Found Image"></a></td>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.pd_name}"/></a></td>
 										<td><a href="<c:url value='/category/detail?product_id=${comment.product_id}'/>"><c:out value="${comment.comment_content}" escapeXml="false" /></a></td>
