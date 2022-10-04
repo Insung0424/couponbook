@@ -35,8 +35,7 @@
 			user_name=#{user_name},
 			phone=#{phone},
 			zip_no=#{zip_no},
-			addr=#{phone},
-			addr2=#{addr2}
+			addr=#{addr}	
 		where
 			user_id = #{user_id}
 	</update>
