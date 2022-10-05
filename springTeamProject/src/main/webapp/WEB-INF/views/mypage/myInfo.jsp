@@ -144,8 +144,9 @@
 							<div class="card shadow mb-4">
 								<div class="container"
 									style="background-color: white; margin-bottom: 30px; border-radius: 10px; justify-content: center;">
-								<input type="hidden" value="${mem.user_id }" id="user_id" name="user_id">
+									<input type="hidden" value="${mem.user_id }" id="user_id" name="user_id">
 										<div style="text-align: center;">
+										
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">이메일</label> <input type="email"
@@ -206,6 +207,7 @@
 													class="form-control" id="addr" name="addr"
 													value="${mem.addr}"/>
 											</div>
+												<button type="submit" class="btn btn-primary btn-lg" id="submit">정보수정</button>
 											</div>
 										</div>
 								</div>
