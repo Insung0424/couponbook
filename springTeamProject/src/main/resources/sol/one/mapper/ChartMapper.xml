@@ -28,7 +28,8 @@
 				<trim prefix="OR">
 					<choose>
 						<when test="type == 'T'.toString()">
-							trade_time between #{sdate} and #{edate}
+							trade_time between to_date(#{sdate},'yyyy-MM-dd') and to_date(#{edate},'yyyy-MM-dd')
+							<!-- trade_time between #{sdate} and #{edate} -->
 						</when>
 					</choose>
 				</trim>

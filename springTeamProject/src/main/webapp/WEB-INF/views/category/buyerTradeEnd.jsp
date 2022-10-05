@@ -44,7 +44,7 @@ $("#Trade").click(function (){
 			}),
 			contentType : 'application/json',
 			success : function(data){
-				if(data.good == 'good'){
+				if(data == 'good'){
 					alert('거래가 완료되었습니다');
 					$("#modal_trade_content").hide("trade");
 					$("#modal_TradingEnd").toggle();
