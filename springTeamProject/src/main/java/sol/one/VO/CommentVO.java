@@ -11,7 +11,7 @@ public class CommentVO {
 
 	private int product_id;
 	
-	private int user_id;
+	private long user_id;
 	
 	private String comment_content;
 	

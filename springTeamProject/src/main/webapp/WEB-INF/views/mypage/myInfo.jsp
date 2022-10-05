@@ -140,10 +140,11 @@
 					</div>
 					<div class="row ">
 						<div class="col-xl-12 col-lg-7" style="grid-area: main2;">
+							<form action="/mypage/update" method="post">
 							<div class="card shadow mb-4">
 								<div class="container"
 									style="background-color: white; margin-bottom: 30px; border-radius: 10px; justify-content: center;">
-							
+								<input type="hidden" value="${mem.user_id }" id="user_id" name="user_id">
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
@@ -154,25 +155,25 @@
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
-													<label for="floatingInput">새 비밀번호</label> <input type="password"
-													class="form-control" id="password" name="password"
-													>
+												<label for="floatingInput">닉네임</label> <input type="text"
+													class="form-control" id="nickname" name="nickname"
+													value="${mem.nickname}"/>
 											</div>
 
 										</div>
 										<div style="text-align: center;">
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
+													<label for="floatingInput">새 비밀번호</label> <input type="password"
+													class="form-control" id="password" name="password"
+													>
+											</div>
+											
+											<div class="form-floating mb-3"
+												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">새 비밀번호 확인</label> <input type="password"
 													class="form-control" id="password2" name="password2"
 													>
-											</div>
-
-											<div class="form-floating mb-3"
-												style="width: 300px; margin: 50px; display: inline-block;">
-												<label for="floatingInput">닉네임</label> <input type="text"
-													class="form-control" id="nickname" name="nickname"
-													value="${mem.nickname}"/>
 											</div>
 
 										</div>
@@ -206,12 +207,12 @@
 													value="${mem.addr}"/>
 											</div>
 											</div>
-
 										</div>
 								</div>
-								<button type="submit" class="btn btn-primary btn-lg" id="submit">정보수정</button>
+											<button type="submit" class="btn btn-primary btn-lg" id="submit">정보수정</button>
 
-							
+										</form>
+
 							</div>
 						</div>
 					</div>

@@ -60,7 +60,7 @@ public class CommentController {
 	}
 	
 	@GetMapping("/get/comment")
-	public Map<String,Object> getComment(int product_id,int user_id_1,int user_id_2,Model model){
+	public Map<String,Object> getComment(int product_id,long user_id_1,long user_id_2,Model model){
 		System.out.println("good?");
 		Map<String,Object> map = new HashMap<>();
 		

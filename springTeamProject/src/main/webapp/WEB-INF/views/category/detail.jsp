@@ -575,12 +575,12 @@ body {
                      if($("#modal_trade_content").load("buyerTradeEnd")){
                         $("#modal_trade_content").show("buyerTradeEnd");
                      }
-                     $("#modal_trade_content").load("sellerTradeEnd");
+                     $("#modal_trade_content").load("buyerTradeEnd");
                   }else if(log == 1){
                      if($("#modal_trade_content").load("buyerTradeEnd")){
                         $("#modal_trade_content").show("buyerTradeEnd");
                      }
-                     $("#modal_trade_content").load("sellerTradeEnd");
+                     $("#modal_trade_content").load("buyerTradeEnd");
                   }
                   else if(log == 2){
                      alert("이미 거래완료한 상품입니다");

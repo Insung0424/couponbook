@@ -34,10 +34,6 @@ $("#Trade").click(function (){
 		let product_id = $("#product_id").val();
 		let sell_user_id = $("#user_id").val();
 		
-		console.log(pd_status);
-		console.log(product_id);
-		console.log(sell_user_id);
-		
 		$.ajax({
 			type:'post',
 			url : '/category/postTrade2',
@@ -50,14 +46,12 @@ $("#Trade").click(function (){
 			success : function(data){
 				if(data.good == 'good'){
 					alert('거래가 완료되었습니다');
+					$("#modal_trade_content").hide("trade");
+					$("#modal_TradingEnd").toggle();
 				}
 			},
 			error : function(){
-				alert("왜 에러가나는 거냐");
-			},complete : function(){
-				alert('거래가 완료되었습니다');
-				$("#modal_trade_content").hide("trade");
-				$("#modal_TradingEnd").toggle();
+				alert("네트워크 상태가 불안정합니다");
 			}
 		});
 		

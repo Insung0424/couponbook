@@ -141,7 +141,6 @@ public class CategoryController {
 		int pd_status = vo.getPd_status();
 		tservice.update(product_id,pd_status);
 		
-		System.out.println("ok?");
 		String good = "good";
 		ResponseEntity<String> data = new ResponseEntity<String>(good, HttpStatus.OK);
 		return data;
