@@ -75,7 +75,19 @@
 	<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
 		
 	</script>
+<form method="get" style="margin: 0 auto;">
+		<div class="input-group">
+			<div class="form-outline">
+				<input id="search" type="text" name="search" class="form-control"
+					placeholder="상품 검색" style="width: 700px; margin-left: 350px;" />
 
+			</div>
+			<button id="search-button" type="submit" class="btn btn-primary"
+				formaction="/category/all_search">
+				<i class="fas fa-search"></i>
+			</button>
+		</div>
+	</form>
 
 	<ul class="navbar-nav ml-auto" style="text-align: center;">
 		<a href="/write" class="btn w-100 h-50 mt-3 btn-primary"

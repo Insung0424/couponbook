@@ -207,7 +207,7 @@
 													class="form-control" id="addr" name="addr"
 													value="${mem.addr}"/>
 											</div>
-												<button type="submit" class="btn btn-primary btn-lg" id="submit">정보수정</button>
+												
 											</div>
 										</div>
 								</div>
@@ -221,7 +221,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 
 
 
