@@ -79,8 +79,9 @@ public class MypageController {
 
 	// 내 정보보기
 	@PostMapping("/myInfo")
-	public String myInfo(MemberVO mem, HttpSession session) throws Exception {
-		log.info(" Info");
+	public String myInfo(@RequestParam(required = false, value="session_user_id")Long user_id, Model model,HttpSession session) throws Exception {
+		
+		model.addAttribute("info",service.list_user_mypage(user_id));
 		return "mypage/myInfo";
 	}
 	
@@ -192,20 +193,28 @@ public class MypageController {
 	}
 	//신고메일발송
 	@PostMapping("/sendEmail")
-	public String sendEmail(ReportVO report,String email,String re_title,String re_content,HttpServletRequest request,
+	public String sendEmail(ReportVO report,String email,int re_title,String editor4,HttpServletRequest request,
 			HttpServletResponse response,HttpSession httpsession) throws Exception {
 			
 		//smtp 설정되어있는 계정의 아이디와 비밀번호
 		String host="smtp.naver.com";
 		final String username="skandy55";
-		final String password="sprtms55'";
+		final String password="sprtms55;";
 		int port=465;
 				
 		//관리자 메일
 		String recipient = "skandy55@naver.com";
-			
-		String subject=re_title;
-		String body=re_content;
+		
+		String subject="";
+		
+		if (re_title==1) {
+			subject="허위매물신고";
+		}else if (re_title==2) {
+			subject="삼자거래사기신고";
+		}else {
+			subject="또 추가할 항목";
+		}
+		String body=editor4;
 		
 		Properties props=System.getProperties();
 		
@@ -232,10 +241,10 @@ public class MypageController {
 		//
 		
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-		message.setSubject(email+"님의 신고 : "+subject);
+		message.setSubject(email+"님의 "+subject);
 		message.setText(body);
 		Transport.send(message);
-		service.go_report(report);
+//		service.go_report(report);
 		return "redirect:/";
 	}
 	@GetMapping("/checkPassword")

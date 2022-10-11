@@ -168,16 +168,16 @@
 								<p>
 									<b>정가</b>
 								</p>
-								<input type="text" name="pd_price0" placeholder="가격을 입력해주세요"
-									style="margin-bottom: 10px;" value="${detail.pd_price}">
+								<input type="text" name="pd_price0" placeholder="정가를 입력해주세요"
+									style="margin-bottom: 10px;" value="${detail.pd_price0}">
 								원
 							</div>
 							<div class="col">
 								<p>
 									<b>판매하려는 가격</b>
 								</p>
-								<input type="text" name="pd_price" placeholder="가격을 입력해주세요"
-									style="margin-bottom: 10px;"> 원
+								<input type="text" name="pd_price" placeholder="판매가격을 입력해주세요"
+									style="margin-bottom: 10px;" value="${detail.pd_price }"> 원
 							</div>
 							<div class="col">
 								<p>

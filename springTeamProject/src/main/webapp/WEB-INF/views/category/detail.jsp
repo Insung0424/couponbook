@@ -328,6 +328,7 @@ body {
 				<!-- 신고 기능 모달 창 -->
 
 				<div id="modal_report">
+				<form action="${pageContext.request.contextPath}/mypage/sendEmail" method="post">
 					<div id="modal_report_content">
 						<div class="modal-header">
 							<div class="modal-title">불량사용자신고</div>
@@ -335,7 +336,7 @@ body {
 						<div class="modal-body">
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label">신고종류</label>
-								<select id="re_title" class="form-select form-select-sm">
+								<select id="re_title" name="re_title" class="form-select form-select-sm">
 									<option value="">유형선택</option>
 									<option value="1">허위매물</option>
 									<option value="2">삼자거래사기</option>
@@ -352,11 +353,14 @@ body {
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button id="report_submit" class="btn btn-primary">확인</button>
+							<input type="hidden" id="user_id" name="user_id" value="${mem.user_id}">
+	<input type="hidden" id="email" name="email" value="${mem.email}">
+							<input type="submit" id="report_submit" class="btn btn-primary" value="확인">
 							<button id="report_cancel" class="btn btn-primary">취소</button>
 
 						</div>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>

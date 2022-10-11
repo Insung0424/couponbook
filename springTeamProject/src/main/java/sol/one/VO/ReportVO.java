@@ -8,7 +8,7 @@ import lombok.Data;
 public class ReportVO {
 
 		private long user_id;
-		private String re_title;
+		private int re_title;
 		private String re_content;
 		private Date re_time;
 }

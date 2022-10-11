@@ -81,7 +81,7 @@
 					$("#password").focus();
 					return false;
 				}
-				if ($("#password").val()==${mem.password}) {
+				if ($("#password").val()==${info.password}) {
 					alert("현재 비밀번호와 다른 비밀번호를 입력해주세요.");
 					$("#password").focus();
 					return false;
@@ -144,21 +144,21 @@
 							<div class="card shadow mb-4">
 								<div class="container"
 									style="background-color: white; margin-bottom: 30px; border-radius: 10px; justify-content: center;">
-									<input type="hidden" value="${mem.user_id }" id="user_id" name="user_id">
+									<input type="hidden" value="${info.user_id }" id="user_id" name="user_id">
 										<div style="text-align: center;">
 										
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">이메일</label> <input type="email"
 													class="form-control" id="email" name="email"
-													value="${mem.email}" readonly="readonly">
+													value="${info.email}" readonly="readonly">
 											</div>
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">닉네임</label> <input type="text"
 													class="form-control" id="nickname" name="nickname"
-													value="${mem.nickname}"/>
+													value="${info.nickname}"/>
 											</div>
 
 										</div>
@@ -183,14 +183,14 @@
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">이름</label> <input type="text"
 													class="form-control" id="user_name" name="user_name"
-													value="${mem.user_name}"/>
+													value="${info.user_name}"/>
 											</div>
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">전화번호</label> <input type="text"
 													class="form-control" id="phone" name="phone"
-													value="${mem.phone}"/>
+													value="${info.phone}"/>
 											</div>
 											</div>
 												<div style="text-align: center;">
@@ -198,14 +198,14 @@
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">우편번호</label> <input type="text"
 													class="form-control" id="zip_no" name="zip_no"
-													value="${mem.zip_no}"/>
+													value="${info.zip_no}"/>
 											</div>
 
 											<div class="form-floating mb-3"
 												style="width: 300px; margin: 50px; display: inline-block;">
 												<label for="floatingInput">주소</label> <input type="text"
 													class="form-control" id="addr" name="addr"
-													value="${mem.addr}"/>
+													value="${info.addr}"/>
 											</div>
 												
 											</div>
