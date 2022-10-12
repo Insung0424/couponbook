@@ -467,7 +467,7 @@ body {
                     	   
                        },
                        error : function(){
-                          alert("등록error");
+                          alert("네트워크 오류, 잠시뒤에 시도해주세요");
                        }
                        
                     });  
@@ -489,7 +489,7 @@ body {
                           success : function(data){
                           },
                           error : function(){
-                             alert("삭제error");
+                             alert("네트워크 오류, 잠시뒤에 시도해주세요");
                           }
                           
                        }); 
@@ -500,7 +500,7 @@ body {
                
                error : function(status){
                   console.log(status);
-                  alert("확인error");
+                  alert("네트워크 오류, 잠시 뒤에 시도해주세요");
                }
                
             });
@@ -636,7 +636,7 @@ body {
                }
             },
             error : function(){
-               alert("nope");
+               alert("네트워크 오류, 잠시뒤에 시도해주세요");
             }
          });
          
@@ -658,7 +658,6 @@ body {
                }else{
                
                   for(i = 0;i < list.length;i++){
-                     console.log(list[i]);
                      let content = list[i].comment_content;
                      let user_id_check = list[i].user_id;
                      let nickname = list[i].nickname;
@@ -719,13 +718,10 @@ body {
                   comment_html += "아직 판매자가 댓글을 확인하지않았습니다</div>";
                   alert("아직 판매자가 댓글을 확인하지않았습니다");
                  }else{
-                	 console.log(li);
                 	 
                 	 for(j = 0;j<li.length; j++){
                 		 
                 		 var list = li[j];
-                		 
-                		 console.log(list);
                 		 
 	                  for(i = 0;i < list.length;i++){
 	                     let content = list[i].comment_content;
@@ -764,7 +760,7 @@ body {
                  
               },
               error:function(){
-                 alert('통신실패');
+                 alert('네트워크 오류, 잠시 뒤에 시도해주세요');
               }
          })};
             
@@ -782,7 +778,6 @@ body {
 
       $(document).on("click", "#delete", function(){
          const comment_no = $(this).data("id");
-         console.log(comment_no);
          alert('댓글을 삭제하시겠습니까?');
                  $.ajax({
                      type:'delete',
@@ -801,7 +796,7 @@ body {
                        }
                      },
                      error:function(){
-                        alert('통신실패');
+                        alert('네트워크 오류, 잠시 뒤에 시도해주세요');
                      }
                   });
            
@@ -849,7 +844,7 @@ body {
                            
                         },
                         error:function(){
-                           alert('통신실패');
+                           alert('네트워크 오류, 잠시 뒤에 시도해주세요');
                         }
                      });   
             
@@ -875,7 +870,6 @@ body {
                alert("내용을 입력해주세요");
             }
             
-            console.log('답글');
                     $.ajax({
                         type:'post',
                         url:'<c:url value="/replies/tabComment"/>',
@@ -910,7 +904,7 @@ body {
                            
                         },
                         error:function(){
-                           alert('통신실패');
+                           alert('네트워크 오류, 잠시 뒤에 시도해주세요');
                         }
                      });   
             
