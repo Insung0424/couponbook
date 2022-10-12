@@ -118,6 +118,11 @@ public class MypageController {
 		return "redirect:/";
 		
 	}
+	@PostMapping("/delete_admin")
+	public String delete_admin(Long user_id,HttpSession session) throws Exception {
+		service.delete_info_mypage(user_id);
+	return "admin/adminMain";
+	}
 	//내 신고목록
 	@PostMapping("/myReport")
 	public String myReport(@RequestParam(required = false, value="session_user_id")Long user_id,Model model,
@@ -193,7 +198,8 @@ public class MypageController {
 	}
 	//신고메일발송
 	@PostMapping("/sendEmail")
-	public String sendEmail(ReportVO report,String email,int re_title,String editor4,HttpServletRequest request,
+	public String sendEmail(@RequestParam(required = false, value="session_user_id")Long user_id,
+			long re_user_id,String email,int re_title,String editor4,HttpServletRequest request,
 			HttpServletResponse response,HttpSession httpsession) throws Exception {
 			
 		//smtp 설정되어있는 계정의 아이디와 비밀번호
@@ -245,6 +251,14 @@ public class MypageController {
 		message.setText(body);
 		Transport.send(message);
 //		service.go_report(report);
+		ReportVO reportvo=new ReportVO();
+		reportvo.setRe_user_id(re_user_id);
+		reportvo.setEmail(email);
+		reportvo.setUser_id(user_id);
+		reportvo.setRe_title(re_title);
+		reportvo.setRe_content(editor4);
+		service.go_report(reportvo);
+		
 		return "redirect:/";
 	}
 	@GetMapping("/checkPassword")

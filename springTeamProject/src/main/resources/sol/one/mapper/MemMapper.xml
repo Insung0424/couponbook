@@ -15,8 +15,11 @@
 	</select>
 	
 	<select id="adminGetMem" resultType="sol.one.VO.MemberVO">
-		select * from pj_user 
+		select * from pj_user
 		where email = #{email} 
+	</select>
+	<select id="count_report" resultType="int">
+	select count(*) from pj_report where re_user_id=#{user_id}
 	</select>
 	
 	

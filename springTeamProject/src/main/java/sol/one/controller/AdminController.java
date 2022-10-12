@@ -89,7 +89,9 @@ public class AdminController {
 	@GetMapping("/admin/getMem")
 	public void getMem(@RequestParam("email") String email, Model model) {
 		model.addAttribute("oneMem", service.adminGetMem(email));
+		
 	}
+	
 	
 	
 	

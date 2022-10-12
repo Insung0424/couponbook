@@ -13,8 +13,10 @@
 
 	<div class="row g-5">
       <div class="col-md-7 col-lg-8 m-auto">
+      <form action="/mypage/delete_admin" method="post">
         <h4 class="mb-3 mt-5">회원 정보</h4>
           <div class="row g-3">
+            
             
             <div class="col-8 mb-3">
               <label class="form-label">회원등급 </label>
@@ -60,7 +62,9 @@
             </div>
 
           </div>
-
+          <input type="hidden" value="${oneMem.email }" id="email" name="email" >
+          <input type="hidden" value="${oneMem.user_id }" id="user_id" name="user_id">
+			<input type="submit" class="btn btn-warning btn-lg mb-3" value="회원제재">
 
           <button class="btn btn-warning btn-lg mb-3" onclick="history.back();">뒤로가기</button>
         </form>

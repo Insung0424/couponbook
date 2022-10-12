@@ -307,7 +307,10 @@ body {
 <div class="col" style="text-align: right; display: inline-block;">
          <input type="button" id="modal_TradingEnd" class="btn btn-success"
             style="display: inline-block;" value="거래완료하기" />
+            <c:set var="writer_user_id" value="${detail.user_id }" />
+			<c:if test="${mem.user_id ne writer_user_id}">
          <button id="modal_btn_report" class="btn btn-danger">신고</button>
+         </c:if>
       </div>
 
 						<%@include file="comment.jsp"%>
@@ -353,8 +356,9 @@ body {
 							</div>
 						</div>
 						<div class="modal-footer">
-							<input type="hidden" id="user_id" name="user_id" value="${mem.user_id}">
+							<input type="hidden" id="session_user_id" name="session_user_id" value="${mem.user_id}">
 	<input type="hidden" id="email" name="email" value="${mem.email}">
+	<input type="hidden" id="re_user_id" name="re_user_id" value="${detail.user_id}">
 							<input type="submit" id="report_submit" class="btn btn-primary" value="확인">
 							<button id="report_cancel" class="btn btn-primary">취소</button>
 

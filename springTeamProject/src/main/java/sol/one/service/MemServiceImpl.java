@@ -49,6 +49,12 @@ public class MemServiceImpl implements MemService {
 		return cnt;
 	}
 
+	@Override
+	public int count_report(Long user_id) {
+		
+		return mapper.count_report(user_id);
+	}
+
 
 
 

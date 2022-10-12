@@ -29,6 +29,8 @@ public interface MemService  {
 	 * @param email
 	 * @return
 	 */
+	
+	int count_report(Long user_id);
 	int mailChk(String email);
 	
 
