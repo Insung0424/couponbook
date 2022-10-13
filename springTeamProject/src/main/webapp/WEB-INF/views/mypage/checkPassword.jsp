@@ -6,8 +6,8 @@
 
 <head>
 <link rel="shortcut icon"
-	href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/resources/favicon.ico" />'
+	href='<c:url value="/resources/favicon.png" />' type="image/x-icon">
+<link rel="icon" href='<c:url value="/resources/favicon.png" />'
 	type="image/x-icon">
 
 <meta charset="utf-8">

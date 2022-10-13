@@ -128,7 +128,7 @@ function getGraph(){
 			 new Chart(document.getElementById('myChart'), {
 			    type: 'line',
 			    data: {
-			      labels: ['-7','-6','-5','-4','-3','-2','-1'],
+			      labels: ['5일 전','4일 전','3일 전','2일 전','1일 전','오늘'],
 			      datasets: [{
 			        data: tradeCntList,
 			        label: "거래내역",

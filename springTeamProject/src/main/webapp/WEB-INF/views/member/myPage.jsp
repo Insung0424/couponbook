@@ -5,7 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
-<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.png" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.png" />' type="image/x-icon">
 	<meta charset="UTF-8">
 	<title>마이페이지 임시 화면</title>
 	<!-- Bootstrap CDN -->

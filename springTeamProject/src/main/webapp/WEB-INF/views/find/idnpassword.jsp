@@ -7,6 +7,10 @@
 <title>Find</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+	<link rel="shortcut icon"
+	href='<c:url value="/resources/favicon.png" />' type="image/x-icon">
+<link rel="icon" href='<c:url value="/resources/favicon.png" />'
+	type="image/x-icon">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script

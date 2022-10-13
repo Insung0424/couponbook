@@ -7,8 +7,8 @@
 <html lang="en">
 <head>
 <link rel="shortcut icon"
-	href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/resources/favicon.ico" />'
+	href='<c:url value="/resources/favicon.png" />' type="image/x-icon">
+<link rel="icon" href='<c:url value="/resources/favicon.png" />'
 	type="image/x-icon">
 <meta charset="UTF-8">
 <title>상품 등록</title>

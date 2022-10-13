@@ -6,7 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html lang="en">
 
-<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.ico" />' type="image/x-icon">
+<head><link rel="shortcut icon" href='<c:url value="/resources/favicon.png" />' type="image/x-icon"><link rel="icon" href='<c:url value="/resources/favicon.png" />' type="image/x-icon">
 <style type="text/css">
  /* link - 아직 클릭하지 않은 경우 red 색상 설정 */
  a:link { color: black; text-decoration: none;}	
