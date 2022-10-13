@@ -22,15 +22,17 @@
 html {
 	height: 100%;
 }
+
 </style>
 </head>
 <body class="mt-5">
 	<div class="container">
-		<div class="row" style="margin-top: 25%; text-align: center;">
+		<div class="row" style="margin-top: 10%; text-align: center;">
 			<div class="col-md-4 col-md-offset-4 m-auto">
 				<div class="login-panel panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title" style="font-weight: bold;">로그인</h3>
+					<a href="/category/all" class="logo" style="font-size: 50px; font-family:Bahnschrift; text-decoration: none;"  >CouponBook</a>
+						<h3 class="panel-title" style="font-weight: bold; margin-top: 100px;">로그인</h3>
 					</div>
 					<div class="panel-body">
 						<form role="form" method='post' action="loginProc">

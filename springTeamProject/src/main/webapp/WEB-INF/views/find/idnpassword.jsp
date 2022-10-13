@@ -19,7 +19,7 @@ html {
 #find {
 	text-align: center;
 	margin: 0 auto;
-	margin-top: 30%;
+	margin-top: 100px;
 }
 
 #findIdnNickPhone, #findPasswordnChage {
@@ -35,8 +35,10 @@ html {
 </head>
 <body>
 
-	<div class="container" style="height: 100%">
+	<div class="container">
+	
 
+	<center style="margin-top: 10%;"><a href="/category/all" class="logo" style="font-size: 50px; font-family:Bahnschrift; text-decoration: none; margin: 0 auto;"  >CouponBook</a></center>
 		<div id="find">
 			<input class="btn btn-link" id="findId" type="button" value="아이디 찾기" />
 				&nbsp; 

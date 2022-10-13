@@ -46,7 +46,7 @@
 .category_box li a {
 	color: black;
 }
-]
+
 
 </style>
 </head>
@@ -68,7 +68,6 @@
 
 
 <!------------------------------------------------------------------------------------  -->
-
 <!-- Page Wrapper -->
 <header
 	class="navbar navbar-expand navbar-light bg-white topbar  static-top shadow"
@@ -77,13 +76,13 @@
 		
 	</script>
 
-<a href="/category/all" class="logo" style=" margin-top: 50px; margin-left: 150px; z-index: 1;" ><img src="/resources/logo.png"></a>
+<a href="/category/all" class="logo" style="font-size: 40px; font-family:Bahnschrift; margin-top: 50px; margin-left: 150px; z-index: 1;" >CouponBook</a>
 
 	<form method="get">
 		<div class="input-group">
 			<div class="form-outline">
 				<input id="search" type="text" name="search" class="form-control"
-					placeholder="상품 검색" style="width: 700px; margin-left: 250px;" />
+					placeholder="상품 검색" style="width: 700px; margin-left: 180px;" />
 
 			</div>
 			<button id="search-button" type="submit" class="btn btn-primary"
