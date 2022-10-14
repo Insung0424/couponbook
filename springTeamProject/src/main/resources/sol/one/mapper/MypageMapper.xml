@@ -49,6 +49,14 @@
 		where
 			user_id = #{user_id}
 	</update>
+	<update id="delete_info_admin">
+
+	update pj_user
+		set
+			user_grade = -1
+		where
+			user_id = #{user_id}
+	</update>
 	<insert id="go_report">
 	insert into pj_report(user_id,re_title,re_content,re_time,email,re_user_id)
 	values

@@ -57,6 +57,11 @@ public class MypageMapperImpl implements MypageMapper{
 		
 	}
 	@Override
+	public void delete_info_admin(Long user_id) throws Exception {
+		sqlSession.update("MypageMapper.delete_info_admin",user_id);
+		
+	}
+	@Override
 	public void go_report(ReportVO report) throws Exception {
 		sqlSession.insert("MypageMapper.go_report",report);
 		

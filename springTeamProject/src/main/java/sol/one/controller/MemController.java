@@ -79,15 +79,20 @@ public class MemController {
 			//濡쒓렇�씤 �떎�뙣 �떆 寃쎄퀬硫붿떆吏��� �럹�씠吏� �씠�룞
 			session.setAttribute("msg", "�븘�씠�뵒�� 鍮꾨�踰덊샇瑜� �솗�씤�븯�꽭�슂");
 			return "/errorPage";
-		} else if(loginMem.getUser_grade() != 1) {
+		} else if(loginMem.getUser_grade() == 2) {
 			//濡쒓렇�씤 �꽦怨� �븳 �궗�슜�옄�쓽 �벑湲됱씠 1(�씪諛섑쉶�썝)�씠 �븘�땶 寃쎌슦 = 愿�由ъ옄 �븘�씠�뵒濡� 濡쒓렇�씤 �뻽�쓣 寃쎌슦
 			session.setAttribute("admin", loginMem);
 			return "redirect:/admin/adminMain";
-		}
-		else {
+		} else if(loginMem.getUser_grade() == 1) {
 			// 濡쒓렇�씤 �꽦怨� �븯硫� service�뿉�꽌 諛섑솚 諛쏆� loginMem �쓣 �꽭�뀡�뿉 �떞�븘�꽌 硫붿씤 �럹�씠吏�濡� �씠�룞�븳�떎
 			session.setAttribute("mem", loginMem);
 			return "redirect:/category/all";
+		} else if(loginMem.getUser_grade() == 0) {
+			session.setAttribute("msg", "회원탈퇴한 계정입니다.");
+			return "/errorPage1";
+		} else{
+			session.setAttribute("msg", "비정상적인 활동으로 제재를 받아 로그인이 제한됩니다.");
+			return "/errorPage2";
 		}
 	}
 	

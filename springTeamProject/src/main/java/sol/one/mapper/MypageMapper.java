@@ -26,6 +26,8 @@ public interface MypageMapper {
 	
 	public void delete_info_mypage(Long user_id)throws Exception;
 	
+	public void delete_info_admin(Long user_id)throws Exception;
+	
 	public void go_report(ReportVO report)throws Exception;
 	
 	public List<LikelistVO> list_like_mypage(Long user_id) throws Exception;

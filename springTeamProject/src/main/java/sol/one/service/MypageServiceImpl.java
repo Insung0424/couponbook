@@ -107,4 +107,10 @@ public class MypageServiceImpl implements MypageService {
 		mapper.delete_info_mypage(user_id);
 		
 	}
+	@Override
+	public void delete_info_admin(Long user_id) throws Exception {
+		log.info("delete_info_mypage");
+		mapper.delete_info_admin(user_id);
+		
+	}
 }

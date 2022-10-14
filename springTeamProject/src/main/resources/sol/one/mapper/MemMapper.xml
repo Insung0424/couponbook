@@ -8,10 +8,6 @@
 		where 
 		email = #{email} and 
 		password = #{password}
-		and
-			user_grade
-		not in
-			(0)
 	</select>
 	
 	<select id="adminGetMem" resultType="sol.one.VO.MemberVO">

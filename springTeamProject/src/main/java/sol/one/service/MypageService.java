@@ -32,6 +32,8 @@ public interface MypageService {
 	//ȸ�� Ż��
 	public void delete_info_mypage(Long user_id)throws Exception;
 	
+	public void delete_info_admin(Long user_id)throws Exception;
+	
 	public void go_report(ReportVO report)throws Exception;
 	
 	//���������� �� ���ɻ�ǰ ��ȸ�ϱ�

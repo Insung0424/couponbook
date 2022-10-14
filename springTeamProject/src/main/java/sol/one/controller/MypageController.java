@@ -120,7 +120,7 @@ public class MypageController {
 	}
 	@PostMapping("/delete_admin")
 	public String delete_admin(Long user_id,HttpSession session) throws Exception {
-		service.delete_info_mypage(user_id);
+		service.delete_info_admin(user_id);
 	return "admin/adminMain";
 	}
 	//내 신고목록
