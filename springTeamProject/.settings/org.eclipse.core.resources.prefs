@@ -5,5 +5,6 @@ eclipse.preferences.version=1
 encoding//src/main/java/sol/one/controller/HomeController.java=UTF-8
 encoding//src/main/java/sol/one/controller/MemController.java=UTF-8
 encoding//src/main/java/sol/one/controller/WriteController.java=UTF-8
+encoding//src/main/webapp/WEB-INF/views/HowToUse.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/admin/adminMain.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/write.jsp=UTF-8

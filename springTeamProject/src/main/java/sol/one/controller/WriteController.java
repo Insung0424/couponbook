@@ -184,6 +184,8 @@ public class WriteController {
 		// ex)
 		// C:\Users\agdis\Documents\workspace-sts-3.9.11.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\springTeamProject\resources\images\src\2022\09\07\c5ad886f.png
 		File file = new File(fileNameNPath);
+		
+		System.out.println(file);
 
 		ResponseEntity<byte[]> img = null;
 		try {

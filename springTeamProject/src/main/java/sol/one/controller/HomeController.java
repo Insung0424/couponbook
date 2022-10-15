@@ -67,6 +67,10 @@ public class HomeController {
 	@GetMapping("/main")
 	public void main() {
 	}
+	
+	@GetMapping("/HowToUse")
+	public void HowToUse() {
+	}
 
 	// 로그인, 회원가입 확인용 메인으로 이동, 테스트용으로 삭제예정임
 	@GetMapping("/loginMain")
@@ -105,9 +109,10 @@ public class HomeController {
 						System.out.println("uploadPath:" + uploadPath);
 
 						File uploadFile = new File(uploadPath);
-						if (!uploadFile.exists()) {
-							uploadFile.mkdir();
-						}
+						System.out.println(uploadFile);
+						if(!uploadFile.exists()) {
+			            	uploadFile.mkdir();
+			            }
 						String fileName2 = UUID.randomUUID().toString();
 						uploadPath = uploadPath + File.separator + fileName2 + fileName;
 

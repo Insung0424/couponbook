@@ -242,6 +242,21 @@ section, ul, dl, dd {
 								</dl>
 							</div>
 						</li>
+						<li>
+							<a href="/HowToUse">
+								<div style="background-image: url(../resources/img/How.png);">
+								</div>
+							</a>
+						</li>
+						<li>
+							<div
+								style="background-image: url(../resources/img/HowToUse.jpg);">
+								<dl class="right">
+									<dt></dt>
+									<dd></dd>
+								</dl>
+							</div>
+						</li>
 					</ul>
 					<div class="btn" style="display: none;">
 						<button type="button" id="prev"><</button>
