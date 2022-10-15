@@ -4,25 +4,25 @@
 <mapper namespace="sol.one.mapper.TradeMapper">
 
 	<insert id="put">
-		insert into pj_trade(product_id,buyer_user_id,sell_user_id,pd_status,trade_time)
+		insert into pj_trade_test(product_id,buyer_user_id,sell_user_id,pd_status,trade_time)
 		values (#{product_id},#{buyer_user_id},#{sell_user_id},#{pd_status},current_date)
 	</insert>
 	
 	<insert id="putsell">
-		insert into pj_trade(product_id,sell_user_id,pd_status,trade_time)
+		insert into pj_trade_test(product_id,sell_user_id,pd_status,trade_time)
 		values (#{product_id},#{sell_user_id},#{pd_status},current_date)
 	</insert>
 	
 	<select id="getMyAll" resultType="sol.one.VO.T_tradeVO">
-		select * from pj_trade where buyer_user_id = #{user_id} or sell_user_id= #{user_id}
+		select * from pj_trade_test where buyer_user_id = #{user_id} or sell_user_id= #{user_id}
 	</select>
 	
 	<select id="getMySellList" resultType="sol.one.VO.T_tradeVO">
-		select * from pj_trade where sell_user_id= #{sell_user_id}
+		select * from pj_trade_test where sell_user_id= #{sell_user_id}
 	</select>
 	
 	<select id="getMyBuyList" resultType="sol.one.VO.T_tradeVO">
-		select * from pj_trade where buyer_user_id = #{buyer_user_id}
+		select * from pj_trade_test where buyer_user_id = #{buyer_user_id}
 	</select>
 	
 	<update id="up_pd">
@@ -30,11 +30,11 @@
 	</update>
 	
 	<select id="getSellPdstatus" resultType="sol.one.VO.T_tradeVO">
-		select pd_status from pj_trade where product_id = #{product_id} and sell_user_id = #{sell_user_id}
+		select pd_status from pj_trade_test where product_id = #{product_id} and sell_user_id = #{sell_user_id}
 	</select>
 	
 	<select id="getBuyPdstatus" resultType="sol.one.VO.T_tradeVO">
-		select pd_status from pj_trade where product_id = #{product_id} and sell_user_id = #{sell_user_id} and buyer_user_id = #{buyer_user_id}
+		select pd_status from pj_trade_test where product_id = #{product_id} and sell_user_id = #{sell_user_id} and buyer_user_id = #{buyer_user_id}
 	</select>
 	
 	<select resultType="sol.one.VO.LikeVO" id="getMyLike">

@@ -77,7 +77,7 @@
 	<select resultType="sol.one.VO.tradelistVO" id="list_trade_mypage">
 	select DISTINCT p.product_id,p.pd_status,p.pd_name,
 		p.pd_price,p.pd_price0,p.pd_img,t.trade_time,
-		p.pd_discount,p.pd_date from pj_trade t,pj_product p 
+		p.pd_discount,p.pd_date from pj_trade_test t,pj_product p 
 		where t.product_id=p.product_id 
 		and (t.sell_user_id=#{user_id} or t.buyer_user_id=#{user_id}) 
 		group by  p.product_id,p.pd_status,p.pd_name,t.trade_time,
