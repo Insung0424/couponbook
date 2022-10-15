@@ -70,7 +70,7 @@
 <!------------------------------------------------------------------------------------  -->
 <!-- Page Wrapper -->
 <header
-	class="navbar navbar-expand navbar-light bg-white topbar  static-top shadow"
+	class="navbar navbar-expand navbar-light bg-white topbar  static-top"
 	id="">
 	<script async src="https://cse.google.com/cse.js?cx=80cd685c6894246e8">
 		
