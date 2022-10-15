@@ -186,6 +186,9 @@ section, ul, dl, dd {
 	font-size: 1.5rem;
 	cursor: pointer;
 }
+.howtouse:hover{
+	cursor: pointer;
+}
 </style>
 </head>
 
@@ -227,15 +230,6 @@ section, ul, dl, dd {
 						<li>
 							<div
 								style="background-image: url(../resources/img/couponbook.jpg);">
-								<dl>
-									<dt></dt>
-									<dd></dd>
-								</dl>
-							</div>
-						</li>
-						<li>
-							<div
-								style="background-image: url(../resources/img/couponbook.jpg);">
 								<dl class="right">
 									<dt>팔면 돈되고 안팔면 똥된다</dt>
 									<dd>안쓰는 쿠폰으로 용돈 만들기</dd>
@@ -243,14 +237,16 @@ section, ul, dl, dd {
 							</div>
 						</li>
 						<li>
-							<a href="/HowToUse">
-								<div style="background-image: url(../resources/img/How.png);">
-								</div>
-							</a>
+							<div style="background-image: url(../resources/img/HowToUse.jpg);" class="howtouse" onclick="link_use()">
+								<dl class="right">
+									<dt></dt>
+									<dd></dd>
+								</dl>
+							</div>
 						</li>
 						<li>
 							<div
-								style="background-image: url(../resources/img/HowToUse.jpg);">
+								style="background-image: url(../resources/img/How.png); width:100%;">
 								<dl class="right">
 									<dt></dt>
 									<dd></dd>
@@ -259,8 +255,8 @@ section, ul, dl, dd {
 						</li>
 					</ul>
 					<div class="btn" style="display: none;">
-						<button type="button" id="prev"><</button>
-						<button type="button" id="next">></button>
+						<button type="button" id="prev"></button>
+						<button type="button" id="next"></button>
 					</div>
 				</section>
 
@@ -534,7 +530,7 @@ section, ul, dl, dd {
 			var theInterval;
 
 			function startSlide() {
-				theInterval = setInterval(NextSlide, 5000); //자동 슬라이드 설정
+				theInterval = setInterval(NextSlide, 3000); //자동 슬라이드 설정
 			}
 
 			function stopSlide() { //자동 멈추기
@@ -576,6 +572,12 @@ section, ul, dl, dd {
 				}
 			});
 		});
+	</script>
+	
+	<script>
+		function link_use(){
+			location.href='/HowToUse' 
+		}
 	</script>
 
 
