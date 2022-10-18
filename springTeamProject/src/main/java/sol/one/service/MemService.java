@@ -30,7 +30,7 @@ public interface MemService  {
 	 * @return
 	 */
 	
-	int count_report(Long user_id);
+	int count_report(String email);
 	int mailChk(String email);
 	
 

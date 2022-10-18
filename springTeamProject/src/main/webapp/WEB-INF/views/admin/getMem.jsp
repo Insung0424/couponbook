@@ -19,8 +19,17 @@
             
             
             <div class="col-8 mb-3">
+              <label class="form-label">누적신고횟수</label>
+              <label class="form-control"> <c:out value="${count_report}" />회 </label>
+            </div>
+            
+            <div class="col-8 mb-3">
               <label class="form-label">회원등급 </label>
-              <label class="form-control"> <c:out value="${oneMem.user_grade}" /> </label>
+              <label class="form-control"> <c:set var="user_grade" value="${oneMem.user_grade}" />
+              <c:if test="${user_grade eq 2}">관리자</c:if>
+              <c:if test="${user_grade eq 1}">일반</c:if>
+              <c:if test="${user_grade eq 0}">탈퇴</c:if> 
+              <c:if test="${user_grade eq -1}">제재</c:if> </label>
             </div>
             
             <div class="col-8 mb-3">

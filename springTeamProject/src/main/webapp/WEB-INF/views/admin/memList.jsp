@@ -35,7 +35,11 @@
               	</a> 
               </td>
               <td> <c:out value="${memList.user_name }" /></td>
-              <td> <c:out value="${memList.user_grade}" /></td>
+              <td> <c:set var="user_grade" value="${memList.user_grade}" />
+              <c:if test="${user_grade eq 2}">관리자</c:if>
+              <c:if test="${user_grade eq 1}">일반</c:if>
+              <c:if test="${user_grade eq 0}">탈퇴</c:if> 
+              <c:if test="${user_grade eq -1}">제재</c:if></td>
             </tr>
            </c:forEach>
 

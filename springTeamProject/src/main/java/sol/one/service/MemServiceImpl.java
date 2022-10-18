@@ -50,9 +50,9 @@ public class MemServiceImpl implements MemService {
 	}
 
 	@Override
-	public int count_report(Long user_id) {
+	public int count_report(String email) {
 		
-		return mapper.count_report(user_id);
+		return mapper.count_report(email);
 	}
 
 

@@ -13,4 +13,5 @@ public class ReportVO {
 		private Date re_time;
 		private String email;
 		private long re_user_id;
+		private String re_email;
 }

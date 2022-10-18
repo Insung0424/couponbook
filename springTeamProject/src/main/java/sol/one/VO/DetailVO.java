@@ -40,6 +40,8 @@ public class DetailVO {
 	
 	private String pd_date; 
 
+	private String email;
 	
+	private int pd_like;
 	
 }

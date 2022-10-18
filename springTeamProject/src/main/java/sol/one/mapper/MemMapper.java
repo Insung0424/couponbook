@@ -28,7 +28,7 @@ public interface MemMapper {
 	 */
 	public MemberVO adminGetMem(String email);
 	
-	public int count_report(Long user_id);
+	public int count_report(String email);
 	
 	/**
 	 * 메일 주소가 있으면 count 수를 리턴한다

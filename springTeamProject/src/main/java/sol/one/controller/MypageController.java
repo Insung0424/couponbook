@@ -199,7 +199,7 @@ public class MypageController {
 	//신고메일발송
 	@PostMapping("/sendEmail")
 	public String sendEmail(@RequestParam(required = false, value="session_user_id")Long user_id,
-			long re_user_id,String email,int re_title,String editor4,HttpServletRequest request,
+			long re_user_id,String email,String re_email,int re_title,String editor4,HttpServletRequest request,
 			HttpServletResponse response,HttpSession httpsession) throws Exception {
 			
 		//smtp 설정되어있는 계정의 아이디와 비밀번호
@@ -247,7 +247,7 @@ public class MypageController {
 		//
 		
 		message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-		message.setSubject(email+"님의 "+subject);
+		message.setSubject(email+"님의 신고:"+re_email+" "+subject);
 		message.setText(body);
 		Transport.send(message);
 //		service.go_report(report);
@@ -257,6 +257,7 @@ public class MypageController {
 		reportvo.setUser_id(user_id);
 		reportvo.setRe_title(re_title);
 		reportvo.setRe_content(editor4);
+		reportvo.setRe_email(re_email);
 		service.go_report(reportvo);
 		
 		return "redirect:/";

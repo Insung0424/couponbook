@@ -15,7 +15,7 @@
 		where email = #{email} 
 	</select>
 	<select id="count_report" resultType="int">
-	select count(*) from pj_report where re_user_id=#{user_id}
+	select count(*) from pj_report where re_email=#{email}
 	</select>
 	
 	
