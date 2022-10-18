@@ -138,7 +138,12 @@ public class CommentController {
 	
 	@PutMapping("/update")
 	public String put(@RequestBody CommentVO vo) {
-		service.modify(vo);
-		return "update";
+		int n = service.modify(vo);
+		
+		if (n == 1) {
+			return "update";
+		}else {
+			return "fail";
+		}
 	}
 }

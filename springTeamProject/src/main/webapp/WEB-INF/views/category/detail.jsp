@@ -384,6 +384,8 @@ body {
 
 		<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script>
+		var isAjaxing = false;
+		
       $(document).ready(function() {
          
          $(window).scroll(function() {
@@ -532,6 +534,13 @@ body {
          const user_id = ${mem.user_id};
          const seller = ${detail.user_id};
          
+         if (isAjaxing == true){
+             console.log("처리중입니다. 잠시만 기다려주세요.");
+             return;
+         }
+         
+         isAjaxing = true;
+         
          if(seller == user_id){
             $.ajax({
                type:'get',
@@ -543,6 +552,7 @@ body {
                aysc : false,
                contentType : 'application/json',
                success : function(data){
+            	   isAjaxing = false;
                   var log = data.pd_status;
                   if(log == "notradelog"){
                      if($("#modal_trade_content").load("sellerTradeEnd")){
@@ -579,6 +589,7 @@ body {
                aysc : false,
                contentType : 'application/json',
                success : function(data){
+            	   isAjaxing = false;
                   var log = data.pd_status;
                   if(log == "notradelog"){
                      if($("#modal_trade_content").load("buyerTradeEnd")){
@@ -598,6 +609,7 @@ body {
                   }
                },
                error : function(){
+            	   isAjaxing = false;
                   alert("네트워크에 오류가 발생했습니다");
                }
             });
@@ -605,6 +617,13 @@ body {
       });
 
       $("#add_btn").click(function(){
+    	  
+    	  if (isAjaxing == true){
+              console.log("처리중입니다. 잠시만 기다려주세요.");
+              return;
+          }
+    	  
+    	  isAjaxing = true;
          
          const product_id = ${detail.product_id };
          const user_id = ${mem.user_id};
@@ -625,6 +644,7 @@ body {
             }),
             contentType : 'application/json',
             success : function(data){
+            	isAjaxing = false;
                if(data == "InsertSuccess"){
                   if(user_id  == seller){
                             getAllList();
@@ -637,6 +657,7 @@ body {
                }
             },
             error : function(){
+            	isAjaxing = false;
                alert("네트워크 오류, 잠시뒤에 시도해주세요");
             }
          });
@@ -648,8 +669,16 @@ body {
          const product_id= ${detail.product_id};
          const user_id_1= ${detail.user_id};
          
+         if (isAjaxing == true){
+             console.log("처리중입니다. 잠시만 기다려주세요.");
+             return;
+         }
+   	  
+   	  	 isAjaxing = true;
+         
          $.getJSON("/replies/get?product_id="+ product_id,
             function(data) {
+       	  		isAjaxing = false;
                var list = data.list;
                
                var comment_html = "<div>";
@@ -690,7 +719,8 @@ body {
                }
                
                $("#comment_list").html(comment_html);
-            })};
+            }).done().fail(function(){alert("알 수 없는 오류가 발생하였습니다."); isAjaxing = false;})
+            };
             
             
       function getList() {
@@ -698,6 +728,12 @@ body {
          const user_id_1= ${mem.user_id};
          const user_id_2 = ${detail.user_id}; //상품페이지에 등록된 유저 아이디
          
+         if (isAjaxing == true){
+             console.log("처리중입니다. 잠시만 기다려주세요.");
+             return;
+         }
+   	  
+   	  	 isAjaxing = true;
          
          $.ajax({
             type : "get",
@@ -709,6 +745,7 @@ body {
               },
               contentType: 'application/json',
               success:function(data){
+            	  isAjaxing = false;
                   var comment_html = "<div id='comment_box'>";
                   var li = data.list;
                   var count = data.count;  
@@ -761,11 +798,13 @@ body {
                  
               },
               error:function(){
+            	  isAjaxing = false;
                  alert('네트워크 오류, 잠시 뒤에 시도해주세요');
               }
          })};
             
       $("#more_comment").click(function(){
+    	  
          let user_id = ${mem.user_id};
          let seller = ${detail.user_id};
          
@@ -780,13 +819,22 @@ body {
       $(document).on("click", "#delete", function(){
          const comment_no = $(this).data("id");
          alert('댓글을 삭제하시겠습니까?');
+         
+         if (isAjaxing == true){
+             console.log("처리중입니다. 잠시만 기다려주세요.");
+             return;
+         }
+   	  
+   	  	 isAjaxing = true;
+   	  	 
                  $.ajax({
                      type:'delete',
                      url:'<c:url value="/replies/delete/"/>'+comment_no,
                      data:JSON.stringify({"comment_no":comment_no}),
                      contentType: 'application/json',
                      success:function(data){
-                        let user_id = ${mem.user_id};
+                       isAjaxing = false;
+                       let user_id = ${mem.user_id};
                        let seller = ${detail.user_id};
                        
                        if(user_id  == seller){
@@ -797,6 +845,7 @@ body {
                        }
                      },
                      error:function(){
+                    	isAjaxing = false;
                         alert('네트워크 오류, 잠시 뒤에 시도해주세요');
                      }
                   });
@@ -818,6 +867,14 @@ body {
             if(modal_com_content == ''){
                alert("내용을 입력해주세요");
             }
+            
+            if (isAjaxing == true){
+                console.log("처리중입니다. 잠시만 기다려주세요.");
+                return;
+            }
+      	  
+      	  	isAjaxing = true;
+      	  	 
                     $.ajax({
                         type:'put',
                         url:'<c:url value="/replies/update"/>',
@@ -829,22 +886,30 @@ body {
                         ),
                         contentType: 'application/json',
                         success:function(data){
-                          $('.modal_com_content').val('');
-                             $("#modal").fadeOut();
-                                 let user_id = ${mem.user_id};
-                             let seller = ${detail.user_id};
-                             
-                             if(user_id  == seller){
-                                getAllList();
-                                CKEDITOR.instances.editor1.setData(""); 
-                             }
-                             else{
-                                  getList();
-                                  CKEDITOR.instances.editor1.setData(""); 
-                             }
+                        	isAjaxing = false;
+                        	if (data == "update") {
+                        		 $('.modal_com_content').val('');
+                                 $("#modal").fadeOut();
+                                     let user_id = ${mem.user_id};
+                                 let seller = ${detail.user_id};
+                                 
+                                 if(user_id  == seller){
+                                    getAllList();
+                                    CKEDITOR.instances.editor1.setData(""); 
+                                 }
+                                 else{
+                                      getList();
+                                      CKEDITOR.instances.editor1.setData(""); 
+                                 }
+                        	}
+                        	else{
+                        		isAjaxing = false;
+                        		alert('네트워크 오류, 잠시 뒤에 시도해주세요');
+                        	}
                            
                         },
                         error:function(){
+                           isAjaxing = false;
                            alert('네트워크 오류, 잠시 뒤에 시도해주세요');
                         }
                      });   
@@ -871,6 +936,13 @@ body {
                alert("내용을 입력해주세요");
             }
             
+            if (isAjaxing == true){
+                console.log("처리중입니다. 잠시만 기다려주세요.");
+                return;
+            }
+      	  
+      	  	isAjaxing = true;
+      	  	
                     $.ajax({
                         type:'post',
                         url:'<c:url value="/replies/tabComment"/>',
@@ -885,6 +957,9 @@ body {
                         ),
                         contentType: 'application/json',
                         success:function(data){
+                        	
+                           isAjaxing = false;
+                           
                            if(data == "insert"){
                            $('.modal_com_content').val('');
                              $("#modal").fadeOut();
@@ -900,11 +975,13 @@ body {
                                   CKEDITOR.instances.editor1.setData(""); 
                              }
                            }else{
+                        	  isAjaxing = false;
                               console.log("실패");
                            }
                            
                         },
                         error:function(){
+                           isAjaxing = false;
                            alert('네트워크 오류, 잠시 뒤에 시도해주세요');
                         }
                      });   
