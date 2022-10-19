@@ -53,7 +53,7 @@
 	href="${pageContext.request.contextPath}/resources/report.css">
 <!-- 신고기능모달창을 위한 css 삭제하면 모달창이 아니라 페이지에 추가되는 방식으로 작동함 현재 경로를 잡지 못하고 있음 -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 <style type="text/css">
 body {
@@ -361,7 +361,7 @@ body {
 	<input type="hidden" id="re_user_id" name="re_user_id" value="${detail.user_id}">
 	<input type="hidden" id="re_email" name="re_email" value="${detail.email}">
 							<input type="submit" id="report_submit" class="btn btn-primary" value="확인">
-							<button id="report_cancel" class="btn btn-primary">취소</button>
+							<button onclick="return false;" id="report_cancel" class="btn btn-primary">취소</button>
 
 						</div>
 					</div>
