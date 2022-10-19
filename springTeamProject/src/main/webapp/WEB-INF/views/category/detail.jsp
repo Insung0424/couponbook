@@ -53,7 +53,7 @@
 	href="${pageContext.request.contextPath}/resources/report.css">
 <!-- 신고기능모달창을 위한 css 삭제하면 모달창이 아니라 페이지에 추가되는 방식으로 작동함 현재 경로를 잡지 못하고 있음 -->
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script src="../resources/ckeditor/ckeditor.js"></script>
 <style type="text/css">
 body {
@@ -616,7 +616,8 @@ body {
          }
       });
 
-      $("#add_btn").click(function(){
+      $(document).on("click", "#add_btn", function(e){
+    	  e.stopImmediatePropagation();
     	  
     	  if (isAjaxing == true){
               console.log("처리중입니다. 잠시만 기다려주세요.");
@@ -719,7 +720,7 @@ body {
                }
                
                $("#comment_list").html(comment_html);
-            }).done().fail(function(){alert("알 수 없는 오류가 발생하였습니다."); isAjaxing = false;})
+            }).done(function(){isAjaxing = false;}).fail(function(){alert("알 수 없는 오류가 발생하였습니다."); isAjaxing = false;})
             };
             
             
@@ -816,9 +817,14 @@ body {
          }
       });
 
-      $(document).on("click", "#delete", function(){
+      $(document).on("click", "#delete", function(e){
+    	  e.stopImmediatePropagation();
          const comment_no = $(this).data("id");
-         alert('댓글을 삭제하시겠습니까?');
+         const isDelete = confirm('댓글을 삭제하시겠습니까?');
+         
+         if (isDelete == false) {
+        	 return;
+         }
          
          if (isAjaxing == true){
              console.log("처리중입니다. 잠시만 기다려주세요.");
@@ -852,20 +858,23 @@ body {
            
       });
 
-      $(document).on("click", "#update", function(){
+      $(document).on("click", "#update", function(e){
+    	  e.stopImmediatePropagation();
          const comment_no = $(this).data("id");
-         $("#modal").fadeIn();
-         $("#modal_modify_cancel_btn").click(function(){
+         $("#modal1").fadeIn();
+         $("#modal_modify_cancel_btn1").click(function(){
             $("#modal").fadeOut();
          });
-         $(".close").click(function(){
-            $("#modal").fadeOut();
+         $(".close1").click(function(){
+            $("#modal1").fadeOut();
          });
          
-         $("#modal_modify_btn").click(function(){
-            const modal_com_content = CKEDITOR.instances.editor2.getData();
+         $("#modal_modify_btn1").click(function(e){
+        	e.stopImmediatePropagation();
+            const modal_com_content = CKEDITOR.instances.editor_2.getData();
             if(modal_com_content == ''){
                alert("내용을 입력해주세요");
+               return;
             }
             
             if (isAjaxing == true){
@@ -888,18 +897,18 @@ body {
                         success:function(data){
                         	isAjaxing = false;
                         	if (data == "update") {
-                        		 $('.modal_com_content').val('');
-                                 $("#modal").fadeOut();
+                        		 $('.modal_com_content1').val('');
+                                 $("#modal1").fadeOut();
                                      let user_id = ${mem.user_id};
                                  let seller = ${detail.user_id};
                                  
                                  if(user_id  == seller){
                                     getAllList();
-                                    CKEDITOR.instances.editor1.setData(""); 
+                                    CKEDITOR.instances.editor_2.setData(""); 
                                  }
                                  else{
                                       getList();
-                                      CKEDITOR.instances.editor1.setData(""); 
+                                      CKEDITOR.instances.editor_2.setData(""); 
                                  }
                         	}
                         	else{
@@ -918,7 +927,8 @@ body {
          
       });
 
-      $(document).on("click", "#answer", function(){
+      $(document).on("click", "#answer", function(e){
+    	  e.stopImmediatePropagation();
          const comment_no_level = $(this).data("id");
          $("#modal").fadeIn();
          $("#modal_modify_cancel_btn").click(function(){
@@ -927,13 +937,15 @@ body {
          $(".close").click(function(){
             $("#modal").fadeOut();
          });
-         $("#modal_modify_btn").click(function(){
+         $("#modal_modify_btn").click(function(e){
+        	e.stopImmediatePropagation();
             const modal_com_content = CKEDITOR.instances.editor2.getData();
             const product_id = ${detail.product_id};
             const user_id = ${mem.user_id};
             
             if(modal_com_content == ''){
                alert("내용을 입력해주세요");
+               return;
             }
             
             if (isAjaxing == true){
@@ -968,11 +980,11 @@ body {
                              
                              if(user_id  == seller){
                                 getAllList();
-                                CKEDITOR.instances.editor1.setData(""); 
+                                CKEDITOR.instances.editor2.setData(""); 
                              }
                              else{
                                   getList();
-                                  CKEDITOR.instances.editor1.setData(""); 
+                                  CKEDITOR.instances.editor2.setData(""); 
                              }
                            }else{
                         	  isAjaxing = false;

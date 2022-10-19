@@ -32,6 +32,32 @@
    line-height: 23px;
 }
 
+#modal1 {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.8);
+   top: 0;
+   left: 0;
+   display: none;
+}
+
+#modal_content1 {
+   width: 50%;
+   height: 800px;
+   background: #fff;
+   border-radius: 10px;
+   position: relative;
+   top: 50%;
+   left: 50%;
+   margin-top: -100px;
+   margin-left: -25%;
+   text-align: center;
+   box-sizing: border-box;
+   padding: 50px 0;
+   line-height: 23px;
+}
+
 #span {
    display: inline-block;
    margin-left: 30px;
@@ -86,7 +112,7 @@
    <div id='modal'>
       <div id='modal_content'>
          <div class="modal-header">
-            <div class="modal-title">내용</div>
+            <div class="modal-title">답글</div>
             <button type="button" class="close" data-dismiss="modal"
                aria-label="Close">
                <span aria-hidden="true" style="font-size: 1em;">×</span>
@@ -104,6 +130,33 @@
          <div class="modal-footer">
             <button type="button" id="modal_modify_btn" class="btn btn-primary">등록</button>
             <button type="button" id="modal_modify_cancel_btn"
+               class="btn btn-primary">취소</button>
+            </td>
+         </div>
+      </div>
+   </div>
+   
+   <div id='modal1'>
+      <div id='modal_content1'>
+         <div class="modal-header">
+            <div class="modal-title">수정</div>
+            <button type="button" class="close1" data-dismiss="modal"
+               aria-label="Close">
+               <span aria-hidden="true" style="font-size: 1em;">×</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="mb-3">
+               <textarea class="form-control" id="editor_2" name="editor_2"
+                  class="modal_com_content1" rows="5"></textarea>
+               <script type="text/javascript">
+                  CKEDITOR.replace('editor_2');
+               </script>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" id="modal_modify_btn1" class="btn btn-primary">등록</button>
+            <button type="button" id="modal_modify_cancel_btn1"
                class="btn btn-primary">취소</button>
             </td>
          </div>

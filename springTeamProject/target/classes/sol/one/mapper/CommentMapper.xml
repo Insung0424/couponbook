@@ -27,14 +27,16 @@
 	</update>
 	
 	<select id="read" resultType="sol.one.VO.Comment2VO">
-		select * from pj_user a inner join pj_comment b
+		select a.user_id, a.email, a.nickname, b.product_id, b.user_id, b.comment_content, b.comment_write_time, b.comment_no, b.comment_no_level, b.group_no
+		from pj_user a inner join pj_comment b
 		on a.user_id = b.user_id
 		where b.product_id = #{product_id} and (a.user_id = #{user_id_1} or a.user_id = #{user_id_2}) and comment_no_level = #{comment_no_level}
 		order by b.comment_no_level, b.comment_no
 	</select>
 	
 	<select id="readAll" resultType="sol.one.VO.Comment2VO">
-		select * from pj_user a inner join pj_comment b 
+		select a.user_id, a.email, a.nickname, b.product_id, b.user_id, b.comment_content, b.comment_write_time, b.comment_no, b.comment_no_level, b.group_no 
+		from pj_user a inner join pj_comment b 
 		on a.user_id = b.user_id 
 		where b.product_id = #{product_id}
 		order by b.comment_no_level, b.comment_no
