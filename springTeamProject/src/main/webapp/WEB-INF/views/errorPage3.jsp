@@ -9,7 +9,7 @@ if(session != null){
 	%>
 	<script type="text/javascript">
 	var msg = '${msg }';
-	alert("오류를 다시 한번 확인해주세요.");
+	alert("아이디 또는 비밀번호가 틀렸습니다 \n다시 확인해주세요");
 	window.history.back();
 	</script>
 	<%

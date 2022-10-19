@@ -78,7 +78,7 @@ public class MemController {
 		if(loginMem == null) {
 			//濡쒓렇�씤 �떎�뙣 �떆 寃쎄퀬硫붿떆吏��� �럹�씠吏� �씠�룞
 			session.setAttribute("msg", "�븘�씠�뵒�� 鍮꾨�踰덊샇瑜� �솗�씤�븯�꽭�슂");
-			return "/errorPage";
+			return "/errorPage3";
 		} else if(loginMem.getUser_grade() == 2) {
 			//濡쒓렇�씤 �꽦怨� �븳 �궗�슜�옄�쓽 �벑湲됱씠 1(�씪諛섑쉶�썝)�씠 �븘�땶 寃쎌슦 = 愿�由ъ옄 �븘�씠�뵒濡� 濡쒓렇�씤 �뻽�쓣 寃쎌슦
 			session.setAttribute("admin", loginMem);
