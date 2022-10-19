@@ -863,9 +863,9 @@ body {
          const comment_no = $(this).data("id");
          $("#modal1").fadeIn();
          $("#modal_modify_cancel_btn1").click(function(){
-            $("#modal").fadeOut();
+            $("#modal1").fadeOut();
          });
-         $(".close1").click(function(){
+         $(".close").click(function(){
             $("#modal1").fadeOut();
          });
          
