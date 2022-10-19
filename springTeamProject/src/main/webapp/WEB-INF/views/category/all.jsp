@@ -460,7 +460,7 @@ section, ul, dl, dd {
 
 				</ul>
 
-				<div class="more_btn2" id="load">
+				<div class="more_btn2" id="load2">
 					<span class="more_text">더보기</span>
 				</div>
 
@@ -530,7 +530,7 @@ section, ul, dl, dd {
 			var theInterval;
 
 			function startSlide() {
-				theInterval = setInterval(NextSlide, 3000); //자동 슬라이드 설정
+				theInterval = setInterval(NextSlide, 4000); //자동 슬라이드 설정
 			}
 
 			function stopSlide() { //자동 멈추기
