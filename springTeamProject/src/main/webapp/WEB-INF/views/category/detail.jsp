@@ -206,7 +206,7 @@ body {
 												id="user_id" name="user_id" value="${mem.user_id }">
 											<input type="hidden" id="pd_name" name="pd_name"
 												value="${detail.pd_name }"> <input type="button"
-												value="🤍" id="like"
+												value="♡" id="like"
 												style="background-color: white; border: 1px solid black; float: left; margin-left: 15px; border-radius: 5px;">
 										</form>
 									</c:if>
@@ -429,7 +429,7 @@ body {
                   var like = data.like;
                    
                   if(like == "nolike"){
-                	  frm.like.value = "🤍";
+                	  frm.like.value = "♡";
                   }else{
                 	  frm.like.value = "❤️";
                   }
@@ -496,7 +496,7 @@ body {
                           }
                           
                        }); 
-                     frm.like.value = "🤍";
+                     frm.like.value = "♡";
                      alert("관심상품 해제");
                   }
                },

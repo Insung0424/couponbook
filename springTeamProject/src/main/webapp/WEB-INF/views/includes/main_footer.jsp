@@ -39,7 +39,7 @@
 		<div class="row">
 			<div class="col-12 col-md" style="text-align: center;">
 				<small
-					class="d-block mb-3 text-muted">&copy; 2022-08-22~ <br>2022-09-13
+					class="d-block mb-3 text-muted">&copy; 2022-08-18~ <br>2022-09-04
 				</small>
 			</div>
 			<div class="col-6 col-md">
